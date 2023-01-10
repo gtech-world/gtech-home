@@ -1,0 +1,36 @@
+name: Beta Release to Github Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: github.repository == 'gtech-world/carbon3-home'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node v16
+        uses: actions/setup-node@v1
+        with:
+          node-version: v16.16.0
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+          
+      - name: Run install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm export
+
+      - name: Deploy Gh-Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          cname: beta.carbon3.com
