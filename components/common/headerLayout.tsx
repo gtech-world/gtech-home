@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { HTMLAttributes } from "react";
+import React,{ HTMLAttributes } from "react";
 import { Header } from "./header";
 
 export function HeaderLayout(p: HTMLAttributes<HTMLDivElement>) {
