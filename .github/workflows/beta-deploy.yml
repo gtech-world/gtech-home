@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    if: github.repository == 'gtech-world/carbon3-home'
+    if: github.repository == 'gtech-world/gtech-home'
     runs-on: ubuntu-latest
 
     steps:
