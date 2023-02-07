@@ -83,7 +83,7 @@ function CrossSolutions(){
   return(
     <div className="flex flex-col items-center pb-32 mt-16 md:mt-8 md:pb-12">
       <h3 className="">Cross-boundary Solutions</h3>
-      <p className="text-center mt-5 max-w-[56.25rem]">
+      <p className="text-center mt-5 max-w-[56.25rem] md:px-3">
         Learn about how GTech helps enterprises, organizations and public sectors to manage complex challenges and risks in data processing, data storage, data traceability and data visibility within diverse scopes.
       </p>
       <div className="w-container md:w-full md:px-3">
