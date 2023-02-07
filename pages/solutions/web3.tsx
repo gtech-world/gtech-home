@@ -142,7 +142,7 @@ function StorageCases(){
         {
           data.map((v,i)=>{
             return(
-              <div className="mb-20 flex px-3 md:flex-col md:mb-10">
+              <div key={`data-${i}`} className="mb-20 flex px-3 md:flex-col md:mb-10">
                 <img className="mx-auto md:w-[17.125rem]" src={v.imgUrl} alt=""/>
                 <div className="w-[50.75rem] ml-12 md:w-full md:ml-0 md:text-center">
                   <h5 className="px-12 md:mt-4">{v.title}</h5>

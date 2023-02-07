@@ -36,7 +36,7 @@ function Technologies(){
   ]
   return(
     <div className="w-full bg-green flex flex-col items-center pt-16 pb-16 md:pt-8 md:pb-4">
-      <h3 className="text-white text-center"><span className="text-yellow">'Greener'</span> Data Technologies</h3>
+      <h3 className="text-white text-center"><span className="text-yellow">&apos;Greener&apos;</span> Data Technologies</h3>
       <div className="text-white max-w-[59.75rem] px-3 text-center mt-5">GTech is a leading provider of cross-boundary, consolidated decentralized data solutions empowered by Web3.0 technologies. GTech’s ultimate mission is helping its customers to deliever more ‘trusted’ data to their users. </div>
       <ul className="w-container flex text-center justify-between mt-24 md:flex-col md:mt-16">
         {

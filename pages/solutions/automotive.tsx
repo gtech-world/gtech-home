@@ -16,13 +16,13 @@ function Top(){
 function BoostingAutomotive(){
   return(
     <div className="flex flex-col items-center pb-20 md:text-center md:pb-8">
-      <h3 className="my-16 md:my-6 md:px-12">Boosting Automotive’s Net Zero Vision</h3>
+      <h3 className="my-16 md:my-6 md:px-12">Boosting Automotive&apos;s Net Zero Vision</h3>
       <div className="flex md:flex-col-reverse px-3">
         <img className="md:mt-8 rounded-lg" src="/images/solution_intro.svg" alt=""/>
         <div className="w-[590px] ml-14 text-lg md:text-sm md:w-full md:ml-0">
-          <p className="mb-5">GTech provides industry-specific business intelligence and data management solutions based on the industry's particular demands or goals.</p>
-          <p className="mb-5">Data is among many key factors in a business that contribute to more responsive decisions and more efficient operations. Especially, data drives us to better achieve our established goal in certain industry because we enjoy more chance to get well informed with facts, statistics, feedbacks and analytics - all of which are powered by the 'right' data managed, processed, and delievered to the decision maker - so that we may finally discover the right path to the goal.</p>
-          <p>In this case, GTech is helping the automotive industry, which comprises a super wide range of companies and organizations globally, to establish a long-term carbon performance data traceability and visibility framework for the industry’s Net Zero commitment.</p>
+          <p className="mb-5">GTech provides industry-specific business intelligence and data management solutions based on the industry&apos;s particular demands or goals.</p>
+          <p className="mb-5">Data is among many key factors in a business that contribute to more responsive decisions and more efficient operations. Especially, data drives us to better achieve our established goal in certain industry because we enjoy more chance to get well informed with facts, statistics, feedbacks and analytics - all of which are powered by the &apos;right&apos; data managed, processed, and delievered to the decision maker - so that we may finally discover the right path to the goal.</p>
+          <p>In this case, GTech is helping the automotive industry, which comprises a super wide range of companies and organizations globally, to establish a long-term carbon performance data traceability and visibility framework for the industry&apos;s Net Zero commitment.</p>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@ function IndustryLevel(){
   return(
     <div className="w-full bg-green flex flex-col items-center text-white text-lg md:text-sm md:pb-10">
       <h3 className="text-center px-12 mt-16 md:mt-8">Industry-level Data Solution Explained</h3>
-      <p className="mt-5 max-w-[54.125rem] text-center">GTech’s consolidated BI & Data solution covers data collecting, data recording, data storage, database management & maintenance, traceability&visibility interfaces and services for end users.</p>
+      <p className="mt-5 max-w-[54.125rem] text-center">GTech&apos;s consolidated BI & Data solution covers data collecting, data recording, data storage, database management & maintenance, traceability&visibility interfaces and services for end users.</p>
       <div className="flex justify-center items-center mt-20 pb-20 ml-[4.8rem] md:flex-col md:ml-0 md:mt-5 md:text-center md:pb-0">
         <div>
           <p className="h-11">

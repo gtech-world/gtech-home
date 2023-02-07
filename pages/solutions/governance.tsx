@@ -26,7 +26,7 @@ function PowerManagement(){
             Green power supply (hydro power, wind power, photovoltaics, etc.) and manufacturing industry activities are alway grographically mismatched. As the major global economies begin to increasely realize the significance and urgency to acquire green power for the industry capacity, engineers from cross sections are making attemptions to match green power supply to industry demands despite of timing and spatial gaps.
           </p>
           <p>
-            A joint force of in Sichuan Province, China, seeks opportunities in addressing the power matching puzzle based on the dramatically abundant natural resources in this area. The project leverages collective technologies and solutions from world’s leading automation and data solution providers such as Siemens, Honeywell and GTech to solve problems in power transmission, power dispatching, power accounting, carbon emission mitigation and system optimization. GTech’s expertise and experience in Data Governance plays a key role and contributes to the formation of the final consolidated solution.
+            A joint force of in Sichuan Province, China, seeks opportunities in addressing the power matching puzzle based on the dramatically abundant natural resources in this area. The project leverages collective technologies and solutions from world&apos;s leading automation and data solution providers such as Siemens, Honeywell and GTech to solve problems in power transmission, power dispatching, power accounting, carbon emission mitigation and system optimization. GTech’s expertise and experience in Data Governance plays a key role and contributes to the formation of the final consolidated solution.
           </p>
         </div>
       </div>
@@ -69,14 +69,14 @@ function GreenData(){
   ]
   return(
     <div className="w-full flex flex-col items-center pt-16 pb-20 md:py-8">
-      <h3 className="px-12 text-center"><span className="text-green">'Green Data'</span> Management & BI Platform</h3>
+      <h3 className="px-12 text-center"><span className="text-green">&apos;Green Data&apos;</span> Management & BI Platform</h3>
       <div className="flex mt-20 md:flex-col-reverse md:mt-8">
         <div className="w-[38.625rem] mr-24 md:w-full md:text-center md:px-3">
           <h4 className="text-[28px] leading-[32px] font-bold mb-10 md:text-base">Digitalized & Consolidated Power<br/>Management System</h4>
           {
             powerManagement.map((v,i)=>{
               return(
-                <div>
+                <div key={`powerManagement-${i}`}>
                   <h5 className={classNames('font-bold',(i !== 0)?'mt-6':'')}>{v.title}</h5>
                   <p>{v.text}</p>
                 </div>
@@ -88,14 +88,14 @@ function GreenData(){
       </div>
       <div className="flex mt-24 md:flex-col md:mt-12">
         <div className="flex flex-col md:flex-col-reverse">
-          <h4 className="text-[28px] font-bold mb-8 md:text-base md:text-center md:mt-8">The Platform Made for 'Green Data'</h4>
+          <h4 className="text-[28px] font-bold mb-8 md:text-base md:text-center md:mt-8">The Platform Made for &apos;Green Data&apos;</h4>
           <img className="mx-auto md:max-w-[20.875rem] md:w-full" src="/images/green_data.svg" alt=""/>
         </div>
         <div className="ml-20 w-[35.56rem] px-3 md:w-full md:ml-0 md:text-center">
           {
             greenData.map((v,i)=>{
               return(
-                <div>
+                <div key={`greenData-${i}`}>
                   <h5 className="font-bold">{v.title}</h5>
                   <p className="mb-5">{v.text}</p>
                 </div>
