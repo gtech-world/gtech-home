@@ -11,7 +11,7 @@ function Top(){
         <span className="">The Data-driven Future is Now.</span>
       </div>
       <div className="max-w-[34rem] px-3 text-lg text-center mt-[14.375rem] mb-5 md:text-sm md:mt-[8.375rem] md:mb-9">Learn more about GTech and how we solve complex challenges cross-industry with cutting-edge data technologies</div>
-      <img alt="" className="md:hidden" src="images/home_head_arrow.svg"/>
+      <img alt="" className="pb-3 md:hidden" src="images/home_head_arrow.svg"/>
     </div>
   )
 }
