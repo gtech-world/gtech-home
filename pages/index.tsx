@@ -1,7 +1,7 @@
 import { HeaderLayout } from "@components/common/headerLayout";
 import {Button} from "@components/button";
-import {HTMLAttributes} from "react";
 import classNames from "classnames";
+import {useRouter} from "next/router";
 
 function Top(){
   return(
@@ -54,43 +54,26 @@ function Technologies(){
     </div>
   )
 }
-
-function CrossSolutionsImg(props: {imgUrl:string} & HTMLAttributes<HTMLDivElement>){
-  const {imgUrl} = props
-  return(
-    <div className="md:mx-auto">
-      <img className="block w-[35rem] rounded-lg overflow-hidden md:max-w-full" src={imgUrl} alt=""/>
-    </div>
-  )
-}
-function CrossSolutionsContent(props:{title: string,text:string,layout?:string} & HTMLAttributes<HTMLDivElement>){
-  const {title,text,layout, className} = props
-  return(
-    <div className={classNames('w-[35rem] md:w-full md:text-center md:mt-8',className)}>
-      <h5 className="px-12">{title}</h5>
-      <p className={classNames('mt-5',layout === 'left'?'w-[36.5rem] md:w-full':'')}>
-        {text}
-      </p>
-      <Button className="mt-8" text="Learn More & View Use Case" />
-    </div>
-  )
-}
-
 function CrossSolutions(){
+  const router = useRouter()
   const data = [
     {
+      url: '/solutions/web3',
       layout: 'left',
       imgUrl: 'images/map.png',
       title: 'Web3-Featured Organizational Data Solutions',
       text: 'GTech provides organizational-level users with data management solutions with regard to key web3 features, i.e. decentralization, data immutability, transparency and counter-SPoF. Such solution cover from the sourcing and maintenance of the data content to the regular management, storage and retrieval of the data content.'
+
     },
     {
+      url: '/solutions/governance',
       layout: 'right',
       imgUrl: 'images/governance_banner.svg',
       title: 'Data Governance & BI Solutions',
       text: 'Gtech’s Data Goverance & BI solutions focus on the developement of data strategy, the development of policies concerning the top-level design of information structures and taxonomies and the development of the data analytics system for corporates and regional industry alliances.'
     },
     {
+      url: '/solutions/automotive',
       layout: 'left',
       imgUrl: 'images/automotive_banner.svg',
       title: 'Industry-specific BI & Data Solutions',
@@ -108,8 +91,16 @@ function CrossSolutions(){
           data.map((v,i)=>{
             return(
               <div key={`data-${i}`} className={classNames('mt-20 flex justify-between md:mt-12',v.layout ==='left'?'':'flex-row-reverse','md:flex-col')}>
-                <CrossSolutionsImg imgUrl={v.imgUrl} />
-                <CrossSolutionsContent layout={v.layout} text={v.text} title={v.title} />
+                <div className="md:mx-auto">
+                  <img className="block w-[35rem] rounded-lg overflow-hidden md:max-w-full" src={v.imgUrl} alt=""/>
+                </div>
+                <div className='w-[35rem] md:w-full md:text-center md:mt-8'>
+                  <h5 className="md:px-12">{v.title}</h5>
+                  <p className={classNames('mt-5',v.layout === 'left'?'w-[36.5rem] md:w-full':'')}>
+                    {v.text}
+                  </p>
+                  <Button onClick={()=>router.push(v.url)} className="mt-8" text="Learn More & View Use Case" />
+                </div>
               </div>
             )
           })

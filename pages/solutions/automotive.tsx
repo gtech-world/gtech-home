@@ -4,13 +4,6 @@ import {QrGroup} from "@components/qrGroup";
 import classNames from "classnames";
 function Top(){
   return(
-    // <div className="h-[44.625rem] w-full bg-[url(/images/automotive_banner.svg)] bg-no-repeat bg-center bg-cover flex justify-center items-center md:h-[28rem]">
-    //   <div className="bg-black/[.8] p-8 text-[2rem] text-green-1 md:text-lg md:text-center mx-10">
-    //     <h1 className="text-white font-bold text-5xl md:text-[1.75rem]">Industry-specific BI & Data Solutions</h1>
-    //     <p className="mt-3">Case: Automotive Industry</p>
-    //     <p className="">Carbon Performance Data Solution</p>
-    //   </div>
-    // </div>
   <div className="h-[44.625rem] text-white w-full bg-[url(/images/automotive_banner.svg)] bg-no-repeat bg-cover bg-center flex justify-center items-center px-9 md:h-[28rem]">
     <div className="bg-black/[.8] p-8 text-[2rem] text-green-1 leading-[2.75rem] md:text-lg md:text-center">
       <h3 className="font-bold text-white text-5xl md:text-[1.75rem]">Industry-specific BI & Data Solutions</h3>

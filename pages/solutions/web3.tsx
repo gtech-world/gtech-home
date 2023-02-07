@@ -117,7 +117,7 @@ function StorageMiddlewares(){
           </div>
         </div>
       </div>
-      <Button className="w-96 mt-16 md:max-w-[19.375rem] md:mt-8" text="View More in Cloud3" />
+      <Button onClick={()=>window.open(`https://cloud3.cc/`, "_blank")} className="w-96 mt-16 md:max-w-[19.375rem] md:mt-8" text="View More in Cloud3" />
     </div>
   )
 }
