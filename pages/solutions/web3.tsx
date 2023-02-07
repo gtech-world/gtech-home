@@ -79,14 +79,14 @@ function StorageMiddlewares(){
               </div>
               <h6
                 // onClick={() => scrollToAnchor("nft")}
-                className="text-[1.35rem] leading-[29px] font-medium leading-7 mt-6 mb-2 underline no-skip-ink cursor-pointer"
+                className="text-[1.35rem] leading-[29px] font-medium leading-7 mt-6 mb-2 underline no-skip-ink"
               >
                 W3Buckets
               </h6>
               <span className="leading-[1.375rem]">NFT-nized IPFS storage buckets</span>
               <h6
                 // onClick={() => scrollToAnchor("nft")}
-                className="text-[1.35rem] leading-[29px] font-medium leading-7 mt-4 mb-2 underline no-skip-ink cursor-pointer"
+                className="text-[1.35rem] leading-[29px] font-medium leading-7 mt-4 mb-2 underline no-skip-ink"
               >
                 W3Gateways
               </h6>
@@ -105,7 +105,7 @@ function StorageMiddlewares(){
               </div>
               <h6
                 // onClick={() => scrollToAnchor("widget")}
-                className="text-[1.35rem] leading-[29px] font-medium leading-7 mt-6 mb-2 underline no-skip-ink cursor-pointer"
+                className="text-[1.35rem] leading-[29px] font-medium leading-7 mt-6 mb-2 underline no-skip-ink"
               >
                 Web3 Storage Widgets
               </h6>
