@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 
 function Top(){
   return(
-    <div className="w-full bg-[url(/images/home_banner.svg)] bg-no-repeat bg-center bg-cover flex flex-col items-center">
+    <div className="w-full bg-[url(/images/home_banner.png)] bg-no-repeat bg-center bg-cover flex flex-col items-center">
       <div className="flex flex-col items-center font-bold text-[4rem] leading-normal text-center md:text-[1.75rem]">
         <span className="text-green mt-64 md:mt-36">Trust, Transparency, Traceability.</span>
         <span className="">The Data-driven Future is Now.</span>
@@ -68,14 +68,14 @@ function CrossSolutions(){
     {
       url: '/solutions/governance',
       layout: 'right',
-      imgUrl: 'images/governance_banner.svg',
+      imgUrl: 'images/governance_banner.png',
       title: 'Data Governance & BI Solutions',
       text: 'Gtech’s Data Goverance & BI solutions focus on the developement of data strategy, the development of policies concerning the top-level design of information structures and taxonomies and the development of the data analytics system for corporates and regional industry alliances.'
     },
     {
       url: '/solutions/automotive',
       layout: 'left',
-      imgUrl: 'images/automotive_banner.svg',
+      imgUrl: 'images/automotive_banner.png',
       title: 'Industry-specific BI & Data Solutions',
       text: 'Many industrial sections, despite producing widely different products or services, are facing similar data challenges such as data credibility, data traceability and data abuse. GTech shows professionalities and insights into customizing industry-specific BI & data management solutions to meet urgent demands from cross-industries. '
     }
