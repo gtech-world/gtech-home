@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 function Top(){
   return(
-    <div className="h-[44.625rem] text-white w-full bg-[url(/images/governance_banner.svg)] bg-no-repeat bg-cover bg-center flex justify-center items-center px-9 md:h-[28rem]">
+    <div className="h-[44.625rem] text-white w-full bg-[url(/images/governance_banner.png)] bg-no-repeat bg-cover bg-center flex justify-center items-center px-9 md:h-[28rem]">
       <div className="bg-blue-1/[.8] p-8 text-[2rem] leading-[2.75rem] md:text-lg md:text-center">
         <h3 className="font-bold text-5xl md:text-[1.75rem]">Data Governance Solutions</h3>
         <p className="mt-3">Case: Green Power Industrial Park</p>
