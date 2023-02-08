@@ -100,7 +100,7 @@ function MainProduct(){
           data.map((v,i)=>{
             return(
               <div key={`product-${i}`} className={classNames('w-[36.25rem] pb-5 border-4 border-black rounded-2xl flex flex-col justify-center px-5 md:w-full md:mt-8',i===0?'ml-0 md:mt-0':'ml-10 md:ml-0')}>
-                <h4 className="font-bold text-[2rem] leading-9 text-center pt-3 pb-8 text-green md:text-base md:px-3 md:mt-3">{v.title}</h4>
+                <h4 className="font-bold text-[2rem] leading-9 px-5 text-center pt-6 pb-8 text-green md:text-base md:mt-3 md:pt-3">{v.title}</h4>
                 <img className="h-[6.125rem] mb-10 md:h-[5rem] md:mb-8" src={v.imgUrl} alt=""/>
                 <div className="w-[29.25rem] text-center mx-auto leading-6 md:w-full md:leading-5">
                   {
