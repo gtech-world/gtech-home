@@ -5,8 +5,8 @@ import classNames from "classnames";
 function Top(){
   return(
   <div className="h-[44.625rem] text-white w-full bg-[url(/images/automotive_banner.png)] bg-no-repeat bg-cover bg-center flex justify-center items-center px-9 md:h-[28rem]">
-    <div className="bg-black/[.8] p-8 text-[2rem] text-green-1 leading-[2.75rem] md:text-lg md:text-center">
-      <h3 className="font-bold text-white text-5xl md:text-[1.75rem]">Industry-specific BI & Data Solutions</h3>
+    <div className="bg-black/[.8] flex flex-col justify-center w-[58.5rem] pl-8 h-[13.125rem] text-[2rem] text-[2rem] text-green-1 leading-[2.75rem] md:text-lg md:text-center md:px-4 md:py-11 md:w-auto md:h-auto">
+      <h3 className="font-bold text-white text-5xl md:text-[1.75rem] md:leading-9">Industry-specific BI & Data Solutions</h3>
       <p className="mt-3">Case: Automotive Industry Carbon</p>
       <p className="">Performance Data Solution</p>
     </div>
@@ -130,7 +130,7 @@ function TrustLabel(){
           <img className="w-[50.625rem] md:w-full" src="/images/car.svg" alt=""/>
           <div className="ml-6 md:ml-2">
             <QrGroup className="mt-20 md:mt-8" />
-            <p className="mt-8">Scan Trust Label with your phone and check how much CO2 is emitted by the production of this car.</p>
+            <p className="mt-8 md:text-center">Scan Trust Label with your phone and check how much CO2 is emitted by the production of this car.</p>
           </div>
         </div>
       </div>

@@ -99,7 +99,7 @@ function CrossSolutions(){
                   <p className={classNames('mt-5',v.layout === 'left'?'w-[36.5rem] md:w-full':'')}>
                     {v.text}
                   </p>
-                  <Button onClick={()=>router.push(v.url)} className="mt-8" text="Learn More & View Use Case" />
+                  <Button onClick={()=>router.push(v.url)} className="mt-8 w-[19.25rem]" text="Learn More & View Use Case" />
                 </div>
               </div>
             )

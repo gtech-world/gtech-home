@@ -5,10 +5,10 @@ import {Button} from "@components/button";
 function Top(){
   return(
     <div className="h-[44.625rem] w-full bg-[url(/images/map.png)] bg-no-repeat bg-[length:auto_100%] bg-center flex justify-center items-center px-9 md:h-[26rem]">
-      <div className="bg-green/[.92] p-8 text-[2rem] leading-[2.75rem] text-yellow md:text-lg md:text-center">
-        <h3 className="text-white font-bold text-5xl md:text-[1.75rem]">Web3-featured Data Solutions</h3>
-        <p className="mt-3">Case: The Redefined Web3</p>
-        <p className="">Storage Solution Safeguarding Key Business Data</p>
+      <div className="bg-green/[.92] flex flex-col justify-center w-[58.5rem] pl-8 h-[13.125rem] text-[2rem] leading-[2.75rem] text-yellow md:text-lg md:text-center md:px-4 md:py-11 md:w-auto md:h-auto">
+        <h3 className="text-white font-bold text-5xl md:text-[1.75rem] md:leading-9">Web3-featured Data Solutions</h3>
+        <p className="mt-3">Case: The Redefined Web3 Storage</p>
+        <p className="">Solution Safeguarding Key Business Data</p>
       </div>
     </div>
   )
@@ -145,7 +145,7 @@ function StorageCases(){
               <div key={`data-${i}`} className="mb-20 flex px-3 md:flex-col md:mb-10">
                 <img className="mx-auto md:w-[17.125rem]" src={v.imgUrl} alt=""/>
                 <div className="w-[50.75rem] ml-12 md:w-full md:ml-0 md:text-center">
-                  <h5 className="px-12 md:mt-4">{v.title}</h5>
+                  <h5 className="md:px-12 md:mt-4">{v.title}</h5>
                   <p className="mt-5">{v.text}</p>
                 </div>
               </div>

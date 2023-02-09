@@ -1,13 +1,11 @@
 import { HeaderLayout } from "@components/common/headerLayout";
-import {Button} from "@components/button";
-import {QrGroup} from "@components/qrGroup";
 import classNames from "classnames";
 
 function Top(){
   return(
     <div className="h-[44.625rem] text-white w-full bg-[url(/images/governance_banner.png)] bg-no-repeat bg-cover bg-center flex justify-center items-center px-9 md:h-[28rem]">
-      <div className="bg-blue-1/[.8] p-8 text-[2rem] leading-[2.75rem] md:text-lg md:text-center">
-        <h3 className="font-bold text-5xl md:text-[1.75rem]">Data Governance Solutions</h3>
+      <div className="bg-blue-1/[.8] flex flex-col justify-center w-[58.5rem] pl-8 h-[13.125rem] text-[2rem] leading-[2.75rem] md:text-lg md:text-center md:px-4 md:py-11 md:w-auto md:h-auto">
+        <h3 className="font-bold text-5xl md:text-[1.75rem] md:leading-9">Data Governance Solutions</h3>
         <p className="mt-3">Case: Green Power Industrial Park</p>
         <p className="">Consolidated Data Management Solution</p>
       </div>
@@ -21,7 +19,7 @@ function PowerManagement(){
       <div className="flex flex-col w-container md:w-full">
         <div className="h-[13rem] bg-[url(/images/industrial.svg)] bg-no-repeat bg-center">
         </div>
-        <div className="mt-11 px-3 md:text-center md:mt-8">
+        <div className="mt-11 md:px-3 md:text-center md:mt-8">
           <p className="mb-5">
             Green power supply (hydro power, wind power, photovoltaics, etc.) and manufacturing industry activities are alway grographically mismatched. As the major global economies begin to increasely realize the significance and urgency to acquire green power for the industry capacity, engineers from cross sections are making attemptions to match green power supply to industry demands despite of timing and spatial gaps.
           </p>
@@ -77,7 +75,7 @@ function GreenData(){
             powerManagement.map((v,i)=>{
               return(
                 <div key={`powerManagement-${i}`}>
-                  <h5 className={classNames('font-bold',(i !== 0)?'mt-6':'')}>{v.title}</h5>
+                  <h6 className={classNames('font-bold',(i !== 0)?'mt-6':'')}>{v.title}</h6>
                   <p>{v.text}</p>
                 </div>
               )
@@ -96,7 +94,7 @@ function GreenData(){
             greenData.map((v,i)=>{
               return(
                 <div key={`greenData-${i}`}>
-                  <h5 className="font-bold">{v.title}</h5>
+                  <h6 className="font-bold">{v.title}</h6>
                   <p className="mb-5">{v.text}</p>
                 </div>
               )

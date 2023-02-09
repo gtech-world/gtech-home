@@ -21,7 +21,7 @@ function PCNav(props:{data:any}){
               (
                 <div ref={ref} key={`nav-${i}`} className={`cursor-pointer flex relative${i === 0?'':' ml-14'}`} onClick={()=>setOpen(!!open?'':v.href)}>
                   <span className={`pb-2.5${/^\/solutions\/\w+/.test(pathname)?' border-b-2 border-green font-bold':''}`}>{v.name}</span>
-                  <IoCaretDownOutline className="ml-2 mt-1" />
+                  <IoCaretDownOutline className={classNames('ml-2 mt-1',!!open?'rotate-180':'')} />
                   {
                     open === v.href &&
                     <ul className="w-[15.375rem] shadow-[0_5px_15px_0px_rgba(0,0,0,0.3)] absolute top-[3.25rem] right-0 bg-white text-sm py-2 px-5 leading-loose rounded-lg">
@@ -98,7 +98,7 @@ function MobileNav(props:{data:any}){
                         <Link className={classNames('inline-block w-full',pathname === v.href?'text-green':'')} href={v.href}>{v.name}</Link>
                     }
                     {
-                      hasChildren && <IoCaretDownOutline />
+                      hasChildren && <IoCaretDownOutline className={!!openSubNav?'rotate-180':''} />
                     }
                   </div>
                   {
