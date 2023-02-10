@@ -45,7 +45,7 @@ function StorageMiddlewares(){
   return(
     <div className="w-full bg-bgc flex flex-col items-center pt-16 pb-16 md:pt-8 md:pb-10">
       <h3 className="text-green mb-20 px-12 text-center md:mb-8">Key Cloud Storage Middlewares in Web3</h3>
-      <div className="flex items-center md:flex-col-reverse">
+      <div className="flex items-center md:flex-col-reverse text-base">
         <div className="w-[29.875rem] md:w-full md:text-center md:mt-8">
           <div className="px-7">
             <p>
@@ -64,13 +64,13 @@ function StorageMiddlewares(){
           </div>
         </div>
         <div className="flex ml-24 md:flex-col md:px-8 md:ml-0">
-          <div className="w-[21.75rem] border-2 border-black bg-white rounded-l-xl md:rounded-t-xl md:rounded-b-none md:pb-2">
-            <div className="flex flex-col items-center border-b-2 border-black pt-5 pb-4">
+          <div className="w-[19.625rem] h-[23.5rem] border-2 border-black bg-white rounded-l-xl md:rounded-t-xl md:rounded-b-none md:pb-2">
+            <div className="flex flex-col items-center border-b-2 border-black pt-6 pb-5">
               <div className="text-[1.75rem] font-medium">PaaS</div>
               <span className="leading-[1.3125rem] mt-[.625rem]">Platform-as-a-Service</span>
             </div>
-            <div className="flex flex-col items-center pt-6 pb-7">
-              <div className="flex items-center text-4xl">
+            <div className="flex flex-col items-center py-7">
+              <div className="flex items-center text-4xl mb-8">
                 <span className="mr-2">W3</span>
                 <img src="/images/container.svg" />
                 <span className="px-3">+</span>
@@ -79,40 +79,40 @@ function StorageMiddlewares(){
               </div>
               <h6
                 // onClick={() => scrollToAnchor("nft")}
-                className="text-[1.35rem] leading-[29px] font-medium leading-7 mt-6 mb-2 underline no-skip-ink"
+                className="text-[1.35rem] leading-5 font-medium leading-7 mb-2 underline no-skip-ink"
               >
                 W3Buckets
               </h6>
               <span className="leading-[1.375rem]">NFT-nized IPFS storage buckets</span>
               <h6
                 // onClick={() => scrollToAnchor("nft")}
-                className="text-[1.35rem] leading-[29px] font-medium leading-7 mt-4 mb-2 underline no-skip-ink"
+                className="text-[1.35rem] leading-5 font-medium leading-7 mt-6 mb-2 underline no-skip-ink"
               >
                 W3Gateways
               </h6>
               <span className="leading-[1.375rem]">NFT-nized IPFS Gateways</span>
             </div>
           </div>
-          <div className="w-[21.75rem] border-l-2 border-black border-2 border-black bg-white rounded-r-xl md:mt-3 md:rounded-b-xl md:rounded-t-none md:pb-12">
-            <div className="flex flex-col items-center border-b-2 border-black pt-5 pb-4">
+          <div className="w-[19.625rem] h-[23.5rem] border-l-2 border-black border-2 border-black bg-white rounded-r-xl md:mt-3 md:rounded-b-xl md:rounded-t-none md:pb-12">
+            <div className="flex flex-col items-center border-b-2 border-black pt-6 pb-5">
               <div className="text-[1.75rem] font-medium">SaaS</div>
               <span className="leading-[1.3125rem] mt-[.625rem]">Software-as-a-Service</span>
             </div>
-            <div className="flex flex-col items-center pt-6">
+            <div className="flex flex-col items-center py-7 px-7">
               <div className="flex items-center text-4xl">
                 <span className="mr-2">W3</span>
                 <img src="/images/widget.svg" alt=""/>
               </div>
               <h6
                 // onClick={() => scrollToAnchor("widget")}
-                className="text-[1.35rem] leading-[29px] font-medium leading-7 mt-6 mb-2 underline no-skip-ink"
+                className="text-[1.35rem] leading-5 font-medium leading-7 mt-8 mb-2 underline no-skip-ink"
               >
                 Web3 Storage Widgets
               </h6>
-              <p className="w-[298px] leading-[1.375rem] text-center">
+              <p className="leading-[1.375rem] text-center">
                 Rich-text Editor/Publisher Widget IPFS File Storage Widget
               </p>
-              <p className="w-[298px] leading-[1.375rem] text-center">IPFS Storage Retrieval Widget and more...</p>
+              <p className="leading-[1.375rem] text-center">IPFS Storage Retrieval Widget and more...</p>
             </div>
           </div>
         </div>

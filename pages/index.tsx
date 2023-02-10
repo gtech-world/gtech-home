@@ -35,16 +35,16 @@ function Technologies(){
     },
   ]
   return(
-    <div className="w-full bg-green flex flex-col items-center pt-16 pb-16 md:pt-8 md:pb-4">
+    <div className="w-full bg-green flex flex-col items-center pt-16 md:pt-8 md:pb-4">
       <h3 className="text-white text-center"><span className="text-yellow">&apos;Greener&apos;</span> Data Technologies</h3>
       <div className="text-white max-w-[59.75rem] px-3 text-center mt-5">GTech is a leading provider of cross-boundary, consolidated decentralized data solutions empowered by Web3.0 technologies. GTech’s ultimate mission is helping its customers to deliever more ‘trusted’ data to their users. </div>
       <ul className="w-container flex text-center justify-between mt-24 md:flex-col md:mt-16">
         {
           data.map((v,i)=>{
             return(
-              <li key={`technologies${i}`} className="flex flex-col items-center pb-12">
+              <li key={`technologies${i}`} className="flex flex-col items-center pb-16 md:pb-12">
                 <img className="h-[8rem] md:h-[6.125rem]" src={v.image} alt=""/>
-                <h5 className="text-yellow mt-7 mb-5 md:text-base">{v.title}</h5>
+                <h6 className="text-yellow text-xl font-semibold mt-7 mb-5 md:text-base">{v.title}</h6>
                 <p className="w-[19.375rem] text-sm text-white">{v.text}</p>
               </li>
             )

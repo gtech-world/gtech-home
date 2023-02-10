@@ -44,7 +44,7 @@ function IndustryLevel(){
         <img className="hidden md:block w-10 my-6 h-[2.25rem]" src="/images/arrow_down.svg" alt=""/>
         <div className="flex flex-col items-center">
           <p className="text-2xl font-bold text-yellow h-11">AICD</p>
-          <div className="bg-white text-black text-1.5xl font-bold rounded-lg h-20 w-[18.75rem] flex justify-center items-center text-center">Automotive Industry Carbon Database</div>
+          <div className="bg-white text-black text-1.5xl leading-[1.875rem] font-bold rounded-lg h-20 w-[18.75rem] flex justify-center items-center text-center">Automotive Industry Carbon Database</div>
           <p className="w-[18.75rem] h-[5.25rem] mt-5 md:h-auto">Powered by Web technologies, ensures data security, privacy and immutability</p>
         </div>
         <div className="flex md:mt-0 md:flex-col items-center">
@@ -53,7 +53,7 @@ function IndustryLevel(){
           <div className="ml-[-4.8rem] md:ml-0">
             <div className="flex flex-col items-center justify-center">
               <p className="text-2xl font-bold text-yellow h-11">Traceability</p>
-              <div className="bg-white text-black text-1.5xl font-bold rounded-lg h-20 w-[16.25rem] flex justify-center items-center text-center">Supply Chain Traceability</div>
+              <div className="bg-white text-black text-1.5xl leading-[1.875rem] font-bold rounded-lg h-20 w-[16.25rem] flex justify-center items-center text-center">Supply Chain Traceability</div>
             </div>
             <div className="flex flex-col items-center">
               <p className="text-2xl font-bold text-yellow h-11 mt-7">Trust Label</p>
@@ -123,7 +123,7 @@ function MainProduct(){
 
 function TrustLabel(){
   return(
-    <div className="mt-10 mb-20 px-3">
+    <div className="mt-10 pb-20 px-3">
       <div className="w-container m-auto border-4 pb-5 border-black rounded-2xl md:w-full md:h-auto">
         <h3 className="text-3.5xl font-bold text-green text-center mt-8 pb-6 md:text-base">The Trust Label System: Visibility for Consumers</h3>
         <div className="px-6 flex md:flex-col-reverse md:px-3">
