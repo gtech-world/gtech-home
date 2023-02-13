@@ -70,3 +70,7 @@ h5{
   /*overflow-x: hidden;*/
   /*position: relative;*/
 }
+
+.size-adjust{
+  -webkit-text-size-adjust:none;
+}

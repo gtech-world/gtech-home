@@ -69,8 +69,8 @@ function GreenData(){
     <div className="w-full flex flex-col items-center pt-16 pb-20 md:py-8">
       <h3 className="px-12 text-center"><span className="text-green">&apos;Green Data&apos;</span> Management & BI Platform</h3>
       <div className="flex mt-20 md:flex-col-reverse md:mt-8">
-        <div className="w-[38.625rem] mr-24 md:w-full md:text-center md:px-3">
-          <h4 className="text-[28px] leading-[32px] font-bold mb-10 md:text-base">Digitalized & Consolidated Power<br/>Management System</h4>
+        <div className="w-[38.625rem] mr-[5.75rem] md:w-full md:text-center md:px-3">
+          <h4 className="text-[1.75rem] leading-[32px] font-bold mb-10 md:text-base">Digitalized & Consolidated Power<br/>Management System</h4>
           {
             powerManagement.map((v,i)=>{
               return(
@@ -86,10 +86,10 @@ function GreenData(){
       </div>
       <div className="flex mt-24 md:flex-col md:mt-12">
         <div className="flex flex-col md:flex-col-reverse">
-          <h4 className="text-[28px] font-bold mb-8 md:text-base md:text-center md:mt-8">The Platform Made for &apos;Green Data&apos;</h4>
-          <img className="mx-auto md:max-w-[20.875rem] md:w-full" src="/images/green_data.svg" alt=""/>
+          <h4 className="text-[1.75rem] font-bold mb-8 md:text-base md:text-center md:mt-8">The Platform Made for &apos;Green Data&apos;</h4>
+          <img className="mx-auto w-[34.625rem] md:max-w-[20.875rem] md:w-full" src="/images/green_data.svg" alt=""/>
         </div>
-        <div className="ml-20 w-[35.56rem] px-3 md:w-full md:ml-0 md:text-center">
+        <div className="ml-[4.75rem] w-[35.56rem] px-3 md:w-full md:ml-0 md:text-center">
           {
             greenData.map((v,i)=>{
               return(

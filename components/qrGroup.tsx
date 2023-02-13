@@ -11,7 +11,7 @@ export function QrGroup(p: HTMLAttributes<HTMLDivElement>) {
           <img className="w-[6.25rem]" src="/images/earth.svg" alt=""/>
         </div>
         <div className="w-[6.125rem]">
-          <p className="text-[11px] text-center mb-2 leading-3">Product Carbon Footprint Certified by AIAG</p>
+          <p className="text-[0.6875rem] text-center mb-2 leading-[1rem]">Product Carbon Footprint Certified by AIAG</p>
           <img className="w-[5.75rem]" src="/images/qrcode.svg" alt=""/>
         </div>
       </div>

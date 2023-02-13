@@ -18,7 +18,7 @@ function BoostingAutomotive(){
     <div className="flex flex-col items-center pb-20 md:text-center md:pb-8">
       <h3 className="my-16 md:my-6 md:px-12">Boosting Automotive&apos;s Net Zero Vision</h3>
       <div className="flex md:flex-col-reverse px-3">
-        <img className="md:mt-8 rounded-lg" src="/images/solution_intro.svg" alt=""/>
+        <img className="w-[34.5rem] md:mt-8 rounded-lg" src="/images/solution_intro.svg" alt=""/>
         <div className="w-[590px] ml-14 text-lg md:text-sm md:w-full md:ml-0">
           <p className="mb-5">GTech provides industry-specific business intelligence and data management solutions based on the industry&apos;s particular demands or goals.</p>
           <p className="mb-5">Data is among many key factors in a business that contribute to more responsive decisions and more efficient operations. Especially, data drives us to better achieve our established goal in certain industry because we enjoy more chance to get well informed with facts, statistics, feedbacks and analytics - all of which are powered by the &apos;right&apos; data managed, processed, and delievered to the decision maker - so that we may finally discover the right path to the goal.</p>
@@ -40,7 +40,7 @@ function IndustryLevel(){
           <div className="bg-white text-black text-1.5xl font-bold rounded-lg h-20 w-[16.25rem] flex justify-center items-center text-center">Collect Data</div>
           <p className="w-64 h-[5.25rem] mt-5 md:h-auto">Running states from supply chain</p>
         </div>
-        <img className="mt-[-3.7rem] md:hidden" src="/images/arrow_lg.svg" alt=""/>
+        <img className="mt-[-3.7rem] w-[6.25rem] md:hidden" src="/images/arrow_lg.svg" alt=""/>
         <img className="hidden md:block w-10 my-6 h-[2.25rem]" src="/images/arrow_down.svg" alt=""/>
         <div className="flex flex-col items-center">
           <p className="text-2xl font-bold text-yellow h-11">AICD</p>
@@ -49,7 +49,7 @@ function IndustryLevel(){
         </div>
         <div className="flex md:mt-0 md:flex-col items-center">
           <img className="hidden md:block w-10 my-6 h-[2.25rem]" src="/images/arrow_down.svg" alt=""/>
-          <img className="mt-[-4rem] md:hidden" src="/images/arrow2_lg.svg" alt=""/>
+          <img className="mt-[-4rem] h-[9.625rem] md:hidden" src="/images/arrow2_lg.svg" alt=""/>
           <div className="ml-[-4.8rem] md:ml-0">
             <div className="flex flex-col items-center justify-center">
               <p className="text-2xl font-bold text-yellow h-11">Traceability</p>

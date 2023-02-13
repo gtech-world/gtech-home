@@ -19,7 +19,7 @@ function StorageInitiative(){
     <div className="flex flex-col items-center pb-20 md:pb-8">
       <h3 className="my-16 text-center md:px-8 md:my-12">Cloud3: A Web3 Cloud Storage Initiative</h3>
       <div className="flex md:flex-col md:px-3">
-        <img className="mx-auto md:w-full md:max-w-[20.875rem]" src="/images/web3_pic.svg" alt=""/>
+        <img className="mx-auto w-[29.875rem] md:w-full md:max-w-[20.875rem]" src="/images/web3_pic.svg" alt=""/>
         <div className="ml-14 w-[39.75rem] leading-6 md:w-full md:ml-0 md:text-center md:mt-8">
           <h4 className="text-2xl font-bold md:text-base">How Web3 Technologies Benefit Data Storage?</h4>
           <p className="mt-5">
@@ -143,7 +143,7 @@ function StorageCases(){
           data.map((v,i)=>{
             return(
               <div key={`data-${i}`} className="mb-20 flex px-3 md:flex-col md:mb-10">
-                <img className="mx-auto md:w-[17.125rem]" src={v.imgUrl} alt=""/>
+                <img className="mx-auto w-[21.375rem] md:w-[17.125rem]" src={v.imgUrl} alt=""/>
                 <div className="w-[50.75rem] ml-12 md:w-full md:ml-0 md:text-center">
                   <h5 className="md:px-12 md:mt-4">{v.title}</h5>
                   <p className="mt-5">{v.text}</p>
