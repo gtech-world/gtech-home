@@ -36,7 +36,7 @@ function StorageInitiative(){
             {t('storageInitiative.list.item2.text.p1')}
           </p>
           <p>
-            {t('storageInitiative.list.item2.text.p1')}
+            {t('storageInitiative.list.item2.text.p2')}
           </p>
         </div>
       </div>
