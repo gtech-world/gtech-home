@@ -1,0 +1,27 @@
+{
+  "translation": "中",
+  "navigation": {
+    "list": {
+      "item1": {
+        "name": "首页"
+      },
+      "item2": {
+        "name": "解决方案",
+        "children": {
+          "child1": {
+            "name": "具有Web3特性的商用级数据解决方案"
+          },
+          "child2": {
+            "name": "数据治理以及基于数据的商业智能方案"
+          },
+          "child3": {
+            "name": "针对工业领域特定行业提供可信数据解决方案"
+          }
+        }
+      },
+      "item3": {
+        "name": "联系我们"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "translation": "EN",
+  "navigation": {
+    "list": {
+      "item1": {
+        "name": "HOME"
+      },
+      "item2": {
+        "name": "SOLUTIONS",
+        "children": {
+          "child1": {
+            "name": "Web3-Featured Data Solutions"
+          },
+          "child2": {
+            "name": "Data Governance & BI Solutios"
+          },
+          "child3": {
+            "name": "Automotive BI & Data Solutions"
+          }
+        }
+      },
+      "item3": {
+        "name": "CONTACT"
+      }
+    }
+  }
+}

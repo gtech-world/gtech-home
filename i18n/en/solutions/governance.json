@@ -1,0 +1,56 @@
+{
+  "banner": {
+    "title": "Data Governance Solutions",
+    "subtitle1": "Case: Green Power Industrial Park",
+    "subtitle2": "Consolidated Data Management Solution"
+  },
+  "powerManagement": {
+    "title": "Consolidated Digitalized Power Management Solution for Industrial Park",
+    "text1": "Green power supply (hydro power, wind power, photovoltaics, etc.) and manufacturing industry activities are alway grographically mismatched. As the major global economies begin to increasely realize the significance and urgency to acquire green power for the industry capacity, engineers from cross sections are making attemptions to match green power supply to industry demands despite of timing and spatial gaps.",
+    "text2": "A joint force of in Sichuan Province, China, seeks opportunities in addressing the power matching puzzle based on the dramatically abundant natural resources in this area. The project leverages collective technologies and solutions from world's leading automation and data solution providers such as Siemens, Honeywell and GTech to solve problems in power transmission, power dispatching, power accounting, carbon emission mitigation and system optimization. GTech’s expertise and experience in Data Governance plays a key role and contributes to the formation of the final consolidated solution."
+  },
+  "greenData": {
+    "title": {
+      "green": "Green Data",
+      "text": "Management & BI Platform"
+    },
+    "item1": {
+      "subtitle": "Digitalized & Consolidated Power Management System",
+      "list": {
+        "item1": {
+          "title": "Consolidated Power Management",
+          "text": "enhances power availability and reliability, and ensures the supply of good power quality in critical sites of the industrial park."
+        },
+        "item2": {
+          "title": "Power Accounting & Settlement",
+          "text": "provides precise measurement of the power consumption for each single unit break-down from the load side."
+        },
+        "item3": {
+          "title": "Real-time Power Consumption Monitoring",
+          "text": "provides real-time, cross-checked measurement results of running states."
+        },
+        "item4": {
+          "title": "Power Programming & Optimization",
+          "text": "automatic, smart modeling technique based on power load forcast, power consumption recurrence and customizable strategies."
+        }
+      }
+    },
+    "item2": {
+      "subtitle": "The Platform Made for 'Green Data'",
+      "list": {
+        "item1": {
+          "title": "Trusted Data for Multi-party Collaboration",
+          "text": "GTech’s solution builds the trust framework between multi parties who participate in the power supply chain. GTech defines how data should be stored, transmitted, processed, authorized and used across the full data life cycle based on this huge ‘trust machine’."
+        },
+        "item2": {
+          "title": "Carbon-related Services Integrated",
+          "text": "Based on trusted data acquired from the users’ power purchase, consumption and recycling activities, the consolidated solution brings carbon-related add-on services into the platform. The services include carbon emission accounting, carbon credit development and carbon financing support."
+        },
+        "item3": {
+          "title": "Downstream to Upstream Coverage",
+          "text": "The solution benefits a great deal of corporate, governmental and other types of organizations from upstream to downstream in the power supply business, e.g. power plants, regional power grids, dispatch service providers, industrial parks, carbon development agencies and certification agencies."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "banner": {
+    "title": "Web3-featured Data Solutions",
+    "subtitle1": "Case: The Redefined Web3 Storage",
+    "subtitle2": "Solution Safeguarding Key Business Data"
+  },
+  "storageInitiative": {
+    "title": "Cloud3: A Web3 Cloud Storage Initiative",
+    "list": {
+      "item1": {
+        "title": "How Web3 Technologies Benefit Data Storage?",
+        "text": {
+          "p1": "Web3 technologies generally refer to several interdependent technologies such like blockchain, IPFS and other decentralized protocols, which are still in fast-paced evolution in the Web3 space.",
+          "p2": "When taken use of properly, these technologies together produce great features for many business use cases where data storage is concerned. For example, the data stored will be granted with multiple replicas across the globe, and assured with extremely high availability, mathmatically secure encryption, tamper-proof immutability and programmable/customizable authorization upon specific customer demands."
+        }
+      },
+      "item2": {
+        "title": "Cloud3 - Cloud Storage Redefined",
+        "text": {
+          "p1": "Cloud3 is a suite of featured products and solutions to help build Web3.0 experiences with decentralized data storage, retrieval and management, in a user-friendly and developer-friendly way.",
+          "p2": "Cloud3 believes that a good data storage solution should bring more trust and credibility to the data managed and stored by the Cloud."
+        }
+      }
+    }
+  },
+  "storageMiddlewares": {
+    "title": "Key Cloud Storage Middlewares in Web3",
+    "text": "Cloud3 defines what cloud storage middlewares should look like in Web3 - every storage bucket is a NFT, and every IPFS gateway is a NFT.",
+    "list": {
+      "item1": {
+        "title": "Store files in W3Buckets: Decentralized, Guaranteed & Alive.",
+        "text": "All contents in the W3Buckets are immutable, decentralized stored, guaranteed with up to permanent persistence in the open internet, and most importantly, owned & controlled by the NFT owner."
+      },
+      "item2": {
+        "title": "IPFS Remote Pin",
+        "text": "Storage service are called by Standard IPFS Remote Pinning Service APIs that make your files always available (alive!) on IPFS with multiple replicas and accessible from everywhere."
+      }
+    },
+    "button": "View More in Cloud3",
+    "table": {
+      "paas": {
+        "text": "Platform-as-a-Service",
+        "w3bucket": "NFT-nized IPFS storage buckets",
+        "w3gateways": "NFT-nized IPFS Gateways"
+      },
+      "saas": {
+        "text": "Software-as-a-Service",
+        "p1": "Rich-text Editor/Publisher Widget",
+        "p2": "IPFS File Storage Widget",
+        "p3": "IPFS Storage Retrieval Widget",
+        "p4": "and more..."
+      }
+    }
+  },
+  "storageCases": {
+    "title": "Discover Real Web3 Storage Use Cases",
+    "list": {
+      "item1": {
+        "title": "UNISWAP - The World’s Leading Decentralized Exchange DApp",
+        "text": "One of the world’s largest De-Fi protocol, Uniswap, is using Cloud3’s solution to store its frontend codes for top-level data security, immutability and availability worldwide. Uniswap is dealing with billions of crypto asset trades every single day, making it crucial to keep the entrance safe and accessible with great assurance."
+      },
+      "item2": {
+        "title": "AAVE - The Top Open Source Liquidity Protocol for Crypto Assets",
+        "text": "The ethereum-based crypto asset collateral & lending protocol AAVE is taking advantage of the Cloud3 solution to make sure the ‘right’, unhacked websites and frontend repositories are always exposed to the users. This helps to protect $10 billion USD equivalent assets that are locked in AAVE’s protocol. The Cloud3 solution guarantees super long term (100+ years) perseverance of its precious data on the internet."
+      }
+    }
+  }
+}

@@ -3,6 +3,8 @@ import Head from "next/head";
 import "../styles/globals.css";
 import classNames from "classnames";
 import { Open_Sans } from "@next/font/google";
+import '../i18n/config'
+
 const os = Open_Sans({
   weight: ["300", "400", "500", "600", "700"],
   display: "auto",

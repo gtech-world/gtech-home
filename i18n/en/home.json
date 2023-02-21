@@ -1,0 +1,47 @@
+{
+  "banner": {
+    "text1": "Trust, Transparency, Traceability.",
+    "text2": "The Data-driven Future is Now.",
+    "tips": "Learn more about GTech and how we solve complex challenges cross-industry with cutting-edge data technologies"
+  },
+  "technologies": {
+    "title": {
+      "yellow": "Greener",
+      "text": "Data Technologies"
+    },
+    "text": "GTech is a leading provider of cross-boundary, consolidated decentralized data solutions empowered by Web3.0 technologies. GTech’s ultimate mission is helping its customers to deliever more ‘trusted’ data to their users.",
+    "list": {
+      "item1": {
+        "title": "Perserverance & Immutability",
+        "text": "Our solution guarantees long-term data existence, validity and tamper-proofness based on Web3 technologies, which is crucial to many business use scenarios."
+      },
+      "item2": {
+        "title": "Programmable Data Privacy",
+        "text": "Structured, customizble data access and visibility solution ensures great data privacy under different authorization level according to business demands."
+      },
+      "item3": {
+        "title": "Industry-specific Traceability",
+        "text": "GTech provides its customers from various industry sections with specified solutions to meet their special needs, i.e. a traceability framework for multi-tiered supply chain."
+      }
+    }
+  },
+  "crossSolutions": {
+    "title": "Cross-boundary Solutions",
+    "text": "Learn about how GTech helps enterprises, organizations and public sectors to manage complex challenges and risks in data processing, data storage, data traceability and data visibility within diverse scopes.",
+    "list": {
+      "button": "Learn More & View Use Case",
+      "item1": {
+        "title": "Web3-Featured Organizational Data Solutions",
+        "text": "GTech provides organizational-level users with data management solutions with regard to key web3 features, i.e. decentralization, data immutability, transparency and counter-SPoF. Such solution cover from the sourcing and maintenance of the data content to the regular management, storage and retrieval of the data content."
+      },
+      "item2": {
+        "title": "Data Governance & BI Solutions",
+        "text": "Gtech’s Data Goverance & BI solutions focus on the developement of data strategy, the development of policies concerning the top-level design of information structures and taxonomies and the development of the data analytics system for corporates and regional industry alliances."
+      },
+      "item3": {
+        "title": "Industry-specific BI & Data Solutions",
+        "text": "Many industrial sections, despite producing widely different products or services, are facing similar data challenges such as data credibility, data traceability and data abuse. GTech shows professionalities and insights into customizing industry-specific BI & data management solutions to meet urgent demands from cross-industries."
+      }
+    }
+  }
+}

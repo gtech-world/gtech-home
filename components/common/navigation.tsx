@@ -5,12 +5,17 @@ import classNames from "classnames";
 import {useClickAway,useToggle} from "react-use";
 import { IoCaretDownOutline } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
+import {useTranslation} from "react-i18next";
 
 function PCNav(props:{data:any}){
+  const { t, i18n } = useTranslation('common');
   const {data=[]} = props
   const {pathname} = useRouter()
   const ref = useRef<any>();
   const [open,setOpen] = useState<string>('')
+  const changeLanguage = () => {
+    i18n.changeLanguage(i18n.language === 'en'?'zh':'en');
+  };
   useClickAway(ref, () => !!open && setOpen(''));
   return(
     <div className="text-xl flex md:hidden" ref={ref}>
@@ -26,7 +31,7 @@ function PCNav(props:{data:any}){
                   </div>
                   {
                     open === v.href &&
-                    <ul className="w-[15.375rem] shadow-[0_5px_15px_0px_rgba(0,0,0,0.3)] absolute top-[3.25rem] right-0 bg-white text-sm py-2 px-5 leading-loose rounded-lg">
+                    <ul style={{whiteSpace:"nowrap"}} className="w-auto shadow-[0_5px_15px_0px_rgba(0,0,0,0.3)] absolute top-[3.25rem] right-0 bg-white text-sm py-2 px-5 leading-loose rounded-lg">
                       {
                         v.children.map((child:any,childIndex:number)=>{
                           return(
@@ -51,6 +56,7 @@ function PCNav(props:{data:any}){
           )
         })
       }
+      <span className="cursor-pointer ml-12" onClick={changeLanguage}>{t('translation')}</span>
     </div>
   )
 }
@@ -118,32 +124,33 @@ function MobileNav(props:{data:any}){
 }
 
 export function Navigation() {
+  const { t } = useTranslation('common');
   const navList = [
     {
       href: '/',
-      name: 'HOME',
+      name: t('navigation.list.item1.name'),
     },
     {
       href: '/solutions',
-      name: 'SOLUTIONS',
+      name: t('navigation.list.item2.name'),
       children:[
         {
           href: '/solutions/web3',
-          name: 'Web3-Featured Data Solutions',
+          name: t('navigation.list.item2.children.child1.name'),
         },
         {
           href: '/solutions/governance',
-          name: 'Data Governance & BI Solutios',
+          name: t('navigation.list.item2.children.child2.name'),
         },
         {
           href: '/solutions/automotive',
-          name: 'Automotive BI & Data Solutions',
+          name: t('navigation.list.item2.children.child3.name'),
         },
       ]
     },
     {
       href: '/contact',
-      name: 'CONTACT',
+      name: t('navigation.list.item3.name'),
     },
   ]
   return (

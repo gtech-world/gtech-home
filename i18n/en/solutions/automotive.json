@@ -1,0 +1,58 @@
+{
+  "banner": {
+    "title": "Industry-specific BI & Data Solution",
+    "subtitle1": "Case: Automotive Industry Carbon",
+    "subtitle2": "Performance Data Solution"
+  },
+  "boostingAutomotive": {
+    "title": "Boosting Automotive`s Net Zero Vision",
+    "text1": "GTech provides industry-specific business intelligence and data management solutions based on the industry's particular demands or goals.",
+    "text2": "Data is among many key factors in a business that contribute to more responsive decisions and more efficient operations. Especially, data drives us to better achieve our established goal in certain industry because we enjoy more chance to get well informed with facts, statistics, feedbacks and analytics - all of which are powered by the 'right' data managed, processed, and delievered to the decision maker - so that we may finally discover the right path to the goal.",
+    "text3": "In this case, GTech is helping the automotive industry, which comprises a super wide range of companies and organizations globally, to establish a long-term carbon performance data traceability and visibility framework for the industry's Net Zero commitment."
+  },
+  "industryLevel": {
+    "title": "Industry-level Data Solution Explained",
+    "text": "GTech's consolidated BI & Data solution covers data collecting, data recording, data storage, database management & maintenance, traceability&visibility interfaces and services for end users.",
+    "group": {
+      "item1": {
+        "name": "Collect Data",
+        "text": "Running states from supply chain"
+      },
+      "item2": {
+        "name": "Automotive Industry Carbon Database",
+        "text": "Powered by Web technologies, ensures data security, privacy and immutability"
+      },
+      "item3": {
+        "group": {
+          "item1": {
+            "name": "Supply Chain Traceability"
+          },
+          "item2": {
+            "name": "Consumer Visibility"
+          },
+          "text": "Supply Chain Traceability is based on customized, graded access schemes; Consumer Visibility is based on public accessible data from AICD."
+        }
+      }
+    }
+  },
+  "mainProduct": {
+    "title": "Discover Main Product Modules",
+    "list": {
+      "item1": {
+        "title": "Automotive Industry Carbon Database",
+        "p1": "AICD is the global, industry-level database designed for long-term carbon emission performance traceability and visibility under the Net Zero commitment.",
+        "p2": "The database offers public view mode and supply chain view mode (Traceability).",
+        "button": "Enter AICD"
+      },
+      "item2": {
+        "title": "Supply Chain Traceability System",
+        "p1": "Supply Chain Traceability is the system that helps authorized organizations in the automotive industry to view data in AICD, track carbon performance alongside its supply chain parties and operate with the AICD database under certain permission.",
+        "button": "Enter Traceability"
+      }
+    },
+    "qrcode": {
+      "title": "The Trust Label System: Visibility for Consumers",
+      "qrIntro": "Scan Trust Label with your phone and check how much CO2 is emitted by the production of this car."
+    }
+  }
+}

@@ -2,42 +2,45 @@ import { HeaderLayout } from "@components/common/headerLayout";
 import {Button} from "@components/button";
 import classNames from "classnames";
 import {useRouter} from "next/router";
+import {useTranslation} from "react-i18next";
 
 function Top(){
+  const { t } = useTranslation('home');
   return(
     <div className="w-full bg-[url(/images/home_banner.png)] bg-no-repeat bg-center bg-cover flex flex-col items-center">
       <div className="flex flex-col items-center font-bold text-[4rem] leading-normal text-center md:text-[1.75rem]">
-        <span className="text-green mt-64 md:mt-36">Trust, Transparency, Traceability.</span>
-        <span className="">The Data-driven Future is Now.</span>
+        <span className="text-green mt-64 md:mt-36">{t('banner.text1')}</span>
+        <span className="">{t('banner.text2')}</span>
       </div>
-      <div className="max-w-[34rem] px-3 text-lg text-center mt-[14.375rem] mb-5 md:text-sm md:mt-[8.375rem] md:mb-9">Learn more about GTech and how we solve complex challenges cross-industry with cutting-edge data technologies</div>
+      <div className="max-w-[34rem] px-3 text-lg text-center mt-[14.375rem] mb-5 md:text-sm md:mt-[8.375rem] md:mb-9">{t('banner.tips')}</div>
       <img alt="" className="pb-3 md:hidden" src="images/home_head_arrow.svg"/>
     </div>
   )
 }
 
 function Technologies(){
+  const { t } = useTranslation('home');
   const data = [
     {
-      title: 'Perserverance & Immutability',
-      text: 'Our solution guarantees long-term data existence, validity and tamper-proofness based on Web3 technologies, which is crucial to many business use scenarios.',
+      title: t('technologies.list.item1.title'),
+      text: t('technologies.list.item1.text'),
       image: 'images/solution.svg'
     },
     {
-      title: 'Programmable Data Privacy',
-      text: 'Structured, customizble data access and visibility solution ensures great data privacy under different authorization level according to business demands.',
+      title: t('technologies.list.item2.title'),
+      text: t('technologies.list.item2.text'),
       image: 'images/eyes.svg'
     },
     {
-      title: 'Industry-specific Traceability',
-      text: 'GTech provides its customers from various industry sections with specified solutions to meet their special needs, i.e. a traceability framework for multi-tiered supply chain.',
+      title: t('technologies.list.item3.title'),
+      text: t('technologies.list.item3.text'),
       image: 'images/traceability.svg'
     },
   ]
   return(
     <div className="w-full bg-green flex flex-col items-center pt-16 md:pt-8 md:pb-4">
-      <h3 className="text-white text-center"><span className="text-yellow">&apos;Greener&apos;</span> Data Technologies</h3>
-      <div className="text-white max-w-[59.75rem] md:px-3 text-center mt-5">GTech is a leading provider of cross-boundary, consolidated decentralized data solutions empowered by Web3.0 technologies. GTech’s ultimate mission is helping its customers to deliever more ‘trusted’ data to their users. </div>
+      <h3 className="text-white text-center"><span className="text-yellow">&apos;{t('technologies.title.yellow')}&apos;</span> {t('technologies.title.text')}</h3>
+      <div className="text-white max-w-[59.75rem] md:px-3 text-center mt-5">{t('technologies.text')}</div>
       <ul className="w-container flex text-center justify-between mt-24 md:flex-col md:mt-16">
         {
           data.map((v,i)=>{
@@ -55,36 +58,36 @@ function Technologies(){
   )
 }
 function CrossSolutions(){
+  const { t } = useTranslation('home');
   const router = useRouter()
   const data = [
     {
       url: '/solutions/web3',
       layout: 'left',
       imgUrl: 'images/map.png',
-      title: 'Web3-Featured Organizational Data Solutions',
-      text: 'GTech provides organizational-level users with data management solutions with regard to key web3 features, i.e. decentralization, data immutability, transparency and counter-SPoF. Such solution cover from the sourcing and maintenance of the data content to the regular management, storage and retrieval of the data content.'
-
+      title: t('crossSolutions.list.item1.title'),
+      text: t('crossSolutions.list.item1.text'),
     },
     {
       url: '/solutions/governance',
       layout: 'right',
       imgUrl: 'images/governance_banner.png',
-      title: 'Data Governance & BI Solutions',
-      text: 'Gtech’s Data Goverance & BI solutions focus on the developement of data strategy, the development of policies concerning the top-level design of information structures and taxonomies and the development of the data analytics system for corporates and regional industry alliances.'
+      title: t('crossSolutions.list.item2.title'),
+      text: t('crossSolutions.list.item2.text'),
     },
     {
       url: '/solutions/automotive',
       layout: 'left',
       imgUrl: 'images/automotive_banner.png',
-      title: 'Industry-specific BI & Data Solutions',
-      text: 'Many industrial sections, despite producing widely different products or services, are facing similar data challenges such as data credibility, data traceability and data abuse. GTech shows professionalities and insights into customizing industry-specific BI & data management solutions to meet urgent demands from cross-industries. '
+      title: t('crossSolutions.list.item3.title'),
+      text: t('crossSolutions.list.item3.text'),
     }
   ]
   return(
     <div className="flex flex-col items-center pb-32 mt-16 md:mt-8 md:pb-12">
-      <h3 className="">Cross-boundary Solutions</h3>
+      <h3 className="">{t('crossSolutions.title')}</h3>
       <p className="text-center mt-5 max-w-[56.25rem] md:px-3">
-        Learn about how GTech helps enterprises, organizations and public sectors to manage complex challenges and risks in data processing, data storage, data traceability and data visibility within diverse scopes.
+        {t('crossSolutions.text')}
       </p>
       <div className="w-container md:w-full md:px-3">
         {
@@ -99,7 +102,7 @@ function CrossSolutions(){
                   <p className={classNames('mt-5',v.layout === 'left'?'w-[36.5rem] md:w-full':'')}>
                     {v.text}
                   </p>
-                  <Button onClick={()=>router.push(v.url)} className="mt-8 w-[19.25rem]" text="Learn More & View Use Case" />
+                  <Button onClick={()=>router.push(v.url)} className="mt-8 w-[19.25rem]" text={t('crossSolutions.list.button')} />
                 </div>
               </div>
             )
