@@ -4,13 +4,12 @@ import {QrGroup} from "@components/qrGroup";
 import classNames from "classnames";
 import {useTranslation} from "react-i18next";
 function Top(){
-  const { t } = useTranslation('automotive');
+  const { t,i18n } = useTranslation('automotive');
   return(
   <div className="h-[44.625rem] text-white w-full bg-[url(/images/automotive_banner.png)] bg-no-repeat bg-cover bg-center flex justify-center items-center px-9 md:h-[28rem]">
-    <div className="bg-black/[.8] flex flex-col justify-center w-[58.5rem] pl-8 py-10 text-[2rem] text-[2rem] text-green-1 leading-[2.75rem] md:text-lg md:text-center md:px-4 md:py-11 md:w-auto">
-      <h3 className="font-bold text-white text-5xl md:text-[1.75rem] md:leading-9">{t('banner.title')}</h3>
-      <p className="mt-3">{t('banner.subtitle1')}</p>
-      <p className="">{t('banner.subtitle2')}</p>
+    <div className={classNames('bg-black/[.8] flex flex-col justify-center w-[58.5rem] pl-8 text-[2rem] py-10 text-green-1 leading-[2.75rem] md:text-lg md:text-center md:px-4 md:w-auto')}>
+      <h3 className={classNames('font-bold text-white md:text-[1.75rem] md:leading-9',i18n.language ==='zh'?'text-[2.6rem]':'text-5xl')}>{t('banner.title')}</h3>
+      <p className="mt-3">{t('banner.subtitle')}</p>
     </div>
   </div>
   )

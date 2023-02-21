@@ -7,10 +7,9 @@ function Top(){
   const { t } = useTranslation('web3');
   return(
     <div className="h-[44.625rem] w-full bg-[url(/images/map.png)] bg-no-repeat bg-[length:auto_100%] bg-center flex justify-center items-center px-9 md:h-[26rem]">
-      <div className="bg-green/[.92] flex flex-col justify-center w-[58.5rem] pl-8 h-[13.125rem] text-[2rem] leading-[2.75rem] text-yellow md:text-lg md:text-center md:px-4 md:py-11 md:w-auto md:h-auto">
+      <div className="bg-green/[.92] flex flex-col justify-center w-[58.5rem] px-8 py-10 text-[2rem] leading-[2.75rem] text-yellow md:text-lg md:text-center md:px-4 md:py-11 md:w-auto md:h-auto">
         <h3 className="text-white font-bold text-5xl md:text-[1.75rem] md:leading-9">{t('banner.title')}</h3>
-        <p className="mt-3">{t('banner.subtitle1')}</p>
-        <p className="">{t('banner.subtitle2')}</p>
+        <p className="mt-3">{t('banner.subtitle')}</p>
       </div>
     </div>
   )
