@@ -55,11 +55,11 @@ function IndustryLevel(){
           <img className="mt-[-4rem] h-[9.625rem] md:hidden" src="/images/arrow2_lg.svg" alt=""/>
           <div className="ml-[-4.8rem] md:ml-0">
             <div className="flex flex-col items-center justify-center">
-              <p className="text-2xl font-bold text-yellow h-11">Traceability</p>
+              <p className="text-2xl font-bold text-yellow h-10">Traceability</p>
               <div className="bg-white text-black text-1.5xl leading-[1.875rem] font-bold rounded-lg h-20 w-[16.25rem] flex justify-center items-center text-center">{t('industryLevel.group.item3.group.item1.name')}</div>
             </div>
             <div className="flex flex-col items-center">
-              <p className="text-2xl font-bold text-yellow h-11 mt-7">Trust Label</p>
+              <p className="text-2xl font-bold text-yellow h-10 mt-4">Trust Label</p>
               <div className="bg-white text-black text-1.5xl font-bold rounded-lg h-20 w-[16.25rem] flex justify-center items-center text-center">{t('industryLevel.group.item3.group.item2.name')}</div>
             </div>
             <p className="w-[26rem] mt-5 md:w-[16.25rem]">{t('industryLevel.group.item3.group.text')}</p>
