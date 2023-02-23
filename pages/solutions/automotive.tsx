@@ -3,7 +3,6 @@ import {Button} from "@components/button";
 import {QrGroup} from "@components/qrGroup";
 import classNames from "classnames";
 import {useTranslation} from "react-i18next";
-import {useRouter} from "next/router";
 function Top(){
   const { t,i18n } = useTranslation('automotive');
   return(
@@ -72,7 +71,6 @@ function IndustryLevel(){
 }
 function MainProduct(){
   const { t } = useTranslation('automotive');
-  const router = useRouter()
   const data = [
     {
       title: t('mainProduct.list.item1.title'),

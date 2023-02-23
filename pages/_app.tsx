@@ -15,8 +15,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={classNames('font-OpenSans',os.variable)}>
       <Head>
-        <title>Carbon3</title>
-        <meta name="description" content="Carbon3 Home" />
+        <title>GTech</title>
+        <meta name="description" content="GTech" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
