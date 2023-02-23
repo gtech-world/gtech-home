@@ -3,6 +3,7 @@ import {Button} from "@components/button";
 import {QrGroup} from "@components/qrGroup";
 import classNames from "classnames";
 import {useTranslation} from "react-i18next";
+import {useRouter} from "next/router";
 function Top(){
   const { t,i18n } = useTranslation('automotive');
   return(
@@ -71,6 +72,7 @@ function IndustryLevel(){
 }
 function MainProduct(){
   const { t } = useTranslation('automotive');
+  const router = useRouter()
   const data = [
     {
       title: t('mainProduct.list.item1.title'),
@@ -80,7 +82,9 @@ function MainProduct(){
       ],
       btn:{
         text: t('mainProduct.list.item1.button'),
-        onClick: ()=>{}
+        onClick: ()=>{
+          window.open(`https://aicd.gtech.world/`, "_blank")
+        }
       },
       imgUrl: '/images/roboat.svg'
     },
@@ -91,7 +95,9 @@ function MainProduct(){
       ],
       btn:{
         text: t('mainProduct.list.item2.button'),
-        onClick: ()=>{}
+        onClick: ()=>{
+          window.open(`https://aicd.gtech.world/login`, "_blank")
+        }
       },
       imgUrl: '/images/find.svg'
     }
@@ -115,7 +121,7 @@ function MainProduct(){
                     })
                   }
                 </div>
-                <Button className="mt-8" text={v.btn.text} />
+                <Button onClick={()=>v.btn.onClick()} className="mt-8" text={v.btn.text} />
               </div>
             )
           })
