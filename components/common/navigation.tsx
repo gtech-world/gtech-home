@@ -148,10 +148,10 @@ export function Navigation() {
         },
       ]
     },
-    {
-      href: '/contact',
-      name: t('navigation.list.item3.name'),
-    },
+    // {
+    //   href: '/contact',
+    //   name: t('navigation.list.item3.name'),
+    // },
   ]
   return (
     <>
