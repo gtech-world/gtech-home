@@ -1,0 +1,36 @@
+name: Prod Release to Github Pages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: ${{ github.repository == 'gtech-world/gtech-home' && github.ref == 'refs/heads/prod'}}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node v16
+        uses: actions/setup-node@v1
+        with:
+          node-version: v16.16.0
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Run install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm export
+
+      - name: Deploy Gh-Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          external_repository: gtech-world/gtech-home-deploy
+          publish_branch: main
+          publish_dir: ./out
+          cname: gtech.world
