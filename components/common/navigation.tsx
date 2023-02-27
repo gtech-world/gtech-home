@@ -77,7 +77,6 @@ function MobileSubNav(props:{data:any}){
                   </Link>:
                   <span className="inline-block w-full" onClick={()=>v.onClick()}>{v.name}</span>
               }
-
             </li>
           )
         })
@@ -90,31 +89,32 @@ function MobileNav(props:{data:any}){
   const {data=[]} = props
   const {pathname} = useRouter()
   const ref = useRef<any>();
+  const [openSub,setOpenSub] = useState<any>([])
   const [open, onToggle] = useToggle(false);
-  const fData = ()=>{
-    for(let i = 0; i<data.length; i++){
-      if(/^\/solutions\/\w+/.test(pathname) && data[i].href && data[i].children && data[i].children.length){
-        data[i].isSelected = true
-      }
-    }
-    return data.concat({
-      href: 'language',
-      name: t('translation_m'),
-      isSelected: false,
-      children: [
-        {name: 'English',href: '',onClick: ()=>{changeLanguage('en');onToggle(false)}},
-        {name: '中文',href: '',onClick: ()=>{changeLanguage('zh');onToggle(false)}},
-      ]
-    })
-  }
-  const [mData,setMData] = useState(fData())
+  const fData = data.concat({
+    href: 'language',
+    name: t('translation_m'),
+    children: [
+      {name: 'English',href: '',onClick: ()=>{changeLanguage('en')}},
+      {name: '中文',href: '',onClick: ()=>{changeLanguage('zh')}},
+    ]
+  })
   useClickAway(ref, () => open && onToggle(false));
   const changeLanguage = (val:string) => {
     i18n.changeLanguage(val);
   };
-  function updateSelected() {
-    setMData((prevState:any) => prevState.map((item:any) => ({
-      ...item,})))
+  const openSubFc = (e:any,val:any)=>{
+    e.stopPropagation()
+    const arr = [...openSub]
+    if(val){
+      const index = arr.indexOf(val)
+      if(index === -1){
+        arr.push(val)
+      }else {
+        arr.splice(index,1)
+      }
+      setOpenSub(arr)
+    }
   }
   return(
     <div className="hidden md:block" ref={ref}>
@@ -123,23 +123,23 @@ function MobileNav(props:{data:any}){
         open &&
         <div className="absolute right-0 bg-white w-screen px-5 py-4">
           {
-            mData.map((v:any,i:number)=>{
+            fData.map((v:any,i:number)=>{
               const hasChildren = (v.children && v.children.length)
               return(
-                <div key={`MobileNav-${i}`} className={classNames('mt-4',i === 0?'mt-3':'')} onClick={()=>{v.isSelected = !v.isSelected; updateSelected()}}>
+                <div key={`MobileNav-${i}`} className={classNames('mt-4',i === 0?'mt-3':'')}>
                   <div className="flex items-center justify-between text-base font-bold">
                     {
                       hasChildren?
-                        <span className="inline-block">{v.name}</span>
+                        <span onClick={(e)=>openSubFc(e,v.href)} className="inline-block; w-full">{v.name}</span>
                         :
                         <Link className={classNames('inline-block w-full',pathname === v.href?'text-green':'')} href={v.href}>{v.name}</Link>
                     }
                     {
-                      hasChildren && <IoCaretDownOutline className={!!v.isSelected?'rotate-180':''} />
+                      hasChildren && <IoCaretDownOutline className={openSub?.indexOf(v.href)>-1?'rotate-180':''} />
                     }
                   </div>
                   {
-                    v.isSelected &&
+                    openSub?.indexOf(v.href)>-1 &&
                     <MobileSubNav data={v.children} />
                   }
                 </div>
