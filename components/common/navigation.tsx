@@ -1,4 +1,4 @@
-import React, {useState,useRef} from "react";
+import React, {useState, useRef, useMemo} from "react";
 import Link from "next/link";
 import { useRouter } from 'next/router'
 import classNames from "classnames";
@@ -70,9 +70,14 @@ function MobileSubNav(props:{data:any}){
         data.map((v:any,i:number)=>{
           return(
             <li key={`MobileSubNav-${i}`}>
-              <Link href={v.href} className={classNames('inline-block w-full',pathname === v.href?'text-green':'')}>
-                {v.name}
-              </Link>
+              {
+                v.href ?
+                  <Link href={v.href} className={classNames('inline-block w-full',pathname === v.href?'text-green':'')}>
+                    {v.name}
+                  </Link>:
+                  <span className="inline-block w-full" onClick={()=>v.onClick()}>{v.name}</span>
+              }
+
             </li>
           )
         })
@@ -81,12 +86,36 @@ function MobileSubNav(props:{data:any}){
   )
 }
 function MobileNav(props:{data:any}){
+  const { t,i18n } = useTranslation('common');
   const {data=[]} = props
   const {pathname} = useRouter()
-  const [openSubNav,setOpenSubNav] = useState(pathname === '/'?'':pathname)
   const ref = useRef<any>();
   const [open, onToggle] = useToggle(false);
+  const fData = ()=>{
+    for(let i = 0; i<data.length; i++){
+      if(/^\/solutions\/\w+/.test(pathname) && data[i].href && data[i].children && data[i].children.length){
+        data[i].isSelected = true
+      }
+    }
+    return data.concat({
+      href: 'language',
+      name: t('translation_m'),
+      isSelected: false,
+      children: [
+        {name: 'English',href: '',onClick: ()=>{changeLanguage('en');onToggle(false)}},
+        {name: '中文',href: '',onClick: ()=>{changeLanguage('zh');onToggle(false)}},
+      ]
+    })
+  }
+  const [mData,setMData] = useState(fData())
   useClickAway(ref, () => open && onToggle(false));
+  const changeLanguage = (val:string) => {
+    i18n.changeLanguage(val);
+  };
+  function updateSelected() {
+    setMData((prevState:any) => prevState.map((item:any) => ({
+      ...item,})))
+  }
   return(
     <div className="hidden md:block" ref={ref}>
       <HiOutlineMenu className="text-green text-4xl" onClick={onToggle}/>
@@ -94,23 +123,23 @@ function MobileNav(props:{data:any}){
         open &&
         <div className="absolute right-0 bg-white w-screen px-5 py-4">
           {
-            data.map((v:any,i:number)=>{
+            mData.map((v:any,i:number)=>{
               const hasChildren = (v.children && v.children.length)
               return(
-                <div key={`MobileNav-${i}`} className={classNames('mt-4',i === 0?'mt-3':'')} onClick={()=>setOpenSubNav(openSubNav?'':v.href)}>
+                <div key={`MobileNav-${i}`} className={classNames('mt-4',i === 0?'mt-3':'')} onClick={()=>{v.isSelected = !v.isSelected; updateSelected()}}>
                   <div className="flex items-center justify-between text-base font-bold">
                     {
                       hasChildren?
-                        <span>{v.name}</span>
+                        <span className="inline-block">{v.name}</span>
                         :
                         <Link className={classNames('inline-block w-full',pathname === v.href?'text-green':'')} href={v.href}>{v.name}</Link>
                     }
                     {
-                      hasChildren && <IoCaretDownOutline className={!!openSubNav?'rotate-180':''} />
+                      hasChildren && <IoCaretDownOutline className={!!v.isSelected?'rotate-180':''} />
                     }
                   </div>
                   {
-                    openSubNav.indexOf(v.href)>-1 &&
+                    v.isSelected &&
                     <MobileSubNav data={v.children} />
                   }
                 </div>
@@ -133,6 +162,7 @@ export function Navigation() {
     {
       href: '/solutions',
       name: t('navigation.list.item2.name'),
+      isSelected: false,
       children:[
         {
           href: '/solutions/web3',
@@ -147,7 +177,7 @@ export function Navigation() {
           name: t('navigation.list.item2.children.child3.name'),
         },
       ]
-    },
+    }
     // {
     //   href: '/contact',
     //   name: t('navigation.list.item3.name'),
