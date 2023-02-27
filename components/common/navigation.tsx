@@ -95,8 +95,8 @@ function MobileNav(props:{data:any}){
     href: 'language',
     name: t('translation_m'),
     children: [
-      {name: 'English',href: '',onClick: ()=>{changeLanguage('en')}},
-      {name: '中文',href: '',onClick: ()=>{changeLanguage('zh')}},
+      {name: 'English',href: '',onClick: ()=>{changeLanguage('en');onToggle(false)}},
+      {name: '中文',href: '',onClick: ()=>{changeLanguage('zh'); onToggle(false)}},
     ]
   })
   useClickAway(ref, () => open && onToggle(false));
