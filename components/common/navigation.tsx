@@ -1,4 +1,4 @@
-import React, {useState, useRef, useMemo} from "react";
+import React, {useState, useRef} from "react";
 import Link from "next/link";
 import { useRouter } from 'next/router'
 import classNames from "classnames";
@@ -7,14 +7,17 @@ import { IoCaretDownOutline } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
 import {useTranslation} from "react-i18next";
 
+const statementPage = ['/enstatement','/zhstatement']
 function PCNav(props:{data:any}){
   const { t, i18n } = useTranslation('common');
   const {data=[]} = props
-  const {pathname} = useRouter()
+  const {pathname,push} = useRouter()
   const ref = useRef<any>();
   const [open,setOpen] = useState<string>('')
   const changeLanguage = () => {
-    i18n.changeLanguage(i18n.language === 'en'?'zh':'en');
+    const language = (i18n.language === 'en'?'zh':'en')
+    i18n.changeLanguage(language);
+    statementPage.indexOf(pathname)>-1 && push(language === 'en'?'/enstatement':'zhstatement')
   };
   useClickAway(ref, () => !!open && setOpen(''));
   return(
@@ -87,7 +90,7 @@ function MobileSubNav(props:{data:any}){
 function MobileNav(props:{data:any}){
   const { t,i18n } = useTranslation('common');
   const {data=[]} = props
-  const {pathname} = useRouter()
+  const {pathname,push} = useRouter()
   const ref = useRef<any>();
   const [openSub,setOpenSub] = useState<any>([])
   const [open, onToggle] = useToggle(false);
@@ -102,6 +105,8 @@ function MobileNav(props:{data:any}){
   useClickAway(ref, () => open && onToggle(false));
   const changeLanguage = (val:string) => {
     i18n.changeLanguage(val);
+    console.log(pathname)
+    statementPage.indexOf(pathname)>-1 && push(val === 'en'?'/enstatement':'zhstatement')
   };
   const openSubFc = (e:any,val:any)=>{
     e.stopPropagation()

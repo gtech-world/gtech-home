@@ -39,7 +39,7 @@ function Technologies(){
   ]
   return(
     <div className="w-full bg-green flex flex-col items-center pt-16 md:pt-8 md:pb-4">
-      <h3 className="text-white text-center"><span className="text-yellow">&apos;{t('technologies.title.yellow')}&apos;</span> {t('technologies.title.text')}</h3>
+      <h3 className="text-white text-center"><span className="text-yellow">{t('technologies.title.yellow')}</span> {t('technologies.title.text')}</h3>
       <div className="text-white max-w-[59.75rem] md:px-3 text-center mt-5">{t('technologies.text')}</div>
       <ul className="w-container flex text-center justify-between mt-24 md:flex-col md:mt-16">
         {
