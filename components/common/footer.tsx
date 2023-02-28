@@ -9,6 +9,7 @@ export function Footer() {
   const [visible,setVisible] = useState(false)
   useEffect(()=>{
     setVisible(!statement)
+
   },[])
   return (
     visible?
