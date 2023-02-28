@@ -1,7 +1,7 @@
 import { HeaderLayout } from "@components/common/headerLayout";
 export default function Enstatement() {
   return(
-    <HeaderLayout className="bg-white border-t-2 border-gray-100">
+    <HeaderLayout className="bg-white min-h-screen border-t-2 border-gray-100">
       <div className="w-container mx-auto text-sm pb-12 md:w-full md:px-3">
         <h1 className="text-green text-center text-2xl mb-5 mt-8">Cookie Policy</h1>
         <p>We may use cookies or similar technologies to improve your experience on our internet platforms.</p>

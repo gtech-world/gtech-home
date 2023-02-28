@@ -1,7 +1,7 @@
 import { HeaderLayout } from "@components/common/headerLayout";
 export default function Zhstatement() {
   return(
-    <HeaderLayout className="bg-white border-t-2 border-gray-100">
+    <HeaderLayout className="bg-white min-h-screen border-t-2 border-gray-100">
       <div className="w-container mx-auto text-sm pb-12 md:w-full md:px-3">
         <h1 className="text-green text-center text-2xl mb-5 mt-8">网站使用有关Cookie及隐私政策的声明</h1>
         <p>在使用本网站各项服务前，请您务必仔细阅读并透彻理解本政策的声明，当您浏览或使用我们提供的任一服务时，即表示您已充分理解并同意本政策的内容。可能适时随技术进步或服务的提升等进行相应调整或修订本政策内容，若您继续使用我们的服务，即表示同意受经修订的政策约束。
