@@ -10,13 +10,13 @@
         "name": "SOLUTIONS",
         "children": {
           "child1": {
-            "name": "Web3-Featured Data Solutions"
+            "name": "Web3 Data Storage"
           },
           "child2": {
-            "name": "Data Governance & BI Solutios"
+            "name": "Data Governance & BI"
           },
           "child3": {
-            "name": "Automotive BI & Data Solutions"
+            "name": "Industry-level Data Solution"
           }
         }
       },
