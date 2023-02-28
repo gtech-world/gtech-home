@@ -1,12 +1,16 @@
 import { HeaderLayout } from "@components/common/headerLayout";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 export default function Enstatement() {
   const {i18n} = useTranslation()
+  const [visible,setVisible] = useState(false)
   useEffect(()=>{
-    i18n.changeLanguage('en')
+    i18n.changeLanguage('en',()=>{
+      setVisible(true)
+    })
   },[])
   return(
+    visible &&
     <HeaderLayout className="bg-white min-h-screen border-t-2 border-gray-100">
       <div className="w-container mx-auto text-sm pb-12 md:w-full md:px-3">
         <h1 className="text-green text-center text-2xl mb-5 mt-8">Cookie Policy</h1>

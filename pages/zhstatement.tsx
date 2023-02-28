@@ -1,11 +1,5 @@
 import { HeaderLayout } from "@components/common/headerLayout";
-import {useTranslation} from "react-i18next";
-import {useEffect} from "react";
 export default function Zhstatement() {
-  const {i18n} = useTranslation()
-  useEffect(()=>{
-    i18n.changeLanguage('zh')
-  },[])
   return(
     <HeaderLayout className="bg-white min-h-screen border-t-2 border-gray-100">
       <div className="w-container mx-auto text-sm pb-12 md:w-full md:px-3">
