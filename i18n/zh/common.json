@@ -24,5 +24,10 @@
         "name": "联系我们"
       }
     }
+  },
+  "footer": {
+    "text": "本网站使用cookie。继续浏览本网站，即表示您同意我们使用cookie。",
+    "acceptBtn": "接受设置",
+    "viewBtn": "网站使用有关Cookie及隐私政策的声明"
   }
 }

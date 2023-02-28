@@ -1,6 +1,6 @@
 {
   "translation": "EN",
-  "translation_m": "Language",
+  "translation_m": "LANGUAGE",
   "navigation": {
     "list": {
       "item1": {
@@ -24,5 +24,10 @@
         "name": "CONTACT"
       }
     }
+  },
+  "footer": {
+    "text": "Our website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.",
+    "acceptBtn": "Accept",
+    "viewBtn": "Data Protection Policy"
   }
 }
