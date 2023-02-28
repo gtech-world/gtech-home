@@ -1,5 +1,11 @@
 import { HeaderLayout } from "@components/common/headerLayout";
+import {useEffect} from "react";
+import {useTranslation} from "react-i18next";
 export default function Enstatement() {
+  const {i18n} = useTranslation()
+  useEffect(()=>{
+    i18n.changeLanguage('en')
+  },[])
   return(
     <HeaderLayout className="bg-white min-h-screen border-t-2 border-gray-100">
       <div className="w-container mx-auto text-sm pb-12 md:w-full md:px-3">
