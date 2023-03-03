@@ -31,18 +31,18 @@ export function Footer() {
       children: [{name:'hi@gtech.world'}]
     }])
   return (
-    <div className="bg-bgc h-[21.875rem]">
-      <div className="flex flex-col w-container mx-auto">
+    <div className="bg-bgc h-[21.875rem] md:h-auto md:px-8 md:py-12">
+      <div className="flex flex-col w-container mx-auto md:w-full">
         <div className="flex flex-col mt-12">
-          <div className="flex">
+          <div className="flex md:flex-col">
             <div>
               <Link href="/" ><img src="/images/logo.svg"/></Link>
             </div>
-            <ul className="flex justify-between ml-[14.375rem] mt-4">
+            <ul className="flex justify-between ml-[14.375rem] mt-4 md:flex-col md:ml-0">
               {
                 navList.map((v,i)=>{
                   return(
-                    <li key={`${i}`} className="mr-24">
+                    <li key={`${i}`} className="mr-24 md:mt-5">
                       {
                         v.href && !v.children?
                           <Link className="text-2xl font-bold" href={v.href}>{v.name}</Link>
@@ -59,8 +59,9 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-16 pt-4 border-t-2 text-sm">
-          GTech International, LTD.
+        <div className="mt-16 pt-4 border-t-2 text-sm flex justify-between md:flex-col md:mt-8">
+          <span>GTech International, LTD.</span>
+          <span className="md:mt-5">Data Protection Policy</span>
         </div>
       </div>
     </div>
