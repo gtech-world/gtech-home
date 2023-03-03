@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 function SubNav(props:any){
   const {data} = props
   return(
-    <ul className="flex flex-col text-base mt-4 leading-[2.2] font-normal">
+    <ul className="flex flex-col text-base mt-4 leading-[2.2] font-normal md:text-[0.9375rem]">
       {
         data.length && data.map((v:any,i:number)=>{
           return(
@@ -36,7 +36,7 @@ export function Footer() {
         <div className="flex flex-col mt-12">
           <div className="flex md:flex-col">
             <div>
-              <Link href="/" ><img src="/images/logo.svg"/></Link>
+              <Link className="md:float-left" href="/" ><img src="/images/logo.svg"/></Link>
             </div>
             <ul className="flex justify-between ml-[14.375rem] mt-4 md:flex-col md:ml-0">
               {
@@ -45,9 +45,9 @@ export function Footer() {
                     <li key={`${i}`} className="mr-24 md:mt-5">
                       {
                         v.href && !v.children?
-                          <Link className="text-2xl font-bold" href={v.href}>{v.name}</Link>
+                          <Link className="text-2xl font-bold md:text-xl" href={v.href}>{v.name}</Link>
                           :
-                          <span className="text-2xl font-bold">{v.name}</span>
+                          <span className="text-2xl font-bold md:text-xl">{v.name}</span>
                       }
                       {
                         v.children && <SubNav data={v.children}/>
