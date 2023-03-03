@@ -1,7 +1,6 @@
 import {useTranslation} from "react-i18next";
 
-export const getNavList = ()=>{
-  const { t } = useTranslation('common');
+export const getNavList = (t:any)=>{
   return  [
     {
       href: '/',

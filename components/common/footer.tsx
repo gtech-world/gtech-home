@@ -23,7 +23,7 @@ function SubNav(props:any){
 
 export function Footer() {
   const {t} = useTranslation('common')
-  const navList = getNavList().concat([
+  const navList = getNavList(t).concat([
     {
       name: t('navigation.list.item3.name'),
       href:'',
@@ -40,9 +40,9 @@ export function Footer() {
             </div>
             <ul className="flex justify-between ml-[14.375rem] mt-4">
               {
-                navList.map(v=>{
+                navList.map((v,i)=>{
                   return(
-                    <li className="mr-24">
+                    <li key={`${i}`} className="mr-24">
                       {
                         v.href && !v.children?
                           <Link className="text-2xl font-bold" href={v.href}>{v.name}</Link>

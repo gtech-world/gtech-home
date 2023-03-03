@@ -159,7 +159,8 @@ function MobileNav(props:{data:any}){
 }
 
 export function Navigation() {
-  const navList = getNavList()
+  const { t } = useTranslation('common');
+  const navList = getNavList(t)
   return (
     <>
       <PCNav data={navList} />
