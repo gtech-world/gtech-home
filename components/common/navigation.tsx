@@ -6,6 +6,7 @@ import {useClickAway,useToggle} from "react-use";
 import { IoCaretDownOutline } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
 import {useTranslation} from "react-i18next";
+import {getNavList} from "@lib/utils";
 
 const statementPage = ['/enstatement','/zhstatement']
 function PCNav(props:{data:any}){
@@ -158,36 +159,7 @@ function MobileNav(props:{data:any}){
 }
 
 export function Navigation() {
-  const { t } = useTranslation('common');
-  const navList = [
-    {
-      href: '/',
-      name: t('navigation.list.item1.name'),
-    },
-    {
-      href: '/solutions',
-      name: t('navigation.list.item2.name'),
-      isSelected: false,
-      children:[
-        {
-          href: '/solutions/web3',
-          name: t('navigation.list.item2.children.child1.name'),
-        },
-        {
-          href: '/solutions/governance',
-          name: t('navigation.list.item2.children.child2.name'),
-        },
-        {
-          href: '/solutions/automotive',
-          name: t('navigation.list.item2.children.child3.name'),
-        },
-      ]
-    }
-    // {
-    //   href: '/contact',
-    //   name: t('navigation.list.item3.name'),
-    // },
-  ]
+  const navList = getNavList()
   return (
     <>
       <PCNav data={navList} />
