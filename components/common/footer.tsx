@@ -22,7 +22,7 @@ function SubNav(props:any){
 }
 
 export function Footer() {
-  const {t} = useTranslation('common')
+  const {t,i18n} = useTranslation('common')
   const navList = getNavList(t).concat([
     {
       name: t('navigation.list.item3.name'),
@@ -59,9 +59,9 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-16 pt-4 border-t-2 text-sm flex justify-between md:flex-col md:mt-8">
-          <span>GTech International, LTD.</span>
-          <span className="md:mt-5">Data Protection Policy</span>
+        <div className="mt-16 pt-4 border-t border-black text-sm flex justify-between md:flex-col md:mt-8">
+          <span>{t('footer.company')}</span>
+          <span onClick={()=>window.open(i18n.language === 'zh'?'zhstatement':'enstatement','_blank')} className="cursor-pointer md:mt-5">{t('footer.viewBtn')}</span>
         </div>
       </div>
     </div>
