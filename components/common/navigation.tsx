@@ -35,7 +35,7 @@ function PCNav(props:{data:any}){
                   </div>
                   {
                     open === v.href &&
-                    <ul style={{whiteSpace:"nowrap"}} className="w-auto shadow-[0_5px_15px_0px_rgba(0,0,0,0.3)] absolute top-[3.25rem] right-0 bg-white text-sm py-2 px-5 leading-loose rounded-lg">
+                    <ul style={{whiteSpace:"nowrap"}} className="w-auto text-black shadow-[0_5px_15px_0px_rgba(0,0,0,0.3)] absolute top-[3.25rem] right-0 bg-white text-sm py-2 px-5 leading-loose rounded-lg">
                       {
                         v.children.map((child:any,childIndex:number)=>{
                           return(
@@ -127,7 +127,7 @@ function MobileNav(props:{data:any}){
       <HiOutlineMenu className="text-green text-4xl" onClick={onToggle}/>
       {
         open &&
-        <div className="absolute right-0 bg-white w-screen px-5 py-4">
+        <div className="absolute text-black right-0 bg-white w-screen px-5 py-4">
           {
             fData.map((v:any,i:number)=>{
               const hasChildren = (v.children && v.children.length)

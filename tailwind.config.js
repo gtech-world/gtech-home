@@ -29,6 +29,7 @@ module.exports = {
           DEFAULT: '#227A30',
           1: "#349644",
           2: "#CBDED0",
+          3: "#00BF1F",
           hover: "#2E8C3D",
         },
         yellow:{
