@@ -12,7 +12,7 @@ function Top(){
         <span className="text-green-3 mt-64 md:mt-36">{t('banner.text1')}</span>
         <span className="text-white">{t('banner.text2')}</span>
       </div>
-      <div className="max-w-[34rem] text-white px-3 text-lg text-center mt-[14.375rem] mb-5 md:text-sm md:mt-[8.375rem] md:mb-9">{t('banner.tips')}</div>
+      <div className="max-w-[34rem] text-white h-14 text-lg text-center mt-[14.375rem] mb-5 md:text-sm md:mt-[8.375rem] md:mb-9">{t('banner.tips')}</div>
       <img alt="" className="pb-3 md:hidden" src="images/home_head_arrow.svg"/>
     </div>
   )
@@ -41,13 +41,13 @@ function Technologies(){
     <div className="w-full bg-bgc flex flex-col items-center pt-16 md:pt-8 md:pb-4">
       <h3 className="text-center"><span className="text-green">{t('technologies.title.yellow')}</span> {t('technologies.title.text')}</h3>
       <div className="max-w-[59.75rem] md:px-3 text-center mt-5">{t('technologies.text')}</div>
-      <ul className="w-container flex text-center justify-between mt-24 md:flex-col md:mt-16">
+      <ul className="w-container flex justify-between mt-24 md:flex-col md:mt-16">
         {
           data.map((v,i)=>{
             return(
               <li key={`technologies${i}`} className="flex flex-col items-center pb-16 md:pb-12">
                 <img className="h-[8rem] md:h-[6.125rem]" src={v.image} alt=""/>
-                <h6 className="text-green text-xl font-semibold mt-7 mb-5 md:text-base">{v.title}</h6>
+                <h6 className="text-green text-center text-xl font-semibold mt-7 mb-5 md:text-base">{v.title}</h6>
                 <p className="w-[19.375rem] text-sm">{v.text}</p>
               </li>
             )

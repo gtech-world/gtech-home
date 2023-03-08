@@ -24,9 +24,9 @@ export function Header(p:{props: any}) {
           <FiX onClick={onCloseTips} className="absolute right-6 text-xl cursor-pointer md:top-4 md:right-5" />
         </div>
       }
-      <div className="flex justify-between items-center px-32 py-3 md:px-5">
+      <div className="flex justify-between items-center px-32 py-5 md:px-5">
         <Link href="/">
-          <img className="block w-16 h-11" alt="" src="/images/logo.svg"/>
+          <img className="block w-16 w-[7.5rem]" alt="" src="/images/logo.svg"/>
         </Link>
         <Navigation />
       </div>
