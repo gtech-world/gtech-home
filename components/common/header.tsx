@@ -28,7 +28,7 @@ export function Header(p:{props: any}) {
       }
       <div className="flex justify-between items-center px-32 py-5 md:px-5">
         <Link href="/">
-          <img className="block w-16 w-[7.5rem]" alt="" src="/images/logo.svg"/>
+          <img className="block w-[7.5rem] md:w-16" alt="" src="/images/logo.svg"/>
         </Link>
         <Navigation />
       </div>
