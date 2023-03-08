@@ -1,6 +1,9 @@
 {
   "translation": "EN",
   "translation_m": "LANGUAGE",
+  "header": {
+    "tips": "GTech’s official site is under development and this version is for demonstration purpose only. For more information, please contract email"
+  },
   "navigation": {
     "list": {
       "item1": {
