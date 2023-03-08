@@ -41,7 +41,7 @@ function Technologies(){
     <div className="w-full bg-bgc flex flex-col items-center pt-16 md:pt-8 md:pb-4">
       <h3 className="text-center"><span className="text-green">{t('technologies.title.yellow')}</span> {t('technologies.title.text')}</h3>
       <div className="max-w-[59.75rem] md:px-3 text-center mt-5">{t('technologies.text')}</div>
-      <ul className="w-container flex justify-between mt-24 md:flex-col md:mt-16">
+      <ul className="w-container flex justify-between mt-24 md:flex-col md:mt-16 md:w-full">
         {
           data.map((v,i)=>{
             return(

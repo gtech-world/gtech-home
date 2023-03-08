@@ -19,7 +19,7 @@ export function Header(p:{props: any}) {
     <div className={classNames(sticky?'sticky':'',"w-full z-10 top-0 ",isTransparent?'bg-transparent':'bg-white',className)}>
       {
         visible &&
-        <div className="bg-green text-white text-base h-[4.3125rem] flex justify-center px-8 items-center md:text-sm">
+        <div className="bg-green text-white text-base py-5 flex justify-center px-8 items-center md:text-sm">
           GTech’s official site is under development and this version is for demonstration purpose only. For more information, please contract email hi@gtech.world.
           <FiX onClick={onCloseTips} className="absolute right-6 text-xl cursor-pointer md:top-4 md:right-5" />
         </div>
