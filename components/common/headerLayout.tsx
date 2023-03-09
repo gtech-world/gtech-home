@@ -7,7 +7,6 @@ import {TopTips} from "@components/common/topTips";
 
 export function HeaderLayout(p:{headerProps?:object} & HTMLAttributes<HTMLDivElement>) {
   const { className,headerProps, children, ...props } = p;
-  const ref = useRef()
   const [tipsVisible,setTipsVisible] = useState(true)
   useEffect(()=>{
     const tips = localStorage.getItem('tips')
