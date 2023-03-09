@@ -48,7 +48,7 @@ function Technologies(){
               <li key={`technologies${i}`} className="flex flex-col items-center pb-16 md:pb-12">
                 <img className="h-[8rem] md:h-[6.125rem]" src={v.image} alt=""/>
                 <h6 className="text-green text-center text-xl font-bold mt-7 mb-5 md:text-base">{v.title}</h6>
-                <p className="w-[19.375rem] text-lg">{v.text}</p>
+                <p className="w-[19.375rem] text-lg md:text-sm">{v.text}</p>
               </li>
             )
           })
