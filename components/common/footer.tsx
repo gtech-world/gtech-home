@@ -36,7 +36,7 @@ export function Footer() {
         <div className="flex flex-col mt-12">
           <div className="flex md:flex-col">
             <div>
-              <Link className="md:float-left" href="/" ><img src="/images/logo.svg"/></Link>
+              <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg"/></Link>
             </div>
             <ul className="flex justify-between ml-[14.375rem] mt-4 md:flex-col md:ml-0">
               {
