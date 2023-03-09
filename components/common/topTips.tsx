@@ -18,11 +18,11 @@ export function TopTips(p:any) {
   })
   if(!visible) return null
   return (
-    <div className={classNames('sticky bg-green text-white text-base py-5 px-6 md:text-sm md:bottom-0 md:z-10 md:bg-white md:text-black md:h-[9.125rem] md:px-16 md:text-center',className)}>
-      <div className="h-full flex justify-center items-center">
+    <div className={classNames('sticky md:fixed bg-green flex items-center text-white justify-between text-base py-5 px-6 md:text-sm md:bottom-0 md:z-10 md:bg-white md:text-black md:h-[9.125rem] md:px-5 md:text-center md:w-full md:items-start',className)}>
+      <div className="h-full flex-1 flex justify-center items-center">
         <span className="inline-block">{t('header.tips')}<span className="underline inline-block ml-1.5"> hi@gtech.world</span></span>
       </div>
-      <FiX onClick={onCloseTips} className="absolute top-3 right-6 text-xl cursor-pointer md:top-3 md:right-5" />
+      <FiX onClick={onCloseTips} className="text-xl cursor-pointer" />
     </div>
   );
 }
