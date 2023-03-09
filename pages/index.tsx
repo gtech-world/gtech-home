@@ -3,11 +3,13 @@ import {Button} from "@components/button";
 import classNames from "classnames";
 import {useRouter} from "next/router";
 import {useTranslation} from "react-i18next";
+import useTips from "@lib/hooks/useTips";
 
 function Top(){
   const { t } = useTranslation('home');
+  const {visible} = useTips()
   return(
-    <div className="w-full bg-[url(/images/home_banner.png)] bg-no-repeat bg-center bg-cover flex flex-col items-center">
+    <div style={{paddingTop: visible?'4rem':''}} className="w-full bg-[url(/images/home_banner.png)] bg-no-repeat bg-center bg-cover flex flex-col items-center">
       <div className="flex flex-col items-center font-bold text-[4rem] leading-normal text-center md:text-[1.75rem]">
         <span className="text-green-3 mt-64 md:mt-36">{t('banner.text1')}</span>
         <span className="text-white">{t('banner.text2')}</span>
