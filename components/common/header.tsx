@@ -16,7 +16,7 @@ export function Header(p:{props: any}) {
 
       <div className="flex justify-between items-center px-32 py-4 md:px-5">
         <Link href="/">
-          <img className={classNames('block md:w-16',pathname === '/'?'w-[7.5rem]':'w-20')} alt="" src="/images/logo.svg"/>
+          <img className={classNames('block md:w-16',pathname === '/'?'w-[7.5rem]':'w-20')} alt="" src={pathname === '/'?'/images/logo_light.svg':'/images/logo.svg'}/>
         </Link>
         <Navigation />
       </div>

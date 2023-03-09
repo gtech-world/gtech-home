@@ -30,7 +30,7 @@ function PCNav(props:{data:any}){
               (
                 <div key={`nav-${i}`} className={`relative${i === 0?'':' ml-14'}`}>
                   <div className="cursor-pointer flex" onClick={()=>setOpen(!!open?'':v.href)}>
-                    <span className={`pb-2.5${/^\/solutions\/\w+/.test(pathname)?' border-b-2 border-green-3 font-bold':''}`}>{v.name}</span>
+                    <span className={`pb-2.5${/^\/solutions\/\w+/.test(pathname)?' border-b-2 border-green font-bold':''}`}>{v.name}</span>
                     <IoCaretDownOutline className={classNames('ml-2 mt-1',!!open?'rotate-180':'')} />
                   </div>
                   {
