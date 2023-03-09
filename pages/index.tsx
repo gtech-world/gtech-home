@@ -3,13 +3,11 @@ import {Button} from "@components/button";
 import classNames from "classnames";
 import {useRouter} from "next/router";
 import {useTranslation} from "react-i18next";
-import useTips from "@lib/hooks/useTips";
 
 function Top(){
   const { t } = useTranslation('home');
-  const {visible} = useTips()
   return(
-    <div style={{paddingTop: visible?'4rem':''}} className="w-full bg-[url(/images/home_banner.png)] bg-no-repeat bg-center bg-cover flex flex-col items-center">
+    <div className="w-full bg-[url(/images/home_banner.png)] bg-no-repeat bg-center bg-cover flex flex-col items-center">
       <div className="flex flex-col items-center font-bold text-[4rem] leading-normal text-center md:text-[1.75rem]">
         <span className="text-green-3 mt-64 md:mt-36">{t('banner.text1')}</span>
         <span className="text-white">{t('banner.text2')}</span>
@@ -49,7 +47,7 @@ function Technologies(){
             return(
               <li key={`technologies${i}`} className="flex flex-col items-center pb-16 md:pb-12">
                 <img className="h-[8rem] md:h-[6.125rem]" src={v.image} alt=""/>
-                <h6 className="text-green text-center text-xl font-semibold mt-7 mb-5 md:text-base">{v.title}</h6>
+                <h6 className="text-green text-center text-xl font-bold mt-7 mb-5 md:text-base">{v.title}</h6>
                 <p className="w-[19.375rem] text-sm">{v.text}</p>
               </li>
             )
