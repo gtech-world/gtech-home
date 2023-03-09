@@ -20,7 +20,7 @@ export function HeaderLayout(p:{headerProps?:object} & HTMLAttributes<HTMLDivEle
       </div>
       <Footer />
       {
-        !tipsVisible && <Policy />
+        <Policy className={classNames('block',!tipsVisible?'md:block':'md:hidden')} />
       }
       <TopTips className="hidden md:block md:shadow-[0_-3px_15px_0px_rgba(0,0,0,0.3)]" onClose={()=>setTipsVisible(false)} />
     </div>

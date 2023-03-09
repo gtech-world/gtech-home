@@ -22,7 +22,7 @@ export function TopTips(p:any) {
       <div className="h-full flex justify-center items-center">
         <span className="inline-block">{t('header.tips')}<span className="underline inline-block ml-1.5"> hi@gtech.world</span></span>
       </div>
-      <FiX onClick={onCloseTips} className="absolute right-6 text-xl cursor-pointer md:top-3 md:right-5" />
+      <FiX onClick={onCloseTips} className="absolute top-3 right-6 text-xl cursor-pointer md:top-3 md:right-5" />
     </div>
   );
 }
