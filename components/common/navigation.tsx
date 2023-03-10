@@ -124,7 +124,7 @@ function MobileNav(props:{data:any}){
   }
   return(
     <div className="hidden md:block" ref={ref}>
-      <HiOutlineMenu className="text-green text-4xl" onClick={onToggle}/>
+      <HiOutlineMenu className={classNames('text-4xl',pathname === '/'?'text-white':'text-green')} onClick={onToggle}/>
       {
         open &&
         <div className="absolute text-black right-0 bg-white w-screen px-5 py-4">

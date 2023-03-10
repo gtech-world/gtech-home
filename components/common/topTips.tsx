@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 export function TopTips(p:any) {
   const {onClose,className} = p
-  const { t } = useTranslation('common');
+  const { t,i18n } = useTranslation('common');
   const [visible,setVisible] = useState(false)
   const onCloseTips = ()=>{
     setVisible(false)
@@ -20,7 +20,7 @@ export function TopTips(p:any) {
   return (
     <div className={classNames('sticky md:fixed bg-green flex items-center text-white justify-between text-base py-5 px-6 md:text-sm md:bottom-0 md:z-10 md:bg-white md:text-black md:h-[9.125rem] md:px-5 md:text-center md:w-full md:items-start',className)}>
       <div className="h-full flex-1 flex justify-center items-center">
-        <span className="inline-block">{t('header.tips')}<span className="underline inline-block ml-1.5"> hi@gtech.world</span></span>
+        <span className="inline-block">{t('header.tips')}<span className="underline inline-block ml-1.5"> hi@gtech.world</span>{i18n.language === 'en'?'.':'。'}</span>
       </div>
       <FiX onClick={onCloseTips} className="text-xl cursor-pointer" />
     </div>

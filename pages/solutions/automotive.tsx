@@ -35,7 +35,7 @@ function IndustryLevel(){
   return(
     <div className="w-full bg-green flex flex-col items-center text-white text-lg md:text-sm md:pb-10">
       <h3 className="text-center px-12 mt-16 md:mt-8">{t('industryLevel.title')}</h3>
-      <p className="mt-5 max-w-[54.125rem] text-center">{t('industryLevel.text')}</p>
+      <p className="mt-5 max-w-[54.125rem] text-center md:px-5">{t('industryLevel.text')}</p>
       <div className="flex justify-center items-center mt-20 pb-20 ml-[4.8rem] md:flex-col md:ml-0 md:mt-5 md:text-center md:pb-0">
         <div>
           <p className="h-11">
@@ -110,7 +110,7 @@ function MainProduct(){
               <div key={`product-${i}`} className={classNames('w-[36.25rem] pb-5 border-4 border-black rounded-2xl flex flex-col justify-center px-5 md:w-full md:mt-8',i===0?'ml-0 md:mt-0':'ml-10 md:ml-0')}>
                 <h4 className="font-bold text-[2rem] leading-9 px-5 text-center pt-6 pb-8 text-green md:text-base md:mt-3 md:pt-3">{v.title}</h4>
                 <img className="h-[6.125rem] mb-10 md:h-[5rem] md:mb-8" src={v.imgUrl} alt=""/>
-                <div className="w-[29.25rem] mx-auto leading-6 md:w-full md:leading-5">
+                <div className="w-[29.25rem] mx-auto leading-6 md:w-full md:leading-5 md:text-center">
                   {
                     v.text.map((child,index)=>{
                       return(

@@ -12,7 +12,7 @@ function Top(){
         <span className="text-green-3 mt-64 md:mt-36">{t('banner.text1')}</span>
         <span className="text-white">{t('banner.text2')}</span>
       </div>
-      <div className="max-w-[34rem] text-white h-14 text-lg text-center mt-[14.375rem] mb-5 md:text-sm md:mt-[8.375rem] md:mb-9">{t('banner.tips')}</div>
+      <div className="max-w-[34rem] text-white h-14 text-lg text-center mt-[14.375rem] mb-5 md:text-sm md:mt-[8.375rem] md:mb-9 md:px-6">{t('banner.tips')}</div>
       <img alt="" className="pb-3 md:hidden" src="images/home_head_arrow.svg"/>
     </div>
   )
@@ -48,7 +48,7 @@ function Technologies(){
               <li key={`technologies${i}`} className="flex flex-col items-center pb-16 md:pb-12">
                 <img className="h-[8rem] md:h-[6.125rem]" src={v.image} alt=""/>
                 <h6 className="text-green text-center text-xl font-bold mt-7 mb-5 md:text-base">{v.title}</h6>
-                <p className="w-[19.375rem] text-lg md:text-sm">{v.text}</p>
+                <p className="w-[19.375rem] text-lg md:text-sm md:text-center">{v.text}</p>
               </li>
             )
           })
