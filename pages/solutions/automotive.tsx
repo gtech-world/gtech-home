@@ -94,7 +94,7 @@ function MainProduct(){
       btn:{
         text: t('mainProduct.list.item2.button'),
         onClick: ()=>{
-          window.open(`${process.env.NODE_ENV?'https://aicd-beta.gtech.world/login':'https://aicd.gtech.world/login'}`, "_blank")
+          window.open(`${process.env.NODE_ENV === 'development'?'https://aicd-beta.gtech.world/login':'https://aicd.gtech.world/login'}`, "_blank")
         }
       },
       imgUrl: '/images/find.svg'
