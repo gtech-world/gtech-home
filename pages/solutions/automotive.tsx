@@ -84,7 +84,7 @@ function MainProduct(){
         text: t('mainProduct.list.item1.button'),
         onClick: ()=>{
           console.log(process.env.NODE_ENV)
-          window.open("https://aicd-beta.gtech.world/", "_blank")
+          window.open("https://aicd.gtech.world/", "_blank")
         }
       },
       imgUrl: '/images/roboat.svg'
@@ -97,7 +97,7 @@ function MainProduct(){
       btn:{
         text: t('mainProduct.list.item2.button'),
         onClick: ()=>{
-          window.open("https://aicd-beta.gtech.world/login", "_blank")
+          window.open("https://aicd.gtech.world/login", "_blank")
         }
       },
       imgUrl: '/images/find.svg'
