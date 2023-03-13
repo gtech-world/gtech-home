@@ -24,11 +24,13 @@ function SubNav(props:any){
 export function Footer() {
   const {t,i18n} = useTranslation('common')
   const navList = getNavList(t).concat([
+    // @ts-ignore
     {
       name: t('navigation.list.item3.name'),
       href:'',
-      // @ts-ignore
-      children: [{name:'hi@gtech.world'}]
+      children: [
+        {name:'hi@gtech.world',href: 'mailto:hi@gtech.world'}
+      ]
     }])
   return (
     <div className="bg-bgc h-[21.875rem] md:h-auto md:px-8 md:py-12">
