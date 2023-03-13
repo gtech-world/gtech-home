@@ -3,7 +3,6 @@ import {Button} from "@components/button";
 import {QrGroup} from "@components/qrGroup";
 import classNames from "classnames";
 import {useTranslation} from "react-i18next";
-import {AICD_LOGIN_URL,AICD_URL} from "@lib/env";
 
 
 function Top(){
