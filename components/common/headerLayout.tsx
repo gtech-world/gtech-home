@@ -9,7 +9,7 @@ export function HeaderLayout(p:{headerProps?:object} & HTMLAttributes<HTMLDivEle
   const { className,headerProps, children, ...props } = p;
   const [tipsVisible,setTipsVisible] = useState(true)
   useEffect(()=>{
-    const tips = localStorage.getItem('tips')
+    const tips = sessionStorage.getItem('tips')
     setTipsVisible(!tips)
   },[])
   return (
