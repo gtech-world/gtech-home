@@ -28,8 +28,10 @@ export const resources = {
   }
 };
 
-i18next.use(initReactI18next).init({
-  lng: 'zh',
-  debug: true,
-  resources,
-});
+export const setLngConfig = (lng:string)=>{
+  i18next.use(initReactI18next).init({
+    lng,
+    // debug: true,
+    resources,
+  });
+}
