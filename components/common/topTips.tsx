@@ -10,10 +10,10 @@ export function TopTips(p:any) {
   const onCloseTips = ()=>{
     setVisible(false)
     onClose && onClose()
-    localStorage.setItem('tips','enable')
+    sessionStorage.setItem('tips','enable')
   }
   useEffect(()=>{
-    const tips = localStorage.getItem('tips')
+    const tips = sessionStorage.getItem('tips')
     setVisible(!tips)
   })
   if(!visible) return null
