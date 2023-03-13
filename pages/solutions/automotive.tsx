@@ -3,6 +3,9 @@ import {Button} from "@components/button";
 import {QrGroup} from "@components/qrGroup";
 import classNames from "classnames";
 import {useTranslation} from "react-i18next";
+import {AICD_LOGIN_URL,AICD_URL} from "@lib/env";
+
+
 function Top(){
   const { t,i18n } = useTranslation('automotive');
   return(
@@ -81,7 +84,8 @@ function MainProduct(){
       btn:{
         text: t('mainProduct.list.item1.button'),
         onClick: ()=>{
-          window.open(`${process.env.NODE_ENV?'https://aicd-beta.gtech.world/':'https://aicd.gtech.world/'}`, "_blank")
+          console.log(process.env.NODE_ENV)
+          window.open(`${AICD_LOGIN_URL}`, "_blank")
         }
       },
       imgUrl: '/images/roboat.svg'
@@ -94,7 +98,7 @@ function MainProduct(){
       btn:{
         text: t('mainProduct.list.item2.button'),
         onClick: ()=>{
-          window.open(`${process.env.NODE_ENV === 'development'?'https://aicd-beta.gtech.world/login':'https://aicd.gtech.world/login'}`, "_blank")
+          window.open(`${AICD_URL}`, "_blank")
         }
       },
       imgUrl: '/images/find.svg'
