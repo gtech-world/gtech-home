@@ -1,0 +1,42 @@
+      
+      
+name: Prod Release to CDN
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: ${{ github.repository == 'gtech-world/gtech-home' && github.ref == 'refs/heads/prod'}}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node v16
+        uses: actions/setup-node@v1
+        with:
+          node-version: v16.16.0
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Run install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm export
+
+      - name: Install coscmd
+        run: sudo pip install coscmd
+
+      - name: Config coscmd
+        env: 
+          SECRET_ID: ${{ secrets.CDN_SECRET_ID }}
+          SECRET_KEY: ${{ secrets.CDN_SECRET_KEY }}
+          BUCKET: ${{ secrets.CDN_BUCKET }}
+          REGION: ${{ secrets.CDN_REGION }}
+        run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+      - name: Uplaod to CDN
+        run: coscmd upload -rs --delete -f ./out/ /
