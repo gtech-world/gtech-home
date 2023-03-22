@@ -29,7 +29,9 @@ jobs:
         run: pnpm export
 
       - name: Install coscmd
-        run: sudo pip install coscmd
+        run: |
+          sudo pip install coscmd
+          sudo pip install tccli
 
       - name: Config coscmd
         env: 
@@ -37,6 +39,13 @@ jobs:
           SECRET_KEY: ${{ secrets.CDN_SECRET_KEY }}
           BUCKET: ${{ secrets.CDN_BUCKET }}
           REGION: ${{ secrets.CDN_REGION }}
-        run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+        run: |
+          coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+          tccli configure set secretId $SECRET_ID
+          tccli configure set secretKey $SECRET_KEY
+          tccli configure set region $REGION
+
       - name: Uplaod to CDN
-        run: coscmd upload -rs --delete -f ./out/ /
+        run: |
+          coscmd upload -rs --delete -f ./out/ /
+          tccli cdn PurgePathCache --cli-unfold-argument --Paths https://gtech.world/ --FlushType flush
