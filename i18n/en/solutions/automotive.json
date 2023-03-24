@@ -42,10 +42,10 @@
       "item3": {
         "group": {
           "item1": {
-            "text": "OEMs and downstream suppliers can now track and manage upstream carbon footprint data within customizable authorization."
+            "text": "<0>OEMs and downstream suppliers</0> can now track and manage upstream carbon footprint data within customizable authorization."
           },
           "item2": {
-            "text": "Customers and the public can now open query product carbon footprint reports in AICD with a quick scan from a mobile phone."
+            "text": "<0>Customers and the public</0> can now open query product carbon footprint reports in AICD with a quick scan from a mobile phone."
           }
         }
       }

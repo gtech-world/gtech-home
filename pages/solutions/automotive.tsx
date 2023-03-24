@@ -170,7 +170,14 @@ function Carbon3Solution(){
               <div className="flex flex-col items-center justify-center">
                 <div className="flex flex-col">
                   <img className="w-[7.5rem] md:w-[5.25rem]" src="/images/people.png" alt=""/>
-                  <p className="mt-6">{t('carbon3Solution.group.item3.group.item2.text')}</p>
+                  <p className="mt-6">
+                    <Trans
+                      i18nKey="boostingAutomotive.list.item1.text"
+                      components={[<strong className="text-green" key='info'></strong>]}
+                    >
+                      {t('carbon3Solution.group.item3.group.item2.text')}
+                    </Trans>
+                  </p>
                 </div>
               </div>
             </div>

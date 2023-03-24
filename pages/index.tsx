@@ -2,7 +2,8 @@ import { HeaderLayout } from "@components/common/headerLayout";
 import {Button} from "@components/button";
 import classNames from "classnames";
 import {useRouter} from "next/router";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
+import React from "react";
 
 function Top(){
   const { t } = useTranslation('home');
@@ -72,7 +73,14 @@ function Assistance(){
         <div className="min-w-[32.825rem] md:min-w-full rounded-lg overflow-hidden h-80 md:h-[13.375rem] bg-[url(/images/solution_intro.png)] bg-no-repeat bg-center bg-cover">
         </div>
         <div className="ml-[5.375rem] md:ml-0">
-          <p className="md:mt-5">{t('assistance.text')}</p>
+          <p className="md:mt-5">
+            <Trans
+              i18nKey="boostingAutomotive.list.item1.text"
+              components={[<a href="https://aiag.org.cn/" rel="noreferrer" target="_blank" className="font-bold underline" key='info'></a>,<strong className="text-green" key='info'></strong>]}
+            >
+              {t('assistance.text')}
+            </Trans>
+          </p>
           <ul className="flex flex-wrap justify-between mt-5 md:flex-col md:items-center">
             {
               btnList.map((v,i)=>{
