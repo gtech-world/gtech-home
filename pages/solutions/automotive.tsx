@@ -73,7 +73,7 @@ function BoostingAutomotive(){
   ]
   return(
     <div className="w-container mx-auto flex flex-col items-center pb-20 md:text-center md:pb-8 md:w-full">
-      <h3 className="my-16 text-green md:mt-7 md:mb-5 md:px-12">{t('boostingAutomotive.title')}</h3>
+      <h3 className="my-16 text-green md:mt-7 md:mb-5 md:px-12 text-center">{t('boostingAutomotive.title')}</h3>
       <div className="flex justify-between md:flex-col">
         <div className="flex flex-col px-3 w-[32.625rem] mr-[6.875rem] md:w-full md:mr-0">
           <img className="w-full md:mx-auto md:mt-8 rounded-lg md:mt-0" src="/images/solution_intro.png" alt=""/>
@@ -157,7 +157,14 @@ function Carbon3Solution(){
               <div className="flex flex-col">
                 <div className="flex flex-col">
                   <img className="w-[7.5rem] md:w-[5.25rem]" src="/images/carry.png" alt=""/>
-                  <p className="mt-6">{t('carbon3Solution.group.item3.group.item1.text')}</p>
+                  <p className="mt-6">
+                    <Trans
+                      i18nKey="boostingAutomotive.list.item1.text"
+                      components={[<strong className="text-green" key='info'></strong>]}
+                    >
+                      t('carbon3Solution.group.item3.group.item1.text')
+                    </Trans>
+                  </p>
                 </div>
               </div>
               <div className="flex flex-col items-center justify-center">
