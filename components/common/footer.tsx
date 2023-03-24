@@ -83,13 +83,13 @@ export function Footer() {
       ]
     },
     {
-      name: t('navigation.list.item4.name'),
+      name: t('navigation.list.item4.children.qrSubtitle'),
       href:'',
       children: [
         {
           render:()=>{
             return(
-              <img className="w-[7.5rem]" src="/images/wechat_qrcode.png" alt=""/>
+              <img className="w-[7.5rem] mt-2" src="/images/wechat_qrcode.png" alt=""/>
             )
           }
         }

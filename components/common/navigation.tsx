@@ -95,7 +95,7 @@ function PCNav(){
           <div className="ml-[3.75rem] flex flex-col items-center">
             <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.qrSubtitle')}</h4>
             <div className="mt-5">
-              <img src="images/wechat_qrcode.png" className="w-[5.5rem]" alt=""/>
+              <img src="/images/wechat_qrcode.png" className="w-[5.5rem] mt-1" alt=""/>
             </div>
           </div>
         </div>
