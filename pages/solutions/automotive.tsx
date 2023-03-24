@@ -80,7 +80,7 @@ function BoostingAutomotive(){
           <p className="mt-5">
             <Trans
               i18nKey="boostingAutomotive.list.item1.text"
-              components={[<strong className="font-bold underline" key='info'></strong>,<strong className="text-green" key='info'></strong>]}
+              components={[<a href="https://aiag.org.cn/" rel="noreferrer" target="_blank" className="font-bold underline" key='info'></a>,<strong className="text-green" key='info'></strong>]}
             >
               {t('boostingAutomotive.text')}
             </Trans>
