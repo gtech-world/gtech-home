@@ -90,7 +90,7 @@ function BoostingAutomotive(){
           {
             list.map((v,i)=>{
               return(
-                <li className="w-[16.125rem] flex flex-col justify-center items-center md:mt-8">
+                <li key={`list${i}`} className="w-[16.125rem] flex flex-col justify-center items-center md:mt-8">
                   <div>
                     <img src={v.img} alt=""/>
                   </div>

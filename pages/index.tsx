@@ -58,12 +58,12 @@ function Technologies(){
   )
 }
 function Assistance(){
-  const { t } = useTranslation('home');
+  const { t,i18n } = useTranslation('home');
   const btnList = [
-    {text:t('assistance.btnList.about'),onClick:()=>{}},
-    {text:t('assistance.btnList.aiag'),onClick:()=>{}},
-    {text:t('assistance.btnList.database'),onClick:()=>{}},
-    {text:t('assistance.btnList.products'),onClick:()=>{}}
+    {text:t('assistance.btnList.about'),onClick:()=>{},className: i18n.language === 'en'?'w-[19.7rem]':'w-[17.7rem]'},
+    {text:t('assistance.btnList.aiag'),onClick:()=>{},className: i18n.language === 'en'?'w-[15.7rem]':'w-[17.7rem]'},
+    {text:t('assistance.btnList.database'),onClick:()=>{},className: i18n.language === 'en'?'w-[19.7rem]':'w-[17.7rem]'},
+    {text:t('assistance.btnList.products'),onClick:()=>{},className: i18n.language === 'en'?'w-[15.7rem]':'w-[17.7rem]'}
   ]
   return(
     <div className="w-container mx-auto md:w-full md:px-3">
@@ -77,7 +77,7 @@ function Assistance(){
             {
               btnList.map((v,i)=>{
                 return(
-                  <li className="mt-5"><Button className="w-[17.7rem]" text={v.text} /></li>
+                  <li key={`btnlist${i}`} className="mt-5"><Button className={classNames(v.className,'px-2 md:w-[20rem]')} text={v.text} /></li>
                 )
               })
             }

@@ -113,7 +113,7 @@ function PCNav(){
       {
         navList.map((v:any,i:number)=>{
           return(
-            <div onMouseEnter={(e)=>{setOpen(v.href)}}
+            <div key={`navlist${i}`} onMouseEnter={(e)=>{setOpen(v.href)}}
                  className=""
             >
               {
