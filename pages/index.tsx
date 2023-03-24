@@ -57,6 +57,36 @@ function Technologies(){
     </div>
   )
 }
+function Assistance(){
+  const { t } = useTranslation('home');
+  const btnList = [
+    {text:t('assistance.btnList.about'),onClick:()=>{}},
+    {text:t('assistance.btnList.aiag'),onClick:()=>{}},
+    {text:t('assistance.btnList.database'),onClick:()=>{}},
+    {text:t('assistance.btnList.products'),onClick:()=>{}}
+  ]
+  return(
+    <div className="w-container mx-auto md:w-full md:px-3">
+      <h3 className="mb-20 text-center mt-16 text-green md:mt-8 md:mb-5">{t('assistance.title')}</h3>
+      <div className="flex md:flex-col">
+        <div className="min-w-[32.825rem] md:min-w-full rounded-lg overflow-hidden h-80 md:h-[13.375rem] bg-[url(/images/solution_intro.png)] bg-no-repeat bg-center bg-cover">
+        </div>
+        <div className="ml-[5.375rem] md:ml-0">
+          <p className="md:mt-5">{t('assistance.text')}</p>
+          <ul className="flex flex-wrap justify-between mt-5 md:flex-col md:items-center">
+            {
+              btnList.map((v,i)=>{
+                return(
+                  <li className="mt-5"><Button className="w-[17.7rem]" text={v.text} /></li>
+                )
+              })
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  )
+}
 function CrossSolutions(){
   const { t } = useTranslation('home');
   const router = useRouter()
@@ -84,7 +114,7 @@ function CrossSolutions(){
     }
   ]
   return(
-    <div className="flex flex-col items-center pb-32 mt-16 md:mt-8 md:pb-12">
+    <div className="flex flex-col items-center pb-32 mt-20 md:mt-8 md:pb-12">
       <h3 className="">{t('crossSolutions.title')}</h3>
       <p className="text-center mt-5 max-w-[56.25rem] md:px-3">
         {t('crossSolutions.text')}
@@ -123,6 +153,7 @@ export default function Index() {
     <HeaderLayout headerProps={headerProps} className="relative">
       <Top />
       <Technologies />
+      <Assistance />
       <CrossSolutions />
     </HeaderLayout>
   )

@@ -11,20 +11,44 @@
       },
       "item2": {
         "name": "SOLUTIONS",
+        "desc": "GTech provides cross-industry trust data solutions that enables trust, visibility, and traceability at your fingertips. Discover how GTech leverages cutting-edge technologies to benefit your industry.",
         "children": {
           "child1": {
-            "name": "Web3 Data Storage"
+            "name": "Web3 Data Storage",
+            "desc": "With the climate change challenge looming, learn how GTech helps the automotive industry establish long-term carbon performance traceability and visibility capabilities."
           },
           "child2": {
             "name": "Data Governance & BI"
           },
           "child3": {
             "name": "Industry-level Data Solution"
-          }
+          },
+          "more": "More General Solutions"
         }
       },
       "item3": {
-        "name": "CONTACT"
+        "name": "Media",
+        "desc": "GTech is a technology-driven company that constantly innovates and improves. Stay up-to-date with the latest news, business developments, and technology insights from GTech and the industries we serve.",
+        "children": {
+          "child1": {
+            "name": "Data Technologies"
+          },
+          "child2": {
+            "name": "Industry News"
+          },
+          "child3": {
+            "name": "GTech Updates"
+          }
+        }
+      },
+      "item4": {
+        "name": "CONTACT",
+        "desc": "Feel free to contact GTech to learn more about our trust data solutions, business consulting and collaboration opportunities.",
+        "children": {
+          "companySubtitle": "Company Info",
+          "contactSubtitle": "Contact",
+          "qrSubtitle": "WeChat Official Account"
+        }
       }
     }
   },

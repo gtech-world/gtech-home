@@ -2,72 +2,175 @@ import { HeaderLayout } from "@components/common/headerLayout";
 import {Button} from "@components/button";
 import {QrGroup} from "@components/qrGroup";
 import classNames from "classnames";
-import {useTranslation} from "react-i18next";
+import {useTranslation,Trans} from "react-i18next";
+import React from "react";
 
 
 function Top(){
   const { t,i18n } = useTranslation('automotive');
   return(
-  <div className="h-[44.625rem] text-white w-full bg-[url(/images/automotive_banner.jpg)] bg-no-repeat bg-cover bg-center flex justify-center items-center px-9 md:h-[28rem]">
-    <div className={classNames('bg-black/[.8] flex flex-col justify-center w-[58.5rem] pl-8 text-[2rem] py-10 text-green-1 leading-[2.75rem] md:text-lg md:text-center md:px-4 md:w-auto')}>
-      <h3 className={classNames('font-bold text-white md:text-[1.75rem] md:leading-9',i18n.language ==='zh'?'text-[2.6rem]':'text-5xl')}>{t('banner.title')}</h3>
-      <p className="mt-3">{t('banner.subtitle')}</p>
+  <div className="h-[44.625rem] w-full bg-[url(/images/automotive_banner.jpg)] bg-no-repeat bg-cover bg-center flex justify-center items-center px-9 md:h-[28rem]">
+    <div className={classNames('bg-white/[.76] flex md:flex-col w-[58.5rem] pl-10 text-[2rem] py-10 leading-[2.75rem] md:py-8 md:text-lg md:text-center md:px-4 md:w-auto')}>
+      <div className='w-[9.875rem] md:w-full md:max-w-[22rem] md:max-w-[10rem] md:mx-auto md:scale-[0.9]'>
+        <div className="py-3 rounded-[2.25rem] outline outline-[5px] outline-green outline-offset-4 border-[1.75px] border-green flex justify-center items-center">
+          <div className="flex flex-col justify-between h-full">
+            <img className="mb-2" src="/images/carbon3_name.svg" alt=""/>
+            <img className="w-[6.25rem]" src="/images/earth.png" alt=""/>
+          </div>
+        </div>
+      </div>
+      <div className="ml-10 mt-3 md:ml-0">
+        <h3 className={classNames('font-bold text-green md:text-[1.75rem] md:leading-9',i18n.language ==='zh'?'text-[2.6rem]':'text-5xl')}>Carbon3</h3>
+        <p className="mt-3 w-[36.25rem] md:w-full">{t('banner.text')}</p>
+      </div>
     </div>
   </div>
   )
 }
 function BoostingAutomotive(){
   const { t } = useTranslation('automotive');
+  const list = [
+    {
+      img: '/images/database.svg',
+      text:
+        <Trans
+          i18nKey="boostingAutomotive.list.item1.text"
+          components={[<strong className="text-green" key='info'></strong>]}
+        >
+          {t('boostingAutomotive.list.item1.text')}
+        </Trans>
+    },
+    {
+      img: '/images/searcheye.svg',
+      text:
+        <Trans
+          i18nKey="boostingAutomotive.list.item1.text"
+          components={[<strong className="text-green" key='info'></strong>]}
+        >
+          {t('boostingAutomotive.list.item2.text')}
+        </Trans>
+    },
+    {
+      img: '/images/alt.svg',
+      text:
+        <Trans
+          i18nKey="boostingAutomotive.list.item1.text"
+          components={[<strong className="text-green" key='info'></strong>]}
+        >
+          {t('boostingAutomotive.list.item3.text')}
+        </Trans>
+    },
+    {
+      img: '/images/hand.svg',
+      text:
+        <Trans
+          i18nKey="boostingAutomotive.list.item1.text"
+          components={[<strong className="text-green" key='info'></strong>]}
+        >
+          {t('boostingAutomotive.list.item4.text')}
+        </Trans>
+    }
+  ]
   return(
-    <div className="flex flex-col items-center pb-20 md:text-center md:pb-8">
-      <h3 className="my-16 md:my-6 md:px-12">{t('boostingAutomotive.title')}</h3>
-      <div className="flex md:flex-col-reverse px-3">
-        <img className="w-[34.5rem] md:mx-auto md:mt-8 rounded-lg" src="/images/solution_intro.svg" alt=""/>
-        <div className="w-[36.875rem] ml-14 text-lg md:text-sm md:w-full md:ml-0">
-          <p className="mb-5">{t('boostingAutomotive.text1')}</p>
-          <p className="mb-5">{t('boostingAutomotive.text2')}</p>
-          <p>{t('boostingAutomotive.text3')}</p>
+    <div className="w-container mx-auto flex flex-col items-center pb-20 md:text-center md:pb-8 md:w-full">
+      <h3 className="my-16 text-green md:mt-7 md:mb-5 md:px-12">{t('boostingAutomotive.title')}</h3>
+      <div className="flex justify-between md:flex-col">
+        <div className="flex flex-col px-3 w-[32.625rem] mr-[6.875rem] md:w-full md:mr-0">
+          <img className="w-full md:mx-auto md:mt-8 rounded-lg md:mt-0" src="/images/solution_intro.png" alt=""/>
+          <p className="mt-5">
+            <Trans
+              i18nKey="boostingAutomotive.list.item1.text"
+              components={[<strong className="font-bold underline" key='info'></strong>,<strong className="text-green" key='info'></strong>]}
+            >
+              {t('boostingAutomotive.text')}
+            </Trans>
+          </p>
         </div>
+        <ul className="w-[36.725rem] flex flex-wrap justify-between md:flex-col md:w-full md:items-center">
+          {
+            list.map((v,i)=>{
+              return(
+                <li className="w-[16.125rem] flex flex-col justify-center items-center md:mt-8">
+                  <div>
+                    <img src={v.img} alt=""/>
+                  </div>
+                  <p className="mt-8">{v.text}</p>
+                </li>
+              )
+            })
+          }
+        </ul>
       </div>
     </div>
   )
 }
-function IndustryLevel(){
+function Carbon3Solution(){
   const { t } = useTranslation('automotive');
   return(
-    <div className="w-full bg-green flex flex-col items-center text-white text-lg md:text-sm md:pb-10">
-      <h3 className="text-center px-12 mt-16 md:mt-8">{t('industryLevel.title')}</h3>
-      <p className="mt-5 max-w-[54.125rem] text-center md:px-5">{t('industryLevel.text')}</p>
-      <div className="flex justify-center items-center mt-20 pb-20 ml-[4.8rem] md:flex-col md:ml-0 md:mt-5 md:text-center md:pb-0">
-        <div>
-          <p className="h-11">
-          </p>
-          <div className="bg-white text-black text-1.5xl font-bold rounded-lg h-20 w-[16.25rem] flex justify-center items-center text-center">{t('industryLevel.group.item1.name')}</div>
-          <p className="w-64 h-[5.25rem] mt-5 md:h-auto">{t('industryLevel.group.item1.text')}</p>
-        </div>
-        <img className="mt-[-3.7rem] w-[6.25rem] md:hidden" src="/images/arrow_lg.svg" alt=""/>
-        <img className="hidden md:block w-10 my-6 h-[2.25rem]" src="/images/arrow_down.svg" alt=""/>
-        <div className="flex flex-col items-center">
-          <p className="text-2xl font-bold text-yellow h-11">AICD</p>
-          <div className="bg-white text-black text-1.5xl leading-[1.875rem] font-bold rounded-lg h-20 w-[18.75rem] flex justify-center items-center text-center">{t('industryLevel.group.item2.name')}</div>
-          <p className="w-[18.75rem] h-[5.25rem] mt-5 md:h-auto">{t('industryLevel.group.item2.text')}</p>
-        </div>
-        <div className="flex md:mt-0 md:flex-col items-center">
-          <img className="hidden md:block w-10 my-6 h-[2.25rem]" src="/images/arrow_down.svg" alt=""/>
-          <img className="mt-[-4rem] h-[9.625rem] md:hidden" src="/images/arrow2_lg.svg" alt=""/>
-          <div className="ml-[-4.8rem] md:ml-0">
-            <div className="flex flex-col items-center justify-center">
-              <p className="text-2xl font-bold text-yellow h-10">Traceability</p>
-              <div className="bg-white text-black text-1.5xl leading-[1.875rem] font-bold rounded-lg h-20 w-[16.25rem] flex justify-center items-center text-center">{t('industryLevel.group.item3.group.item1.name')}</div>
+    <div className="w-full bg-bgc flex flex-col items-center text-lg md:text-sm md:pb-5">
+      <h3 className="text-center px-12 mt-16 md:mt-8">{t('carbon3Solution.title')}</h3>
+      <div className="w-[80rem] md:w-full overflow-y-hidden overflow-x-auto">
+        <div className="flex justify-center w-full items-center md:justify-start mt-20 pb-20 md:mt-[2.25rem] md:pb-8 md:ml-5 md:text-sm">
+          <div className="">
+            <img className="w-[7.5rem] md:w-[5.25rem]" src="/images/factory.png" alt=""/>
+            <p className="mt-5 md:mt-3.5 w-[10.375rem]">{t('carbon3Solution.group.item1.text')}</p>
+          </div>
+          <img className="mr-14 ml-10 md:w-[3.125rem] md:ml-8 md:mr-10" src="/images/arrow_80.svg" alt=""/>
+          <div className="flex md:mt-0 md:flex-col">
+            <div className="flex flex-col w-[19rem] md:w-[14.5rem]">
+              <div className="flex flex-col">
+                <div className="flex flex-col">
+                  <div className="flex">
+                    <img className="md:w-[6.125rem]" src="/images/aicd_logo.svg" alt=""/>
+                    <span className="leading-5 ml-4 text-base text-green md:text-xs">AICD Supply Chain<br/>Traceability System</span>
+                  </div>
+                  <p className="mt-6 md:mt-3">{t('carbon3Solution.group.item2.group.item1.text')}</p>
+                </div>
+              </div>
+              <img className="h-10 mt-4 mb-5 ml-[-5.5rem]" src="/images/arrow_40.svg" alt=""/>
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col">
+                  <div className="flex">
+                    <img className="md:w-[6.125rem]" src="/images/aicd_logo.svg" alt=""/>
+                    <span className="leading-5 ml-4 text-base text-green md:text-xs">Automotive Industry<br/>Carbon Database</span>
+                  </div>
+                  <p className="mt-6 md:mt-3">{t('carbon3Solution.group.item2.group.item2.text')}</p>
+                </div>
+              </div>
+              <img className="h-10 mt-4 mb-5 ml-[-5.5rem] rotate-180" src="/images/arrow_40.svg" alt=""/>
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col w-full">
+                  <div className="flex ml-[-6.5rem] mt-[-1.5rem] mb-[-1.5rem] md:ml-[-4.5rem] md:mb-[-2rem]">
+                    <QrGroup className="scale-[0.6] md:w-[19rem] md:scale-[0.5]" qrText="Product Carbon Footprint Certified"/>
+                  </div>
+                  <p className="mt-6 md:mt-3">{t('carbon3Solution.group.item2.group.item3.text')}</p>
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col items-center">
-              <p className="text-2xl font-bold text-yellow h-10 mt-4">Trust Label</p>
-              <div className="bg-white text-black text-1.5xl font-bold rounded-lg h-20 w-[16.25rem] flex justify-center items-center text-center">{t('industryLevel.group.item3.group.item2.name')}</div>
+          </div>
+          <div className="flex flex-col justify-between h-[23rem] ml-14 mr-14 md:ml-8 md:mr-8">
+            <img className="md:w-[3.125rem] md:mr-10" src="/images/arrow_80.svg" alt=""/>
+            <img className="md:w-[3.125rem] md:mr-10" src="/images/arrow_80.svg" alt=""/>
+          </div>
+          <div className="flex md:mt-0 md:flex-col md:pr-5">
+            <div className="flex flex-col w-[22.8rem] md:w-[18rem] justify-between h-[35.8rem] md:h-[29rem]">
+              <div className="flex flex-col">
+                <div className="flex flex-col">
+                  <img className="w-[7.5rem] md:w-[5.25rem]" src="/images/carry.png" alt=""/>
+                  <p className="mt-6">{t('carbon3Solution.group.item3.group.item1.text')}</p>
+                </div>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col">
+                  <img className="w-[7.5rem] md:w-[5.25rem]" src="/images/people.png" alt=""/>
+                  <p className="mt-6">{t('carbon3Solution.group.item3.group.item2.text')}</p>
+                </div>
+              </div>
             </div>
-            <p className="w-[26rem] mt-5 md:w-[16.25rem]">{t('industryLevel.group.item3.group.text')}</p>
           </div>
         </div>
       </div>
+
     </div>
   )
 }
@@ -156,7 +259,7 @@ export default function Index() {
     <HeaderLayout>
       <Top />
       <BoostingAutomotive />
-      <IndustryLevel />
+      <Carbon3Solution />
       <MainProduct />
       <TrustLabel />
     </HeaderLayout>

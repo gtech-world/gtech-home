@@ -1,35 +1,52 @@
 {
   "banner": {
-    "title": "Industry-specific BI & Data Solutions",
-    "subtitle": "Case: Automotive Industry Carbon Performance Data Solution"
+    "text": "Case: Automotive Industry Carbon Performance Data Solution"
   },
   "boostingAutomotive": {
-    "title": "Boosting Automotive's Net Zero Vision",
-    "text1": "GTech provides industry-specific business intelligence and data management solutions based on the industry's particular demands or goals.",
-    "text2": "Data is among many key factors in a business that contribute to more responsive decisions and more efficient operations. Especially, data drives us to better achieve our established goal in certain industry because we enjoy more chance to get well informed with facts, statistics, feedbacks and analytics - all of which are powered by the 'right' data managed, processed, and delivered to the decision maker - so that we may finally discover the right path to the goal.",
-    "text3": "In this case, GTech is helping the automotive industry, which comprises a super wide range of companies and organizations globally, to establish a long-term carbon performance data traceability and visibility framework for the industry's Net Zero commitment."
-  },
-  "industryLevel": {
-    "title": "Industry-level Data Solution Explained",
-    "text": "GTech's consolidated BI & Data solution covers data collecting, data recording, data storage, database management & maintenance, traceability&visibility interfaces and services for end users.",
-    "group": {
+    "title": "The Automotive Carbon Initiative, Empowered by Data Technologies",
+    "text": "GTech is working closely with AIAG to help the automotive supply chain establish a shared trust data solution, Carbon3, for super-long-term carbon footprint data traceability and visibility. By providing technological support and solutions, we are helping the industry tackle the increasingly urgent carbon challenge and ultimately achieve the shared vision of the industry.",
+    "list": {
       "item1": {
-        "name": "Collect Data",
-        "text": "Running states from supply chain"
+        "text": "The <0>industry-level carbon database</0> as a shared infrastructure"
       },
       "item2": {
-        "name": "Automotive Industry Carbon Database",
-        "text": "Powered by Web technologies, ensures data security, privacy and immutability"
+        "text": "30+ years <0>traceability</0> & customizable <0>visibility</0> for carbon data"
+      },
+      "item3": {
+        "text": "<0>Trust Label</0> for every vehicle’s carbon footprint, powered by blockchain"
+      },
+      "item4": {
+        "text": "Discovering the <0>best practice</0> in addressing carbon data problems"
+      }
+    }
+  },
+  "carbon3Solution": {
+    "title": "A Closer Look at Carbon3 Data Solution",
+    "group": {
+      "item1": {
+        "text": "Raw data collected from IoT/ERP on site and processed to meet privacy requirements"
+      },
+      "item2": {
+        "group": {
+          "item1": {
+            "text": "The Traceability management dashboard provided for Pro Users"
+          },
+          "item2": {
+            "text": "AICD & SaaS Platform as an industry-shared infrastructure"
+          },
+          "item3": {
+            "text": "Trust Label system based on the data from AICD"
+          }
+        }
       },
       "item3": {
         "group": {
           "item1": {
-            "name": "Supply Chain Traceability"
+            "text": "OEMs and downstream suppliers can now track and manage upstream carbon footprint data within customizable authorization."
           },
           "item2": {
-            "name": "Consumer Visibility"
-          },
-          "text": "Supply Chain Traceability is based on customized, graded access schemes; Consumer Visibility is based on public accessible data from AICD."
+            "text": "Customers and the public can now open query product carbon footprint reports in AICD with a quick scan from a mobile phone."
+          }
         }
       }
     }
