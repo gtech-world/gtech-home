@@ -162,7 +162,7 @@ function Carbon3Solution(){
                       i18nKey="boostingAutomotive.list.item1.text"
                       components={[<strong className="text-green" key='info'></strong>]}
                     >
-                      t('carbon3Solution.group.item3.group.item1.text')
+                      {t('carbon3Solution.group.item3.group.item1.text')}
                     </Trans>
                   </p>
                 </div>
