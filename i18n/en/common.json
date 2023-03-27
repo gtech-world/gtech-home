@@ -14,14 +14,14 @@
         "desc": "GTech provides cross-industry trust data solutions that enables trust, visibility, and traceability at your fingertips. Discover how GTech leverages cutting-edge technologies to benefit your industry.",
         "children": {
           "child1": {
-            "name": "Web3 Data Storage",
+            "name": "Carbon3 for Automotive Carbon Data",
             "desc": "With the climate change challenge looming, learn how GTech helps the automotive industry establish long-term carbon performance traceability and visibility capabilities."
           },
           "child2": {
-            "name": "Data Governance & BI"
+            "name": "Enterprise-level Data Storage Solution"
           },
           "child3": {
-            "name": "Industry-level Data Solution"
+            "name": "Data Governance & BI Solution"
           },
           "more": "More General Solutions"
         }
@@ -43,6 +43,7 @@
       },
       "item4": {
         "name": "CONTACT",
+        "subName": "CONTACT US",
         "desc": "Feel free to contact GTech to learn more about our trust data solutions, business consulting and collaboration opportunities.",
         "children": {
           "companySubtitle": "Company Info",

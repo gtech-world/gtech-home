@@ -43,6 +43,7 @@
       },
       "item4": {
         "name": "联系我们",
+        "subName": "联系我们",
         "desc": "欢迎随时联系Gtech。您可以了解更多关于Gtech的信息、探索可信数据解决方案、或前来寻求业务咨询与洽谈。",
         "children": {
           "companySubtitle": "公司信息",

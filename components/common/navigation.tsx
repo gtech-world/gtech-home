@@ -36,9 +36,13 @@ function PCNav(){
           </div>
           <div className="w-[23.125rem] ml-[3.75rem]">
             <h4 className="font-semibold text-xl">
-              <Link href="/solutions/automotive">{t('navigation.list.item2.children.child1.name')}</Link>
+              {t('navigation.list.item2.children.child1.name')}
             </h4>
-            <p className="text-gray-1 mt-5">{t('navigation.list.item2.children.child1.desc')}</p>
+            <p className="text-gray-1 mt-5">
+              <Link href="/solutions/automotive">
+                {t('navigation.list.item2.children.child1.desc')}
+              </Link>
+            </p>
           </div>
           <div className="ml-[3.75rem]">
             <h4 className="font-semibold text-xl">{t('navigation.list.item2.children.more')}</h4>
@@ -77,7 +81,7 @@ function PCNav(){
       childrenNode: (
         <div className="w-full flex">
           <div className="w-[28.125rem]">
-            <h4 className="font-semibold text-xl">{t('navigation.list.item4.name')}</h4>
+            <h4 className="font-semibold text-xl">{t('navigation.list.item4.subName')}</h4>
             <p className="mt-5">{t('navigation.list.item4.desc')}</p>
           </div>
           <div className="ml-[3.75rem]">
@@ -118,18 +122,18 @@ function PCNav(){
             >
               {
                 v.isLink ?
-                <Link key={`nav-${i}`} className={`${i === 0?'':' ml-14'}`} href={v.href}>
-                  <span className={`inline-block cursor-pointer mt-[0.785rem] pb-2.5${isCurrentPage(v.href)?pathname === '/'?' border-b-2 border-green-3':' border-b-2 border-green'+' font-bold':''}`}>{v.name}</span>
-                </Link>:
+                  <Link key={`nav-${i}`} className={`${i === 0?'':' ml-14'}`} href={v.href}>
+                    <span className={`inline-block cursor-pointer mt-[0.785rem] pb-2.5${isCurrentPage(v.href)?pathname === '/'?' border-b-2 border-green-3':' border-b-2 border-green'+' font-bold':''}`}>{v.name}</span>
+                  </Link>:
                   <span className={`inline-block cursor-pointer mt-[0.785rem] pb-2.5${isCurrentPage(v.href)?pathname === '/'?' border-b-2 border-green-3':' border-b-2 border-green'+' font-bold':''}${i === 0?'':' ml-14'}`}>{v.name}</span>
               }
               {
                 !!v.childrenNode && open === v.href &&
-                  <div className="absolute left-0 mt-[0.7rem] z-12 w-screen py-10 px-32 bg-white text-black text-lg border-t-2 border-black">
-                    {
-                      v.childrenNode
-                    }
-                  </div>
+                <div className="absolute left-0 mt-[0.7rem] z-12 w-screen py-10 px-32 bg-white text-black text-lg border-t-2 border-black">
+                  {
+                    v.childrenNode
+                  }
+                </div>
               }
             </div>
           )
