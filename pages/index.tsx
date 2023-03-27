@@ -85,7 +85,7 @@ function Assistance(){
             {
               btnList.map((v,i)=>{
                 return(
-                  <li key={`btnlist${i}`} className="mt-5"><Button onClick={()=>v.onClick()} className={classNames(v.className,'px-[0rem] md:w-[20rem]')} text={v.text} /></li>
+                  <li key={`btnlist${i}`} className="mt-5"><Button onClick={()=>v.onClick()} className={classNames(v.className,'pl-0 pr-0 md:w-[20rem]')} text={v.text} /></li>
                 )
               })
             }
