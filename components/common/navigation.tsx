@@ -117,15 +117,15 @@ function PCNav(){
       {
         navList.map((v:any,i:number)=>{
           return(
-            <div key={`navlist${i}`} onMouseEnter={(e)=>{setOpen(v.href)}}
+            <div key={`navlist${i}`}
                  className=""
             >
               {
                 v.isLink ?
-                  <Link key={`nav-${i}`} className={`${i === 0?'':' ml-14'}`} href={v.href}>
+                  <Link onMouseEnter={(e)=>{setOpen(v.href)}} key={`nav-${i}`} className={`${i === 0?'':' ml-14'}`} href={v.href}>
                     <span className={`inline-block cursor-pointer mt-[0.785rem] pb-2.5${isCurrentPage(v.href)?pathname === '/'?' border-b-2 border-green-3':' border-b-2 border-green'+' font-bold':''}`}>{v.name}</span>
                   </Link>:
-                  <span className={`inline-block cursor-pointer mt-[0.785rem] pb-2.5${isCurrentPage(v.href)?pathname === '/'?' border-b-2 border-green-3':' border-b-2 border-green'+' font-bold':''}${i === 0?'':' ml-14'}`}>{v.name}</span>
+                  <span onMouseEnter={(e)=>{setOpen(v.href)}} className={`inline-block cursor-pointer mt-[0.785rem] pb-2.5${isCurrentPage(v.href)?pathname === '/'?' border-b-2 border-green-3':' border-b-2 border-green'+' font-bold':''}${i === 0?'':' ml-14'}`}>{v.name}</span>
               }
               {
                 !!v.childrenNode && open === v.href &&
