@@ -97,7 +97,7 @@ export function Footer() {
     }
   ]
   return (
-    <div className="bg-bgc h-[21.875rem] md:h-auto md:px-8 md:py-12">
+    <div className="bg-bgc pb-5 md:px-8 md:py-12">
       <div className="flex flex-col w-container mx-auto md:w-full">
         <div className="flex flex-col mt-12">
           <div className="flex justify-between md:flex-col">
@@ -127,7 +127,7 @@ export function Footer() {
         </div>
         <div className="mt-16 pt-4 border-t border-black text-sm flex justify-between md:flex-col md:mt-8">
           <span>{t('footer.company')}</span>
-          <span onClick={()=>window.open(i18n.language === 'zh'?'/zhstatement':'/enstatement','_blank')} className="cursor-pointer md:mt-5">{t('footer.viewBtn')}</span>
+          <span onClick={()=>window.open(i18n.language === 'zh'?'/zhstatement':'/enstatement','_blank')} className="cursor-pointer md:mt-5 link-hover">{t('footer.viewBtn')}</span>
         </div>
       </div>
     </div>

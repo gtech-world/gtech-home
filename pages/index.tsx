@@ -73,7 +73,7 @@ function Assistance(){
         <div className="min-w-[32.825rem] md:min-w-full rounded-lg overflow-hidden h-80 md:h-[13.375rem] bg-[url(/images/solution_intro.png)] bg-no-repeat bg-center bg-cover">
         </div>
         <div className="ml-[5.375rem] md:ml-0">
-          <p className="md:mt-5">
+          <p className="md:mt-5 md:text-center">
             <Trans
               i18nKey="boostingAutomotive.list.item1.text"
               components={[<a href="https://aiag.org.cn/" rel="noreferrer" target="_blank" className="font-bold underline" key='info'></a>,<strong className="text-green" key='info'></strong>]}
@@ -85,7 +85,7 @@ function Assistance(){
             {
               btnList.map((v,i)=>{
                 return(
-                  <li key={`btnlist${i}`} className="mt-5"><Button onClick={()=>v.onClick()} className={classNames(v.className,'px-1 md:w-[20rem]')} text={v.text} /></li>
+                  <li key={`btnlist${i}`} className="mt-5"><Button onClick={()=>v.onClick()} className={classNames(v.className,'px-[0] md:w-[20rem]')} text={v.text} /></li>
                 )
               })
             }
