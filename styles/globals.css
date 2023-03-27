@@ -9,6 +9,19 @@
 a:hover{
   color: #227A30;
 }
+.nav-active{
+  position: relative;
+  /*display: block;*/
+}
+.nav-active:after{
+  content: "";
+  position: absolute;
+  display: block;
+  height: 2px;
+  top: 2.25rem;
+  background: #227A30;
+  width: 100%;
+}
 h3{
   /*text-5xl*/
   font-size: 3rem;

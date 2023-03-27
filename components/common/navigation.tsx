@@ -113,7 +113,9 @@ function PCNav(){
     return pathname.indexOf(href)>-1
   }
   return(
-    <div className="text-xl flex md:hidden h-[4.6rem] items-center" ref={ref} onMouseLeave={(e)=>{setOpen('')}}>
+    <div className="text-xl flex md:hidden h-[4.6rem] items-center" ref={ref}
+         onMouseLeave={(e)=>{setOpen('')}}
+    >
       {
         navList.map((v:any,i:number)=>{
           return(
@@ -125,7 +127,7 @@ function PCNav(){
                   <Link onMouseEnter={(e)=>{setOpen(v.href)}} key={`nav-${i}`} className={`${i === 0?'':' ml-14'}`} href={v.href}>
                     <span className={`inline-block cursor-pointer mt-[0.785rem] pb-2.5${isCurrentPage(v.href)?pathname === '/'?' border-b-2 border-green-3':' border-b-2 border-green'+' font-bold':''}`}>{v.name}</span>
                   </Link>:
-                  <span onMouseEnter={(e)=>{setOpen(v.href)}} className={`inline-block cursor-pointer mt-[0.785rem] pb-2.5${isCurrentPage(v.href)?pathname === '/'?' border-b-2 border-green-3':' border-b-2 border-green'+' font-bold':''}${i === 0?'':' ml-14'}`}>{v.name}</span>
+                  <span onMouseEnter={(e)=>{setOpen(v.href)}} className={`inline-block cursor-pointer mt-[0.785rem] pb-2.5${isCurrentPage(v.href)?pathname === '/'?' border-b-2 border-green-3':' nav-active'+' font-bold':''}${i === 0?'':' ml-14'}`}>{v.name}</span>
               }
               {
                 !!v.childrenNode && open === v.href &&
