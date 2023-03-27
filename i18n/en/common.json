@@ -43,11 +43,11 @@
       },
       "item4": {
         "name": "CONTACT",
-        "subName": "CONTACT US",
+        "subName": "Contact Us",
         "desc": "Feel free to contact GTech to learn more about our trust data solutions, business consulting and collaboration opportunities.",
         "children": {
           "companySubtitle": "Company Info",
-          "contactSubtitle": "Contact",
+          "contactSubtitle": "CONTACT",
           "qrSubtitle": "WeChat Official Account"
         }
       }
