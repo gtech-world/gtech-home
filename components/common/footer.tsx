@@ -4,9 +4,9 @@ import {useTranslation} from "react-i18next";
 import classNames from "classnames";
 
 function SubNav(props:any){
-  const {data} = props
+  const {className,data} = props
   return(
-    <ul className="flex flex-col text-base mt-4 leading-[2.2] font-normal md:text-[0.9375rem]">
+    <ul className={classNames('flex flex-col text-base mt-4 leading-[2.2] font-normal md:text-[0.9375rem]',className)}>
       {
         data.length && data.map((v:any,i:number)=>{
           return(
@@ -104,16 +104,16 @@ export function Footer() {
             <div>
               <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg"/></Link>
             </div>
-            <ul className="flex justify-between mt-4 md:flex-col md:ml-0">
+            <ul className="flex justify-between mt-4 md:flex-col ml-16 md:ml-0">
               {
                 navList.map((v,i)=>{
                   return(
-                    <li key={`${i}`} className={classNames('md:mt-5',i===(navList.length-1)?'mr-0':'mr-[3.75rem] md:mr-2')}>
+                    <li key={`${i}`} className={classNames('md:mt-5',i===(navList.length-1)?'mr-0':'mr-[3.75rem] md:mr-2',i === (navList.length-1) && 'w-[10rem]')}>
                       {
                         v.href && !v.children?
-                          <Link className="text-2xl font-bold md:text-xl" href={v.href}>{v.name}</Link>
+                          <Link className="text-xl font-bold md:text-xl" href={v.href}>{v.name}</Link>
                           :
-                          <span className="text-2xl font-bold md:text-xl">{v.name}</span>
+                          <span className="text-xl font-bold md:text-xl">{v.name}</span>
                       }
                       {
                         v.children && <SubNav data={v.children}/>

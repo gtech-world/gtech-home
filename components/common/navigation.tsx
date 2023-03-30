@@ -29,7 +29,7 @@ function PCNav(){
       isLink: false,
       name: t('navigation.list.item2.name'),
       childrenNode: (
-        <div className="w-full flex">
+        <div className="w-full flex justify-center">
           <div className="w-[28.125rem]">
             <h4 className="font-semibold text-xl">{t('navigation.list.item2.name')}</h4>
             <p className="mt-5">{t('navigation.list.item2.desc')}</p>
@@ -61,7 +61,7 @@ function PCNav(){
       isLink: false,
       name: t('navigation.list.item3.name'),
       childrenNode: (
-        <div className="w-full flex items-center">
+        <div className="w-full flex items-center justify-center">
           <div className="w-[28.125rem]">
             <h4 className="font-semibold text-xl">{t('navigation.list.item3.name')}</h4>
             <p className="mt-5">{t('navigation.list.item3.desc')}</p>
@@ -79,7 +79,7 @@ function PCNav(){
       isLink: false,
       name: t('navigation.list.item4.name'),
       childrenNode: (
-        <div className="w-full flex">
+        <div className="w-full flex justify-center">
           <div className="w-[28.125rem]">
             <h4 className="font-semibold text-xl">{t('navigation.list.item4.subName')}</h4>
             <p className="mt-5">{t('navigation.list.item4.desc')}</p>
