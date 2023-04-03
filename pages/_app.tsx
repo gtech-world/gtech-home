@@ -15,7 +15,12 @@ const os = Open_Sans({
 export default function App({ Component, pageProps }: AppProps) {
   const [visible,setVisible] = useState(false)
   useEffect(()=>{
-    setLngConfig(window.navigator.language.indexOf('zh')>-1?'zh':'en')
+    const lng = localStorage.getItem('lng')
+    if(lng){
+      setLngConfig(lng)
+    }else{
+      setLngConfig(window.navigator.language.indexOf('zh')>-1?'zh':'en')
+    }
     setVisible(true)
   },[])
   if(!visible) return null

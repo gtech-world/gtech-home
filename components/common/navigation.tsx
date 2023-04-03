@@ -16,6 +16,7 @@ function PCNav(){
   const changeLanguage = () => {
     const language = (i18n.language === 'en'?'zh':'en')
     i18n.changeLanguage(language);
+    localStorage.setItem("lng",language)
     statementPage.indexOf(pathname)>-1 && push(language === 'en'?'/enstatement':'zhstatement')
   };
   const navList = [
