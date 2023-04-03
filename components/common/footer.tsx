@@ -108,7 +108,7 @@ export function Footer() {
               {
                 navList.map((v,i)=>{
                   return(
-                    <li key={`${i}`} className={classNames('md:mt-5',i===(navList.length-1)?'mr-0':'mr-[3.75rem] md:mr-2',i === (navList.length-1) && 'w-[10rem]')}>
+                    <li key={`${i}`} className={classNames('md:mt-5',i===(navList.length-1)?'mr-0':'mr-[3.75rem] md:mr-2')}>
                       {
                         v.href && !v.children?
                           <Link className="text-xl link-hover font-bold md:text-xl" href={v.href}>{v.name}</Link>

@@ -34,7 +34,7 @@ function PCNav(){
             <h4 className="font-semibold text-xl">{t('navigation.list.item2.name')}</h4>
             <p className="mt-5">{t('navigation.list.item2.desc')}</p>
           </div>
-          <div className="w-[23.125rem] ml-[3.75rem]">
+          <div className="w-[23.125rem] ml-[2.75rem]">
             <h4 className="font-semibold text-xl">
               {t('navigation.list.item2.children.child1.name')}
             </h4>
@@ -44,7 +44,7 @@ function PCNav(){
               </Link>
             </p>
           </div>
-          <div className="ml-[3.75rem]">
+          <div className="ml-[2.75rem]">
             <h4 className="font-semibold text-xl">{t('navigation.list.item2.children.more')}</h4>
             <p className="text-gray-1 mt-5">
               <Link className="link-hover" href="/solutions/web3">{t('navigation.list.item2.children.child2.name')}</Link>
@@ -131,7 +131,7 @@ function PCNav(){
               }
               {
                 !!v.childrenNode && open === v.href &&
-                <div className="absolute left-0 mt-[0.7rem] z-12 w-screen py-10 px-32 bg-white text-black text-lg border-t-2 border-black">
+                <div className="absolute left-0 mt-[0.7rem] z-12 w-screen py-10 bg-white text-black text-lg border-t-2 border-black">
                   {
                     v.childrenNode
                   }
