@@ -39,15 +39,15 @@ export function Footer() {
       name: t('navigation.list.item2.name'),
       children:[
         {
-          href: '/solutions/web3',
+          href: '/solutions/automotive',
           name: t('navigation.list.item2.children.child1.name'),
         },
         {
-          href: '/solutions/governance',
+          href: '/solutions/web3',
           name: t('navigation.list.item2.children.child2.name'),
         },
         {
-          href: '/solutions/automotive',
+          href: '/solutions/governance',
           name: t('navigation.list.item2.children.child3.name'),
         },
       ]
