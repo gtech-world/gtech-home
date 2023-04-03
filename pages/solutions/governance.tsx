@@ -70,7 +70,7 @@ function GreenData(){
   ]
   return(
     <div className="w-full flex flex-col items-center pt-16 pb-20 md:py-8">
-      <h3 className="px-12 text-center md:flex md:flex-col"><span className="text-green">{t('greenData.title.green')}</span> <span>{t('greenData.title.text')}</span></h3>
+      <h3 className="px-12 text-center"><span className="text-green">{t('greenData.title.green')}</span> <span>{t('greenData.title.text')}</span></h3>
       <div className="flex mt-20 md:flex-col-reverse md:mt-8">
         <div className="w-[38.625rem] mr-[5.75rem] md:w-full md:text-center md:px-3">
           <h4 className="text-[1.75rem] leading-[32px] font-bold mb-10 md:text-base">{t('greenData.item1.subtitle')}</h4>

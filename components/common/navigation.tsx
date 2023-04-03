@@ -97,7 +97,7 @@ function PCNav(){
             <p className="text-gray-1">(+86)021-66271287</p>
           </div>
           <div className="ml-[3.75rem] flex flex-col">
-            <h4 className="font-semibold text-xl max-w-[10rem]">{t('navigation.list.item4.children.qrSubtitle')}</h4>
+            <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.qrSubtitle')}</h4>
             <div className="mt-5">
               <img src="/images/wechat_qrcode.png" className="w-[5.5rem] mt-1" alt=""/>
             </div>
