@@ -13,7 +13,7 @@ export function HeaderLayout(p:{headerProps?:object} & HTMLAttributes<HTMLDivEle
     setTipsVisible(!tips)
   },[])
   return (
-    <div className="h-full w-full bg-slate-50 relative">
+    <div className="h-full w-full bg-white relative">
       <Header props={headerProps} />
       <div className={classNames("w-full mx-auto text-lg md:text-sm", className)} {...props}>
         { children }

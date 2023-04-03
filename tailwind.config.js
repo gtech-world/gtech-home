@@ -32,6 +32,9 @@ module.exports = {
           3: "#00BF1F",
           hover: "#2E8C3D",
         },
+        gray:{
+          1: "#999999",
+        },
         yellow:{
           DEFAULT: '#FFF846'
         },

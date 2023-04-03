@@ -1,6 +1,6 @@
 {
   "banner": {
-    "text1": "Trust, Visibility, Traceability.",
+    "text1": "Trust, Transparency, Traceability.",
     "text2": "The Data-driven Future is Now.",
     "tips": "Learn more about GTech and how we solve complex challenges cross-industry with cutting-edge data technologies"
   },
@@ -23,6 +23,16 @@
         "title": "Industry-specific Traceability",
         "text": "GTech provides its customers from various industry sections with specified solutions to meet their special needs, i.e. a traceability framework for multi-tiered supply chain."
       }
+    }
+  },
+  "assistance": {
+    "title": "The Automotive Carbon Initiative, Empowered by Data Technologies",
+    "text": "GTech is working closely with <0>AIAG</0> to help the automotive supply chain establish a shared trust data solution, <1>Carbon3</1>, for super-long-term carbon footprint data traceability and visibility. By providing technological support and solutions, we are helping the industry tackle the increasingly urgent carbon challenge and ultimately achieve the shared vision of the industry.",
+    "btnList": {
+      "about": "Learn More about Carbon3",
+      "aiag": "The AIAG Carbon Initiative",
+      "database": "Industry Shared Carbon Database",
+      "products": "Try Demo Products"
     }
   },
   "crossSolutions": {
