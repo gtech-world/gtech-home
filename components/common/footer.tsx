@@ -13,7 +13,7 @@ function SubNav(props:any){
             v.render?v.render():
               (
                 v.href?
-                  <Link href={v.href} key={`${i}`}>{v.name}</Link>
+                  <Link href={v.href} className="link-hover" key={`${i}`}>{v.name}</Link>
                   :
                   <span>{v.name}</span>
               )
@@ -52,24 +52,24 @@ export function Footer() {
         },
       ]
     },
-    {
-      href: '/news',
-      name: t('navigation.list.item3.name'),
-      children:[
-        {
-          href: '/news/tech',
-          name: t('navigation.list.item3.children.child1.name'),
-        },
-        {
-          href: '/news/trade',
-          name: t('navigation.list.item3.children.child2.name'),
-        },
-        {
-          href: '/news/gtech',
-          name: t('navigation.list.item3.children.child3.name'),
-        },
-      ]
-    },
+    // {
+    //   href: '/news',
+    //   name: t('navigation.list.item3.name'),
+    //   children:[
+    //     {
+    //       href: '/news/tech',
+    //       name: t('navigation.list.item3.children.child1.name'),
+    //     },
+    //     {
+    //       href: '/news/trade',
+    //       name: t('navigation.list.item3.children.child2.name'),
+    //     },
+    //     {
+    //       href: '/news/gtech',
+    //       name: t('navigation.list.item3.children.child3.name'),
+    //     },
+    //   ]
+    // },
     {
       href: '/contact',
       name: t('navigation.list.item4.name'),
@@ -111,7 +111,7 @@ export function Footer() {
                     <li key={`${i}`} className={classNames('md:mt-5',i===(navList.length-1)?'mr-0':'mr-[3.75rem] md:mr-2',i === (navList.length-1) && 'w-[10rem]')}>
                       {
                         v.href && !v.children?
-                          <Link className="text-xl font-bold md:text-xl" href={v.href}>{v.name}</Link>
+                          <Link className="text-xl link-hover font-bold md:text-xl" href={v.href}>{v.name}</Link>
                           :
                           <span className="text-xl font-bold md:text-xl">{v.name}</span>
                       }

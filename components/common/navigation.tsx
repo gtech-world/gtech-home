@@ -56,24 +56,24 @@ function PCNav(){
         </div>
       )
     },
-    {
-      href: '/news',
-      isLink: false,
-      name: t('navigation.list.item3.name'),
-      childrenNode: (
-        <div className="w-full flex items-center justify-center">
-          <div className="w-[28.125rem]">
-            <h4 className="font-semibold text-xl">{t('navigation.list.item3.name')}</h4>
-            <p className="mt-5">{t('navigation.list.item3.desc')}</p>
-          </div>
-          <div className="ml-32 text-gray-1">
-            <Link className="ml-[3.75rem]" href="">{t('navigation.list.item3.children.child1.name')}</Link>
-            <Link className="ml-[3.75rem]" href="">{t('navigation.list.item3.children.child2.name')}</Link>
-            <Link className="ml-[3.75rem]" href="">{t('navigation.list.item3.children.child3.name')}</Link>
-          </div>
-        </div>
-      )
-    },
+    // {
+    //   href: '/news',
+    //   isLink: false,
+    //   name: t('navigation.list.item3.name'),
+    //   childrenNode: (
+    //     <div className="w-full flex items-center justify-center">
+    //       <div className="w-[28.125rem]">
+    //         <h4 className="font-semibold text-xl">{t('navigation.list.item3.name')}</h4>
+    //         <p className="mt-5">{t('navigation.list.item3.desc')}</p>
+    //       </div>
+    //       <div className="ml-32 text-gray-1">
+    //         <Link className="ml-[3.75rem]" href="">{t('navigation.list.item3.children.child1.name')}</Link>
+    //         <Link className="ml-[3.75rem]" href="">{t('navigation.list.item3.children.child2.name')}</Link>
+    //         <Link className="ml-[3.75rem]" href="">{t('navigation.list.item3.children.child3.name')}</Link>
+    //       </div>
+    //     </div>
+    //   )
+    // },
     {
       href: '/contact',
       isLink: false,
@@ -199,24 +199,24 @@ function MobileNav(){
         },
       ]
     },
-    {
-      href: '/news',
-      name: t('navigation.list.item3.name'),
-      children:[
-        {
-          href: '/news/tech',
-          name: t('navigation.list.item3.children.child1.name'),
-        },
-        {
-          href: '/news/trade',
-          name: t('navigation.list.item3.children.child2.name'),
-        },
-        {
-          href: '/news/gtech',
-          name: t('navigation.list.item3.children.child3.name'),
-        },
-      ]
-    },
+    // {
+    //   href: '/news',
+    //   name: t('navigation.list.item3.name'),
+    //   children:[
+    //     {
+    //       href: '/news/tech',
+    //       name: t('navigation.list.item3.children.child1.name'),
+    //     },
+    //     {
+    //       href: '/news/trade',
+    //       name: t('navigation.list.item3.children.child2.name'),
+    //     },
+    //     {
+    //       href: '/news/gtech',
+    //       name: t('navigation.list.item3.children.child3.name'),
+    //     },
+    //   ]
+    // },
     {
       href: '/contact',
       name: t('navigation.list.item4.name'),
