@@ -31,7 +31,7 @@ function CateList(p:{data:any[],code:string}){
                 <div className="">
 
                   <h4 className="text-2xl font-bold">
-                    <Link target="_blank" href={`/news/${1}?cate=${code}`}>
+                    <Link target="_blank" href={`/news?id=1&cate=${code}`} as={`/news/${1}?cate=${code}`}>
                       零知识证明101
                     </Link>
                   </h4>
@@ -39,7 +39,7 @@ function CateList(p:{data:any[],code:string}){
                   <p>零知识证明（Zero-knowledge Proof，简称ZKP）是一种密码学技术，它允许证明某个命题是正确的，而无需透露任何关于这个命题的实际信息。简单来说，零知识证明可以让你证明你拥有某些秘密信息，而无需透露这些信息的任何细节。</p>
                 </div>
 
-                <Link className="pb-1 text-green" target="_blank" href={`/news/${1}?cate=${code}`}>
+                <Link className="pb-1 text-green" target="_blank" href={`/news?id=1&cate=${code}`} as={`/news/${1}?cate=${code}`}>
                   详情 &gt;&gt;
                 </Link>
               </div>

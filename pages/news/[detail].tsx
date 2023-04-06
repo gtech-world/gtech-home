@@ -20,7 +20,7 @@ function Breadcrumb(p:{content:object[]} & HTMLAttributes<HTMLDivElement>){
   )
 }
 
-export default function Id() {
+export default function Detail() {
   const {query} = useRouter()
   let curName = ''
   for(let j=0; j<NEWS_CATE.length; j++){
