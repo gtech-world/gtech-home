@@ -9,6 +9,9 @@
 .link-hover:hover{
   color: #227A30;
 }
+.bg-linear{
+  background: linear-gradient(180deg, #000000 -55.56%, rgba(0, 0, 0, 0) 100%);;
+}
 .nav-active{
   position: relative;
   /*display: block;*/

@@ -8,13 +8,17 @@ import React from "react";
 function Top(){
   const { t } = useTranslation('home');
   return(
-    <div className="w-full bg-[url(/images/home_banner.jpg)] bg-no-repeat bg-center bg-cover flex flex-col items-center">
-      <div className="flex flex-col items-center font-bold text-[4rem] leading-normal text-center md:text-[1.75rem]">
-        <span className="text-green-3 mt-64 md:mt-36">{t('banner.text1')}</span>
-        <span className="text-white">{t('banner.text2')}</span>
+    <div className="w-full relative bg-[url(/images/home_banner.jpg)] bg-no-repeat bg-center bg-cover">
+      <div className="w-full absolute h-full bg-linear">
       </div>
-      <div className="max-w-[34rem] text-white h-14 text-lg text-center mt-[14.375rem] mb-5 md:text-sm md:mt-[8.375rem] md:mb-9 md:px-6">{t('banner.tips')}</div>
-      <img alt="" className="pb-3 md:hidden" src="images/home_head_arrow.svg"/>
+      <div className="relative flex flex-col items-center">
+        <div className="flex flex-col items-center font-bold text-[4rem] leading-normal text-center md:text-[1.75rem]">
+          <span className="text-green-3 mt-64 md:mt-36">{t('banner.text1')}</span>
+          <span className="text-white">{t('banner.text2')}</span>
+        </div>
+        <div className="max-w-[34rem] text-white h-14 text-lg text-center mt-[14.375rem] mb-5 md:text-sm md:mt-[8.375rem] md:mb-9 md:px-6">{t('banner.tips')}</div>
+        <img alt="" className="pb-3 md:hidden" src="images/home_head_arrow.svg"/>
+      </div>
     </div>
   )
 }
