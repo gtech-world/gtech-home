@@ -23,7 +23,7 @@ function CateList(p:{data:any[],code:string}){
       {
         data.length && data.map((v,i)=>{
           return(
-            <div className="flex mb-12">
+            <div key={`data${i}`} className="flex mb-12">
               <div className="w-[55rem] h-[16.125rem] rounded-lg overflow-hidden">
                 <img className="w-[25rem] h-[16.125rem]" src={"/images/home_banner.jpg"} alt=""/>
               </div>
@@ -93,7 +93,7 @@ export default function Index() {
           {
             tabs.map((v,i)=>{
               return(
-                <div onClick={()=>setSelected(i)} className={classNames('cursor-pointer px-8',i===selected && 'news-active')}>
+                <div key={`tabs${i}`} onClick={()=>setSelected(i)} className={classNames('cursor-pointer px-8',i===selected && 'news-active')}>
                   {
                     v.name
                   }
