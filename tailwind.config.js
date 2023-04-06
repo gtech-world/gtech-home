@@ -24,6 +24,7 @@ module.exports = {
       colors:{
         bgc:{
           DEFAULT: '#EFEFEF',
+          1: "#f8f8f8"
         },
         green:{
           DEFAULT: '#227A30',
@@ -34,6 +35,8 @@ module.exports = {
         },
         gray:{
           1: "#999999",
+          2: "#666",
+          10: "#CCCCCC",
         },
         yellow:{
           DEFAULT: '#FFF846'

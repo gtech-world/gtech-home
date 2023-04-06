@@ -52,24 +52,24 @@ export function Footer() {
         },
       ]
     },
-    // {
-    //   href: '/news',
-    //   name: t('navigation.list.item3.name'),
-    //   children:[
-    //     {
-    //       href: '/news/tech',
-    //       name: t('navigation.list.item3.children.child1.name'),
-    //     },
-    //     {
-    //       href: '/news/trade',
-    //       name: t('navigation.list.item3.children.child2.name'),
-    //     },
-    //     {
-    //       href: '/news/gtech',
-    //       name: t('navigation.list.item3.children.child3.name'),
-    //     },
-    //   ]
-    // },
+    {
+      href: '/news',
+      name: t('navigation.list.item3.name'),
+      children:[
+        {
+          href: '/news?cate=tech',
+          name: t('navigation.list.item3.children.child1.name'),
+        },
+        {
+          href: '/news?cate=industry',
+          name: t('navigation.list.item3.children.child2.name'),
+        },
+        {
+          href: '/news?cate=gtech',
+          name: t('navigation.list.item3.children.child3.name'),
+        },
+      ]
+    },
     {
       href: '/contact',
       name: t('navigation.list.item4.name'),

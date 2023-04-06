@@ -30,77 +30,83 @@ function PCNav(){
       isLink: false,
       name: t('navigation.list.item2.name'),
       childrenNode: (
-        <div className="w-full flex justify-center">
-          <div className="w-[28.125rem]">
-            <h4 className="font-semibold text-xl">{t('navigation.list.item2.name')}</h4>
-            <p className="mt-5">{t('navigation.list.item2.desc')}</p>
-          </div>
-          <div className="w-[23.125rem] ml-[2.75rem]">
-            <h4 className="font-semibold text-xl">
-              {t('navigation.list.item2.children.child1.name')}
-            </h4>
-            <p className="text-gray-1 mt-5">
-              <Link className="link-hover" href="/solutions/automotive">
-                {t('navigation.list.item2.children.child1.desc')}
-              </Link>
-            </p>
-          </div>
-          <div className="ml-[2.75rem]">
-            <h4 className="font-semibold text-xl">{t('navigation.list.item2.children.more')}</h4>
-            <p className="text-gray-1 mt-5">
-              <Link className="link-hover" href="/solutions/web3">{t('navigation.list.item2.children.child2.name')}</Link>
-            </p>
-            <p className="text-gray-1 mt-2.5">
-              <Link className="link-hover" href="/solutions/governance">{t('navigation.list.item2.children.child3.name')}</Link>
-            </p>
+        <div className="w-full">
+          <div className="w-container mx-auto flex justify-between">
+            <div className="w-[28.125rem]">
+              <h4 className="font-semibold text-xl">{t('navigation.list.item2.name')}</h4>
+              <p className="mt-5">{t('navigation.list.item2.desc')}</p>
+            </div>
+            <div className="w-[23.125rem] ml-[2.75rem]">
+              <h4 className="font-semibold text-xl">
+                {t('navigation.list.item2.children.child1.name')}
+              </h4>
+              <p className="text-gray-1 mt-5">
+                <Link className="link-hover" href="/solutions/automotive">
+                  {t('navigation.list.item2.children.child1.desc')}
+                </Link>
+              </p>
+            </div>
+            <div className="ml-[2.75rem]">
+              <h4 className="font-semibold text-xl">{t('navigation.list.item2.children.more')}</h4>
+              <p className="text-gray-1 mt-5">
+                <Link className="link-hover" href="/solutions/web3">{t('navigation.list.item2.children.child2.name')}</Link>
+              </p>
+              <p className="text-gray-1 mt-2.5">
+                <Link className="link-hover" href="/solutions/governance">{t('navigation.list.item2.children.child3.name')}</Link>
+              </p>
+            </div>
           </div>
         </div>
       )
     },
-    // {
-    //   href: '/news',
-    //   isLink: false,
-    //   name: t('navigation.list.item3.name'),
-    //   childrenNode: (
-    //     <div className="w-full flex items-center justify-center">
-    //       <div className="w-[28.125rem]">
-    //         <h4 className="font-semibold text-xl">{t('navigation.list.item3.name')}</h4>
-    //         <p className="mt-5">{t('navigation.list.item3.desc')}</p>
-    //       </div>
-    //       <div className="ml-32 text-gray-1">
-    //         <Link className="ml-[3.75rem]" href="">{t('navigation.list.item3.children.child1.name')}</Link>
-    //         <Link className="ml-[3.75rem]" href="">{t('navigation.list.item3.children.child2.name')}</Link>
-    //         <Link className="ml-[3.75rem]" href="">{t('navigation.list.item3.children.child3.name')}</Link>
-    //       </div>
-    //     </div>
-    //   )
-    // },
+    {
+      href: '/news',
+      isLink: false,
+      name: t('navigation.list.item3.name'),
+      childrenNode: (
+        <div className="w-full">
+          <div className="w-container mx-auto flex items-center">
+            <div className="w-[28.125rem]">
+              <h4 className="font-semibold text-xl">{t('navigation.list.item3.name')}</h4>
+              <p className="mt-5">{t('navigation.list.item3.desc')}</p>
+            </div>
+            <div className="ml-32 text-gray-1">
+              <Link className="ml-[3.75rem] link-hover" href="/news?cate=tech">{t('navigation.list.item3.children.child1.name')}</Link>
+              <Link className="ml-[3.75rem] link-hover" href="/news?cate=industry">{t('navigation.list.item3.children.child2.name')}</Link>
+              <Link className="ml-[3.75rem] link-hover" href="/news?cate=gtech">{t('navigation.list.item3.children.child3.name')}</Link>
+            </div>
+          </div>
+        </div>
+      )
+    },
     {
       href: '/contact',
       isLink: false,
       name: t('navigation.list.item4.name'),
       childrenNode: (
-        <div className="w-full flex justify-center">
-          <div className="w-[28.125rem]">
-            <h4 className="font-semibold text-xl">{t('navigation.list.item4.subName')}</h4>
-            <p className="mt-5">{t('navigation.list.item4.desc')}</p>
-          </div>
-          <div className="ml-[3.75rem]">
-            <h4 className="font-semibold text-xl mb-5">{t('navigation.list.item4.children.companySubtitle')}</h4>
-            {
-              i18n.language === 'zh' && <p className="text-gray-1">吉特科技有限公司</p>
-            }
-            <p className="text-gray-1">GTech International, Ltd.</p>
-          </div>
-          <div className="ml-[3.75rem]">
-            <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.contactSubtitle')}</h4>
-            <p className="text-gray-1 mt-5">hi@gtech.world</p>
-            <p className="text-gray-1">(+86)021-66271287</p>
-          </div>
-          <div className="ml-[3.75rem] flex flex-col">
-            <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.qrSubtitle')}</h4>
-            <div className="mt-5">
-              <img src="/images/wechat_qrcode.png" className="w-[5.5rem] mt-1" alt=""/>
+        <div className="w-full">
+          <div className="w-container mx-auto flex justify-between">
+            <div className="w-[28.125rem]">
+              <h4 className="font-semibold text-xl">{t('navigation.list.item4.subName')}</h4>
+              <p className="mt-5">{t('navigation.list.item4.desc')}</p>
+            </div>
+            <div className="ml-[3.75rem]">
+              <h4 className="font-semibold text-xl mb-5">{t('navigation.list.item4.children.companySubtitle')}</h4>
+              {
+                i18n.language === 'zh' && <p className="text-gray-1">吉特科技有限公司</p>
+              }
+              <p className="text-gray-1">GTech International, Ltd.</p>
+            </div>
+            <div className="ml-[3.75rem]">
+              <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.contactSubtitle')}</h4>
+              <p className="text-gray-1 mt-5">hi@gtech.world</p>
+              <p className="text-gray-1">(+86)021-66271287</p>
+            </div>
+            <div className="ml-[3.75rem] flex flex-col">
+              <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.qrSubtitle')}</h4>
+              <div className="mt-5">
+                <img src="/images/wechat_qrcode.png" className="w-[5.5rem] mt-1" alt=""/>
+              </div>
             </div>
           </div>
         </div>
@@ -200,24 +206,24 @@ function MobileNav(){
         },
       ]
     },
-    // {
-    //   href: '/news',
-    //   name: t('navigation.list.item3.name'),
-    //   children:[
-    //     {
-    //       href: '/news/tech',
-    //       name: t('navigation.list.item3.children.child1.name'),
-    //     },
-    //     {
-    //       href: '/news/trade',
-    //       name: t('navigation.list.item3.children.child2.name'),
-    //     },
-    //     {
-    //       href: '/news/gtech',
-    //       name: t('navigation.list.item3.children.child3.name'),
-    //     },
-    //   ]
-    // },
+    {
+      href: '/news',
+      name: t('navigation.list.item3.name'),
+      children:[
+        {
+          href: '/news?cate=tech',
+          name: t('navigation.list.item3.children.child1.name'),
+        },
+        {
+          href: '/news?cate=industry',
+          name: t('navigation.list.item3.children.child2.name'),
+        },
+        {
+          href: '/news?cate=gtech',
+          name: t('navigation.list.item3.children.child3.name'),
+        },
+      ]
+    },
     {
       href: '/contact',
       name: t('navigation.list.item4.name'),

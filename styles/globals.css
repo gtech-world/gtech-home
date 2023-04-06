@@ -10,7 +10,19 @@
   color: #227A30;
 }
 .bg-linear{
-  background: linear-gradient(180deg, #000000 -55.56%, rgba(0, 0, 0, 0) 100%);;
+  background: linear-gradient(180deg, #000000 -55.56%, rgba(0, 0, 0, 0) 100%);
+}
+.news-active{
+  position: relative;
+}
+.news-active:after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #227A30;
+  bottom: -1.75rem;
+  left: 0;
 }
 .nav-active{
   position: relative;
