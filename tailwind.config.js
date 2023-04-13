@@ -23,14 +23,15 @@ module.exports = {
       },
       colors:{
         bgc:{
-          DEFAULT: '#EFEFEF',
+          DEFAULT: '#f1f1f1',
           1: "#f8f8f8"
         },
         green:{
-          DEFAULT: '#227A30',
+          DEFAULT: '#29953A',
           1: "#349644",
           2: "#CBDED0",
           3: "#00BF1F",
+          4: "#77FF61",
           hover: "#2E8C3D",
         },
         gray:{
