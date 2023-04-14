@@ -2,6 +2,7 @@ import React, {useEffect, useMemo, useState} from "react";
 import Link from "next/link";
 import {useTranslation} from "react-i18next";
 import classNames from "classnames";
+import {useNewsCate} from "@lib/hooks/useNewsCate";
 
 function SubNav(props:any){
   const {className,data} = props
@@ -26,14 +27,15 @@ function SubNav(props:any){
 
 export function Footer() {
   const {t,i18n} = useTranslation('common')
+  const cateList = useNewsCate()
   // const navList = getNavList(t).concat([
   //   // @ts-ignore
   //   ])
   const navList = [
-    {
-      href: '/',
-      name: t('navigation.list.item1.name'),
-    },
+    // {
+    //   href: '/',
+    //   name: t('navigation.list.item1.name'),
+    // },
     {
       href: '/solutions',
       name: t('navigation.list.item2.name'),
@@ -55,20 +57,14 @@ export function Footer() {
     {
       href: '/news',
       name: t('navigation.list.item3.name'),
-      children:[
-        {
-          href: '/news?cate=tech',
-          name: t('navigation.list.item3.children.child1.name'),
-        },
-        {
-          href: '/news?cate=industry',
-          name: t('navigation.list.item3.children.child2.name'),
-        },
-        {
-          href: '/news?cate=gtech',
-          name: t('navigation.list.item3.children.child3.name'),
-        },
-      ]
+      children: cateList.map(v=>{
+        return(
+          {
+            href: `/news?cateId=${v.id}`,
+            name: v.name,
+          }
+        )
+      })
     },
     {
       href: '/contact',
@@ -100,11 +96,14 @@ export function Footer() {
     <div className="bg-bgc pb-5 md:px-8 md:py-12">
       <div className="flex flex-col w-container mx-auto md:w-full">
         <div className="flex flex-col mt-12">
-          <div className="flex justify-between md:flex-col">
-            <div>
-              <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg"/></Link>
-            </div>
-            <ul className="flex justify-between mt-4 md:flex-col ml-16 md:ml-0">
+          <div className="flex justify-between flex-col">
+            {/*<div>*/}
+            {/*  <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg"/></Link>*/}
+            {/*</div>*/}
+            <ul className="flex md:flex-col mt-5">
+              <li className="mr-14 mt-[-1.3rem]">
+                <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg"/></Link>
+              </li>
               {
                 navList.map((v,i)=>{
                   return(

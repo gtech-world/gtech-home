@@ -55,10 +55,15 @@ function ArticleList(p:{data:any[],cateId:number}){
   )
 }
 
-
+const tempList = [
+  {name: '数据技术', id:1},
+  {name: '行业动态',id:2},
+  {name: '行业深度',id:3},
+  {name: 'GTech资讯',id:4}
+]
 export default function Index() {
   const {query} = useRouter()
-  const tabs = useNewsCate()
+  const tabs = tempList
   let tabId = tabs[0].id
   const [selected,setSelected] = useState(tabId)
   const [pgNum,setPgNum] = useState(1)

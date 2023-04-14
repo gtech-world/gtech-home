@@ -72,11 +72,11 @@ function PCNav(){
               <h4 className="font-semibold text-xl">{t('navigation.list.item3.name')}</h4>
               <p className="mt-5">{t('navigation.list.item3.desc')}</p>
             </div>
-            <div className="ml-32 text-gray-1">
+            <div className="ml-32 text-gray-1 flex flex-wrap">
               {
                 newsCate.map((v,i)=>{
                   return(
-                    <Link key={`newscate${i}`} className="ml-[3.75rem] link-hover" href={`/news?cateId=${v.id}`}>{v.name}</Link>
+                    <span className="mt-5"><Link key={`newscate${i}`} className="ml-[3.75rem] link-hover" href={`/news?cateId=${v.id}`}>{v.name}</Link></span>
                   )
                 })
               }
