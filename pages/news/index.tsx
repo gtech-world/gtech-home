@@ -2,7 +2,7 @@ import {HeaderLayout} from "@components/common/headerLayout";
 import React, {useEffect, useMemo, useState} from "react";
 import Link from "next/link";
 import classNames from "classnames";
-import {getCurNewsCate, isMobile} from "@lib/utils";
+import {isMobile} from "@lib/utils";
 import {useRouter} from "next/router";
 import {Pagination} from "@components/common/pagination";
 import {useAsyncM} from "@lib/hooks/useAsyncM";
