@@ -8,7 +8,7 @@ import {Pagination} from "@components/common/pagination";
 import {useAsyncM} from "@lib/hooks/useAsyncM";
 import {getNewsCount, getNewsList, noArgs} from "@lib/http";
 import moment from 'moment'
-import {useNewsCate} from "@lib/hooks/useNewsCate";
+// import {useNewsCate} from "@lib/hooks/useNewsCate";
 
 function Top(){
   return(

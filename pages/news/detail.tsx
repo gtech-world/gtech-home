@@ -55,6 +55,7 @@ export default function Detail() {
         .replace(/(line|font)-(height|weight):\s+normal;/g,'')
         .replace(/height:\s*\d+\.?\d+px;/g,'')
         .replace(/margin-\w+:\s*0\.?\d*pt;/g,'')
+        .replace(/font-family:\s*[\s\S]*?;/g,'')
       // .replace(/style="[\s\S]*?"/g,' ')
     }
   },[value])
@@ -73,7 +74,7 @@ export default function Detail() {
           <h1 className="text-4xl font-semibold md:text-lg">{article.title}</h1>
           <time className="inline-block text-gray-1 pt-2.5 md:text-sm">{article.time}</time>
         </header>
-        <div className="mt-10 article-content" dangerouslySetInnerHTML={{__html: article.content}}>
+        <div className="mt-8 article-content" dangerouslySetInnerHTML={{__html: article.content}}>
         </div>
       </div>
     </HeaderLayout>
