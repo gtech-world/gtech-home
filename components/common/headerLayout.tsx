@@ -5,8 +5,8 @@ import {Footer} from "@components/common/footer";
 import {Policy} from "@components/common/policy";
 import {TopTips} from "@components/common/topTips";
 
-export function HeaderLayout(p:{headerProps?:object,hiddenFooter?:boolean} & HTMLAttributes<HTMLDivElement>) {
-  const { className,headerProps,hiddenFooter=false, children, ...props } = p;
+export function HeaderLayout(p:{headerProps?:object,hiddenFooter?:boolean,hiddenHeader?:boolean} & HTMLAttributes<HTMLDivElement>) {
+  const { className,headerProps,hiddenFooter=false,hiddenHeader=false, children, ...props } = p;
   const [tipsVisible,setTipsVisible] = useState(true)
   useEffect(()=>{
     const tips = sessionStorage.getItem('tips')
@@ -14,7 +14,9 @@ export function HeaderLayout(p:{headerProps?:object,hiddenFooter?:boolean} & HTM
   },[])
   return (
     <div className="h-full w-full bg-white relative">
-      <Header props={headerProps} />
+      {
+        !hiddenHeader && <Header props={headerProps} />
+      }
       <div className={classNames("w-full mx-auto text-lg md:text-sm", className)} {...props}>
         { children }
       </div>

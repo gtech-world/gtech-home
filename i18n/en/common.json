@@ -31,13 +31,16 @@
         "desc": "GTech is a technology-driven company that constantly innovates and improves. Stay up-to-date with the latest news, business developments, and technology insights from GTech and the industries we serve.",
         "children": {
           "child1": {
-            "name": "Data Technologies"
+            "name": "数据技术"
           },
           "child2": {
-            "name": "Industry News"
+            "name": "行业动态"
           },
           "child3": {
-            "name": "GTech Updates"
+            "name": "行业深度"
+          },
+          "child4": {
+            "name": "GTech资讯"
           }
         }
       },

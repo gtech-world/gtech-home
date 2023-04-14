@@ -30,6 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>GTech</title>
         <meta name="description" content="GTech" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="referrer" content="never" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {<Component {...pageProps} />}

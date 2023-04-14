@@ -37,6 +37,9 @@
             "name": "行业动态"
           },
           "child3": {
+            "name": "行业深度"
+          },
+          "child4": {
             "name": "GTech资讯"
           }
         }

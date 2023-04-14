@@ -1,8 +1,13 @@
 import {HeaderLayout} from "@components/common/headerLayout";
-import React, {HTMLAttributes, useEffect, useMemo} from "react";
+import React, {HTMLAttributes, useEffect, useMemo, useState} from "react";
 import {useRouter} from "next/router";
-import {NEWS_CATE} from "@lib/const";
 import classNames from "classnames";
+import {useAsyncM} from "@lib/hooks/useAsyncM";
+import {getNewsDetail, noArgs} from "@lib/http";
+import moment from "moment";
+import {isMobile} from "@lib/utils";
+import { IoIosArrowBack } from "react-icons/io";
+import {useNewsCate} from "@lib/hooks/useNewsCate";
 
 function Breadcrumb(p:{content:object[]} & HTMLAttributes<HTMLDivElement>){
   const {content,className} = p
@@ -22,25 +27,56 @@ function Breadcrumb(p:{content:object[]} & HTMLAttributes<HTMLDivElement>){
 
 export default function Detail() {
   const {query} = useRouter()
-  let curName = ''
-  for(let j=0; j<NEWS_CATE.length; j++){
-    if(query.cate === NEWS_CATE[j].code){
-      curName = NEWS_CATE[j].name
-      break;
+  const {id = 1,cateId} = query
+  const {back} = useRouter();
+  const cateList = useNewsCate()
+  const [curCateName,setCurCateName] = useState('')
+  const { value, loading }:any = useAsyncM(
+    noArgs(async () =>getNewsDetail(id?id:1)
+      , [id]),
+    [id]
+  );
+  useEffect(()=>{
+    if(cateId){
+      setCurCateName(cateList[+cateId-1].name)
     }
-  }
+  },[cateId])
+  const article = useMemo(()=>{
+    if(!value?.newsItem) return {content:'',title:'',time:''}
+
+    return{
+      title: value.title,
+      time: moment(value.newsUpdateTime*1000).format('YYYY-MM-DD HH:mm:ss'),
+      content: JSON.parse(value?.newsItem).content
+        .replace(/data-src/g,'src')
+        .replace(/color:[\s\S]*?;/g,'')
+        .replace(/font-size:\s*16\.?\d*pt;/g,`font-size: ${isMobile()?'1rem':'1.5rem'};`)
+        .replace(/font-size:\s*(11|12(\.0)?)pt;/g,`font-size: ${isMobile()?'0.875rem':'1.125rem'};`)
+        .replace(/(line|font)-(height|weight):\s+normal;/g,'')
+        .replace(/height:\s*\d+\.?\d+px;/g,'')
+        .replace(/margin-\w+:\s*0\.?\d*pt;/g,'')
+      // .replace(/style="[\s\S]*?"/g,' ')
+    }
+  },[value])
   const headerProps = {
-    className: 'border-b border-black'
+    className: isMobile()?'':'border-b border-black'
   }
   return(
-    <HeaderLayout hiddenFooter={true} headerProps={headerProps}>
-      <div className="w-container mx-auto">
-        <header className="pb-8 border-b-2 border-gray-10">
-          <Breadcrumb className="py-8" content={[{name:curName,href:`/news?cate=${query.cate}`},{name:'详情'}]} />
-          <h1 className="text-4xl font-semibold">工业时代的数据信任问题探讨</h1>
-          <time className="inline-block text-gray-1 pt-2.5">2023-03-01  17:08</time>
+    <HeaderLayout hiddenFooter={true} hiddenHeader={isMobile()} headerProps={headerProps}>
+      <div className="h-[4rem] justify-center items-center hidden md:flex">
+        <IoIosArrowBack onClick={back} className="absolute left-2 text-xl text-green-1" />
+        <h4 className="text-green-1 text-center text-lg">资讯动态</h4>
+      </div>
+      <div className="w-container mx-auto md:w-full md:px-3 md:mt-2">
+        <header className="pb-8 border-b-2 border-gray-10 md:pb-5">
+          <Breadcrumb className="py-8 md:hidden" content={[{name:curCateName,href:`/news?cateId=${query.cateId}`},{name:'详情'}]} />
+          <h1 className="text-4xl font-semibold md:text-lg">{article.title}</h1>
+          <time className="inline-block text-gray-1 pt-2.5 md:text-sm">{article.time}</time>
         </header>
+        <div className="mt-10 article-content" dangerouslySetInnerHTML={{__html: article.content}}>
+        </div>
       </div>
     </HeaderLayout>
+
   )
 }

@@ -6,6 +6,7 @@ import {useClickAway,useToggle} from "react-use";
 import { IoCaretDownOutline } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
 import {useTranslation} from "react-i18next";
+import {useNewsCate} from "@lib/hooks/useNewsCate";
 
 const statementPage = ['/enstatement','/zhstatement']
 function PCNav(){
@@ -19,6 +20,7 @@ function PCNav(){
     localStorage.setItem("lng",language)
     statementPage.indexOf(pathname)>-1 && push(language === 'en'?'/enstatement':'zhstatement')
   };
+  const newsCate = useNewsCate()
   const navList = [
     {
       href: '/',
@@ -71,9 +73,13 @@ function PCNav(){
               <p className="mt-5">{t('navigation.list.item3.desc')}</p>
             </div>
             <div className="ml-32 text-gray-1">
-              <Link className="ml-[3.75rem] link-hover" href="/news?cate=tech">{t('navigation.list.item3.children.child1.name')}</Link>
-              <Link className="ml-[3.75rem] link-hover" href="/news?cate=industry">{t('navigation.list.item3.children.child2.name')}</Link>
-              <Link className="ml-[3.75rem] link-hover" href="/news?cate=gtech">{t('navigation.list.item3.children.child3.name')}</Link>
+              {
+                newsCate.map((v,i)=>{
+                  return(
+                    <Link key={`newscate${i}`} className="ml-[3.75rem] link-hover" href={`/news?cateId=${v.id}`}>{v.name}</Link>
+                  )
+                })
+              }
             </div>
           </div>
         </div>
@@ -138,7 +144,7 @@ function PCNav(){
               }
               {
                 !!v.childrenNode && open === v.href &&
-                <div className="absolute left-0 mt-[0.7rem] z-12 w-screen py-10 bg-white text-black text-lg border-t-2 border-black">
+                <div className="absolute shadow left-0 mt-[0.7rem] z-12 w-screen py-10 bg-white text-black text-lg border-t-2 border-black">
                   {
                     v.childrenNode
                   }
@@ -180,6 +186,7 @@ function MobileNav(){
   const { t,i18n } = useTranslation('common');
   // const {data=[]} = props
   const {pathname,push} = useRouter()
+  const cateList = useNewsCate()
   const ref = useRef<any>();
   const [openSub,setOpenSub] = useState<any>([])
   const [open, onToggle] = useToggle(false);
@@ -209,20 +216,14 @@ function MobileNav(){
     {
       href: '/news',
       name: t('navigation.list.item3.name'),
-      children:[
-        {
-          href: '/news?cate=tech',
-          name: t('navigation.list.item3.children.child1.name'),
-        },
-        {
-          href: '/news?cate=industry',
-          name: t('navigation.list.item3.children.child2.name'),
-        },
-        {
-          href: '/news?cate=gtech',
-          name: t('navigation.list.item3.children.child3.name'),
-        },
-      ]
+      children: cateList.map(v=>{
+        return(
+          {
+            href: `/news?cateId=${v.id}`,
+            name: v.name,
+          }
+        )
+      })
     },
     {
       href: '/contact',
