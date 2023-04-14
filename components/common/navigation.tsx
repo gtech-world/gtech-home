@@ -76,7 +76,7 @@ function PCNav(){
               {
                 newsCate.map((v,i)=>{
                   return(
-                    <span className="mt-5"><Link key={`newscate${i}`} className="ml-[3.75rem] link-hover" href={`/news?cateId=${v.id}`}>{v.name}</Link></span>
+                    <span key={`newscate${i}`}  className="mt-5"><Link className="ml-[3.75rem] link-hover" href={`/news?cateId=${v.id}`}>{v.name}</Link></span>
                   )
                 })
               }
@@ -96,19 +96,19 @@ function PCNav(){
               <h4 className="font-semibold text-xl">{t('navigation.list.item4.subName')}</h4>
               <p className="mt-5">{t('navigation.list.item4.desc')}</p>
             </div>
-            <div className="ml-[3.75rem]">
+            <div className="ml-[2.75rem]">
               <h4 className="font-semibold text-xl mb-5">{t('navigation.list.item4.children.companySubtitle')}</h4>
               {
                 i18n.language === 'zh' && <p className="text-gray-1">吉特科技有限公司</p>
               }
               <p className="text-gray-1">GTech International, Ltd.</p>
             </div>
-            <div className="ml-[3.75rem]">
+            <div className="ml-[2.75rem]">
               <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.contactSubtitle')}</h4>
               <p className="text-gray-1 mt-5">hi@gtech.world</p>
               <p className="text-gray-1">(+86)021-66271287</p>
             </div>
-            <div className="ml-[3.75rem] flex flex-col">
+            <div className="ml-[2.75rem] flex flex-col">
               <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.qrSubtitle')}</h4>
               <div className="mt-5">
                 <img src="/images/wechat_qrcode.png" className="w-[5.5rem] mt-1" alt=""/>
