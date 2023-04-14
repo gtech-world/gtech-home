@@ -92,6 +92,7 @@ export function Footer() {
       ]
     }
   ]
+  if(i18n.language === 'en') navList.splice(1,1)
   return (
     <div className="bg-bgc pb-5 md:px-8 md:py-12">
       <div className="flex flex-col w-container mx-auto md:w-full">

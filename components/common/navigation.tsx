@@ -72,15 +72,15 @@ function PCNav(){
               <h4 className="font-semibold text-xl">{t('navigation.list.item3.name')}</h4>
               <p className="mt-5">{t('navigation.list.item3.desc')}</p>
             </div>
-            <div className="ml-32 text-gray-1 flex flex-wrap">
-              {
-                newsCate.map((v,i)=>{
-                  return(
-                    <span key={`newscate${i}`}  className="mt-5"><Link className="ml-[3.75rem] link-hover" href={`/news?cateId=${v.id}`}>{v.name}</Link></span>
-                  )
-                })
-              }
-            </div>
+              <div className="ml-32 text-gray-1 flex flex-wrap">
+                {
+                  newsCate.map((v,i)=>{
+                    return(
+                      <span key={`newscate${i}`}  className="mt-5"><Link className="ml-[3.75rem] link-hover" href={`/news?cateId=${v.id}`}>{v.name}</Link></span>
+                    )
+                  })
+                }
+              </div>
           </div>
         </div>
       )
@@ -119,6 +119,7 @@ function PCNav(){
       )
     },
   ]
+  if(i18n.language === 'en') navList.splice(2,1)
   const isCurrentPage = (href:string)=>{
     if(href === '/'){
       return pathname === href
@@ -214,7 +215,7 @@ function MobileNav(){
       ]
     },
     {
-      href: '/news',
+      href: '',
       name: t('navigation.list.item3.name'),
       children: cateList.map(v=>{
         return(
@@ -246,6 +247,7 @@ function MobileNav(){
       ]
     }
   ]
+  if(i18n.language === 'en') navList.splice(2,1)
   // const fData = data.concat()
   useClickAway(ref, () => open && onToggle(false));
   const changeLanguage = (val:string) => {
