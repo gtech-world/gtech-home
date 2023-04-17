@@ -68,7 +68,7 @@ export default function Index() {
   let tabId = tabs[0].id
   const [selected,setSelected] = useState(tabId)
   const [pgNum,setPgNum] = useState(1)
-  const [pgSize] = useState(10)
+  const [pgSize] = useState(2)
   const { value, loading }:any = useAsyncM(
     noArgs(async () =>Promise.all([getNewsList(tabs[selected-1].name,1,pgSize),getNewsCount(tabs[selected-1].name)])
       , [pgNum,selected]),
