@@ -20,7 +20,7 @@ function Breadcrumb(p:{content:object[]} & HTMLAttributes<HTMLDivElement>){
     }
   })
   return(
-      <div className={classNames('text-sm',className)} dangerouslySetInnerHTML={{__html: html.join(' / ')}}>
+      <div className={classNames('text-sm font-medium',className)} dangerouslySetInnerHTML={{__html: html.join(' / ')}}>
       </div>
   )
 }
@@ -55,7 +55,7 @@ export default function Detail() {
         .replace(/(line|font)-(height|weight):\s+normal;/g,'')
         .replace(/height:\s*\d+\.?\d+px;/g,'')
         .replace(/margin-\w+:\s*0\.?\d*pt;/g,'')
-        .replace(/font-family:\s*[\s\S]*?;/g,'')
+        // .replace(/font-family:\s*[\s\S]*?;/g,'')
       // .replace(/style="[\s\S]*?"/g,' ')
     }
   },[value])
@@ -69,7 +69,7 @@ export default function Detail() {
         <h4 className="text-green text-center text-lg">资讯动态</h4>
       </div>
       <div className="w-container mx-auto md:w-full md:px-3 md:mt-2">
-        <header className="pb-8 border-b-2 border-gray-10 md:pb-5">
+        <header className="pb-8 border-b border-gray-10 md:pb-5">
           <Breadcrumb className="py-8 md:hidden" content={[{name:curCateName,href:`/news?cateId=${query.cateId}`},{name:'详情'}]} />
           <h1 className="text-4xl font-semibold md:text-lg">{article.title}</h1>
           <time className="inline-block text-gray-1 pt-2.5 md:text-sm">{article.time}</time>

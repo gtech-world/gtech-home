@@ -105,6 +105,7 @@ h5{
 }
 .news-active{
   position: relative;
+  color: #29953A;
 }
 .news-active:after{
   content: "";

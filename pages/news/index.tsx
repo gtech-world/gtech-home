@@ -13,8 +13,8 @@ import {Loading} from "@components/common/loading";
 
 function Top(){
   return(
-    <div className="h-[34.375rem] md:h-[24rem] w-full bg-[url(/images/news_banner.png)] bg-no-repeat bg-cover bg-center">
-      <div className="max-w-[61.75rem] mx-auto flex flex-col items-center text-center mt-20 md:mt-12">
+    <div className="h-[28.375rem] md:h-[24rem] w-full bg-[url(/images/news_banner.png)] bg-no-repeat bg-cover bg-center">
+      <div className="max-w-[61.75rem] mx-auto flex flex-col items-center text-center mt-24 md:mt-12">
         <h3 className="text-5xl text-green md:text-[1.75rem]">资讯动态</h3>
         <p className="text-[2rem] leading-[2.75rem] mt-8 md:text-lg md:px-8">GTech是一家实时革新、日常精进的技术导向型公司。获取来自GTech以及我们所关注领域的最新资讯、业务进展以及技术信息分享。</p>
       </div>
@@ -27,14 +27,16 @@ function ArticleList(p:{data:any[],cateId:number}){
     <div className="w-container mt-16 md:w-full md:mt-8 md:px-3">
       {
         !!data.length && data.map((v,i)=>{
+          console.log(v.thumbUrl)
           return(
             <div key={`data${i}`} className="flex mb-12 md:mb-5">
-              <div className="max-w-[25rem] md:max-w-[6.25rem] h-[16.125rem] md:h-[4rem] rounded-lg overflow-hidden">
-                <img className="w-full h-[16.125rem] md:h-[4rem]" src={v.thumbUrl} alt=""/>
+              <div style={{backgroundImage: `url('${v.thumbUrl}')`}} className={classNames('w-[25rem] md:max-w-[6.25rem] h-[16.125rem] md:h-[4rem] rounded-lg overflow-hidden bg-cover bg-center bg-no-repeat')}>
+                {/*<img className="w-full h-[16.125rem] md:h-[4rem]" src={v.thumbUrl} alt=""/>*/}
               </div>
+
               <div className="flex flex-col justify-between ml-8 md:ml-2.5">
                 <div className="">
-                  <h4 className="text-2xl font-bold md:text-base">
+                  <h4 className="text-2xl font-semibold md:text-base">
                     <Link target={isMobile()?'':'_blank'} href={`/news/detail?cateId=${cateId}&id=${v.id}`}>
                       {v.title}
                     </Link>
