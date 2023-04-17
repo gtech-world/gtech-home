@@ -8,6 +8,7 @@ import {Pagination} from "@components/common/pagination";
 import {useAsyncM} from "@lib/hooks/useAsyncM";
 import {getNewsCount, getNewsList, noArgs} from "@lib/http";
 import moment from 'moment'
+import {Loading} from "@components/common/loading";
 // import {useNewsCate} from "@lib/hooks/useNewsCate";
 
 function Top(){
@@ -95,7 +96,7 @@ export default function Index() {
       <Top />
       <div className="pt-10 pb-16 flex justify-center bg-bgc-1 flex-col items-center md:pt-6 md:px-3 md:pb-10">
         <div className="bg-white shadow-[0_5px_20px_0_rgba(0,0,0,0.08)] rounded-2xl md:rounded-lg flex px-3 h-[5.5rem] md:h-[4.25rem] w-container text-2xl md:w-full md:text-base overflow-hidden">
-          <div className=" overflow-x-auto w-full h-full  flex justify-between items-center px-24 md:px-2">
+          <div className="overflow-x-auto w-full h-full  flex justify-between items-center px-24 md:px-2">
             {
               tabs.map((v,i)=>{
                 return(
@@ -110,7 +111,9 @@ export default function Index() {
           </div>
 
         </div>
-        <ArticleList cateId={selected} data={data} />
+        {
+          loading?<Loading className="h-[22rem]" />:<ArticleList cateId={selected} data={data} />
+        }
         <Pagination className="mt-5" total={total} pgSize={pgSize} pgNum={pgNum} onChange={(v:any)=>{setPgNum(v)}} />
       </div>
     </HeaderLayout>
