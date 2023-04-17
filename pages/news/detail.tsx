@@ -65,8 +65,8 @@ export default function Detail() {
   return(
     <HeaderLayout hiddenFooter={true} hiddenHeader={isMobile()} headerProps={headerProps}>
       <div className="h-[4rem] justify-center items-center hidden md:flex">
-        <IoIosArrowBack onClick={back} className="absolute left-2 text-xl text-green-1" />
-        <h4 className="text-green-1 text-center text-lg">资讯动态</h4>
+        <IoIosArrowBack onClick={back} className="absolute left-2 text-xl text-green" />
+        <h4 className="text-green text-center text-lg">资讯动态</h4>
       </div>
       <div className="w-container mx-auto md:w-full md:px-3 md:mt-2">
         <header className="pb-8 border-b-2 border-gray-10 md:pb-5">
