@@ -145,7 +145,7 @@ function PCNav(){
               }
               {
                 !!v.childrenNode && open === v.href &&
-                <div className="absolute shadow left-0 mt-[0.7rem] z-12 w-screen py-10 bg-white text-black text-lg border-t-2 border-black">
+                <div className="absolute shadow left-0 mt-[0.79rem] z-12 w-screen py-10 bg-white text-black text-lg border-t border-black">
                   {
                     v.childrenNode
                   }
@@ -215,7 +215,7 @@ function MobileNav(){
       ]
     },
     {
-      href: '',
+      href: '/news',
       name: t('navigation.list.item3.name'),
       children: cateList.map(v=>{
         return(
@@ -248,6 +248,7 @@ function MobileNav(){
     }
   ]
   if(i18n.language === 'en') navList.splice(2,1)
+  console.log(navList)
   // const fData = data.concat()
   useClickAway(ref, () => open && onToggle(false));
   const changeLanguage = (val:string) => {

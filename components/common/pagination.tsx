@@ -50,7 +50,7 @@ export function Pagination(p: Props & HTMLAttributes<HTMLDivElement>) {
     onChange && onChange(count)
   }
   // console.log(total)
-  // if(total === 0) return null
+  if(total <= pgSize ) return null
   return (
     <div className={classnames('flex justify-center text-[0.8125rem] text-center leading-8 font-semibold',className)}>
       <div className="flex">

@@ -96,7 +96,7 @@ export function Footer() {
   return (
     <div className="bg-bgc pb-5 md:px-8 md:py-12">
       <div className="flex flex-col w-container mx-auto md:w-full">
-        <div className="flex flex-col mt-12">
+        <div className="flex flex-col mt-12 md:mt-0">
           <div className="flex justify-between flex-col">
             {/*<div>*/}
             {/*  <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg"/></Link>*/}
