@@ -29,7 +29,7 @@ function ArticleList(p:{data:any[],cateId:number}){
         !!data.length && data.map((v,i)=>{
           console.log(v.thumbUrl)
           return(
-            <div key={`data${i}`} className="flex items-center mb-12 md:mb-5">
+            <div key={`data${i}`} className="flex md:items-center mb-12 md:mb-5">
               <div style={{backgroundImage: `url('${v.thumbUrl}')`}} className={classNames('w-[25rem] md:max-w-[7.375rem] h-[16.125rem] md:h-[4.875rem] rounded-lg overflow-hidden bg-cover bg-center bg-no-repeat')}>
                 {/*<img className="w-full h-[16.125rem] md:h-[4rem]" src={v.thumbUrl} alt=""/>*/}
               </div>
@@ -41,7 +41,7 @@ function ArticleList(p:{data:any[],cateId:number}){
                       {v.title}
                     </Link>
                   </h4>
-                  <time className="inline-block py-2.5 md:py-0 md:pt-2  md:ml-2 text-gray-2">{moment(v.newsUpdateTime*1000).format('YYYY-MM-DD HH:mm:ss')}</time>
+                  <time className="inline-block py-2.5 md:py-0 md:pt-2  text-gray-2">{moment(v.newsUpdateTime*1000).format('YYYY-MM-DD HH:mm:ss')}</time>
                   <p className="md:hidden">{v.digest}</p>
                 </div>
                 <div className="pb-1 md:hidden">
@@ -96,7 +96,7 @@ export default function Index() {
   return(
     <HeaderLayout headerProps={headerProps}>
       <Top />
-      <div className="pt-10 pb-16 flex justify-center bg-bgc-1 flex-col items-center md:pt-6 md:px-3 md:pb-5">
+      <div className="pt-10 pb-7 flex justify-center bg-bgc-1 flex-col items-center md:pt-6 md:px-3 md:pb-5">
         <div className="bg-white shadow-[0_5px_20px_0_rgba(0,0,0,0.08)] rounded-2xl md:rounded-lg flex px-3 h-[5.5rem] md:h-[4.25rem] w-container text-2xl md:w-full md:text-base overflow-hidden">
           <div className="overflow-x-auto w-full h-full  flex justify-between items-center px-24 md:px-2">
             {
