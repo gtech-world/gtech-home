@@ -13,7 +13,7 @@ import {Loading} from "@components/common/loading";
 
 function Top(){
   return(
-    <div className="h-[28.375rem] md:h-[24rem] w-full bg-[url(/images/news_banner.png)] bg-no-repeat bg-cover bg-center">
+    <div className="h-[32.375rem] md:h-[24rem] w-full bg-[url(/images/news_banner.png)] bg-no-repeat bg-cover bg-left-bottom">
       <div className="max-w-[61.75rem] mx-auto flex flex-col items-center text-center mt-24 md:mt-12">
         <h3 className="text-5xl text-green md:text-[1.75rem]">资讯动态</h3>
         <p className="text-[2rem] leading-[2.75rem] mt-8 md:text-lg md:px-8">GTech是一家实时革新、日常精进的技术导向型公司。获取来自GTech以及我们所关注领域的最新资讯、业务进展以及技术信息分享。</p>
@@ -94,7 +94,7 @@ export default function Index() {
     className: isMobile()?'':'border-b border-black'
   }
   return(
-    <HeaderLayout hiddenFooter={true} headerProps={headerProps}>
+    <HeaderLayout headerProps={headerProps}>
       <Top />
       <div className="pt-10 pb-16 flex justify-center bg-bgc-1 flex-col items-center md:pt-6 md:px-3 md:pb-10">
         <div className="bg-white shadow-[0_5px_20px_0_rgba(0,0,0,0.08)] rounded-2xl md:rounded-lg flex px-3 h-[5.5rem] md:h-[4.25rem] w-container text-2xl md:w-full md:text-base overflow-hidden">

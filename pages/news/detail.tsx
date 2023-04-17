@@ -63,7 +63,7 @@ export default function Detail() {
     className: isMobile()?'':'border-b border-black'
   }
   return(
-    <HeaderLayout hiddenFooter={true} hiddenHeader={isMobile()} headerProps={headerProps}>
+    <HeaderLayout hiddenHeader={isMobile()} headerProps={headerProps}>
       <div className="h-[4rem] justify-center items-center hidden md:flex">
         <IoIosArrowBack onClick={back} className="absolute left-2 text-xl text-green" />
         <h4 className="text-green text-center text-lg">资讯动态</h4>
