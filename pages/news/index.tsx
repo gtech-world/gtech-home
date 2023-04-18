@@ -30,8 +30,10 @@ function ArticleList(p:{data:any[],cateId:number}){
           console.log(v.thumbUrl)
           return(
             <div key={`data${i}`} className="flex md:items-center mb-12 md:mb-5">
-              <div style={{backgroundImage: `url('${v.thumbUrl}')`}} className={classNames('w-[25rem] md:max-w-[7.375rem] h-[16.125rem] md:h-[4.875rem] rounded-lg overflow-hidden bg-cover bg-center bg-no-repeat')}>
-                {/*<img className="w-full h-[16.125rem] md:h-[4rem]" src={v.thumbUrl} alt=""/>*/}
+              <div className={classNames('w-[25rem] md:max-w-[7.375rem] h-[16.125rem] md:h-[4.875rem] rounded-lg overflow-hidden')}>
+                <div className="w-[100rem] h-full">
+                  <img className="w-auto h-full md:h-[4rem]" src={v.thumbUrl} alt=""/>
+                </div>
               </div>
 
               <div className="flex flex-col justify-between ml-8 md:ml-2.5">
