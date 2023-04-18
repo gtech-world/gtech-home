@@ -143,3 +143,10 @@ h5{
     margin-bottom: 20px;
   }
 }
+.ellipsis-2{
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}

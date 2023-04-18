@@ -37,7 +37,7 @@ function ArticleList(p:{data:any[],cateId:number}){
               <div className="flex flex-col justify-between ml-8 md:ml-2.5">
                 <div className="">
                   <h4 className="text-2xl font-semibold md:text-base">
-                    <Link target={isMobile()?'':'_blank'} href={`/news/detail?cateId=${cateId}&id=${v.id}`}>
+                    <Link className="ellipsis-2" target={isMobile()?'':'_blank'} href={`/news/detail?cateId=${cateId}&id=${v.id}`}>
                       {v.title}
                     </Link>
                   </h4>
