@@ -93,10 +93,11 @@ export default function Index() {
     setSelected(tabId)
   },[query])
   useMemo(()=>{
-    if(ref?.current){
+    if(isMobile() && ref?.current){
       //@ts-ignore
       ref.current.scrollLeft = 30*(selected-1)
     }
+    history.replaceState(null,'', `/news?cateId=${selected}`);
   },[selected])
   const headerProps = {
     className: isMobile()?'':'border-b border-black'

@@ -28,7 +28,7 @@ function Breadcrumb(p:{content:object[]} & HTMLAttributes<HTMLDivElement>){
 export default function Detail() {
   const {query} = useRouter()
   const {id = 1,cateId} = query
-  const {back} = useRouter();
+  const {push} = useRouter();
   const cateList = useNewsCate()
   const [curCateName,setCurCateName] = useState('')
   const { value, loading }:any = useAsyncM(
@@ -43,7 +43,6 @@ export default function Detail() {
   },[cateId])
   const article = useMemo(()=>{
     if(!value?.newsItem) return {content:'',title:'',time:''}
-    console.log(JSON.parse(value?.newsItem).content)
     return{
       title: value.title,
       time: moment(value.newsUpdateTime*1000).format('YYYY-MM-DD HH:mm:ss'),
@@ -68,7 +67,7 @@ export default function Detail() {
   return(
     <HeaderLayout hiddenHeader={isMobile()} headerProps={headerProps}>
       <div className="h-[4rem] justify-center items-center hidden md:flex">
-        <IoIosArrowBack onClick={back} className="absolute left-2 text-xl text-green" />
+        <IoIosArrowBack onClick={()=>push(`/news?cateId=${cateId}`)} className="absolute left-2 text-xl text-green" />
         <h4 className="text-green text-center text-lg">资讯动态</h4>
       </div>
       <div className="w-container mx-auto md:w-full md:px-3 md:mt-2">
