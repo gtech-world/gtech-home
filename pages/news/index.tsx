@@ -1,5 +1,5 @@
 import {HeaderLayout} from "@components/common/headerLayout";
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import Link from "next/link";
 import classNames from "classnames";
 import {isMobile} from "@lib/utils";
@@ -68,6 +68,7 @@ export default function Index() {
   const {query} = useRouter()
   const tabs = tempList
   let tabId = tabs[0].id
+  const ref = useRef(null)
   const [selected,setSelected] = useState(tabId)
   const [pgNum,setPgNum] = useState(1)
   const [pgSize] = useState(2)
@@ -84,12 +85,19 @@ export default function Index() {
     }
   },[value])
   useEffect(()=>{
+    console.log()
     if(query.cateId){
       const cur = tabs[+query.cateId-1]
       tabId = cur?.id || 1
     }
     setSelected(tabId)
   },[query])
+  useMemo(()=>{
+    if(ref?.current){
+      //@ts-ignore
+      ref.current.scrollLeft = 30*(selected-1)
+    }
+  },[selected])
   const headerProps = {
     className: isMobile()?'':'border-b border-black'
   }
@@ -98,7 +106,7 @@ export default function Index() {
       <Top />
       <div className="pt-10 pb-7 flex justify-center bg-bgc-1 flex-col items-center md:pt-6 md:px-3 md:pb-5">
         <div className="bg-white shadow-[0_5px_20px_0_rgba(0,0,0,0.08)] rounded-2xl md:rounded-lg flex px-3 h-[5.5rem] md:h-[4.25rem] w-container text-2xl md:w-full md:text-base overflow-hidden">
-          <div className="overflow-x-auto w-full h-full  flex justify-between items-center px-24 md:px-2">
+          <div ref={ref} className="overflow-x-auto w-full h-full  flex justify-between items-center px-24 md:px-2">
             {
               tabs.map((v,i)=>{
                 return(

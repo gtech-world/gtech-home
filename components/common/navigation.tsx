@@ -160,9 +160,9 @@ function PCNav(){
   )
 }
 
-function MobileSubNav(props:{data:any}){
+function MobileSubNav(props:{data:any,onClick?:any}){
   const {pathname} = useRouter()
-  const {data = []} = props
+  const {data = [],onClick} = props
   return(
     <ul className="text-sm mt-3 leading-8">
       {
@@ -171,7 +171,7 @@ function MobileSubNav(props:{data:any}){
             <li key={`MobileSubNav-${i}`}>
               {
                 v.href ?
-                  <Link href={v.href} className={classNames('inline-block w-full',pathname === v.href?'text-green':'')}>
+                  <Link href={v.href} onClick={()=>onClick && onClick()} className={classNames('inline-block w-full',pathname === v.href?'text-green':'')}>
                     {v.name}
                   </Link>:
                   <span className="inline-block w-full" onClick={()=>v.onClick()}>{v.name}</span>
@@ -293,7 +293,7 @@ function MobileNav(){
                   </div>
                   {
                     openSub?.indexOf(v.href)>-1 &&
-                    <MobileSubNav data={v.children} />
+                    <MobileSubNav onClick={onToggle} data={v.children} />
                   }
                 </div>
               )
