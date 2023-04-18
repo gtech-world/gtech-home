@@ -76,7 +76,7 @@ function PCNav(){
                 {
                   newsCate.map((v,i)=>{
                     return(
-                      <span key={`newscate${i}`}  className="mt-5"><Link className="ml-[3.75rem] link-hover" href={`/news?cateId=${v.id}`}>{v.name}</Link></span>
+                      <span onClick={()=>setOpen('')} key={`newscate${i}`}  className="mt-5"><Link className="ml-[3.75rem] link-hover" href={`/news?cateId=${v.id}`}>{v.name}</Link></span>
                     )
                   })
                 }
