@@ -52,6 +52,7 @@ export default function Detail() {
         .replace(/font-size:\s*16\.?\d*pt;/g,`font-size: ${isMobile()?'1rem':'1.5rem'};`)
         .replace(/font-size:\s*(11|12(\.0)?)pt;/g,`font-size: ${isMobile()?'0.875rem':'1.125rem'};`)
         .replace(/(line|font)-(height|weight):\s+normal;/g,'')
+        .replace(/width:\s*100%;/g,'')
         .replace(/height:\s*\d+\.?\d+px;/g,'')
         .replace(/margin-\w+:\s*0\.?\d*pt;/g,'')
         .replace(/<br\s*\/>/g,'')
