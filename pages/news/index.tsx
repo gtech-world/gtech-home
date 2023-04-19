@@ -98,6 +98,7 @@ export default function Index() {
       //@ts-ignore
       ref.current.scrollLeft = 30*(selected-1)
     }
+    setPgNum(1)
     history.replaceState(null,'', `/news?cateId=${selected}`);
   },[selected])
   const headerProps = {
