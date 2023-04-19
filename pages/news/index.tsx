@@ -32,7 +32,7 @@ function ArticleList(p:{data:any[],cateId:number}){
             <div key={`data${i}`} className="flex md:items-center mb-12 md:mb-5">
               <div className={classNames('w-[25rem] md:max-w-[7.375rem] h-[16.125rem] md:h-[4.875rem] rounded-lg overflow-hidden')}>
                 <div className="w-[100rem] h-full">
-                  <img className="w-auto h-full md:h-[4rem]" src={v.thumbUrl} alt=""/>
+                  <img className="w-auto h-full" src={v.thumbUrl} alt=""/>
                 </div>
               </div>
 
@@ -87,7 +87,6 @@ export default function Index() {
     }
   },[value])
   useEffect(()=>{
-    console.log()
     if(query.cateId){
       const cur = tabs[+query.cateId-1]
       tabId = cur?.id || 1
