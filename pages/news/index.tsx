@@ -30,7 +30,7 @@ function ArticleList(p:{data:any[],cateId:number}){
           console.log(v.thumbUrl)
           return(
             <div key={`data${i}`} className="flex md:items-center mb-12 md:mb-5">
-              <div className={classNames('w-[25rem] md:max-w-[7.375rem] h-[16.125rem] md:h-[4.875rem] rounded-lg overflow-hidden')}>
+              <div className={classNames('max-w-[25rem] w-full md:max-w-[7.375rem] h-[16.125rem] md:h-[4.875rem] rounded-lg overflow-hidden')}>
                 <div className="w-[100rem] h-full">
                   <img className="w-auto h-full" src={v.thumbUrl} alt=""/>
                 </div>
