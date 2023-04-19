@@ -8,6 +8,7 @@ import moment from "moment";
 import {isMobile} from "@lib/utils";
 import { IoIosArrowBack } from "react-icons/io";
 import {useNewsCate} from "@lib/hooks/useNewsCate";
+import {Loading} from "@components/common/loading";
 
 function Breadcrumb(p:{content:object[]} & HTMLAttributes<HTMLDivElement>){
   const {content,className} = p
@@ -31,6 +32,7 @@ export default function Detail() {
   const {push} = useRouter();
   const cateList = useNewsCate()
   const [curCateName,setCurCateName] = useState('')
+  const [isFinish,setIsFinish] = useState(false)
   const { value, loading }:any = useAsyncM(
     noArgs(async () =>getNewsDetail(id?id:1)
       , [id]),
@@ -43,6 +45,7 @@ export default function Detail() {
   },[cateId])
   const article = useMemo(()=>{
     if(!value?.newsItem) return {content:'',title:'',time:''}
+    setIsFinish(true)
     return{
       title: value.title,
       time: moment(value.newsUpdateTime*1000).format('YYYY-MM-DD HH:mm:ss'),
@@ -77,8 +80,12 @@ export default function Detail() {
           <h1 className="text-4xl font-semibold md:text-lg">{article.title}</h1>
           <time className="inline-block text-gray-1 pt-2.5 md:text-sm">{article.time}</time>
         </header>
-        <div className="mt-9 article-content" dangerouslySetInnerHTML={{__html: article.content}}>
-        </div>
+        {
+          !isFinish?<Loading className="h-[40rem]" />:
+            <div className="mt-9 article-content" dangerouslySetInnerHTML={{__html: article.content}}>
+            </div>
+        }
+
       </div>
     </HeaderLayout>
 
