@@ -39,7 +39,7 @@ function ArticleList(p:{data:any[],cateId:number}){
               <div className="flex flex-col justify-between ml-8 md:ml-2.5">
                 <div className="">
                   <h4 className="text-2xl font-semibold md:text-base">
-                    <Link className="ellipsis-2" target={isMobile()?'':'_blank'} href={`/news/detail?cateId=${cateId}&id=${v.id}`}>
+                    <Link className="ellipsis-2" rel="opener" target={isMobile()?'':'_blank'} href={`/news/detail?cateId=${cateId}&id=${v.id}`}>
                       {v.title}
                     </Link>
                   </h4>
@@ -47,7 +47,7 @@ function ArticleList(p:{data:any[],cateId:number}){
                   <p className="md:hidden">{v.digest}</p>
                 </div>
                 <div className="pb-1 md:hidden">
-                  <Link className="text-green" target={isMobile()?'':'_blank'} href={`/news/detail?cateId=${cateId}&id=${v.id}`}>
+                  <Link className="text-green" rel="opener" target={isMobile()?'':'_blank'} href={`/news/detail?cateId=${cateId}&id=${v.id}`}>
                     详情 &gt;&gt;
                   </Link>
                 </div>
