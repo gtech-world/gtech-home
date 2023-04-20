@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from "react";
-import {getCookie, setCookie} from "cookies-next";
 import {FiX} from "react-icons/fi";
 import {useTranslation} from "react-i18next";
 import classNames from "classnames";
 export function Policy(p:any) {
   const {className} = p
   const {t,i18n} = useTranslation('common')
-  const statement = getCookie('statement')
+  const statement = localStorage.getItem('statement')
   const [policyVisible,setPolicyVisible] = useState(false)
   const onAccess = ()=>{
-    setCookie('statement','access');
+    localStorage.setItem('statement','access');
     setPolicyVisible(false)
   }
   useEffect(()=>{
