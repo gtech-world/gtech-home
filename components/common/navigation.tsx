@@ -42,7 +42,7 @@ function PCNav(){
               <h4 className="font-semibold text-xl">
                 {t('navigation.list.item2.children.child1.name')}
               </h4>
-              <p className="text-gray-1 mt-5">
+              <p className="text-gray-1 mt-5" onClick={()=>setOpen('')}>
                 <Link className="link-hover" href="/solutions/automotive">
                   {t('navigation.list.item2.children.child1.desc')}
                 </Link>
@@ -50,10 +50,10 @@ function PCNav(){
             </div>
             <div className="ml-[2.75rem]">
               <h4 className="font-semibold text-xl">{t('navigation.list.item2.children.more')}</h4>
-              <p className="text-gray-1 mt-5">
+              <p className="text-gray-1 mt-5" onClick={()=>setOpen('')}>
                 <Link className="link-hover" href="/solutions/web3">{t('navigation.list.item2.children.child2.name')}</Link>
               </p>
-              <p className="text-gray-1 mt-2.5">
+              <p className="text-gray-1 mt-2.5" onClick={()=>setOpen('')}>
                 <Link className="link-hover" href="/solutions/governance">{t('navigation.list.item2.children.child3.name')}</Link>
               </p>
             </div>
