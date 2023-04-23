@@ -68,8 +68,8 @@ function Assistance(){
   const btnList = [
     {text:t('assistance.btnList.about'),onClick:()=>{push('/solutions/automotive')},className: i18n.language === 'en'?'w-[19.7rem]':'w-[17.7rem]'},
     {text:t('assistance.btnList.aiag'),onClick:()=>{window.open('https://aiag.org.cn/ACAC/Automotive-Carbon-Advisory-Committee','_blank')},className: i18n.language === 'en'?'w-[15.7rem]':'w-[17.7rem]'},
-    {text:t('assistance.btnList.database'),onClick:()=>{window.open('https://aicd.gtech.world/','_blank')},className: i18n.language === 'en'?'w-[19.7rem]':'w-[17.7rem]'},
-    {text:t('assistance.btnList.products'),onClick:()=>{window.open('https://aicd.gtech.world/login','_blank')},className: i18n.language === 'en'?'w-[15.7rem]':'w-[17.7rem]'}
+    {text:t('assistance.btnList.platform'),onClick:()=>{window.open('https://aicp.gtech.world/','_blank')},className: i18n.language === 'en'?'w-[19.7rem]':'w-[17.7rem]'},
+    {text:t('assistance.btnList.products'),onClick:()=>{window.open('https://aicp.gtech.world/login','_blank')},className: i18n.language === 'en'?'w-[15.7rem]':'w-[17.7rem]'}
   ]
   return(
     <div className="w-container mx-auto md:w-full md:px-3">

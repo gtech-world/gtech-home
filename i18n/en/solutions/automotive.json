@@ -7,7 +7,7 @@
     "text": "GTech is working closely with <0>AIAG</0> to help the automotive supply chain establish a shared trust data solution, <1>Carbon3</1>, for super-long-term carbon footprint data traceability and visibility. By providing technological support and solutions, we are helping the industry tackle the increasingly urgent carbon challenge and ultimately achieve the shared vision of the industry.",
     "list": {
       "item1": {
-        "text": "The <0>industry-level carbon database</0> as a shared infrastructure"
+        "text": "The <0>industry-level carbon platform</0> as a shared infrastructure"
       },
       "item2": {
         "text": "30+ years <0>traceability</0> & customizable <0>visibility</0> for carbon data"
@@ -32,10 +32,10 @@
             "text": "The Traceability management dashboard provided for Pro Users"
           },
           "item2": {
-            "text": "AICD & SaaS Platform as an industry-shared infrastructure"
+            "text": "AICP & SaaS Platform as an industry-shared infrastructure"
           },
           "item3": {
-            "text": "Trust Label system based on the data from AICD"
+            "text": "Trust Label system based on the data from AICP"
           }
         }
       },
@@ -45,7 +45,7 @@
             "text": "<0>OEMs and downstream suppliers</0> can now track and manage upstream carbon footprint data within customizable authorization."
           },
           "item2": {
-            "text": "<0>Customers and the public</0> can now open query product carbon footprint reports in AICD with a quick scan from a mobile phone."
+            "text": "<0>Customers and the public</0> can now open query product carbon footprint reports in AICP with a quick scan from a mobile phone."
           }
         }
       }
@@ -55,14 +55,14 @@
     "title": "Discover Main Product Modules",
     "list": {
       "item1": {
-        "title": "Automotive Industry Carbon Database",
-        "p1": "AICD is the global, industry-level database designed for long-term carbon emission performance traceability and visibility under the Net Zero commitment.",
-        "p2": "The database offers public view mode and supply chain view mode (Traceability).",
-        "button": "Enter AICD"
+        "title": "Automotive Industry Carbon Platform",
+        "p1": "AICP is the global, industry-level platform designed for long-term carbon emission performance traceability and visibility under the Net Zero commitment.",
+        "p2": "The platform offers public view mode and supply chain view mode (Traceability).",
+        "button": "Enter AICP"
       },
       "item2": {
         "title": "Supply Chain Traceability System",
-        "p1": "Supply Chain Traceability is the system that helps authorized organizations in the automotive industry to view data in AICD, track carbon performance alongside its supply chain parties and operate with the AICD database under certain permission.",
+        "p1": "Supply Chain Traceability is the system that helps authorized organizations in the automotive industry to view data in AICP, track carbon performance alongside its supply chain parties and operate with the AICP platform under certain permission.",
         "button": "Enter Traceability"
       }
     },

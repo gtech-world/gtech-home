@@ -121,8 +121,8 @@ function Carbon3Solution(){
               <div className="flex flex-col">
                 <div className="flex flex-col">
                   <div className="flex">
-                    <img className="md:w-[6.125rem]" src="/images/aicd_logo.svg" alt=""/>
-                    <span className="leading-5 ml-4 text-base text-green md:text-xs">AICD Supply Chain<br/>Traceability System</span>
+                    <img className="md:w-[6.125rem] fill-[#29953A]" src="/images/aicd_logo.svg" alt=""/>
+                    <span className="leading-5 ml-4 text-base text-green md:text-xs">AICP Supply Chain<br/>Traceability System</span>
                   </div>
                   <p className="mt-6 md:mt-3">{t('carbon3Solution.group.item2.group.item1.text')}</p>
                 </div>
@@ -132,7 +132,7 @@ function Carbon3Solution(){
                 <div className="flex flex-col">
                   <div className="flex">
                     <img className="md:w-[6.125rem]" src="/images/aicd_logo.svg" alt=""/>
-                    <span className="leading-5 ml-4 text-base text-green md:text-xs">Automotive Industry<br/>Carbon Database</span>
+                    <span className="leading-5 ml-4 text-base text-green md:text-xs">Automotive Industry<br/>Carbon Platform</span>
                   </div>
                   <p className="mt-6 md:mt-3">{t('carbon3Solution.group.item2.group.item2.text')}</p>
                 </div>
@@ -201,7 +201,7 @@ function MainProduct(){
         text: t('mainProduct.list.item1.button'),
         onClick: ()=>{
           console.log(process.env.NODE_ENV)
-          window.open("https://aicd.gtech.world/", "_blank")
+          window.open("https://aicp.gtech.world/", "_blank")
         }
       },
       imgUrl: '/images/roboat.svg'
@@ -214,7 +214,7 @@ function MainProduct(){
       btn:{
         text: t('mainProduct.list.item2.button'),
         onClick: ()=>{
-          window.open("https://aicd.gtech.world/login", "_blank")
+          window.open("https://aicp.gtech.world/login", "_blank")
         }
       },
       imgUrl: '/images/find.svg'
