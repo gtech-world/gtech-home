@@ -121,7 +121,7 @@ function Carbon3Solution(){
               <div className="flex flex-col">
                 <div className="flex flex-col">
                   <div className="flex">
-                    <img className="md:w-[6.125rem] fill-[#29953A]" src="/images/aicd_logo.svg" alt=""/>
+                    <img className="md:w-[6.125rem] fill-[#29953A]" src="/images/aicp_logo.svg" alt=""/>
                     <span className="leading-5 ml-4 text-base text-green md:text-xs">AICP Supply Chain<br/>Traceability System</span>
                   </div>
                   <p className="mt-6 md:mt-3">{t('carbon3Solution.group.item2.group.item1.text')}</p>
@@ -131,7 +131,7 @@ function Carbon3Solution(){
               <div className="flex flex-col items-center justify-center">
                 <div className="flex flex-col">
                   <div className="flex">
-                    <img className="md:w-[6.125rem]" src="/images/aicd_logo.svg" alt=""/>
+                    <img className="md:w-[6.125rem]" src="/images/aicp_logo.svg" alt=""/>
                     <span className="leading-5 ml-4 text-base text-green md:text-xs">Automotive Industry<br/>Carbon Platform</span>
                   </div>
                   <p className="mt-6 md:mt-3">{t('carbon3Solution.group.item2.group.item2.text')}</p>
