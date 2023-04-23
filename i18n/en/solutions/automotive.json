@@ -1,10 +1,10 @@
 {
   "banner": {
-    "text": "Case: Automotive Industry Carbon Performance Data Solution"
+    "text": "Trusted Cross-boundary Carbon Data Solution and Trust Label for the Auto Industry"
   },
   "boostingAutomotive": {
     "title": "The Automotive Carbon Initiative, Empowered by Data Technologies",
-    "text": "GTech is working closely with <0>AIAG</0> to help the automotive supply chain establish a shared trust data solution, <1>Carbon3</1>, for super-long-term carbon footprint data traceability and visibility. By providing technological support and solutions, we are helping the industry tackle the increasingly urgent carbon challenge and ultimately achieve the shared vision of the industry.",
+    "text": "GTech is working closely with <0>AIAG</0> to help the automotive supply chain establish a shared trust data solution, <1>Digital</1><2>3</2> <1>Carbon</1>, for super-long-term carbon footprint data traceability and visibility. By providing technological support and solutions, we are helping the industry tackle the increasingly urgent carbon challenge and ultimately achieve the shared vision of the industry.",
     "list": {
       "item1": {
         "text": "The <0>industry-level carbon platform</0> as a shared infrastructure"
@@ -21,7 +21,7 @@
     }
   },
   "carbon3Solution": {
-    "title": "A Closer Look at Carbon3 Data Solution",
+    "title": "A Closer Look at Digital<0>3</0> Carbon Data Solution",
     "group": {
       "item1": {
         "text": "Raw data collected from IoT/ERP on site and processed to meet privacy requirements"
@@ -52,18 +52,18 @@
     }
   },
   "mainProduct": {
-    "title": "Discover Main Product Modules",
+    "title": "The Industry-shared Carbon Platform, Powered by GTech",
     "list": {
       "item1": {
         "title": "Automotive Industry Carbon Platform",
         "p1": "AICP is the global, industry-level platform designed for long-term carbon emission performance traceability and visibility under the Net Zero commitment.",
-        "p2": "The platform offers public view mode and supply chain view mode (Traceability).",
+        "p2": "The platform offers public view mode and supply chain view mode (Digital<0>3</0> Carbon).",
         "button": "Enter AICP"
       },
       "item2": {
-        "title": "Supply Chain Traceability System",
-        "p1": "Supply Chain Traceability is the system that helps authorized organizations in the automotive industry to view data in AICP, track carbon performance alongside its supply chain parties and operate with the AICP platform under certain permission.",
-        "button": "Enter Traceability"
+        "title": "Digital<0>3</0> Carbon",
+        "p1": "Digital<0>3</0> Carbon provides products and tools that helps authorized organizations in the automotive industry to view data in AICP, track carbon performance alongside its supply chain parties and operate with the AICP platform under certain permission.",
+        "button": "Enter Digital<0>3</0> Carbon"
       }
     },
     "qrcode": {

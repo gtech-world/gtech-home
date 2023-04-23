@@ -27,9 +27,9 @@
   },
   "assistance": {
     "title": "The Automotive Carbon Initiative, Empowered by Data Technologies",
-    "text": "GTech is working closely with <0>AIAG</0> to help the automotive supply chain establish a shared trust data solution, <1>Carbon3</1>, for super-long-term carbon footprint data traceability and visibility. By providing technological support and solutions, we are helping the industry tackle the increasingly urgent carbon challenge and ultimately achieve the shared vision of the industry.",
+    "text": "GTech is working closely with <0>AIAG</0> to help the automotive supply chain establish a shared trust data solution, <1>Digital</1><2>3</2> <1>Carbon</1>, for super-long-term carbon footprint data traceability and visibility. By providing technological support and solutions, we are helping the industry tackle the increasingly urgent carbon challenge and ultimately achieve the shared vision of the industry.",
     "btnList": {
-      "about": "Learn More about Carbon3",
+      "about": "Learn More about Digital<0>3</0> Carbon",
       "aiag": "The AIAG Carbon Initiative",
       "platform": "Industry Shared Carbon Platform",
       "products": "Try Demo Products"

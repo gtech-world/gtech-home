@@ -10,7 +10,7 @@ function Top(){
   const { t,i18n } = useTranslation('automotive');
   return(
   <div className="h-[44.625rem] w-full bg-[url(/images/automotive_banner.jpg)] bg-no-repeat bg-cover bg-center flex justify-center items-center px-9 md:h-[28rem]">
-    <div className={classNames('bg-white/[.76] flex md:flex-col w-[58.5rem] pl-10 text-[2rem] py-10 leading-[2.75rem] md:py-8 md:text-lg md:text-center md:px-4 md:w-auto')}>
+    <div className={classNames('bg-white/[.76] flex md:flex-col w-[60.5rem] pl-10 text-[2rem] py-10 leading-[2.75rem] md:py-8 md:text-lg md:text-center md:px-4 md:w-auto')}>
       <div className='w-[9.875rem] md:w-full md:max-w-[22rem] md:max-w-[10rem] md:mx-auto md:scale-[0.9]'>
         <div className="py-3 rounded-[2.25rem] outline outline-[5px] outline-green outline-offset-4 border-[1.75px] border-green flex justify-center items-center">
           <div className="flex flex-col justify-between h-full">
@@ -20,8 +20,8 @@ function Top(){
         </div>
       </div>
       <div className="ml-10 mt-3 md:ml-0">
-        <h3 className={classNames('font-bold text-green md:text-[1.75rem] md:leading-9',i18n.language ==='zh'?'text-[2.6rem]':'text-5xl')}>Carbon3</h3>
-        <p className="mt-3 w-[36.25rem] md:w-full">{t('banner.text')}</p>
+        <h3 className={classNames('font-bold text-green md:text-[1.75rem] md:leading-9',i18n.language ==='zh'?'text-[2.6rem]':'text-5xl')}>Digital<sup>3</sup> Carbon</h3>
+        <p className="mt-3 w-[43.25rem] md:w-full">{t('banner.text')}</p>
       </div>
     </div>
   </div>
@@ -80,7 +80,7 @@ function BoostingAutomotive(){
           <p className="mt-5">
             <Trans
               i18nKey="boostingAutomotive.list.item1.text"
-              components={[<a href="https://aiag.org.cn/" rel="noreferrer" target="_blank" className="font-bold underline" key='info'></a>,<strong className="text-green" key='info'></strong>]}
+              components={[<a href="https://aiag.org.cn/" rel="noreferrer" target="_blank" className="font-bold underline" key='info'></a>,<strong className="text-green" key='info'></strong>,<sup className="text-green font-bold"></sup>]}
             >
               {t('boostingAutomotive.text')}
             </Trans>
@@ -108,7 +108,13 @@ function Carbon3Solution(){
   const { t } = useTranslation('automotive');
   return(
     <div className="w-full bg-bgc flex flex-col items-center text-lg md:text-sm md:pb-5">
-      <h3 className="text-center px-12 mt-16 md:mt-8">{t('carbon3Solution.title')}</h3>
+      <h3 className="text-center px-12 mt-16 md:mt-8">
+        <Trans
+          components={[<sup className="" key='info3'></sup>]}
+        >
+          {t('carbon3Solution.title')}
+        </Trans>
+      </h3>
       <div className="w-[80rem] md:w-full overflow-y-hidden overflow-x-auto">
         <div className="flex justify-center w-full items-center md:justify-start mt-20 pb-20 md:mt-[2.25rem] md:pb-8 md:ml-5 md:text-sm">
           <div className="">
@@ -122,7 +128,7 @@ function Carbon3Solution(){
                 <div className="flex flex-col">
                   <div className="flex">
                     <img className="md:w-[6.125rem] fill-[#29953A]" src="/images/aicp_logo.svg" alt=""/>
-                    <span className="leading-5 ml-4 text-base text-green md:text-xs">AICP Supply Chain<br/>Traceability System</span>
+                    <span className="leading-5 ml-4 text-base text-green md:text-xs">Digital<sup>3</sup><br/>Carbon</span>
                   </div>
                   <p className="mt-6 md:mt-3">{t('carbon3Solution.group.item2.group.item1.text')}</p>
                 </div>
@@ -159,8 +165,7 @@ function Carbon3Solution(){
                   <img className="w-[7.5rem] md:w-[5.25rem]" src="/images/carry.png" alt=""/>
                   <p className="mt-6">
                     <Trans
-                      i18nKey="boostingAutomotive.list.item1.text"
-                      components={[<strong className="text-green" key='info'></strong>]}
+                      components={[<strong className="text-green" key='info'></strong>,<sup></sup>]}
                     >
                       {t('carbon3Solution.group.item3.group.item1.text')}
                     </Trans>
@@ -195,7 +200,12 @@ function MainProduct(){
       title: t('mainProduct.list.item1.title'),
       text: [
         t('mainProduct.list.item1.p1'),
-        t('mainProduct.list.item1.p2')
+        <Trans
+          i18nKey=""
+          components={[<sup key='info3'></sup>]}
+        >
+          {t('mainProduct.list.item1.p2')}
+        </Trans>,
       ],
       btn:{
         text: t('mainProduct.list.item1.button'),
@@ -207,12 +217,29 @@ function MainProduct(){
       imgUrl: '/images/roboat.svg'
     },
     {
-      title: t('mainProduct.list.item2.title'),
+      title:
+        <Trans
+          i18nKey=""
+          components={[<sup key='info3'></sup>]}
+        >
+          {t('mainProduct.list.item2.title')}
+        </Trans>,
       text: [
-        t('mainProduct.list.item2.p1')
+        <Trans
+          i18nKey=""
+          components={[<sup key='info3'></sup>]}
+        >
+          {t('mainProduct.list.item2.p1')}
+        </Trans>,
       ],
       btn:{
-        text: t('mainProduct.list.item2.button'),
+        text:
+          <Trans
+            i18nKey=""
+            components={[<sup key='info3'></sup>]}
+          >
+            {t('mainProduct.list.item2.button')}
+          </Trans>,
         onClick: ()=>{
           window.open("https://aicp.gtech.world/login", "_blank")
         }
@@ -222,13 +249,13 @@ function MainProduct(){
   ]
   return(
     <div className="flex flex-col items-center px-3">
-      <h3 className="my-16 md:my-8">{t('mainProduct.title')}</h3>
+      <h3 className="my-16 md:my-8 max-w-[1150px] text-center">{t('mainProduct.title')}</h3>
       <div className="flex justify-center md:flex-col">
         {
           data.map((v,i)=>{
             return(
               <div key={`product-${i}`} className={classNames('w-[36.25rem] pb-5 border-4 border-black rounded-2xl flex flex-col justify-center px-5 md:w-full md:mt-8',i===0?'ml-0 md:mt-0':'ml-10 md:ml-0')}>
-                <h4 className="font-bold text-[2rem] leading-9 px-5 text-center pt-6 pb-8 text-green md:text-base md:mt-3 md:pt-3">{v.title}</h4>
+                <h4 className="font-bold text-[2rem] h-[8rem] leading-9 px-5 text-center pt-6 pb-8 text-green md:text-base md:mt-3 md:pt-3">{v.title}</h4>
                 <img className="h-[6.125rem] mb-10 md:h-[5rem] md:mb-8" src={v.imgUrl} alt=""/>
                 <div className="w-[29.25rem] mx-auto leading-6 md:w-full md:leading-5 md:text-center">
                   {

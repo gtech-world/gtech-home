@@ -81,7 +81,7 @@ function Assistance(){
           <p className="md:mt-5 md:text-center">
             <Trans
               i18nKey="boostingAutomotive.list.item1.text"
-              components={[<a href="https://aiag.org.cn/" rel="noreferrer" target="_blank" className="font-bold underline" key='info'></a>,<strong className="text-green" key='info'></strong>]}
+              components={[<a href="https://aiag.org.cn/" rel="noreferrer" target="_blank" className="font-bold underline" key='info1'></a>,<strong className="text-green" key='info2'></strong>,<sup className="text-green font-bold" key='info3'></sup>]}
             >
               {t('assistance.text')}
             </Trans>
@@ -90,7 +90,16 @@ function Assistance(){
             {
               btnList.map((v,i)=>{
                 return(
-                  <li key={`btnlist${i}`} className="mt-5"><Button onClick={()=>v.onClick()} className={classNames(v.className,'pl-0 pr-0 md:w-[20rem]')} text={v.text} /></li>
+                  <li key={`btnlist${i}`} className="mt-5">
+                    <Button onClick={()=>v.onClick()} className={classNames(v.className,'pl-0 pr-0 md:w-[20rem]')}>
+                      <Trans
+                        i18nKey="boostingAutomotive.list.item1.text"
+                        components={[<sup className="" key='info3'></sup>]}
+                      >
+                        {v.text}
+                      </Trans>
+                    </Button>
+                  </li>
                 )
               })
             }

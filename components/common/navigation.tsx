@@ -5,7 +5,7 @@ import classNames from "classnames";
 import {useClickAway,useToggle} from "react-use";
 import { IoCaretDownOutline } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 import {useNewsCate} from "@lib/hooks/useNewsCate";
 
 const statementPage = ['/enstatement','/zhstatement']
@@ -40,7 +40,12 @@ function PCNav(){
             </div>
             <div className="w-[23.125rem] ml-[2.75rem]">
               <h4 className="font-semibold text-xl">
-                {t('navigation.list.item2.children.child1.name')}
+
+                <Trans
+                  components={[<sup></sup>]}
+                >
+                  {t('navigation.list.item2.children.child1.name')}
+                </Trans>
               </h4>
               <p className="text-gray-1 mt-5" onClick={()=>setOpen('')}>
                 <Link className="link-hover" href="/solutions/automotive">
