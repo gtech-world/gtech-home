@@ -40,9 +40,9 @@ function PCNav(){
             </div>
             <div className="w-[23.125rem] ml-[2.75rem]">
               <h4 className="font-semibold text-xl">
-
                 <Trans
-                  components={[<sup></sup>]}
+                  i18nKey="2"
+                  components={[<sup key="dsd"></sup>]}
                 >
                   {t('navigation.list.item2.children.child1.name')}
                 </Trans>
@@ -207,7 +207,13 @@ function MobileNav(){
       children:[
         {
           href: '/solutions/automotive',
-          name: t('navigation.list.item2.children.child1.name'),
+          name:
+            <Trans
+              i18nKey="2"
+              components={[<sup key="dsd"></sup>]}
+            >
+              {t('navigation.list.item2.children.child1.name')}
+            </Trans>,
         },
         {
           href: '/solutions/web3',
@@ -311,7 +317,6 @@ function MobileNav(){
 }
 
 export function Navigation() {
-  const { t } = useTranslation('common');
   return (
     <>
       <PCNav />

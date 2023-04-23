@@ -80,7 +80,7 @@ function BoostingAutomotive(){
           <p className="mt-5">
             <Trans
               i18nKey="boostingAutomotive.list.item1.text"
-              components={[<a href="https://aiag.org.cn/" rel="noreferrer" target="_blank" className="font-bold underline" key='info'></a>,<strong className="text-green" key='info'></strong>,<sup className="text-green font-bold"></sup>]}
+              components={[<a href="https://aiag.org.cn/" rel="noreferrer" target="_blank" className="font-bold underline" key='info'></a>,<strong className="text-green" key='info'></strong>,<sup key="info" className="text-green font-bold"></sup>]}
             >
               {t('boostingAutomotive.text')}
             </Trans>
@@ -110,7 +110,8 @@ function Carbon3Solution(){
     <div className="w-full bg-bgc flex flex-col items-center text-lg md:text-sm md:pb-5">
       <h3 className="text-center px-12 mt-16 md:mt-8">
         <Trans
-          components={[<sup className="" key='info3'></sup>]}
+          i18nKey="carbon3Solution.title"
+          components={[<sup className="" key='info'></sup>]}
         >
           {t('carbon3Solution.title')}
         </Trans>
@@ -165,7 +166,8 @@ function Carbon3Solution(){
                   <img className="w-[7.5rem] md:w-[5.25rem]" src="/images/carry.png" alt=""/>
                   <p className="mt-6">
                     <Trans
-                      components={[<strong className="text-green" key='info'></strong>,<sup></sup>]}
+                      i18nKey="carbon3Solution.group.item3.group.item1.text"
+                      components={[<strong className="text-green" key='info'></strong>,<sup key="info"></sup>]}
                     >
                       {t('carbon3Solution.group.item3.group.item1.text')}
                     </Trans>
@@ -198,15 +200,20 @@ function MainProduct(){
   const data = [
     {
       title: t('mainProduct.list.item1.title'),
-      text: [
-        t('mainProduct.list.item1.p1'),
-        <Trans
-          i18nKey=""
-          components={[<sup key='info3'></sup>]}
-        >
-          {t('mainProduct.list.item1.p2')}
-        </Trans>,
-      ],
+      text:
+      <div className="w-[29.25rem] mx-auto leading-6 md:w-full md:leading-5 md:text-center">
+        <p>
+          {t('mainProduct.list.item1.p1')}
+        </p>
+        <p>
+          <Trans
+            i18nKey="mainProduct.list.item1.p2"
+            components={[<sup key='info3'></sup>]}
+          >
+            {t('mainProduct.list.item1.p2')}
+          </Trans>
+        </p>
+      </div>,
       btn:{
         text: t('mainProduct.list.item1.button'),
         onClick: ()=>{
@@ -224,14 +231,16 @@ function MainProduct(){
         >
           {t('mainProduct.list.item2.title')}
         </Trans>,
-      text: [
-        <Trans
-          i18nKey=""
-          components={[<sup key='info3'></sup>]}
-        >
-          {t('mainProduct.list.item2.p1')}
-        </Trans>,
-      ],
+      text:
+        <div className="w-[29.25rem] mx-auto leading-6 md:w-full md:leading-5 md:text-center">
+          <Trans
+            i18nKey="mainProduct.list.item2.title"
+            components={[<sup key='info3'></sup>]}
+          >
+            {t('mainProduct.list.item2.p1')}
+          </Trans>
+        </div>
+      ,
       btn:{
         text:
           <Trans
@@ -256,16 +265,17 @@ function MainProduct(){
             return(
               <div key={`product-${i}`} className={classNames('w-[36.25rem] pb-5 border-4 border-black rounded-2xl flex flex-col justify-center px-5 md:w-full md:mt-8',i===0?'ml-0 md:mt-0':'ml-10 md:ml-0')}>
                 <h4 className="font-bold text-[2rem] h-[8rem] leading-9 px-5 text-center pt-6 pb-8 text-green md:text-base md:mt-3 md:pt-3">{v.title}</h4>
-                <img className="h-[6.125rem] mb-10 md:h-[5rem] md:mb-8" src={v.imgUrl} alt=""/>
-                <div className="w-[29.25rem] mx-auto leading-6 md:w-full md:leading-5 md:text-center">
-                  {
-                    v.text.map((child,index)=>{
-                      return(
-                        <p key={`child-${index}`}>{child}</p>
-                      )
-                    })
-                  }
-                </div>
+                {v.text}
+                {/*<img className="h-[6.125rem] mb-10 md:h-[5rem] md:mb-8" src={v.imgUrl} alt=""/>*/}
+                {/*<div className="w-[29.25rem] mx-auto leading-6 md:w-full md:leading-5 md:text-center">*/}
+                {/*  {*/}
+                {/*    v.text.map((child,index)=>{*/}
+                {/*      return(*/}
+                {/*        <p key={`child-${index}`}>{child}</p>*/}
+                {/*      )*/}
+                {/*    })*/}
+                {/*  }*/}
+                {/*</div>*/}
                 <Button onClick={()=>v.btn.onClick()} className="mt-8" text={v.btn.text} />
               </div>
             )

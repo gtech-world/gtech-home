@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo, useState} from "react";
 import Link from "next/link";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 import classNames from "classnames";
 import {useNewsCate} from "@lib/hooks/useNewsCate";
 
@@ -42,7 +42,13 @@ export function Footer() {
       children:[
         {
           href: '/solutions/automotive',
-          name: t('navigation.list.item2.children.child1.name'),
+          name:
+            <Trans
+              i18nKey="2"
+              components={[<sup key="dsd"></sup>]}
+            >
+              {t('navigation.list.item2.children.child1.name')}
+            </Trans>,
         },
         {
           href: '/solutions/web3',
