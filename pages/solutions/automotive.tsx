@@ -20,7 +20,7 @@ function Top(){
         </div>
       </div>
       <div className="ml-10 mt-3 md:ml-0">
-        <h3 className={classNames('font-bold text-green md:text-[1.75rem] md:leading-9',i18n.language ==='zh'?'text-[2.6rem]':'text-5xl')}>Digital<sup>3</sup> Carbon</h3>
+        <h3 className={classNames('font-bold text-green md:text-[1.75rem] md:leading-9')}>Digital<sup>3</sup> Carbon</h3>
         <p className="mt-3 w-[43.25rem] md:w-full">{t('banner.text')}</p>
       </div>
     </div>
@@ -131,7 +131,14 @@ function Carbon3Solution(){
                     <img className="md:w-[6.125rem] fill-[#29953A]" src="/images/aicp_logo.svg" alt=""/>
                     <span className="leading-5 ml-4 text-base text-green md:text-xs">Digital<sup>3</sup><br/>Carbon</span>
                   </div>
-                  <p className="mt-6 md:mt-3">{t('carbon3Solution.group.item2.group.item1.text')}</p>
+                  <p className="mt-6 md:mt-3">
+                    <Trans
+                      i18nKey="carbon3Solution.group.item2.group.item1.text"
+                      components={[<sup key="info"></sup>]}
+                    >
+                      {t('carbon3Solution.group.item2.group.item1.text')}
+                    </Trans>
+                  </p>
                 </div>
               </div>
               <img className="h-10 mt-4 mb-5 ml-[-5.5rem]" src="/images/arrow_40.svg" alt=""/>
