@@ -38,7 +38,7 @@ function PCNav(){
               <h4 className="font-semibold text-xl">{t('navigation.list.item2.name')}</h4>
               <p className="mt-5">{t('navigation.list.item2.desc')}</p>
             </div>
-            <div className="w-[23.125rem] ml-[2.75rem]">
+            <div className="w-[24.125rem] ml-[2.05rem]">
               <h4 className="font-semibold text-xl">
                 <Trans
                   i18nKey="2"
@@ -53,7 +53,7 @@ function PCNav(){
                 </Link>
               </p>
             </div>
-            <div className="ml-[2.75rem]">
+            <div className="ml-[2.05rem]">
               <h4 className="font-semibold text-xl">{t('navigation.list.item2.children.more')}</h4>
               <p className="text-gray-1 mt-5" onClick={()=>setOpen('')}>
                 <Link className="link-hover" href="/solutions/web3">{t('navigation.list.item2.children.child2.name')}</Link>
