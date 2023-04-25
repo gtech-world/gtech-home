@@ -124,7 +124,7 @@ function StorageMiddlewares(){
           </div>
         </div>
       </div>
-      <Button onClick={()=>window.open(`https://cloud3.cc/`, "_blank")} className="w-96 mt-16 md:max-w-[19.375rem] md:mt-8" text={t('storageMiddlewares.button')} />
+      <Button onClick={()=>window.open(`https://crustcloud.io/`, "_blank")} className="w-96 mt-16 md:max-w-[19.375rem] md:mt-8" text={t('storageMiddlewares.button')} />
     </div>
   )
 }
