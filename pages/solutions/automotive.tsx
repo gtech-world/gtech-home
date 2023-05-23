@@ -13,8 +13,8 @@ function Top(){
     <div className={classNames('bg-white/[.76] flex md:flex-col w-[60.5rem] pl-10 text-[2rem] py-10 leading-[2.75rem] md:py-8 md:text-lg md:text-center md:px-4 md:w-auto')}>
       <div className='w-[9.875rem] md:w-full md:max-w-[22rem] md:max-w-[10rem] md:mx-auto md:scale-[0.9]'>
         <div className="py-3 rounded-[2.25rem] outline outline-[5px] outline-green outline-offset-4 border-[1.75px] border-green flex justify-center items-center">
-          <div className="flex flex-col justify-between h-full">
-            <img className="mb-2" src="/images/carbon3_name.svg" alt=""/>
+          <div className="flex flex-col justify-between items-center h-full">
+            <img className="mb-2 w-[8rem]" src="/images/carbon3_name.svg" alt=""/>
             <img className="w-[6.25rem]" src="/images/earth.png" alt=""/>
           </div>
         </div>
