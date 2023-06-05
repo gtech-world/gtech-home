@@ -136,7 +136,7 @@ export function Footer() {
           <div>
             {/*<span>{t('footer.company')}</span>*/}
             {/*<a href="https://beian.miit.gov.cn/" target="_blank">您的备案号</a>*/}
-            <a href="https://beian.miit.gov.cn/" target="_blank"> 沪ICP备2022024704号-2</a>
+            <a rel="noreferrer" href="https://beian.miit.gov.cn/" target="_blank"> 沪ICP备2022024704号-2</a>
           </div>
           <span onClick={()=>window.open(i18n.language === 'zh'?'/zhstatement':'/enstatement','_blank')} className="cursor-pointer md:mt-5 link-hover">{t('footer.viewBtn')}</span>
         </div>
