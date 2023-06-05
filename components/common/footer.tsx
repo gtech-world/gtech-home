@@ -132,7 +132,12 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-16 pt-4 border-t border-black text-sm flex justify-between md:flex-col md:mt-8">
-          <span>{t('footer.company')}</span>
+
+          <div>
+            {/*<span>{t('footer.company')}</span>*/}
+            {/*<a href="https://beian.miit.gov.cn/" target="_blank">您的备案号</a>*/}
+            <a href="https://beian.miit.gov.cn/" target="_blank"> 沪ICP备2022024704号-2</a>
+          </div>
           <span onClick={()=>window.open(i18n.language === 'zh'?'/zhstatement':'/enstatement','_blank')} className="cursor-pointer md:mt-5 link-hover">{t('footer.viewBtn')}</span>
         </div>
       </div>
