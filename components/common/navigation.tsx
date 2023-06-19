@@ -92,36 +92,36 @@ function PCNav(){
     },
     {
       href: '/contact',
-      isLink: false,
+      isLink: true,
       name: t('navigation.list.item4.name'),
-      childrenNode: (
-        <div className="w-full">
-          <div className="w-container mx-auto flex justify-between">
-            <div className="w-[28.125rem]">
-              <h4 className="font-semibold text-xl">{t('navigation.list.item4.subName')}</h4>
-              <p className="mt-5">{t('navigation.list.item4.desc')}</p>
-            </div>
-            <div className="ml-[2.75rem]">
-              <h4 className="font-semibold text-xl mb-5">{t('navigation.list.item4.children.companySubtitle')}</h4>
-              {
-                i18n.language === 'zh' && <p className="text-gray-1">吉特科技有限公司</p>
-              }
-              <p className="text-gray-1">GTech International, Ltd.</p>
-            </div>
-            <div className="ml-[2.75rem]">
-              <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.contactSubtitle')}</h4>
-              <p className="text-gray-1 mt-5">hi@gtech.world</p>
-              <p className="text-gray-1">(+86)021-66271287</p>
-            </div>
-            <div className="ml-[2.75rem] flex flex-col">
-              <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.qrSubtitle')}</h4>
-              <div className="mt-5">
-                <img src="/images/wechat_qrcode.png" className="w-[5.5rem] mt-1" alt=""/>
-              </div>
-            </div>
-          </div>
-        </div>
-      )
+      // childrenNode: (
+      //   <div className="w-full">
+      //     <div className="w-container mx-auto flex justify-between">
+      //       <div className="w-[28.125rem]">
+      //         <h4 className="font-semibold text-xl">{t('navigation.list.item4.subName')}</h4>
+      //         <p className="mt-5">{t('navigation.list.item4.desc')}</p>
+      //       </div>
+      //       <div className="ml-[2.75rem]">
+      //         <h4 className="font-semibold text-xl mb-5">{t('navigation.list.item4.children.companySubtitle')}</h4>
+      //         {
+      //           i18n.language === 'zh' && <p className="text-gray-1">吉特科技有限公司</p>
+      //         }
+      //         <p className="text-gray-1">GTech International, Ltd.</p>
+      //       </div>
+      //       <div className="ml-[2.75rem]">
+      //         <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.contactSubtitle')}</h4>
+      //         <p className="text-gray-1 mt-5">hi@gtech.world</p>
+      //         <p className="text-gray-1">(+86)021-66271287</p>
+      //       </div>
+      //       <div className="ml-[2.75rem] flex flex-col">
+      //         <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.qrSubtitle')}</h4>
+      //         <div className="mt-5">
+      //           <img src="/images/wechat_qrcode.png" className="w-[5.5rem] mt-1" alt=""/>
+      //         </div>
+      //       </div>
+      //     </div>
+      //   </div>
+      // )
     },
   ]
   if(i18n.language === 'en') navList.splice(2,1)
@@ -240,14 +240,14 @@ function MobileNav(){
     {
       href: '/contact',
       name: t('navigation.list.item4.name'),
-      children:[
-        {
-          name: 'hi@gtech.world',
-        },
-        {
-          name: '(+86)021-66271287',
-        }
-      ]
+      // children:[
+      //   {
+      //     name: 'hi@gtech.world',
+      //   },
+      //   {
+      //     name: '(+86)021-66271287',
+      //   }
+      // ]
     },
     {
       href: 'language',
@@ -259,12 +259,9 @@ function MobileNav(){
     }
   ]
   if(i18n.language === 'en') navList.splice(2,1)
-  console.log(navList)
-  // const fData = data.concat()
   useClickAway(ref, () => open && onToggle(false));
   const changeLanguage = (val:string) => {
     i18n.changeLanguage(val);
-    console.log(pathname)
     statementPage.indexOf(pathname)>-1 && push(val === 'en'?'/enstatement':'zhstatement')
   };
   const openSubFc = (e:any,val:any)=>{

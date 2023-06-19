@@ -10,11 +10,14 @@ import enGovernance from './en/solutions/governance.json';
 import zhGovernance from './zh/solutions/governance.json';
 import enAutomotive from './en/solutions/automotive.json';
 import zhAutomotive from './zh/solutions/automotive.json';
+import enContact from './en/contact.json';
+import zhContact from './zh/contact.json';
 
 export const resources = {
   en: {
     common : enCommon,
     home : enHome,
+    contact : enContact,
     web3 : enWeb3,
     governance : enGovernance,
     automotive : enAutomotive,
@@ -22,6 +25,7 @@ export const resources = {
   zh: {
     common : zhCommon,
     home : zhHome,
+    contact : zhContact,
     web3 : zhWeb3,
     governance : zhGovernance,
     automotive: zhAutomotive
