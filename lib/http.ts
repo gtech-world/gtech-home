@@ -25,12 +25,17 @@ export function noArgs<T>(fn: () => Promise<T>, deeps: any[]) {
     return fn();
   };
 }
-export async function getNewsList(newsType: string='数据技术', pageNumber: number=1,pageSize:number=10) {
-  const res = await axios.get(creatUrl(`/wechat/news?newsType=${newsType}&pageNumber=${pageNumber}&pageSize=${pageSize}`));
+export async function getNewsList(newsTypeId: number=1, pageNumber: number=1,pageSize:number=10) {
+  const res = await axios.get(creatUrl(`/wechat/news?newsTypeId=${newsTypeId}&pageNumber=${pageNumber}&pageSize=${pageSize}`));
   return getData(res);
 }
-export async function getNewsCount(newsType: string='数据技术') {
-  const res = await axios.get(creatUrl(`/wechat/news/count?newsType=${newsType}`));
+export async function getNewsCount (){
+  const res = await axios.get(creatUrl(`/wechat/news/types`));
+  return getData(res);
+}
+
+export async function getNewsListCount (newsType?:string,newsTypeId: number = 1){
+  const res = await axios.get(creatUrl(`/wechat/news/count?newsTypeId=${newsTypeId}&newsType=${newsType}`));
   return getData(res);
 }
 export async function getNewsDetail(id: any =1) {
