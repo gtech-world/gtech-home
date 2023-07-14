@@ -71,10 +71,10 @@ export default function Detail() {
   return(
     <HeaderLayout hiddenHeader={isMobile()} headerProps={headerProps}>
       <div className="h-[4rem] justify-center items-center hidden md:flex">
-        <IoIosArrowBack onClick={()=>push(`/news?cateId=${cateId}`)} className="absolute left-2 text-xl text-green" />
-        <h4 className="text-green text-center text-lg">资讯动态</h4>
+        <IoIosArrowBack onClick={()=>push(`/news?cateId=${cateId}`)} className="absolute text-xl left-2 text-green" />
+        <h4 className="text-lg text-center text-green">资讯动态</h4>
       </div>
-      <div className="w-container mx-auto md:w-full md:px-3 md:mt-2">
+      <div className="mx-auto w-container md:w-full md:px-3 md:mt-2">
         <header className="pb-8 border-b border-gray-10 md:pb-5">
           <Breadcrumb className="py-8 md:hidden" content={[{name:curCateName,href:`/news?cateId=${query.cateId}`},{name:'详情'}]} />
           <h1 className="text-4xl font-semibold md:text-lg">{article.title}</h1>

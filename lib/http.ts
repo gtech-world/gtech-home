@@ -25,8 +25,8 @@ export function noArgs<T>(fn: () => Promise<T>, deeps: any[]) {
     return fn();
   };
 }
-export async function getNewsList(newsTypeId: number=1, pageNumber: number=1,pageSize:number=10) {
-  const res = await axios.get(creatUrl(`/wechat/news?newsTypeId=${newsTypeId}&pageNumber=${pageNumber}&pageSize=${pageSize}`));
+export async function getNewsList(newsTypeId: number=1,invert:boolean = false, pageNumber: number=1,pageSize:number=10) {
+  const res = await axios.get(creatUrl(`/wechat/news?newsTypeId=${newsTypeId}&invert=${invert}&pageNumber=${pageNumber}&pageSize=${pageSize}`));
   return getData(res);
 }
 export async function getNewsCount (){
