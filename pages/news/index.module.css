@@ -1,0 +1,13 @@
+.box{
+  background-color: red;
+  min-width: 30px;
+  margin-left: 10px;
+  margin-top: 20px;
+
+}
+
+.boxContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
