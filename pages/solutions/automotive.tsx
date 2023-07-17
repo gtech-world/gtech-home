@@ -77,7 +77,7 @@ function BoostingAutomotive(){
       <h3 className="my-16 text-center text-green md:mt-7 md:mb-5 md:px-12">{t('boostingAutomotive.title')}</h3>
       <div className="flex justify-between md:flex-col">
         <div className="flex flex-col px-3 w-[32.625rem] mr-[6.875rem] md:w-full md:mr-0">
-          <img className="w-full rounded-lg md:mx-auto md:mt-8 md:mt-0" src="/images/solution_intro.png" alt=""/>
+          <Image className="w-full rounded-lg md:mx-auto md:mt-8 md:mt-0" src="/images/solution_intro.png" alt=""/>
           <p className="mt-5">
             <Trans
               i18nKey="boostingAutomotive.list.item1.text"
@@ -93,7 +93,7 @@ function BoostingAutomotive(){
               return(
                 <li key={`list${i}`} className="w-[16.125rem] flex flex-col justify-center items-center md:mt-8">
                   <div>
-                    <img src={v.img} alt=""/>
+                    <Image src={v.img} alt=""/>
                   </div>
                   <p className="mt-8">{v.text}</p>
                 </li>
@@ -120,16 +120,16 @@ function Carbon3Solution(){
       <div className="w-[80rem] md:w-full overflow-y-hidden overflow-x-auto">
         <div className="flex justify-center w-full items-center md:justify-start mt-20 pb-20 md:mt-[2.25rem] md:pb-8 md:ml-5 md:text-sm">
           <div className="">
-            <img className="w-[7.5rem] md:w-[5.25rem]" src="/images/factory.png" alt=""/>
+            <Image className="w-[7.5rem] md:w-[5.25rem]" src="/images/factory.png" alt=""/>
             <p className="mt-5 md:mt-3.5 w-[10.375rem]">{t('carbon3Solution.group.item1.text')}</p>
           </div>
-          <img className="mr-14 ml-10 md:w-[3.125rem] md:ml-8 md:mr-10" src="/images/arrow_80.svg" alt=""/>
+          <Image className="mr-14 ml-10 md:w-[3.125rem] md:ml-8 md:mr-10" src="/images/arrow_80.svg" alt=""/>
           <div className="flex md:mt-0 md:flex-col">
             <div className="flex flex-col w-[19rem] md:w-[14.5rem]">
               <div className="flex flex-col">
                 <div className="flex flex-col">
                   <div className="flex">
-                    <img className="md:w-[6.125rem] fill-[#29953A]" src="/images/aicp_logo.svg" alt=""/>
+                    <Image className="md:w-[6.125rem] fill-[#29953A]" src="/images/aicp_logo.svg" alt=""/>
                     <span className="ml-4 text-base leading-5 text-green md:text-xs">Digital<sup>3</sup><br/>Carbon</span>
                   </div>
                   <p className="mt-6 md:mt-3">
@@ -142,17 +142,17 @@ function Carbon3Solution(){
                   </p>
                 </div>
               </div>
-              <img className="h-10 mt-4 mb-5 ml-[-5.5rem]" src="/images/arrow_40.svg" alt=""/>
+              <Image className="h-10 mt-4 mb-5 ml-[-5.5rem]" src="/images/arrow_40.svg" alt=""/>
               <div className="flex flex-col items-center justify-center">
                 <div className="flex flex-col">
                   <div className="flex">
-                    <img className="md:w-[6.125rem]" src="/images/aicp_logo.svg" alt=""/>
+                    <Image className="md:w-[6.125rem]" src="/images/aicp_logo.svg" alt=""/>
                     <span className="ml-4 text-base leading-5 text-green md:text-xs">Automotive Industry<br/>Carbon Platform</span>
                   </div>
                   <p className="mt-6 md:mt-3">{t('carbon3Solution.group.item2.group.item2.text')}</p>
                 </div>
               </div>
-              <img className="h-10 mt-4 mb-5 ml-[-5.5rem] rotate-180" src="/images/arrow_40.svg" alt=""/>
+              <Image className="h-10 mt-4 mb-5 ml-[-5.5rem] rotate-180" src="/images/arrow_40.svg" alt=""/>
               <div className="flex flex-col items-center justify-center">
                 <div className="flex flex-col w-full">
                   <div className="flex ml-[-6.5rem] mt-[-1.5rem] mb-[-1.5rem] md:ml-[-4.5rem] md:mb-[-2rem]">
@@ -164,14 +164,14 @@ function Carbon3Solution(){
             </div>
           </div>
           <div className="flex flex-col justify-between h-[23rem] ml-14 mr-14 md:ml-8 md:mr-8">
-            <img className="md:w-[3.125rem] md:mr-10" src="/images/arrow_80.svg" alt=""/>
-            <img className="md:w-[3.125rem] md:mr-10" src="/images/arrow_80.svg" alt=""/>
+            <Image className="md:w-[3.125rem] md:mr-10" src="/images/arrow_80.svg" alt=""/>
+            <Image className="md:w-[3.125rem] md:mr-10" src="/images/arrow_80.svg" alt=""/>
           </div>
           <div className="flex md:mt-0 md:flex-col md:pr-5">
             <div className="flex flex-col w-[22.8rem] md:w-[18rem] justify-between h-[35.8rem] md:h-[29rem]">
               <div className="flex flex-col">
                 <div className="flex flex-col">
-                  <img className="w-[7.5rem] md:w-[5.25rem]" src="/images/carry.png" alt=""/>
+                  <Image className="w-[7.5rem] md:w-[5.25rem]" src="/images/carry.png" alt=""/>
                   <p className="mt-6">
                     <Trans
                       i18nKey="carbon3Solution.group.item3.group.item1.text"
@@ -184,7 +184,7 @@ function Carbon3Solution(){
               </div>
               <div className="flex flex-col items-center justify-center">
                 <div className="flex flex-col">
-                  <img className="w-[7.5rem] md:w-[5.25rem]" src="/images/people.png" alt=""/>
+                  <Image className="w-[7.5rem] md:w-[5.25rem]" src="/images/people.png" alt=""/>
                   <p className="mt-6">
                     <Trans
                       i18nKey="boostingAutomotive.list.item1.text"
@@ -273,7 +273,7 @@ function MainProduct(){
             return(
               <div key={`product-${i}`} className={classNames('w-[36.25rem] pb-5 border-4 border-black rounded-2xl flex flex-col justify-center px-5 md:w-full md:mt-8',i===0?'ml-0 md:mt-0':'ml-10 md:ml-0')}>
                 <h4 className="font-bold text-[2rem] h-[8rem] md:h-auto leading-9 px-5 text-center pt-6 pb-8 text-green md:text-base md:mt-3 md:pt-3">{v.title}</h4>
-                <img className="h-[6.125rem] mb-10 md:h-[5rem] md:mb-8" src={v.imgUrl} alt=""/>
+                <Image className="h-[6.125rem] mb-10 md:h-[5rem] md:mb-8" src={v.imgUrl} alt=""/>
                 {v.text}
                 {/*<div className="w-[29.25rem] mx-auto leading-6 md:w-full md:leading-5 md:text-center">*/}
                 {/*  {*/}
@@ -301,7 +301,7 @@ function TrustLabel(){
       <div className="pb-5 m-auto border-4 border-black w-container rounded-2xl md:w-full md:h-auto">
         <h3 className="text-3.5xl font-bold text-green text-center mt-8 pb-6 md:text-base">{t('mainProduct.qrcode.title')}</h3>
         <div className="flex px-6 md:flex-col-reverse md:px-3">
-          <img className="w-[50.625rem] md:w-full" src="/images/car.png" alt=""/>
+          <Image className="w-[50.625rem] md:w-full" src="/images/car.png" alt=""/>
           <div className="ml-6 md:ml-2">
             <QrGroup className="mt-20 md:mt-8" />
             <p className="mt-8 md:text-center">{t('mainProduct.qrcode.qrIntro')}</p>
