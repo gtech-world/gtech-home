@@ -6,77 +6,91 @@ import { Pagination } from "@components/common/pagination";
 import { getNewsCount, getNewsList, getNewsListCount } from "@lib/http";
 import moment from "moment";
 import { Loading } from "@components/common/loading";
-import Image from "next/image";
+import { useRouter } from "next/router";
 
-const ArticleList =(p: { data: any[]; cateId?: number })=> {
-  const { cateId, data } = p;
+const ArticleList = (p: { data: any[]; cateId?: number, setPgNum: any, tableDataTotal: any, pgNum: number, windowWidth: number }) => {
+  const { cateId, data, setPgNum, tableDataTotal, pgNum, windowWidth } = p;
 
   return (
-    <div className=" w-container md:w-[351px] md:mt-8 md:px-[20px]">
+
+    <div className={`flex flex-wrap justify-between mx-auto mt-10 rounded-lg  ${windowWidth > 900 && 'w-container'} md:mt-5`}>
       {!!data.length &&
         data.map((v, i) => {
           return (
-            <Fragment  key={`data${i}`}>
+            <Fragment key={`data${i}`}>
               {isMobile() ? null : (
-                <div className="mt-5 mb-5 border-t text-sk border-gray-1" />
+                <div className="mb-5 border-t text-sk border-gray-1 md:h-[200px]" />
               )}
               <div
-               
-                className="flex mb-12  md:items-center md:mb-5 w-full  h-[200px] md:h-[4.875rem]"
+
+                className="flex mb-12  md:items-center md:mb-5 w-full md:w-[221px] bg-red-300 md:h-[4.875rem]"
               >
                 <div
                   className={
-                    "  max-w-[350px] md:max-w-[118px] w-full md:w-[118px]    h-[16.125rem] md:h-[4.875rem] rounded-lg "
+                    " w-[19.375rem] md:w-[7.375rem]    h-[16.125rem] md:h-[4.875rem] rounded-lg "
                   }
                 >
-                  <div className="w-[19.375rem] h-[12.5rem]  ">
-                    <img className="w-auto h-full md:max-w-[118px]  rounded-lg md:max-h-[78px] " src={v.thumbUrl} alt="" />
-                  </div>
+                  {/* <div className="w-[19.375rem] h-[12.5rem]  "> */}
+                  <img className="max-w-[19.375rem] h-[12.5rem] md:w-[7.375rem]  rounded-lg md:h-[4.875rem] " src={v.thumbUrl} alt="" />
+                  {/* </div> */}
                 </div>
-                <div className="flex flex-col md:w-full justify-between md:ml-[10px] md:max-h-[78px] ">
-                  <div className="">
-                    <h4 className="overflow-hidden text-2xl font-semibold md:text-base">
-                      <Link
-                        className="ellipsis-2 text-[20px] md:text-[16px] md:w-[221px] md:text-ellipsis md:overflow-hidden md:whitespace-nowrap"
-                        rel="opener"
-                        target={isMobile() ? "" : "_blank"}
-                        href={`/news/detail?cateId=${cateId}&id=${v.id}`}
-                      >
-                        {v.title}
-                      </Link>
-                    </h4>
+
+
+                <div className={`flex flex-col ml-[2rem] md:ml-[10px] bg-red-600 w-full   mx-auto  justify-between  md:max-h-[4.875rem] `}>
+                  <div className="h-[9.4375rem]   md:overflow-hidden md:text-ellipsis md:whitespace-nowrap  ">
+                    <Link
+                      className="   text-[20px] font-[600px]  md:text-[16px] "
+                      rel="opener"
+                      target={isMobile() ? "" : "_blank"}
+                      href={`/news/detail?cateId=${cateId}&id=${v.id}`}
+                    >
+                      {v.title}
+                    </Link>
                     <time className=" md:py-0 text-[14px] md:text-[12px] flex text-gray-2">
                       <div className="mr-5 ">{v.author}</div>
                       {moment(v.newsUpdateTime * 1000).format(
                         "YYYY-MM-DD HH:mm:ss"
                       )}
                     </time>
-                    <p className="md:hidden text-[14px] ">{v.digest}</p>
+                    <p className="md:hidden text-[14px] max-h-[300px]">{v.digest}</p>
                     <div className="flex flex-row mt-[10px] md:h-[24px]">
-                      {v?.newsTypes.map((e:any,i: number) => {
+                      {v?.newsTypes.map((e: any, i: number) => {
                         return (
-                          <div key={`name_${i}`} className="mr-5 border   rounded-lg px-[10px] text-[#29953A] text-[14px]  bg-[#29953A1A]">
+                          <div key={`name_${i}`} className="mr-5 border   rounded-[0.25rem] px-[10px] text-[#29953A] text-[14px]  bg-[#29953A1A]">
                             {e.typeName}
                           </div>
                         );
                       })}
                     </div>
-                    <div className="mt-5 md:hidden">
-                      <Link
-                        className="text-green text-[14px] mb-5"
-                        rel="opener"
-                        target={isMobile() ? "" : "_blank"}
-                        href={`/news/detail?cateId=${cateId}&id=${v.id}`}
-                      >
-                        详情 &gt;&gt;
-                      </Link>
-                    </div>
+
+                  </div>
+                  <div className=" md:hidden h-[3.0625rem]  flex items-end">
+                    <Link
+                      className="text-green text-[14px] "
+                      rel="opener"
+                      target={isMobile() ? "" : "_blank"}
+                      href={`/news/detail?cateId=${cateId}&id=${v.id}`}
+                    >
+                      详情 &gt;&gt;
+                    </Link>
                   </div>
                 </div>
               </div>
+
             </Fragment>
           );
         })}
+      {data.length ? (
+        <Pagination
+          onChange={(v: any) => {
+            setPgNum(v);
+          }}
+          className="my-8"
+          total={tableDataTotal}
+          pgSize={10}
+          pgNum={pgNum}
+        />
+      ) : null}
     </div>
   );
 }
@@ -87,6 +101,8 @@ const tempList = [
   { url: "/images/three.svg", id: 3 },
 ];
 export default function Index() {
+  const { query } = useRouter()
+
   const tableDataTotal = useRef(0);
   const [checked, setChecked] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -94,6 +110,7 @@ export default function Index() {
   const [newsType, setNewsType] = useState<NewsTypesController.ListRecord[]>(
     []
   );
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [selected, setSelected] = useState<
     Partial<NewsTypesController.TypeList>
   >({});
@@ -142,12 +159,35 @@ export default function Index() {
     }
   };
 
+  useEffect(() => {
+    const id = query?.cateId
+    if (newsType && newsType.length && query.cateId) {
+      const type: any = newsType.find((e) => e.id === Number(id))
+      console.log('typetype', type);
+      setSelected(type)
+    }
+  }, [query])
+
+
+  console.log('finalDatafinalData', newsType, query, selected);
+
   const getListTotal = async () => {
     const res = await getNewsListCount(selected?.typeName, selected?.id);
     tableDataTotal.current = res;
   };
   useEffect(() => {
     getNewsType();
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -168,34 +208,142 @@ export default function Index() {
   };
 
   const onCheck = () => {
-      setChecked(checked === 3 ? 1 : checked + 1);
+    setChecked(checked === 3 ? 1 : checked + 1);
   };
 
+  console.log('dasda', windowWidth, newsType);
+
+
   return (
-    <HeaderLayout headerProps={headerProps}>
-      <div className="flex flex-col  mx-[155px]   md:mx-0 md:w-[351]">
-        <div className=" flex flex-wrap md:ml-5   md:mr-[2.5 md:mx-0 rem] mt-10 md:ml-[20px] rounded-lg justify-between">
+    <HeaderLayout headerProps={headerProps} >
+
+
+
+
+
+      <div className="mx-auto md:mx-3 ">
+        <div className={`flex flex-wrap justify-between mx-auto mt-10 rounded-lg  ${windowWidth > 900 && 'w-container'} md:mt-5`}>
           {newsType.map((e, index) => {
             return (
               <div
                 key={`type_${index}`}
-                className={`w-[360px]  h-[12.75rem]  rounded-lg shadow-lg   md:mr-[25px] ${
-                  index === 2 ? "md:w-full md:mt-5  " : "md:w-[10.625rem] "
-                }`}
+                className={`w-[22.5rem]  h-[12.75rem]  rounded-lg shadow  
+                   ${index === 2 ? "md:w-full md:mt-5 md:h-[139px]  " : "md:w-[10.625rem] md:h-[140px] "
+                  }`
+                }
               >
                 <div
-                  className={`  rounded-t-md  bg-green h-[68px] md:w-50px flex items-center
+                  className={`  rounded-t-md  bg-green h-[4.25rem]  flex items-center
                 
-               ${index === 2 ? "md:w-full  " : "md:w-[10.625rem]"}
+               ${index === 2 ? "md:w-full md:h-[50px] " : "md:w-[10.625rem] md:h-[50px]  "}
               `}
                 >
-                  <div className="flex flex-row items-center justify-between w-full mr-[12px] ">
-                    <div className=" ml-[1.875rem] text-white md:text-[16px]">
+                  <div className={`flex  flex-row items-center justify-between w-full mr-[0.75rem] `}>
+                    <div className=" ml-[1.875rem] text-white  text-[1.25rem] md:text-[1.125rem]">
                       {e.typeGroup}
                     </div>
                     <div className="flex justify-end">
                       <img
-                        className=" w-[59px] h-[49px] md:w-[35px] md:h-[29px]"
+                        className=" w-[3.6875rem] h-[3.0625rem] md:w-[2.1875rem] md:h-[1.8125rem]"
+                        src={tempList[index].url}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-row flex-wrap">
+                  {e.children.map((item: NewsTypesController.ListRecord, i: number) => {
+                    return (
+                      <div
+                        key={`check_${i}`}
+                        onClick={() => {
+                          setSelected(item);
+                          setChecked(0);
+                        }}
+                        className={` ${selected?.id === item.id ?
+                            "text-[#29953A]  bg-[#29953A1A]" : ' bg-[#E9E9E9]'
+                          } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]`}
+                      >
+                        {item.typeName}
+                      </div>
+                    );
+                  })}
+                </div>
+
+              </div>
+            );
+          })}
+          <div className="mt-5 ">
+            <div className="flex flex-row items-center mx-auto md:border-b md:w-full">
+              {data.length ? (
+                <Fragment>
+                  <div className=" text-[14px]  c-[#DDDDDD] h-[26px]">发布时间</div>
+                  <div
+                    className="ml-[10px] md:mb-[10px] mt-1"
+                    onClick={() => onCheck()}
+                  >
+                    <img src={check[checked]} className="h-[10.89px] w-[7.82px]" alt='' />
+                  </div>
+                </Fragment>
+              ) : null}
+            </div>
+
+            {loading ? (
+              <Loading className="h-[22rem] " />
+            ) : (
+              <ArticleList cateId={selected?.id} data={data} setPgNum={setPgNum} windowWidth={windowWidth} tableDataTotal={tableDataTotal.current} pgNum={pgNum} />
+            )}
+
+
+
+            {loading ? (
+              <Loading className="pt-8" />
+            ) : (
+              !(data && data.length > 0) && (
+                <div className="flex flex-col justify-center w-full py-20 text-center ">
+                  <div className="flex justify-center ">
+                    <img
+                      width={222}
+                      height="125"
+                      src="/images/noData.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div>暂无数据</div>
+                </div>
+              )
+            )}
+
+          </div>
+        </div>
+
+
+      </div>
+
+      {/* <div className="flex w-[75rem]  flex-col md:ml-5   md:mx-5  md:w-[21.9375rem] ">
+        <div className="flex flex-wrap  justify-between mt-10 md:mt-5 rounded-lg   md:w-[21.9375rem]">
+          {newsType.map((e, index) => {
+            return (
+              <div
+                key={`type_${index}`}
+                className={`w-[22.5rem]  h-[12.75rem]  rounded-lg shadow     ${
+                  index === 2 ? "md:w-full md:mt-5 md:h-[139px]  " : "md:w-[10.625rem] md:h-[140px] "
+                }`}
+              >
+                <div
+                  className={`  rounded-t-md  bg-green h-[4.25rem]  flex items-center
+                
+               ${index === 2 ? "md:w-full md:h-[50px] " : "md:w-[10.625rem] md:h-[50px]  "}
+              `}
+                >
+                  <div className={`flex  flex-row items-center justify-between w-full mr-[0.75rem] `}>
+                    <div className=" ml-[1.875rem] text-white  text-[1.25rem] md:text-[1.125rem]">
+                      {e.typeGroup}
+                    </div>
+                    <div className="flex justify-end">
+                      <img
+                        className=" w-[3.6875rem] h-[3.0625rem] md:w-[2.1875rem] md:h-[1.8125rem]"
                         src={tempList[index].url}
                         alt=""
                       />
@@ -213,9 +361,9 @@ export default function Index() {
                           setChecked(0);
                         }}
                         className={` ${
-                          selected?.id === item.id &&
-                          "text-[#29953A]  bg-[#29953A1A] "
-                        } cursor-pointer   bg-[#E9E9E9] min-w-[20px] h-[38px] flex items-center ml-5 mt-5 rounded-[0.25rem] px-[1rem]`}
+                          selected?.id === item.id ?
+                          "text-[#29953A]  bg-[#29953A1A]" : ' bg-[#E9E9E9]'
+                        } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]`}
                       >
                         {item.typeName}
                       </div>
@@ -227,37 +375,27 @@ export default function Index() {
           })}
         </div>
         <div className="mt-5 ">
-          <div className="h-[26px] md:ml-5 md:border-b  md:w-[380px] flex flex-row items-center">
+          <div className=" mx-auto md:border-b  md:w-[350px] flex flex-row items-center">
             {data.length ? (
-              <>
-                <div className=" text-[14px] md:mb-[15px]">发布时间</div>
+              <Fragment>
+                <div className=" text-[14px]  c-[#DDDDDD] h-[26px]">发布时间</div>
                 <div
-                  className="ml-[10px] md:mb-[15px]"
+                  className="ml-[10px] md:mb-[10px] mt-1"
                   onClick={() => onCheck()}
                 >
-                  <img src={check[checked]} className="h-[13px] w-[13px]" alt=''/>
+                  <img src={check[checked]} className="h-[10.89px] w-[7.82px]" alt=''/>
                 </div>
-              </>
+              </Fragment>
             ) : null}
           </div>
 
           {loading ? (
             <Loading className="h-[22rem] " />
           ) : (
-            <ArticleList cateId={selected?.id} data={data} />
+            <ArticleList cateId={selected?.id} data={data} setPgNum = {setPgNum} tableDataTotal={tableDataTotal.current} pgNum={pgNum} />
           )}
 
-          {data.length ? (
-            <Pagination
-              onChange={(v: any) => {
-                setPgNum(v);
-              }}
-              className="my-8"
-              total={tableDataTotal.current}
-              pgSize={10}
-              pgNum={pgNum}
-            />
-          ) : null}
+         
 
           {loading ? (
             <Loading className="pt-8" />
@@ -265,7 +403,6 @@ export default function Index() {
             !(data && data.length > 0) && (
               <div className="flex flex-col justify-center w-full py-20 text-center ">
                 <div className="flex justify-center ">
-                  {" "}
                   <img
                     width={222}
                     height="125"
@@ -278,7 +415,7 @@ export default function Index() {
             )
           )}
         </div>
-      </div>
+      </div>  */}
     </HeaderLayout>
   );
 }

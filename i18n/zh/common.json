@@ -31,16 +31,16 @@
         "desc": "GTech是一家实时革新、日常精进的技术导向型公司。获取来自GTech以及我们所关注领域的最新资讯、业务进展以及技术信息分享。",
         "children": {
           "child1": {
-            "name": "数据技术"
+            "name": "数字双碳"
           },
           "child2": {
-            "name": "行业动态"
+            "name": "双碳动态"
           },
           "child3": {
-            "name": "行业深度"
+            "name": "标准法规"
           },
           "child4": {
-            "name": "GTech资讯"
+            "name": null
           }
         }
       },

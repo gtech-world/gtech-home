@@ -8,7 +8,7 @@ export function useNewsCate(){
   return [
     {name: t('navigation.list.item3.children.child1.name'), id:1},
     {name: t('navigation.list.item3.children.child2.name'),id:2},
-    {name: t('navigation.list.item3.children.child3.name'),id:3},
-    {name: t('navigation.list.item3.children.child4.name'),id:4}
+    {name: t('navigation.list.item3.children.child3.name'),id:4},
+    // {name: t('navigation.list.item3.children.child4.name'),id:4}
   ]
 }
