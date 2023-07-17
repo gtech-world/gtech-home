@@ -4,6 +4,7 @@ import classNames from "classnames";
 import {useRouter} from "next/router";
 import {Trans, useTranslation} from "react-i18next";
 import React from "react";
+import Image from "next/image";
 
 function Top(){
   const { t } = useTranslation('home');
@@ -19,7 +20,7 @@ function Top(){
           <span className="text-white">{t('banner.text2')}</span>
         </div>
         <div className="max-w-[34rem] text-white h-14 text-lg text-center mt-[14.375rem] mb-5 md:text-sm md:mt-[8.375rem] md:mb-9 md:px-6">{t('banner.tips')}</div>
-        <img alt="" className="pb-3 md:hidden" src="images/home_head_arrow.svg"/>
+        <Image alt="" className="pb-3 md:hidden" src="images/home_head_arrow.svg"/>
       </div>
     </div>
   )
@@ -56,7 +57,7 @@ function Technologies(){
           data.map((v,i)=>{
             return(
               <li key={`technologies${i}`} className="flex flex-col items-center pb-16 md:pb-12">
-                <img className="h-[8rem] md:h-[6.125rem]" src={v.image} alt=""/>
+                <Image className="h-[8rem] md:h-[6.125rem]" src={v.image} alt=""/>
                 <h6 className="mb-5 text-xl font-bold text-center text-green mt-7 md:text-base">{v.title}</h6>
                 <p className="w-[19.375rem] text-lg md:text-sm md:text-center">{v.text}</p>
               </li>
@@ -152,7 +153,7 @@ function CrossSolutions(){
             return(
               <div key={`data-${i}`} className={classNames('mt-20 flex justify-between md:mt-12',v.layout ==='left'?'':'flex-row-reverse','md:flex-col')}>
                 <div className="md:mx-auto">
-                  <img className="block w-[35rem] rounded-lg overflow-hidden md:max-w-full" src={v.imgUrl} alt=""/>
+                  <Image className="block w-[35rem] rounded-lg overflow-hidden md:max-w-full" src={v.imgUrl} alt=""/>
                 </div>
                 <div className='w-[35rem] md:w-full md:text-center md:mt-8'>
                   <h5 className="md:px-12">{v.title}</h5>

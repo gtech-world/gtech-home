@@ -6,6 +6,7 @@ import { Pagination } from "@components/common/pagination";
 import { getNewsCount, getNewsList, getNewsListCount } from "@lib/http";
 import moment from "moment";
 import { Loading } from "@components/common/loading";
+import Image from "next/image";
 
 const ArticleList =(p: { data: any[]; cateId?: number })=> {
   const { cateId, data } = p;
@@ -29,7 +30,7 @@ const ArticleList =(p: { data: any[]; cateId?: number })=> {
                   }
                 >
                   <div className="w-[19.375rem] h-[12.5rem]  ">
-                    <img className="w-auto h-full md:max-w-[118px]  rounded-lg md:max-h-[78px] " src={v.thumbUrl} alt="" />
+                    <Image className="w-auto h-full md:max-w-[118px]  rounded-lg md:max-h-[78px] " src={v.thumbUrl} alt="" />
                   </div>
                 </div>
                 <div className="flex flex-col md:w-full justify-between md:ml-[10px] md:max-h-[78px] ">
@@ -193,9 +194,10 @@ export default function Index() {
                       {e.typeGroup}
                     </div>
                     <div className="flex justify-end">
-                      <img
+                      <Image
                         className=" w-[59px] h-[49px] md:w-[35px] md:h-[29px]"
                         src={tempList[index].url}
+                        alt=""
                       />
                     </div>
                   </div>
@@ -232,7 +234,7 @@ export default function Index() {
                   className="ml-[10px] md:mb-[15px]"
                   onClick={() => onCheck()}
                 >
-                  <img src={check[checked]} className="h-[13px] w-[13px]"></img>
+                  <Image src={check[checked]} className="h-[13px] w-[13px]" alt=''/>
                 </div>
               </>
             ) : null}
@@ -263,11 +265,12 @@ export default function Index() {
               <div className="flex flex-col justify-center w-full py-20 text-center ">
                 <div className="flex justify-center ">
                   {" "}
-                  <img
-                    width={"222px"}
+                  <Image
+                    width={222}
                     height="125"
                     src="/images/noData.svg"
-                  ></img>
+                    alt=""
+                  />
                 </div>
                 <div>暂无数据</div>
               </div>

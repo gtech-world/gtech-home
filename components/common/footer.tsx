@@ -3,6 +3,7 @@ import Link from "next/link";
 import {Trans, useTranslation} from "react-i18next";
 import classNames from "classnames";
 import {useNewsCate} from "@lib/hooks/useNewsCate";
+import Image from "next/image";
 
 function SubNav(props:any){
   const {className,data} = props
@@ -91,7 +92,7 @@ export function Footer() {
         {
           render:()=>{
             return(
-              <img className="w-[7.5rem] mt-2" src="/images/wechat_qrcode.png" alt=""/>
+              <Image className="w-[7.5rem] mt-2" src="/images/wechat_qrcode.png" alt=""/>
             )
           }
         }
@@ -105,11 +106,11 @@ export function Footer() {
         <div className="flex flex-col mt-12 md:mt-0">
           <div className="flex flex-col justify-between">
             {/*<div>*/}
-            {/*  <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg"/></Link>*/}
+            {/*  <Link className="md:float-left" href="/" ><Image className="w-20" src="/images/logo.svg"/></Link>*/}
             {/*</div>*/}
             <ul className="flex mt-5 md:flex-col">
               <li className="mr-14 mt-[-1.3rem]">
-                <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg"/></Link>
+                <Link className="md:float-left" href="/" ><Image className="w-20" src="/images/logo.svg" alt=""/></Link>
               </li>
               {
                 navList.map((v,i)=>{

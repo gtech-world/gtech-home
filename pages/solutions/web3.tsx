@@ -1,6 +1,7 @@
 import { HeaderLayout } from "@components/common/headerLayout";
 import {Button} from "@components/button";
 import {useTranslation} from "react-i18next";
+import Image from "next/image";
 
 
 function Top(){
@@ -21,7 +22,7 @@ function StorageInitiative(){
     <div className="flex flex-col items-center pb-20 md:pb-8">
       <h3 className="my-16 text-center md:px-8 md:my-12">{t('storageInitiative.title')}</h3>
       <div className="flex md:flex-col md:px-3">
-        <img className="mx-auto w-[29.875rem] md:w-full md:max-w-[20.875rem]" src="/images/web3_pic.png" alt=""/>
+        <Image className="mx-auto w-[29.875rem] md:w-full md:max-w-[20.875rem]" src="/images/web3_pic.png" alt=""/>
         <div className="ml-14 w-[39.75rem] leading-6 md:w-full md:ml-0 md:text-center md:mt-8">
           <h4 className="text-2xl font-bold md:text-base">{t('storageInitiative.list.item1.title')}</h4>
           <p className="mt-5">
@@ -30,7 +31,7 @@ function StorageInitiative(){
           <p>
             {t('storageInitiative.list.item1.text.p2')}
           </p>
-          <h4 className="text-2xl font-bold mb-5 mt-8 md:text-base">{t('storageInitiative.list.item2.title')}</h4>
+          <h4 className="mt-8 mb-5 text-2xl font-bold md:text-base">{t('storageInitiative.list.item2.title')}</h4>
           <p>
             {t('storageInitiative.list.item2.text.p1')}
           </p>
@@ -46,9 +47,9 @@ function StorageInitiative(){
 function StorageMiddlewares(){
   const { t } = useTranslation('web3');
   return(
-    <div className="w-full bg-bgc flex flex-col items-center pt-16 pb-16 md:pt-8 md:pb-10">
-      <h3 className="text-green mb-20 px-12 text-center md:mb-8">{t('storageMiddlewares.title')}</h3>
-      <div className="flex items-center md:flex-col-reverse text-base">
+    <div className="flex flex-col items-center w-full pt-16 pb-16 bg-bgc md:pt-8 md:pb-10">
+      <h3 className="px-12 mb-20 text-center text-green md:mb-8">{t('storageMiddlewares.title')}</h3>
+      <div className="flex items-center text-base md:flex-col-reverse">
         <div className="w-[29.875rem] md:w-full md:text-center md:mt-8">
           <div className="px-7">
             <p>
@@ -70,17 +71,17 @@ function StorageMiddlewares(){
         </div>
         <div className="flex ml-24 md:flex-col md:px-8 md:ml-0">
           <div className="w-[19.625rem] h-[23.5rem] border-2 border-black bg-white rounded-l-xl md:rounded-t-xl md:rounded-b-none md:pb-2">
-            <div className="flex flex-col items-center border-b-2 border-black pt-6 pb-5">
+            <div className="flex flex-col items-center pt-6 pb-5 border-b-2 border-black">
               <div className="text-[1.75rem] font-medium">PaaS</div>
               <span className="leading-[1.3125rem] mt-[.625rem]">{t('storageMiddlewares.table.paas.text')}</span>
             </div>
             <div className="flex flex-col items-center py-7">
-              <div className="flex items-center text-4xl mb-8">
+              <div className="flex items-center mb-8 text-4xl">
                 <span className="mr-2">W3</span>
-                <img src="/images/container.svg" />
+                <Image src="/images/container.svg" alt="" />
                 <span className="px-3">+</span>
                 <span className="mr-2">W3</span>
-                <img src="/images/upload.svg" />
+                <Image src="/images/upload.svg" alt="" />
               </div>
               <h6
                 // onClick={() => scrollToAnchor("nft")}
@@ -99,14 +100,14 @@ function StorageMiddlewares(){
             </div>
           </div>
           <div className="w-[19.625rem] h-[23.5rem] border-l-2 border-black border-2 border-black bg-white rounded-r-xl md:mt-3 md:rounded-b-xl md:rounded-t-none md:pb-12">
-            <div className="flex flex-col items-center border-b-2 border-black pt-6 pb-5">
+            <div className="flex flex-col items-center pt-6 pb-5 border-b-2 border-black">
               <div className="text-[1.75rem] font-medium">SaaS</div>
               <span className="leading-[1.3125rem] mt-[.625rem]">{t('storageMiddlewares.table.saas.text')}</span>
             </div>
             <div className="flex flex-col items-center py-7 px-7">
               <div className="flex items-center text-4xl">
                 <span className="mr-2">W3</span>
-                <img src="/images/widget.svg" alt=""/>
+                <Image src="/images/widget.svg" alt=""/>
               </div>
               <h6
                 // onClick={() => scrollToAnchor("widget")}
@@ -145,13 +146,13 @@ function StorageCases(){
   ]
   return(
     <div className="flex flex-col items-center bg-white">
-      <h3 className="text-center my-16 px-12 md:my-8">{t('storageCases.title')}</h3>
+      <h3 className="px-12 my-16 text-center md:my-8">{t('storageCases.title')}</h3>
       <div className="flex flex-col mt-10 md:mt-0">
         {
           data.map((v,i)=>{
             return(
-              <div key={`data-${i}`} className="mb-20 flex px-3 md:flex-col md:mb-10">
-                <img className="mx-auto w-[21.375rem] md:w-[17.125rem]" src={v.imgUrl} alt=""/>
+              <div key={`data-${i}`} className="flex px-3 mb-20 md:flex-col md:mb-10">
+                <Image className="mx-auto w-[21.375rem] md:w-[17.125rem]" src={v.imgUrl} alt=""/>
                 <div className="w-[50.75rem] ml-12 md:w-full md:ml-0 md:text-center">
                   <h5 className="md:px-12 md:mt-4">{v.title}</h5>
                   <p className="mt-5">{v.text}</p>

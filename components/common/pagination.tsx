@@ -1,6 +1,7 @@
 import _ from "lodash";
 import {HTMLAttributes, useMemo} from "react";
 import classnames from "classnames";
+import Image from "next/image";
 export interface Props {
   total: number;
   pgSize: number;
@@ -57,14 +58,14 @@ export function Pagination(p: Props & HTMLAttributes<HTMLDivElement>) {
         {
           count>1 &&
           <span onClick={doFirst} className="mx-[0.185rem] flex justify-center items-center cursor-pointer border min-w-[32px] h-[32px] rounded-lg">
-            <img src="/images/arrow_page.svg"/>
-            <img src="/images/arrow_page.svg"/>
+            <Image src="/images/arrow_page.svg" alt=""/>
+            <Image src="/images/arrow_page.svg" alt=""/>
           </span>
         }
         {
           count>1 &&
           <span onClick={doPrev} className="mx-[0.185rem] flex justify-center items-center cursor-pointer border min-w-[32px] h-[32px] rounded-lg">
-            <img src="/images/arrow_page.svg"/>
+            <Image src="/images/arrow_page.svg" alt=""/>
           </span>
         }
         {items.map((page, i) => (
@@ -83,14 +84,14 @@ export function Pagination(p: Props & HTMLAttributes<HTMLDivElement>) {
         {
           count>1 &&
           <span onClick={doNext} className="mx-[0.185rem] rotate-180 flex justify-center items-center cursor-pointer border min-w-[32px] h-[32px] rounded-lg">
-            <img src="/images/arrow_page.svg"/>
+            <Image src="/images/arrow_page.svg" alt=""/>
           </span>
         }
         {
           count>1 &&
           <span onClick={doLast} className=" mx-[0.185rem] rotate-180 flex justify-center items-center cursor-pointer border min-w-[32px] h-[32px] rounded-lg">
-            <img src="/images/arrow_page.svg"/>
-            <img src="/images/arrow_page.svg"/>
+            <Image src="/images/arrow_page.svg" alt=""/>
+            <Image src="/images/arrow_page.svg" alt=""/>
           </span>
         }
       </div>

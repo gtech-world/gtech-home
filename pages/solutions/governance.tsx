@@ -1,5 +1,6 @@
 import { HeaderLayout } from "@components/common/headerLayout";
 import classNames from "classnames";
+import Image from "next/image";
 import {useTranslation} from "react-i18next";
 
 function Top(){
@@ -16,7 +17,7 @@ function Top(){
 function PowerManagement(){
   const { t } = useTranslation('governance');
   return(
-    <div className="flex flex-col items-center bg-bgc pb-16 md:pb-8">
+    <div className="flex flex-col items-center pb-16 bg-bgc md:pb-8">
       <h3 className="w-[61.5rem] my-16 text-center leading-[65px] md:leading-6 md:w-full md:my-8 md:px-12">{t('powerManagement.title')}</h3>
       <div className="flex flex-col w-container md:w-full">
         <div className="h-[13rem] bg-[url(/images/industrial.svg)] bg-no-repeat bg-center">
@@ -69,7 +70,7 @@ function GreenData(){
     }
   ]
   return(
-    <div className="w-full flex flex-col items-center pt-16 pb-20 md:py-8">
+    <div className="flex flex-col items-center w-full pt-16 pb-20 md:py-8">
       <h3 className="px-12 text-center"><span className="text-green">{t('greenData.title.green')}</span> <span>{t('greenData.title.text')}</span></h3>
       <div className="flex mt-20 md:flex-col-reverse md:mt-8">
         <div className="w-[38.625rem] mr-[5.75rem] md:w-full md:text-center md:px-3">
@@ -85,12 +86,12 @@ function GreenData(){
             })
           }
         </div>
-        <img className="w-[30.625rem] mx-auto md:max-w-[18.375rem] md:w-full md:mb-8" src="/images/platform.svg" alt=""/>
+        <Image className="w-[30.625rem] mx-auto md:max-w-[18.375rem] md:w-full md:mb-8" src="/images/platform.svg" alt=""/>
       </div>
       <div className="flex mt-24 md:flex-col md:mt-12">
         <div className="flex flex-col md:flex-col-reverse">
           <h4 className="text-[1.75rem] font-bold mb-8 md:text-base md:text-center md:mt-8">{t('greenData.item2.subtitle')}</h4>
-          <img className="mx-auto w-[34.625rem] md:max-w-[20.875rem] md:w-full" src="/images/green_data.svg" alt=""/>
+          <Image className="mx-auto w-[34.625rem] md:max-w-[20.875rem] md:w-full" src="/images/green_data.svg" alt=""/>
         </div>
         <div className="ml-[4.75rem] w-[35.56rem] px-3 md:w-full md:ml-0 md:text-center">
           {
