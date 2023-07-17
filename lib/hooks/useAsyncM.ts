@@ -1,5 +1,5 @@
 import { DependencyList, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useAsyncFn } from "react-use/lib";
+import { useAsyncFn } from "react-use";
 import { FunctionReturningPromise } from "react-use/lib/misc/types";
 
 export function useAsyncM<T extends FunctionReturningPromise>(fn: T, deeps: DependencyList = []) {
