@@ -30,7 +30,7 @@ const ArticleList =(p: { data: any[]; cateId?: number })=> {
                   }
                 >
                   <div className="w-[19.375rem] h-[12.5rem]  ">
-                    <Image className="w-auto h-full md:max-w-[118px]  rounded-lg md:max-h-[78px] " src={v.thumbUrl} alt="" />
+                    <img className="w-auto h-full md:max-w-[118px]  rounded-lg md:max-h-[78px] " src={v.thumbUrl} alt="" />
                   </div>
                 </div>
                 <div className="flex flex-col md:w-full justify-between md:ml-[10px] md:max-h-[78px] ">
@@ -194,7 +194,7 @@ export default function Index() {
                       {e.typeGroup}
                     </div>
                     <div className="flex justify-end">
-                      <Image
+                      <img
                         className=" w-[59px] h-[49px] md:w-[35px] md:h-[29px]"
                         src={tempList[index].url}
                         alt=""
@@ -234,7 +234,7 @@ export default function Index() {
                   className="ml-[10px] md:mb-[15px]"
                   onClick={() => onCheck()}
                 >
-                  <Image src={check[checked]} className="h-[13px] w-[13px]" alt=''/>
+                  <img src={check[checked]} className="h-[13px] w-[13px]" alt=''/>
                 </div>
               </>
             ) : null}
@@ -265,7 +265,7 @@ export default function Index() {
               <div className="flex flex-col justify-center w-full py-20 text-center ">
                 <div className="flex justify-center ">
                   {" "}
-                  <Image
+                  <img
                     width={222}
                     height="125"
                     src="/images/noData.svg"

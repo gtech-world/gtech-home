@@ -92,7 +92,7 @@ export function Footer() {
         {
           render:()=>{
             return(
-              <Image className="w-[7.5rem] mt-2" src="/images/wechat_qrcode.png" alt=""/>
+              <img className="w-[7.5rem] mt-2" src="/images/wechat_qrcode.png" alt=""/>
             )
           }
         }
@@ -110,7 +110,7 @@ export function Footer() {
             {/*</div>*/}
             <ul className="flex mt-5 md:flex-col">
               <li className="mr-14 mt-[-1.3rem]">
-                <Link className="md:float-left" href="/" ><Image className="w-20" src="/images/logo.svg" alt=""/></Link>
+                <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg" alt=""/></Link>
               </li>
               {
                 navList.map((v,i)=>{
