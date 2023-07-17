@@ -52,9 +52,9 @@ const ArticleList =(p: { data: any[]; cateId?: number })=> {
                     </time>
                     <p className="md:hidden text-[14px] ">{v.digest}</p>
                     <div className="flex flex-row mt-[10px] md:h-[24px]">
-                      {v?.newsTypes.map((e) => {
+                      {v?.newsTypes.map((e:any,i: number) => {
                         return (
-                          <div className="mr-5 border   rounded-lg px-[10px] text-[#29953A] text-[14px]  bg-[#29953A1A]">
+                          <div key={`name_${i}`} className="mr-5 border   rounded-lg px-[10px] text-[#29953A] text-[14px]  bg-[#29953A1A]">
                             {e.typeName}
                           </div>
                         );
@@ -177,7 +177,7 @@ export default function Index() {
           {newsType.map((e, index) => {
             return (
               <div
-                key={`type_${e.id}`}
+                key={`type_${index}`}
                 className={`w-[360px]  h-[12.75rem]  rounded-lg shadow-lg   md:mr-[25px] ${
                   index === 2 ? "md:w-full md:mt-5  " : "md:w-[10.625rem] "
                 }`}
