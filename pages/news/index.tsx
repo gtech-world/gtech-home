@@ -1,5 +1,5 @@
 import { HeaderLayout } from "@components/common/headerLayout";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { isMobile } from "@lib/utils";
 import { Pagination } from "@components/common/pagination";
@@ -16,12 +16,12 @@ const ArticleList =(p: { data: any[]; cateId?: number })=> {
       {!!data.length &&
         data.map((v, i) => {
           return (
-            <>
+            <Fragment  key={`data${i}`}>
               {isMobile() ? null : (
                 <div className="mt-5 mb-5 border-t text-sk border-gray-1" />
               )}
               <div
-                key={`data${i}`}
+               
                 className="flex mb-12  md:items-center md:mb-5 w-full  h-[200px] md:h-[4.875rem]"
               >
                 <div
@@ -74,7 +74,7 @@ const ArticleList =(p: { data: any[]; cateId?: number })=> {
                   </div>
                 </div>
               </div>
-            </>
+            </Fragment>
           );
         })}
     </div>
@@ -204,9 +204,10 @@ export default function Index() {
                 </div>
 
                 <div className="flex flex-row flex-wrap">
-                  {e.children.map((item: NewsTypesController.ListRecord) => {
+                  {e.children.map((item: NewsTypesController.ListRecord,i: number) => {
                     return (
                       <div
+                      key={`check_${i}`}
                         onClick={() => {
                           setSelected(item);
                           setChecked(0);
