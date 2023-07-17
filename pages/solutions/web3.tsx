@@ -22,7 +22,7 @@ function StorageInitiative(){
     <div className="flex flex-col items-center pb-20 md:pb-8">
       <h3 className="my-16 text-center md:px-8 md:my-12">{t('storageInitiative.title')}</h3>
       <div className="flex md:flex-col md:px-3">
-        <Image className="mx-auto w-[29.875rem] md:w-full md:max-w-[20.875rem]" src="/images/web3_pic.png" alt=""/>
+        <img className="mx-auto w-[29.875rem] md:w-full md:max-w-[20.875rem]" src="/images/web3_pic.png" alt=""/>
         <div className="ml-14 w-[39.75rem] leading-6 md:w-full md:ml-0 md:text-center md:mt-8">
           <h4 className="text-2xl font-bold md:text-base">{t('storageInitiative.list.item1.title')}</h4>
           <p className="mt-5">
@@ -78,10 +78,10 @@ function StorageMiddlewares(){
             <div className="flex flex-col items-center py-7">
               <div className="flex items-center mb-8 text-4xl">
                 <span className="mr-2">W3</span>
-                <Image src="/images/container.svg" alt="" />
+                <img src="/images/container.svg" alt="" />
                 <span className="px-3">+</span>
                 <span className="mr-2">W3</span>
-                <Image src="/images/upload.svg" alt="" />
+                <img src="/images/upload.svg" alt="" />
               </div>
               <h6
                 // onClick={() => scrollToAnchor("nft")}
@@ -107,7 +107,7 @@ function StorageMiddlewares(){
             <div className="flex flex-col items-center py-7 px-7">
               <div className="flex items-center text-4xl">
                 <span className="mr-2">W3</span>
-                <Image src="/images/widget.svg" alt=""/>
+                <img src="/images/widget.svg" alt=""/>
               </div>
               <h6
                 // onClick={() => scrollToAnchor("widget")}
@@ -152,7 +152,7 @@ function StorageCases(){
           data.map((v,i)=>{
             return(
               <div key={`data-${i}`} className="flex px-3 mb-20 md:flex-col md:mb-10">
-                <Image className="mx-auto w-[21.375rem] md:w-[17.125rem]" src={v.imgUrl} alt=""/>
+                <img className="mx-auto w-[21.375rem] md:w-[17.125rem]" src={v.imgUrl} alt=""/>
                 <div className="w-[50.75rem] ml-12 md:w-full md:ml-0 md:text-center">
                   <h5 className="md:px-12 md:mt-4">{v.title}</h5>
                   <p className="mt-5">{v.text}</p>

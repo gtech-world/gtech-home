@@ -25,7 +25,7 @@ export default function Index() {
             {t("url")}：https://gtech-cn.co
           </p>
         </div>
-        <Image className="md:w-[15.125rem]" src="/images/call.svg" alt=""/>
+        <img className="md:w-[15.125rem]" src="/images/call.svg" alt=""/>
       </div>
     </HeaderLayout>
   )

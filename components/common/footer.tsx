@@ -106,7 +106,7 @@ export function Footer() {
         <div className="flex flex-col mt-12 md:mt-0">
           <div className="flex flex-col justify-between">
             {/*<div>*/}
-            {/*  <Link className="md:float-left" href="/" ><Image className="w-20" src="/images/logo.svg"/></Link>*/}
+            {/*  <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg"/></Link>*/}
             {/*</div>*/}
             <ul className="flex mt-5 md:flex-col">
               <li className="mr-14 mt-[-1.3rem]">

@@ -86,12 +86,12 @@ function GreenData(){
             })
           }
         </div>
-        <Image className="w-[30.625rem] mx-auto md:max-w-[18.375rem] md:w-full md:mb-8" src="/images/platform.svg" alt=""/>
+        <img className="w-[30.625rem] mx-auto md:max-w-[18.375rem] md:w-full md:mb-8" src="/images/platform.svg" alt=""/>
       </div>
       <div className="flex mt-24 md:flex-col md:mt-12">
         <div className="flex flex-col md:flex-col-reverse">
           <h4 className="text-[1.75rem] font-bold mb-8 md:text-base md:text-center md:mt-8">{t('greenData.item2.subtitle')}</h4>
-          <Image className="mx-auto w-[34.625rem] md:max-w-[20.875rem] md:w-full" src="/images/green_data.svg" alt=""/>
+          <img className="mx-auto w-[34.625rem] md:max-w-[20.875rem] md:w-full" src="/images/green_data.svg" alt=""/>
         </div>
         <div className="ml-[4.75rem] w-[35.56rem] px-3 md:w-full md:ml-0 md:text-center">
           {
