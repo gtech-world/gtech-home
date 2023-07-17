@@ -1,9 +1,5 @@
 import { HeaderLayout } from "@components/common/headerLayout";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { isMobile } from "@lib/utils";
 import { Pagination } from "@components/common/pagination";
@@ -11,11 +7,11 @@ import { getNewsCount, getNewsList, getNewsListCount } from "@lib/http";
 import moment from "moment";
 import { Loading } from "@components/common/loading";
 
-function ArticleList(p: { data: any[]; cateId?: number }) {
+const ArticleList =(p: { data: any[]; cateId?: number })=> {
   const { cateId, data } = p;
 
   return (
-    <div className=" w-container md:w-full md:mt-8 md:px-3">
+    <div className=" w-container md:w-[351px] md:mt-8 md:px-[20px]">
       {!!data.length &&
         data.map((v, i) => {
           return (
@@ -25,22 +21,22 @@ function ArticleList(p: { data: any[]; cateId?: number }) {
               )}
               <div
                 key={`data${i}`}
-                className="flex mb-12   md:items-center md:mb-5 w-full  h-[200px] md:h-[4.875rem]"
+                className="flex mb-12  md:items-center md:mb-5 w-full  h-[200px] md:h-[4.875rem]"
               >
                 <div
                   className={
-                    " max-w-[350px] w-full md:max-w-[7.375rem] h-[16.125rem] md:h-[4.875rem] rounded-lg overflow-hidden"
+                    "  max-w-[350px] md:max-w-[118px] w-full md:w-[118px]    h-[16.125rem] md:h-[4.875rem] rounded-lg "
                   }
                 >
-                  <div className="w-[19.375rem] h-[12.5rem] ">
-                    <img className="w-auto h-full" src={v.thumbUrl} alt="" />
+                  <div className="w-[19.375rem] h-[12.5rem]  ">
+                    <img className="w-auto h-full md:max-w-[118px]  rounded-lg md:max-h-[78px] " src={v.thumbUrl} alt="" />
                   </div>
                 </div>
-                <div className="flex flex-col justify-between md:ml-[10px]">
+                <div className="flex flex-col md:w-full justify-between md:ml-[10px] md:max-h-[78px] ">
                   <div className="">
-                    <h4 className="text-2xl font-semibold md:text-base">
+                    <h4 className="overflow-hidden text-2xl font-semibold md:text-base">
                       <Link
-                        className="ellipsis-2 text-[20px] md:text-[16px]"
+                        className="ellipsis-2 text-[20px] md:text-[16px] md:w-[221px] md:text-ellipsis md:overflow-hidden md:whitespace-nowrap"
                         rel="opener"
                         target={isMobile() ? "" : "_blank"}
                         href={`/news/detail?cateId=${cateId}&id=${v.id}`}
@@ -91,15 +87,23 @@ const tempList = [
 ];
 export default function Index() {
   const tableDataTotal = useRef(0);
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(0);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  const [newsType, setNewsType] = useState<NewsTypesController.ListRecord[]>([]);
+  const [newsType, setNewsType] = useState<NewsTypesController.ListRecord[]>(
+    []
+  );
   const [selected, setSelected] = useState<
     Partial<NewsTypesController.TypeList>
   >({});
   const [pgNum, setPgNum] = useState(1);
   const [pgSize] = useState(10);
+  const check: any = {
+    0: "/images/date.svg",
+    1: "/images/checked_top.svg",
+    2: "/images/checked_bottom.svg",
+    3: "/images/date.svg",
+  };
 
   const getNewsType = async () => {
     setLoading(true);
@@ -154,24 +158,21 @@ export default function Index() {
   }, [pgNum, selected.id, checked]);
 
   const getList = async () => {
-    const res = await getNewsList(selected?.id, checked, pgNum, pgSize);
+    const res = await getNewsList(selected?.id, checked == 1, pgNum, pgSize);
     setData(res || []);
   };
-
 
   const headerProps = {
     className: isMobile() ? "" : "border-b border-black",
   };
 
   const onCheck = () => {
-    setChecked(!checked);
+      setChecked(checked === 3 ? 1 : checked + 1);
   };
-
-  
 
   return (
     <HeaderLayout headerProps={headerProps}>
-      <div className="flex flex-col  mx-[155px] md:mx-0 ">
+      <div className="flex flex-col  mx-[155px]   md:mx-0 md:w-[351]">
         <div className=" flex flex-wrap md:ml-5   md:mr-[2.5 md:mx-0 rem] mt-10 md:ml-[20px] rounded-lg justify-between">
           {newsType.map((e, index) => {
             return (
@@ -206,12 +207,12 @@ export default function Index() {
                       <div
                         onClick={() => {
                           setSelected(item);
-                          setChecked(false);
+                          setChecked(0);
                         }}
                         className={` ${
                           selected?.id === item.id &&
                           "text-[#29953A]  bg-[#29953A1A] "
-                        } cursor-pointer  bg-[#E9E9E9] min-w-[20px] h-[38px] flex items-center ml-5 mt-5 rounded-[0.25rem] px-[1rem]`}
+                        } cursor-pointer   bg-[#E9E9E9] min-w-[20px] h-[38px] flex items-center ml-5 mt-5 rounded-[0.25rem] px-[1rem]`}
                       >
                         {item.typeName}
                       </div>
@@ -223,21 +224,18 @@ export default function Index() {
           })}
         </div>
         <div className="mt-5 ">
-          <div className="h-[26px] md:ml-5 md:border-b flex flex-row items-center">
-          { data.length ? <><div className=" text-[14px]">发布时间</div><div className="ml-[10px]" onClick={() => onCheck()}>
-              {checked ? (
-                <img
-                  className="h-[13px] "
-                  src={"/images/checked_top.svg"}
-                ></img>
-              ) : (
-                <img
-                  className="h-[13px] "
-                  src={"/images/checked_bottom.svg"}
-                ></img>
-              )}
-            </div></>
-            :null}
+          <div className="h-[26px] md:ml-5 md:border-b  md:w-[380px] flex flex-row items-center">
+            {data.length ? (
+              <>
+                <div className=" text-[14px] md:mb-[15px]">发布时间</div>
+                <div
+                  className="ml-[10px] md:mb-[15px]"
+                  onClick={() => onCheck()}
+                >
+                  <img src={check[checked]} className="h-[13px] w-[13px]"></img>
+                </div>
+              </>
+            ) : null}
           </div>
 
           {loading ? (
@@ -246,27 +244,35 @@ export default function Index() {
             <ArticleList cateId={selected?.id} data={data} />
           )}
 
-          { data.length ? <Pagination
-            onChange={(v: any) => {
-              setPgNum(v);
-            }}
-            className="my-8"
-            total={tableDataTotal.current}
-            pgSize={10}
-            pgNum={pgNum}
-          /> :null}
+          {data.length ? (
+            <Pagination
+              onChange={(v: any) => {
+                setPgNum(v);
+              }}
+              className="my-8"
+              total={tableDataTotal.current}
+              pgSize={10}
+              pgNum={pgNum}
+            />
+          ) : null}
 
-          {
-          loading ? <Loading className="pt-8" /> :
-            (
-              !(data && data.length > 0) &&
+          {loading ? (
+            <Loading className="pt-8" />
+          ) : (
+            !(data && data.length > 0) && (
               <div className="flex flex-col justify-center w-full py-20 text-center ">
-                <div className="flex justify-center "> <img width={'222px'} height='125' src='/images/noData.svg'></img>
+                <div className="flex justify-center ">
+                  {" "}
+                  <img
+                    width={"222px"}
+                    height="125"
+                    src="/images/noData.svg"
+                  ></img>
                 </div>
                 <div>暂无数据</div>
               </div>
             )
-        }
+          )}
         </div>
       </div>
     </HeaderLayout>

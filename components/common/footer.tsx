@@ -100,14 +100,14 @@ export function Footer() {
   ]
   if(i18n.language === 'en') navList.splice(1,1)
   return (
-    <div className="bg-bgc pb-5 md:px-8 md:py-12">
-      <div className="flex flex-col w-container mx-auto md:w-full">
+    <div className="pb-5 bg-bgc md:px-8 md:py-12">
+      <div className="flex flex-col mx-auto w-container md:w-full">
         <div className="flex flex-col mt-12 md:mt-0">
-          <div className="flex justify-between flex-col">
+          <div className="flex flex-col justify-between">
             {/*<div>*/}
             {/*  <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg"/></Link>*/}
             {/*</div>*/}
-            <ul className="flex md:flex-col mt-5">
+            <ul className="flex mt-5 md:flex-col">
               <li className="mr-14 mt-[-1.3rem]">
                 <Link className="md:float-left" href="/" ><img className="w-20" src="/images/logo.svg"/></Link>
               </li>
@@ -117,7 +117,7 @@ export function Footer() {
                     <li key={`${i}`} className={classNames('md:mt-5',i===(navList.length-1)?'mr-0':'mr-[3.75rem] md:mr-2')}>
                       {
                         v.href && !v.children?
-                          <Link className="text-xl link-hover font-bold md:text-xl" href={v.href}>{v.name}</Link>
+                          <Link className="text-xl font-bold link-hover md:text-xl" href={v.href}>{v.name}</Link>
                           :
                           <span className="text-xl font-bold md:text-xl">{v.name}</span>
                       }
@@ -131,7 +131,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-16 pt-4 border-t border-black text-sm flex justify-between md:flex-col md:mt-8">
+        <div className="flex justify-between pt-4 mt-16 text-sm border-t border-black md:flex-col md:mt-8">
 
           <div>
             {/*<span>{t('footer.company')}</span>*/}

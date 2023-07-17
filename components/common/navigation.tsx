@@ -21,6 +21,8 @@ function PCNav(){
     statementPage.indexOf(pathname)>-1 && push(language === 'en'?'/enstatement':'zhstatement')
   };
   const newsCate = useNewsCate()
+
+  
   const navList = [
     {
       href: '/',
@@ -33,13 +35,13 @@ function PCNav(){
       name: t('navigation.list.item2.name'),
       childrenNode: (
         <div className="w-full">
-          <div className="w-container mx-auto flex justify-between">
+          <div className="flex justify-between mx-auto w-container">
             <div className="w-[28.125rem]">
-              <h4 className="font-semibold text-xl">{t('navigation.list.item2.name')}</h4>
+              <h4 className="text-xl font-semibold">{t('navigation.list.item2.name')}</h4>
               <p className="mt-5">{t('navigation.list.item2.desc')}</p>
             </div>
             <div className="w-[24.125rem] ml-[2.05rem]">
-              <h4 className="font-semibold text-xl">
+              <h4 className="text-xl font-semibold">
                 <Trans
                   i18nKey="2"
                   components={[<sup key="dsd"></sup>]}
@@ -47,15 +49,15 @@ function PCNav(){
                   {t('navigation.list.item2.children.child1.name')}
                 </Trans>
               </h4>
-              <p className="text-gray-1 mt-5" onClick={()=>setOpen('')}>
+              <p className="mt-5 text-gray-1" onClick={()=>setOpen('')}>
                 <Link className="link-hover" href="/solutions/automotive">
                   {t('navigation.list.item2.children.child1.desc')}
                 </Link>
               </p>
             </div>
             <div className="ml-[2.05rem]">
-              <h4 className="font-semibold text-xl">{t('navigation.list.item2.children.more')}</h4>
-              <p className="text-gray-1 mt-5" onClick={()=>setOpen('')}>
+              <h4 className="text-xl font-semibold">{t('navigation.list.item2.children.more')}</h4>
+              <p className="mt-5 text-gray-1" onClick={()=>setOpen('')}>
                 <Link className="link-hover" href="/solutions/web3">{t('navigation.list.item2.children.child2.name')}</Link>
               </p>
               <p className="text-gray-1 mt-2.5" onClick={()=>setOpen('')}>
@@ -68,27 +70,27 @@ function PCNav(){
     },
     {
       href: '/news',
-      isLink: false,
+      isLink: true,
       name: t('navigation.list.item3.name'),
-      childrenNode: (
-        <div className="w-full">
-          <div className="w-container mx-auto flex items-center">
-            <div className="w-[28.125rem]">
-              <h4 className="font-semibold text-xl">{t('navigation.list.item3.name')}</h4>
-              <p className="mt-5">{t('navigation.list.item3.desc')}</p>
-            </div>
-              <div className="ml-32 text-gray-1 flex flex-wrap">
-                {
-                  newsCate.map((v,i)=>{
-                    return(
-                      <span onClick={()=>setOpen('')} key={`newscate${i}`}  className="mt-5"><Link className="ml-[3.75rem] link-hover" href={`/news?cateId=${v.id}`}>{v.name}</Link></span>
-                    )
-                  })
-                }
-              </div>
-          </div>
-        </div>
-      )
+      // childrenNode: (
+      //   <div className="w-full">
+      //     <div className="flex items-center mx-auto w-container">
+      //       <div className="w-[28.125rem]">
+      //         <h4 className="text-xl font-semibold">{t('navigation.list.item3.name')}</h4>
+      //         <p className="mt-5">{t('navigation.list.item3.desc')}</p>
+      //       </div>
+      //         <div className="flex flex-wrap ml-32 text-gray-1">
+      //           {
+      //             newsCate.map((v,i)=>{
+      //               return(
+      //                 <span onClick={()=>setOpen('')} key={`newscate${i}`}  className="mt-5"><Link className="ml-[3.75rem] link-hover" href={`/news?cateId=${v.id}`}>{v.name}</Link></span>
+      //               )
+      //             })
+      //           }
+      //         </div>
+      //     </div>
+      //   </div>
+      // )
     },
     {
       href: '/contact',
@@ -96,25 +98,25 @@ function PCNav(){
       name: t('navigation.list.item4.name'),
       // childrenNode: (
       //   <div className="w-full">
-      //     <div className="w-container mx-auto flex justify-between">
+      //     <div className="flex justify-between mx-auto w-container">
       //       <div className="w-[28.125rem]">
-      //         <h4 className="font-semibold text-xl">{t('navigation.list.item4.subName')}</h4>
+      //         <h4 className="text-xl font-semibold">{t('navigation.list.item4.subName')}</h4>
       //         <p className="mt-5">{t('navigation.list.item4.desc')}</p>
       //       </div>
       //       <div className="ml-[2.75rem]">
-      //         <h4 className="font-semibold text-xl mb-5">{t('navigation.list.item4.children.companySubtitle')}</h4>
+      //         <h4 className="mb-5 text-xl font-semibold">{t('navigation.list.item4.children.companySubtitle')}</h4>
       //         {
       //           i18n.language === 'zh' && <p className="text-gray-1">吉特科技有限公司</p>
       //         }
       //         <p className="text-gray-1">GTech International, Ltd.</p>
       //       </div>
       //       <div className="ml-[2.75rem]">
-      //         <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.contactSubtitle')}</h4>
-      //         <p className="text-gray-1 mt-5">hi@gtech.world</p>
+      //         <h4 className="text-xl font-semibold">{t('navigation.list.item4.children.contactSubtitle')}</h4>
+      //         <p className="mt-5 text-gray-1">hi@gtech.world</p>
       //         <p className="text-gray-1">(+86)021-66271287</p>
       //       </div>
       //       <div className="ml-[2.75rem] flex flex-col">
-      //         <h4 className="font-semibold text-xl">{t('navigation.list.item4.children.qrSubtitle')}</h4>
+      //         <h4 className="text-xl font-semibold">{t('navigation.list.item4.children.qrSubtitle')}</h4>
       //         <div className="mt-5">
       //           <img src="/images/wechat_qrcode.png" className="w-[5.5rem] mt-1" alt=""/>
       //         </div>
@@ -160,7 +162,7 @@ function PCNav(){
           )
         })
       }
-      <span className="cursor-pointer ml-12" onClick={changeLanguage}>{t('translation')}</span>
+      <span className="ml-12 cursor-pointer" onClick={changeLanguage}>{t('translation')}</span>
     </div>
   )
 }
@@ -169,7 +171,7 @@ function MobileSubNav(props:{data:any,onClick?:any}){
   const {pathname} = useRouter()
   const {data = [],onClick} = props
   return(
-    <ul className="text-sm mt-3 leading-8">
+    <ul className="mt-3 text-sm leading-8">
       {
         data.map((v:any,i:number)=>{
           return(
@@ -228,14 +230,14 @@ function MobileNav(){
     {
       href: '/news',
       name: t('navigation.list.item3.name'),
-      children: cateList.map(v=>{
-        return(
-          {
-            href: `/news?cateId=${v.id}`,
-            name: v.name,
-          }
-        )
-      })
+      // children: cateList.map(v=>{
+      //   return(
+      //     {
+      //       href: `/news?cateId=${v.id}`,
+      //       name: v.name,
+      //     }
+      //   )
+      // })
     },
     {
       href: '/contact',
@@ -282,7 +284,7 @@ function MobileNav(){
       <HiOutlineMenu className={classNames('text-4xl',pathname === '/'?'text-white':'text-green')} onClick={onToggle}/>
       {
         open &&
-        <div className="absolute text-black right-0 bg-white w-screen px-5 py-4">
+        <div className="absolute right-0 w-screen px-5 py-4 text-black bg-white">
           {
             navList.map((v:any,i:number)=>{
               const hasChildren = (v.children && v.children.length)
