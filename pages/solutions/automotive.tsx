@@ -4,6 +4,7 @@ import {QrGroup} from "@components/qrGroup";
 import classNames from "classnames";
 import {useTranslation,Trans} from "react-i18next";
 import React from "react";
+import Image from "next/image";
 
 
 function Top(){
@@ -13,13 +14,13 @@ function Top(){
     <div className={classNames('bg-white/[.76] flex md:flex-col w-[60.5rem] pl-10 text-[2rem] py-10 leading-[2.75rem] md:py-8 md:text-lg md:text-center md:px-4 md:w-auto')}>
       <div className='w-[9.875rem] md:w-full md:max-w-[22rem] md:max-w-[10rem] md:mx-auto md:scale-[0.9]'>
         <div className="py-3 rounded-[2.25rem] outline outline-[5px] outline-green outline-offset-4 border-[1.75px] border-green flex justify-center items-center">
-          <div className="flex flex-col justify-between items-center h-full">
-            <img className="mb-2 w-[8rem]" src="/images/carbon3_name.svg" alt=""/>
-            <img className="w-[6.25rem]" src="/images/earth.png" alt=""/>
+          <div className="flex flex-col items-center justify-between h-full">
+            <Image className="mb-2 w-[8rem]" src="/images/carbon3_name.svg" alt=""/>
+            <Image className="w-[6.25rem]" src="/images/earth.png" alt=""/>
           </div>
         </div>
       </div>
-      <div className="ml-10 mt-3 md:ml-0">
+      <div className="mt-3 ml-10 md:ml-0">
         <h3 className={classNames('font-bold text-green md:text-[1.75rem] md:leading-9')}>Digital<sup>3</sup> Carbon</h3>
         <p className="mt-3 w-[43.25rem] md:w-full">{t('banner.text')}</p>
       </div>
@@ -72,15 +73,15 @@ function BoostingAutomotive(){
     }
   ]
   return(
-    <div className="w-container mx-auto flex flex-col items-center pb-20 md:text-center md:pb-8 md:w-full">
-      <h3 className="my-16 text-green md:mt-7 md:mb-5 md:px-12 text-center">{t('boostingAutomotive.title')}</h3>
+    <div className="flex flex-col items-center pb-20 mx-auto w-container md:text-center md:pb-8 md:w-full">
+      <h3 className="my-16 text-center text-green md:mt-7 md:mb-5 md:px-12">{t('boostingAutomotive.title')}</h3>
       <div className="flex justify-between md:flex-col">
         <div className="flex flex-col px-3 w-[32.625rem] mr-[6.875rem] md:w-full md:mr-0">
-          <img className="w-full md:mx-auto md:mt-8 rounded-lg md:mt-0" src="/images/solution_intro.png" alt=""/>
+          <img className="w-full rounded-lg md:mx-auto md:mt-8 md:mt-0" src="/images/solution_intro.png" alt=""/>
           <p className="mt-5">
             <Trans
               i18nKey="boostingAutomotive.list.item1.text"
-              components={[<a href="https://aiag.org.cn/" rel="noreferrer" target="_blank" className="font-bold underline" key='info'></a>,<strong className="text-green" key='info'></strong>,<sup key="info" className="text-green font-bold"></sup>]}
+              components={[<a href="https://aiag.org.cn/" rel="noreferrer" target="_blank" className="font-bold underline" key='info'></a>,<strong className="text-green" key='info'></strong>,<sup key="info" className="font-bold text-green"></sup>]}
             >
               {t('boostingAutomotive.text')}
             </Trans>
@@ -107,8 +108,8 @@ function BoostingAutomotive(){
 function Carbon3Solution(){
   const { t } = useTranslation('automotive');
   return(
-    <div className="w-full bg-bgc flex flex-col items-center text-lg md:text-sm md:pb-5">
-      <h3 className="text-center px-12 mt-16 md:mt-8">
+    <div className="flex flex-col items-center w-full text-lg bg-bgc md:text-sm md:pb-5">
+      <h3 className="px-12 mt-16 text-center md:mt-8">
         <Trans
           i18nKey="carbon3Solution.title"
           components={[<sup className="" key='info'></sup>]}
@@ -129,7 +130,7 @@ function Carbon3Solution(){
                 <div className="flex flex-col">
                   <div className="flex">
                     <img className="md:w-[6.125rem] fill-[#29953A]" src="/images/aicp_logo.svg" alt=""/>
-                    <span className="leading-5 ml-4 text-base text-green md:text-xs">Digital<sup>3</sup><br/>Carbon</span>
+                    <span className="ml-4 text-base leading-5 text-green md:text-xs">Digital<sup>3</sup><br/>Carbon</span>
                   </div>
                   <p className="mt-6 md:mt-3">
                     <Trans
@@ -146,7 +147,7 @@ function Carbon3Solution(){
                 <div className="flex flex-col">
                   <div className="flex">
                     <img className="md:w-[6.125rem]" src="/images/aicp_logo.svg" alt=""/>
-                    <span className="leading-5 ml-4 text-base text-green md:text-xs">Automotive Industry<br/>Carbon Platform</span>
+                    <span className="ml-4 text-base leading-5 text-green md:text-xs">Automotive Industry<br/>Carbon Platform</span>
                   </div>
                   <p className="mt-6 md:mt-3">{t('carbon3Solution.group.item2.group.item2.text')}</p>
                 </div>
@@ -296,10 +297,10 @@ function MainProduct(){
 function TrustLabel(){
   const { t } = useTranslation('automotive');
   return(
-    <div className="mt-10 pb-20 px-3">
-      <div className="w-container m-auto border-4 pb-5 border-black rounded-2xl md:w-full md:h-auto">
+    <div className="px-3 pb-20 mt-10">
+      <div className="pb-5 m-auto border-4 border-black w-container rounded-2xl md:w-full md:h-auto">
         <h3 className="text-3.5xl font-bold text-green text-center mt-8 pb-6 md:text-base">{t('mainProduct.qrcode.title')}</h3>
-        <div className="px-6 flex md:flex-col-reverse md:px-3">
+        <div className="flex px-6 md:flex-col-reverse md:px-3">
           <img className="w-[50.625rem] md:w-full" src="/images/car.png" alt=""/>
           <div className="ml-6 md:ml-2">
             <QrGroup className="mt-20 md:mt-8" />
