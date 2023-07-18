@@ -7,27 +7,54 @@ import { getNewsCount, getNewsList, getNewsListCount } from "@lib/http";
 import moment from "moment";
 import { Loading } from "@components/common/loading";
 import { useRouter } from "next/router";
+const check: any = {
+  0: "/images/date.svg",
+  1: "/images/checked_top.svg",
+  2: "/images/checked_bottom.svg",
+  3: "/images/date.svg",
+};
 
-const ArticleList = (p: { data: any[]; cateId?: number, setPgNum: any, tableDataTotal: any, pgNum: number, windowWidth: number }) => {
-  const { cateId, data, setPgNum, tableDataTotal, pgNum, windowWidth } = p;
+const ArticleList = (p: { data: any[]; cateId?: number, setPgNum: any, onCheck:any,checked:any, tableDataTotal: any, pgNum: number, windowWidth: number }) => {
+  const { cateId, data, setPgNum, tableDataTotal, pgNum, windowWidth,onCheck, checked } = p;
+
 
   return (
 
-    <div className={`flex flex-wrap justify-between mx-auto mt-10 rounded-lg  ${windowWidth > 900 && 'w-container'} md:mt-5`}>
+    <div className={`flex flex-wrap  md:w-[200px] mx-auto md:mx-0   rounded-lg  ${windowWidth > 900 && 'w-container'} md:mt-5`}>
+     
       {!!data.length &&
         data.map((v, i) => {
           return (
             <Fragment key={`data${i}`}>
               {isMobile() ? null : (
-                <div className="mb-5 border-t text-sk border-gray-1 md:h-[200px]" />
-              )}
+                <div className=" mt-5 w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
+                 mx-auto  md:w-full md:px-5
+                " > 
+                 {data.length && i ===0 ? (
+                <Fragment>
+                  <div className=" text-[14px]   md:border-b 
+                  w-full  md:border-t md: border-[#DDDDDD] 
+                  
+                  ">发布时间
+                   <button
+                    className=" ml-[10px] md:mb-[10px] mt-1"
+                    onClick={() => onCheck()}
+                  >
+                    <img src={check[checked]} className="h-[10.89px] w-[7.82px]" alt='' />
+                  </button>
+                  </div>
+                 
+                </Fragment>
+              ) : null}
+                
+                 </div>
+               )}  
               <div
-
-                className="flex mb-12  md:items-center md:mb-5 w-full md:w-[221px] bg-red-300 md:h-[4.875rem]"
+                className=" flex   md:items-center md:mb-5 w-full md:w-[221px] md:h-[4.875rem]"
               >
                 <div
                   className={
-                    " w-[19.375rem] md:w-[7.375rem]    h-[16.125rem] md:h-[4.875rem] rounded-lg "
+                    " w-[19.375rem] md:w-[7.375rem]  h-[12.5rem] md:h-[4.875rem] rounded-lg "
                   }
                 >
                   {/* <div className="w-[19.375rem] h-[12.5rem]  "> */}
@@ -36,10 +63,16 @@ const ArticleList = (p: { data: any[]; cateId?: number, setPgNum: any, tableData
                 </div>
 
 
-                <div className={`flex flex-col ml-[2rem] md:ml-[10px] bg-red-600 w-full   mx-auto  justify-between  md:max-h-[4.875rem] `}>
-                  <div className="h-[9.4375rem]   md:overflow-hidden md:text-ellipsis md:whitespace-nowrap  ">
+                <div className={`flex flex-col  h-[12.5rem] ml-[2rem] md:ml-[10px]    mx-auto  justify-between  md:h-[4.875rem] `}>
+                  <div 
+                  className="h-[9.4375rem]   md:overflow-hidden md:text-ellipsis md:whitespace-nowrap  "
+                  
+                  style={{  WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', display: '-webkit-box' }}  
+                  // className=" bg-red-300 md:hidden h-[9.4375rem] w-full text-[14px]  line-clamp-1 overflow-hidden"
+                  >
                     <Link
-                      className="   text-[20px] font-[600px]  md:text-[16px] "
+                      className=" w-full   text-[20px] font-[600px]  md:text-[16px]
+                       "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
                       href={`/news/detail?cateId=${cateId}&id=${v.id}`}
@@ -52,7 +85,9 @@ const ArticleList = (p: { data: any[]; cateId?: number, setPgNum: any, tableData
                         "YYYY-MM-DD HH:mm:ss"
                       )}
                     </time>
-                    <p className="md:hidden text-[14px] max-h-[300px]">{v.digest}</p>
+                    {!isMobile()&&
+                    <p style={{  WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', display: '-webkit-box' }}  className="  md:hidden  text-[14px]  line-clamp-2 overflow-hidden">{v.digest}</p>
+                  }
                     <div className="flex flex-row mt-[10px] md:h-[24px]">
                       {v?.newsTypes.map((e: any, i: number) => {
                         return (
@@ -116,12 +151,7 @@ export default function Index() {
   >({});
   const [pgNum, setPgNum] = useState(1);
   const [pgSize] = useState(10);
-  const check: any = {
-    0: "/images/date.svg",
-    1: "/images/checked_top.svg",
-    2: "/images/checked_bottom.svg",
-    3: "/images/date.svg",
-  };
+
 
   const getNewsType = async () => {
     setLoading(true);
@@ -163,13 +193,10 @@ export default function Index() {
     const id = query?.cateId
     if (newsType && newsType.length && query.cateId) {
       const type: any = newsType.find((e) => e.id === Number(id))
-      console.log('typetype', type);
       setSelected(type)
     }
   }, [query])
 
-
-  console.log('finalDatafinalData', newsType, query, selected);
 
   const getListTotal = async () => {
     const res = await getNewsListCount(selected?.typeName, selected?.id);
@@ -211,7 +238,6 @@ export default function Index() {
     setChecked(checked === 3 ? 1 : checked + 1);
   };
 
-  console.log('dasda', windowWidth, newsType);
 
 
   return (
@@ -223,6 +249,7 @@ export default function Index() {
 
       <div className="mx-auto md:mx-3 ">
         <div className={`flex flex-wrap justify-between mx-auto mt-10 rounded-lg  ${windowWidth > 900 && 'w-container'} md:mt-5`}>
+
           {newsType.map((e, index) => {
             return (
               <div
@@ -274,26 +301,38 @@ export default function Index() {
               </div>
             );
           })}
-          <div className="mt-5 ">
-            <div className="flex flex-row items-center mx-auto md:border-b md:w-full">
-              {data.length ? (
-                <Fragment>
-                  <div className=" text-[14px]  c-[#DDDDDD] h-[26px]">发布时间</div>
-                  <div
-                    className="ml-[10px] md:mb-[10px] mt-1"
-                    onClick={() => onCheck()}
-                  >
-                    <img src={check[checked]} className="h-[10.89px] w-[7.82px]" alt='' />
-                  </div>
-                </Fragment>
-              ) : null}
-            </div>
+          </div>
 
+           
+            
+
+          <div className="">
             {loading ? (
               <Loading className="h-[22rem] " />
             ) : (
-              <ArticleList cateId={selected?.id} data={data} setPgNum={setPgNum} windowWidth={windowWidth} tableDataTotal={tableDataTotal.current} pgNum={pgNum} />
+            //   <div className="flex mx-auto mt-5 bg-red-300 w-container">
+            //   {data.length ? (
+            //     <Fragment>
+            //       <div className=" text-[14px]   md:border-b 
+            //       w-full  md:border-t md: border-[#DDDDDD] 
+                  
+            //       ">发布时间
+            //        <button
+            //         className=" ml-[10px] md:mb-[10px] mt-1"
+            //         onClick={() => onCheck()}
+            //       >
+            //         <img src={check[checked]} className="h-[10.89px] w-[7.82px]" alt='' />
+            //       </button>
+            //       </div>
+                 
+            //     </Fragment>
+            //   ) : null}
+            // </div>
+              <ArticleList onCheck={onCheck} cateId={selected?.id} checked={checked} data={data} setPgNum={setPgNum} windowWidth={windowWidth} tableDataTotal={tableDataTotal.current} pgNum={pgNum} />
+           
             )}
+            </div>
+         
 
 
 
@@ -315,11 +354,8 @@ export default function Index() {
               )
             )}
 
-          </div>
-        </div>
-
-
       </div>
+
 
       {/* <div className="flex w-[75rem]  flex-col md:ml-5   md:mx-5  md:w-[21.9375rem] ">
         <div className="flex flex-wrap  justify-between mt-10 md:mt-5 rounded-lg   md:w-[21.9375rem]">
