@@ -9,46 +9,48 @@ import { Loading } from "@components/common/loading";
 import { useRouter } from "next/router";
 const check: any = {
   0: "/images/date.svg",
-  1: "/images/checked_top.svg",
-  2: "/images/checked_bottom.svg",
+  1: "/images/checked_bottom.svg",
+  2: "/images/checked_top.svg",
   3: "/images/date.svg",
 };
 
-const ArticleList = (p: { data: any[]; cateId:any, setPgNum: any, onCheck:any,checked:any, tableDataTotal: any, pgNum: number, windowWidth: number }) => {
-  const { cateId, data, setPgNum, tableDataTotal, pgNum, windowWidth,onCheck, checked } = p;
-  
+const ArticleList = (p: { data: any[]; cateId: any, setPgNum: any, onCheck: any, checked: any, tableDataTotal: any, pgNum: number, windowWidth: number }) => {
+  const { cateId, data, setPgNum, tableDataTotal, pgNum, windowWidth, onCheck, checked } = p;
+
 
   return (
 
     <div className={`flex flex-wrap  md:w-[200px] mx-auto md:mx-0   rounded-lg  ${windowWidth > 900 && 'w-container'} md:mt-5`}>
-     
+
       {!!data.length &&
         data.map((v, i) => {
           return (
             <Fragment key={`data${i}`}>
               {isMobile() ? null : (
                 <div className=" mt-5 w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
-                 mx-auto  md:w-full md:px-5
-                " > 
-                 {data.length && i ===0 ? (
-                <Fragment>
-                  <div className=" text-[14px]   md:border-b 
+                 mx-auto  md:w-full md:px-5 cursor-pointer
+                " >
+                  {data.length && i === 0 ? (
+                    <Fragment>
+                      <div className=" text-[14px]   md:border-b
                   w-full  md:border-t md: border-[#DDDDDD] 
                   
-                  ">发布时间
-                   <button
-                    className=" ml-[10px] md:mb-[10px] mt-1"
-                    onClick={() => onCheck()}
-                  >
-                    <img src={check[checked]} className="h-[10.89px] w-[7.82px]" alt='' />
-                  </button>
-                  </div>
-                 
-                </Fragment>
-              ) : null}
-                
-                 </div>
-               )}  
+                  "
+                  onClick={() => onCheck()}
+                  >发布时间
+                        <button
+                          className=" ml-[10px] md:mb-[10px] mt-1"
+                         
+                        >
+                          <img src={check[checked]} className="h-[10.89px] w-[7.82px]" alt='' />
+                        </button>
+                      </div>
+
+                    </Fragment>
+                  ) : null}
+
+                </div>
+              )}
               <div
                 className=" flex   md:items-center md:mb-5 w-full md:w-[221px] md:h-[4.875rem]"
               >
@@ -64,18 +66,14 @@ const ArticleList = (p: { data: any[]; cateId:any, setPgNum: any, onCheck:any,ch
 
 
                 <div className={`flex flex-col  h-[12.5rem] ml-[2rem] md:ml-[10px]    mx-auto  justify-between  md:h-[4.875rem] `}>
-                  <div 
-                  className="h-[9.4375rem]   md:overflow-hidden md:text-ellipsis md:whitespace-nowrap  "
-                  
-                  style={{  WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', display: '-webkit-box' }}  
-                  // className=" bg-red-300 md:hidden h-[9.4375rem] w-full text-[14px]  line-clamp-1 overflow-hidden"
+                  <div
+                    className="h-[9.4375rem] md:w-[90%]  md:overflow-hidden md:text-ellipsis md:whitespace-nowrap  "
                   >
                     <Link
-                      className=" w-full   text-[20px] font-[600px]  md:text-[16px]
-                       "
+                      className="  text-[20px] font-[600px]  md:text-[16px]"
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id}&id=${v.id}&name=${cateId.typeName}`}
+                      href={`/news/detail?cateId=${cateId.id}&id=${v.id}&name=${cateId.typeName}&type=${v.author}`}
                     >
                       {v.title}
                     </Link>
@@ -85,9 +83,9 @@ const ArticleList = (p: { data: any[]; cateId:any, setPgNum: any, onCheck:any,ch
                         "YYYY-MM-DD HH:mm:ss"
                       )}
                     </time>
-                    {!isMobile()&&
-                    <p style={{  WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', display: '-webkit-box' }}  className="  md:hidden  text-[14px]  line-clamp-2 overflow-hidden">{v.digest}</p>
-                  }
+                    {!isMobile() &&
+                      <p style={{ WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', display: '-webkit-box' }} className="  md:hidden  text-[14px]  line-clamp-2 overflow-hidden">{v.digest}</p>
+                    }
                     <div className="flex flex-row mt-[10px] md:h-[24px]">
                       {v?.newsTypes.map((e: any, i: number) => {
                         return (
@@ -104,7 +102,7 @@ const ArticleList = (p: { data: any[]; cateId:any, setPgNum: any, onCheck:any,ch
                       className="text-green text-[14px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId}&id=${v.id}`}
+                      href={`/news/detail?cateId=${cateId.id}&id=${v.id}&name=${cateId.typeName}&type=${v.author}`}
                     >
                       详情 &gt;&gt;
                     </Link>
@@ -115,17 +113,7 @@ const ArticleList = (p: { data: any[]; cateId:any, setPgNum: any, onCheck:any,ch
             </Fragment>
           );
         })}
-      {data.length ? (
-        <Pagination
-          onChange={(v: any) => {
-            setPgNum(v);
-          }}
-          className="my-8"
-          total={tableDataTotal}
-          pgSize={10}
-          pgNum={pgNum}
-        />
-      ) : null}
+
     </div>
   );
 }
@@ -179,8 +167,8 @@ export default function Index() {
         });
       });
       const finalData = Object.values(mergedData);
-
-      setSelected(finalData[0] as any);
+      const data = finalData as any
+      setSelected(data[0].children[0]);
       setNewsType(finalData as NewsTypesController.ListRecord[]);
     } catch (e) {
       console.log("reeee", e);
@@ -193,6 +181,7 @@ export default function Index() {
     const id = query?.cateId
     if (newsType && newsType.length && query.cateId) {
       const type: any = newsType.find((e) => e.id === Number(id))
+      
       setSelected(type)
     }
   }, [query])
@@ -237,26 +226,31 @@ export default function Index() {
   const onCheck = () => {
     setChecked(checked === 3 ? 1 : checked + 1);
   };
-  
+
 
   return (
     <HeaderLayout headerProps={headerProps} >
       <div className="mx-auto md:mx-3 ">
-        <div className={`flex flex-wrap justify-between mx-auto mt-10 rounded-lg  ${windowWidth > 900 && 'w-container'} md:mt-5`}>
+        <div id="content" className={` flex flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  ${windowWidth > 900 && 'w-container'} md:mt-5`}>
 
           {newsType.map((e, index) => {
+
             return (
               <div
                 key={`type_${index}`}
-                className={`w-[22.5rem]  h-[12.75rem]  rounded-lg shadow  
-                   ${index === 2 ? "md:w-full md:mt-5 md:h-[139px]  " : "md:w-[10.625rem] md:h-[140px] "
-                  }`
+                id='box-medium'
+                className={`w-[22.5rem]  h-[12.75rem]  rounded-lg shadow
+                 sm:w-[49%]
+                
+                ${index === 2 ? "md:w-full md:mt-5 md:h-[139px]  " : " md:h-[140px] "
+               }`
                 }
               >
                 <div
                   className={`  rounded-t-md  bg-green h-[4.25rem]  flex items-center
                 
-               ${index === 2 ? "md:w-full md:h-[50px] " : "md:w-[10.625rem] md:h-[50px]  "}
+               ${index === 2 ? "md:w-full md:h-[50px] " : "md:h-[50px]  "}
+
               `}
                 >
                   <div className={`flex  flex-row items-center justify-between w-full mr-[0.75rem] `}>
@@ -283,7 +277,7 @@ export default function Index() {
                           setChecked(0);
                         }}
                         className={` ${selected?.id === item.id ?
-                            "text-[#29953A]  bg-[#29953A1A]" : ' bg-[#E9E9E9]'
+                          "text-[#29953A]  bg-[#29953A1A]" : ' bg-[#E9E9E9]'
                           } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]`}
                       >
                         {item.typeName}
@@ -295,58 +289,51 @@ export default function Index() {
               </div>
             );
           })}
-          </div>
+        </div>
 
-           
-            
 
-          <div className="">
-            {loading ? (
-              <Loading className="h-[22rem] " />
-            ) : (
-            //   <div className="flex mx-auto mt-5 bg-red-300 w-container">
-            //   {data.length ? (
-            //     <Fragment>
-            //       <div className=" text-[14px]   md:border-b 
-            //       w-full  md:border-t md: border-[#DDDDDD] 
-                  
-            //       ">发布时间
-            //        <button
-            //         className=" ml-[10px] md:mb-[10px] mt-1"
-            //         onClick={() => onCheck()}
-            //       >
-            //         <img src={check[checked]} className="h-[10.89px] w-[7.82px]" alt='' />
-            //       </button>
-            //       </div>
-                 
-            //     </Fragment>
-            //   ) : null}
-            // </div>
-              <ArticleList onCheck={onCheck} cateId={selected} checked={checked} data={data} setPgNum={setPgNum} windowWidth={windowWidth} tableDataTotal={tableDataTotal.current} pgNum={pgNum} />
-           
-            )}
+
+
+        <div className="">
+          {loading ? (
+            <Loading className="h-[22rem] " />
+          ) : (
+            <ArticleList onCheck={onCheck} cateId={selected} checked={checked} data={data} setPgNum={setPgNum} windowWidth={windowWidth} tableDataTotal={tableDataTotal.current} pgNum={pgNum} />
+
+          )}
+        </div>
+        {data.length ? (
+          <Pagination
+            onChange={(v: any) => {
+              setPgNum(v);
+            }}
+            className="my-8"
+            total={tableDataTotal.current}
+            pgSize={10}
+            pgNum={pgNum}
+          />
+        ) : null}
+
+
+
+
+        {loading ? (
+          <Loading className="pt-8" />
+        ) : (
+          !(data && data.length > 0) && (
+            <div className="flex flex-col justify-center w-full py-20 text-center ">
+              <div className="flex justify-center ">
+                <img
+                  width={222}
+                  height="125"
+                  src="/images/noData.svg"
+                  alt=""
+                />
+              </div>
+              <div>暂无数据</div>
             </div>
-         
-
-
-
-            {loading ? (
-              <Loading className="pt-8" />
-            ) : (
-              !(data && data.length > 0) && (
-                <div className="flex flex-col justify-center w-full py-20 text-center ">
-                  <div className="flex justify-center ">
-                    <img
-                      width={222}
-                      height="125"
-                      src="/images/noData.svg"
-                      alt=""
-                    />
-                  </div>
-                  <div>暂无数据</div>
-                </div>
-              )
-            )}
+          )
+        )}
 
       </div>
 

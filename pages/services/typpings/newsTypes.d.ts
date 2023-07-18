@@ -14,7 +14,7 @@ declare namespace NewsTypesController {
   }
   
 
-  type TypeList = {
+  interface TypeList  {
     createTime:string
     id:number
     typeGroup:string
