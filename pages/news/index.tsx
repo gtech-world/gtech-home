@@ -14,9 +14,9 @@ const check: any = {
   3: "/images/date.svg",
 };
 
-const ArticleList = (p: { data: any[]; cateId?: number, setPgNum: any, onCheck:any,checked:any, tableDataTotal: any, pgNum: number, windowWidth: number }) => {
+const ArticleList = (p: { data: any[]; cateId:any, setPgNum: any, onCheck:any,checked:any, tableDataTotal: any, pgNum: number, windowWidth: number }) => {
   const { cateId, data, setPgNum, tableDataTotal, pgNum, windowWidth,onCheck, checked } = p;
-
+  
 
   return (
 
@@ -75,7 +75,7 @@ const ArticleList = (p: { data: any[]; cateId?: number, setPgNum: any, onCheck:a
                        "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId}&id=${v.id}`}
+                      href={`/news/detail?cateId=${cateId.id}&id=${v.id}&name=${cateId.typeName}`}
                     >
                       {v.title}
                     </Link>
@@ -237,16 +237,10 @@ export default function Index() {
   const onCheck = () => {
     setChecked(checked === 3 ? 1 : checked + 1);
   };
-
-
+  
 
   return (
     <HeaderLayout headerProps={headerProps} >
-
-
-
-
-
       <div className="mx-auto md:mx-3 ">
         <div className={`flex flex-wrap justify-between mx-auto mt-10 rounded-lg  ${windowWidth > 900 && 'w-container'} md:mt-5`}>
 
@@ -328,7 +322,7 @@ export default function Index() {
             //     </Fragment>
             //   ) : null}
             // </div>
-              <ArticleList onCheck={onCheck} cateId={selected?.id} checked={checked} data={data} setPgNum={setPgNum} windowWidth={windowWidth} tableDataTotal={tableDataTotal.current} pgNum={pgNum} />
+              <ArticleList onCheck={onCheck} cateId={selected} checked={checked} data={data} setPgNum={setPgNum} windowWidth={windowWidth} tableDataTotal={tableDataTotal.current} pgNum={pgNum} />
            
             )}
             </div>

@@ -28,24 +28,17 @@ function Breadcrumb(p:{content:object[]} & HTMLAttributes<HTMLDivElement>){
 
 export default function Detail() {
   const {query} = useRouter()
-  const {id = 1,cateId} = query
+  const {id = 1, cateId,name = ''} = query
   const {push} = useRouter();
   const cateList = useNewsCate()
-  const [curCateName,setCurCateName] = useState('')
   const [isFinish,setIsFinish] = useState(false)
   const { value, loading }:any = useAsyncM(
     noArgs(async () =>getNewsDetail(id?id:1)
       , [id]),
     [id]
   );
-
-  console.log('valuevalue',value);
   
-  useEffect(()=>{
-    if(cateId){
-      setCurCateName(cateList[+cateId-1].name)
-    }
-  },[cateId])
+ 
   const article = useMemo(()=>{
     if(!value?.newsItem) return {content:'',title:'',time:''}
     setIsFinish(true)
@@ -79,7 +72,7 @@ export default function Detail() {
       </div>
       <div className="mx-auto w-container md:w-full md:px-3 md:mt-2">
         <header className="pb-8 border-b border-gray-10 md:pb-5">
-          <Breadcrumb className="py-8 md:hidden" content={[{name:curCateName,href:`/news?cateId=${query.cateId}`},{name:'详情'}]} />
+          <Breadcrumb className="py-8 md:hidden" content={[{name:name,href:`/news?cateId=${query.cateId}`},{name:'详情'}]} />
           <h1 className="text-4xl font-semibold md:text-lg">{article.title}</h1>
           <time className="inline-block text-gray-1 pt-2.5 md:text-sm">{article.time}</time>
         </header>
