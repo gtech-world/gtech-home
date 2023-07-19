@@ -20,12 +20,28 @@ const ArticleList = (p: { data: any[]; cateId: any, setPgNum: any, onCheck: any,
 
   return (
 
-    <div className={`flex flex-wrap  md:w-[200px] mx-auto md:mx-0   rounded-lg  ${windowWidth > 900 && 'w-container'} md:mt-5`}>
+    <div className={`flex flex-wrap  md:w-[100%] mx-auto md:mx-0   rounded-lg  ${windowWidth > 900 && 'w-container'} md:mt-5`}>
 
       {!!data.length &&
         data.map((v, i) => {
           return (
+
             <Fragment key={`data${i}`}>
+                {isMobile() &&i === 0 &&<div className=" text-[14px]   md:border-b
+                  w-full  md: border-[#DDDDDD] 
+                  
+                  "
+                  onClick={() => onCheck()}
+                  >发布时间
+                        <button
+                          className=" ml-[10px] md:mb-[10px] mt-1"
+                         
+                        >
+                          <img src={check[checked]} className="h-[10.89px] w-[7.82px]" alt='' />
+                        </button>
+                      </div>
+        }
+                      
               {isMobile() ? null : (
                 <div className=" mt-5 w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
                  mx-auto  md:w-full md:px-5 cursor-pointer
@@ -52,7 +68,7 @@ const ArticleList = (p: { data: any[]; cateId: any, setPgNum: any, onCheck: any,
                 </div>
               )}
               <div
-                className=" flex   md:items-center md:mb-5 w-full md:w-[221px] md:h-[4.875rem]"
+                className=" flex  md:mt-5  md:mb-5 w-full sm:w-[100%] md:h-[4.875rem]"
               >
                 <div
                   className={
@@ -65,12 +81,12 @@ const ArticleList = (p: { data: any[]; cateId: any, setPgNum: any, onCheck: any,
                 </div>
 
 
-                <div className={`flex flex-col  h-[12.5rem] ml-[2rem] md:ml-[10px]    mx-auto  justify-between  md:h-[4.875rem] `}>
+                <div className={`flex flex-col md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   h-[12.5rem] ml-[2rem] md:ml-[10px] md:w-[100%]    mx-auto  justify-between  md:h-[4.875rem] `}>
                   <div
-                    className="h-[9.4375rem] md:w-[90%]  md:overflow-hidden md:text-ellipsis md:whitespace-nowrap  "
+                    className="h-[9.4375rem]  md:w-[100%] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   "
                   >
                     <Link
-                      className="  text-[20px] font-[600px]  md:text-[16px]"
+                      className="md:w-[100%]   text-[20px] font-[600px]  md:text-[16px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
                       href={`/news/detail?cateId=${cateId.id}&id=${v.id}&name=${cateId.typeName}&type=${v.author}`}
