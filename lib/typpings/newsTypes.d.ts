@@ -25,4 +25,21 @@ declare namespace NewsTypesController {
   type SearchQuery = {
     cateId?:string
   }
+
+  type NewsList = {
+    articleId:string;
+    author:string
+    createTime:string
+    deleted:boolean
+    digest:string
+    hidden:string
+    id:number
+    newsItem?:string
+    newsType:string
+    newsTypes:TypeList[]
+    newsUpdateTime:number
+    thumbUrl:string
+    title:string
+    updateTime:string
+}
 }

@@ -98,13 +98,15 @@ export default function Detail() {
             <time className="inline-block ml-5 text-[16px] md:text-[14px] text-gray-1 md:text-sm">
               {article.time}
             </time>
+            <div className="flex flex-row w-full">
             {result.map((e:string,i:number) => {
               return (
-                <div key={`list_${i}`} className="flex    rounded-[0.25rem] px-[10px] flex-row items-center md:max-w-[96px] ml-5 md:ml-0 md:mt-2 md:h-[28px] text-[#29953A] text-[14px] md:text-[12px]  bg-[#29953A1A]">
+                <div  key={`list_${i}`} className="flex md:mr-5  rounded-[0.25rem] px-[10px] flex-row items-center md:max-w-[96px] ml-5 md:ml-0 md:mt-2 md:h-[28px] text-[#29953A] text-[14px] md:text-[12px]  bg-[#29953A1A]">
                   <span className="">{e}</span>
                 </div>
               );
             })}
+            </div>
           </div>
         </header>
         {!isFinish ? (

@@ -69,7 +69,7 @@ function PCNav(){
       )
     },
     {
-      href: '/news',
+      href: `/news?cateId=1`,
       isLink: true,
       name: t('navigation.list.item3.name'),
       // childrenNode: (

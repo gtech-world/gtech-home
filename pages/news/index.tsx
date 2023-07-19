@@ -34,11 +34,10 @@ const ArticleList = (p: {
   windowWidth: number;
 }) => {
   const { cateId, data, windowWidth, onCheck, checked } = p;
+  
   return (
     <div
-      className={`flex flex-wrap mb-20  md:w-[100%] mx-auto md:mx-0   rounded-lg  ${
-        windowWidth > 900 && "w-container"
-      } md:mt-5`}
+      className={`flex flex-wrap mb-20  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}
     >
       {!!data.length &&
         data.map((v, i) => {
@@ -46,6 +45,7 @@ const ArticleList = (p: {
 
           return (
             <Fragment key={`data${i}`}>
+
               {isMobile() && i === 0 && (
                 <div
                   className=" text-[14px]   md:border-b
@@ -66,9 +66,8 @@ const ArticleList = (p: {
 
               {isMobile() ? null : (
                 <div
-                  className={` ${
-                    i === 0 ? "mt-5 " : ""
-                  }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
+                  className={` ${i === 0 ? "mt-5 " : ""
+                    }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
                  mx-auto  md:w-full md:px-5 cursor-pointer
                  `}
                 >
@@ -115,9 +114,8 @@ const ArticleList = (p: {
                       className="md:w-[100%] font-semibold   md:text-[16px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id || 1}&id=${
-                        v.id
-                      }&name=${name.toString()}&type=${v.author}`}
+                      href={`/news/detail?cateId=${cateId.id || cateId.cateId }&id=${v.id
+                        }&name=${name.toString().replace(/\&/g,"%26")}&type=${v.author}`}
                     >
                       {v.title}
                     </Link>
@@ -157,9 +155,8 @@ const ArticleList = (p: {
                       className="text-green text-[14px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id || 1}&id=${
-                        v.id
-                      }&name=${name.toString()}&type=${v.author}`}
+                      href={`/news/detail?cateId=${cateId.id || cateId.cateId}&id=${v.id
+                        }&name=${name.toString().replace(/\&/g,"%26")}&type=${v.author}`}
                     >
                       详情 &gt;&gt;
                     </Link>
@@ -176,7 +173,7 @@ const ArticleList = (p: {
 export default function Index() {
   const { query, pathname } = useRouter();
 
-  const { cateId = 1, typeName = "数字碳知识库" } = query;
+  const { cateId, typeName = "数字碳知识库" } = query;
   const tableDataTotal = useRef(0);
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -192,10 +189,10 @@ export default function Index() {
   const [pgSize] = useState(10);
   const router = useRouter();
 
-  const removeQueryParams = () => {
-    const urlWithoutQueryParams = pathname.split("?")[0];
-    router.replace(urlWithoutQueryParams);
-  };
+  // const removeQueryParams = () => {
+  //   const urlWithoutQueryParams = pathname.split("?")[0];
+  //   router.replace(urlWithoutQueryParams);
+  // };
 
   const getNewsType = async () => {
     setLoading(true);
@@ -222,9 +219,7 @@ export default function Index() {
           updateTime,
         });
       });
-      const finalData: NewsTypesController.ListRecords[] =
-        Object.values(mergedData);
-
+      const finalData: NewsTypesController.ListRecords[] = Object.values(mergedData);
       setNewsType(finalData as NewsTypesController.ListRecord[]);
     } catch (e) {
       console.log("reeee", e);
@@ -235,7 +230,7 @@ export default function Index() {
 
   const getListTotal = async () => {
     const res = await getNewsListCount(
-      selected.id || (cateId as unknown as number),
+      selected.id || Number(cateId),
       selected?.typeName || typeName
     );
     tableDataTotal.current = res;
@@ -255,24 +250,23 @@ export default function Index() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+  
   useEffect(() => {
     getListTotal();
   }, [selected.id, cateId]);
 
   const getList = useCallback(async () => {
-    const res = await getNewsList(
-      selected?.id || Number(cateId),
-      checked,
+    const res = await getNewsList(selected?.id || Number(cateId),
+     checked,
       pgNum,
       pgSize
     );
     setData(res || []);
-  }, [pgNum, query.id, selected.id, checked]);
+  }, [pgNum, query.cateId, selected.id, checked]);
 
   useEffect(() => {
     getList();
-  }, [getList]);
+  }, [getList, query, cateId]);
 
 
   const headerProps = {
@@ -283,14 +277,20 @@ export default function Index() {
     setChecked(!checked);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <HeaderLayout headerProps={headerProps}>
       <div className="mx-auto md:mx-3 ">
         <div
           id="content"
-          className={` flex flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  ${
-            windowWidth > 900 && "w-container"
-          } md:mt-5`}
+          className={` flex flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  ${windowWidth > 900 && "w-container"
+            } md:mt-5`}
         >
           {newsType.map((e, index) => {
             return (
@@ -300,11 +300,10 @@ export default function Index() {
                 className={`w-[22.5rem]  h-[12.75rem]  rounded-lg shadow
                  sm:w-[49%]
                 
-                ${
-                  index === 2
+                ${index === 2
                     ? "md:w-full md:mt-5 md:h-[139px]  "
                     : " md:h-[140px] "
-                }`}
+                  }`}
               >
                 <div
                   className={`  rounded-t-md  bg-green h-[4.25rem]  flex items-center
@@ -328,7 +327,7 @@ export default function Index() {
                   </div>
                 </div>
 
-                <div className="flex flex-row flex-wrap">
+                <div className="flex flex-row flex-wrap ">
                   {e.children.map(
                     (item: NewsTypesController.ListRecord, i: number) => {
                       return (
@@ -338,13 +337,11 @@ export default function Index() {
                             setSelected(item);
                             setChecked(false);
                             setPgNum(1);
-                            removeQueryParams();
                           }}
-                          className={` ${
-                            (selected.id || Number(cateId)) === item.id
+                          className={` ${(selected.id || Number(cateId)) === item.id
                               ? "text-[#29953A]  bg-[#29953A1A]"
                               : " bg-[#E9E9E9]"
-                          } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] 
+                            } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] 
                           h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]`}
                         >
                           {item.typeName}
@@ -376,6 +373,7 @@ export default function Index() {
           <Pagination
             onChange={(v: any) => {
               setPgNum(v);
+              scrollToTop();
             }}
             className="my-8"
             total={tableDataTotal.current}
