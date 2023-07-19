@@ -29,7 +29,6 @@ const ArticleList = (p: { data: any[]; cateId: any, setPgNum: any, onCheck: any,
             <Fragment key={`data${i}`}>
                 {isMobile() &&i === 0 &&<div className=" text-[14px]   md:border-b
                   w-full  md: border-[#DDDDDD] 
-                  
                   "
                   onClick={() => onCheck()}
                   >发布时间
@@ -43,9 +42,9 @@ const ArticleList = (p: { data: any[]; cateId: any, setPgNum: any, onCheck: any,
         }
                       
               {isMobile() ? null : (
-                <div className=" mt-5 w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
+                <div className={` ${i === 0 ? 'mt-5 ' :''}w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
                  mx-auto  md:w-full md:px-5 cursor-pointer
-                " >
+                 `} >
                   {data.length && i === 0 ? (
                     <Fragment>
                       <div className=" text-[14px]   md:border-b
@@ -86,7 +85,7 @@ const ArticleList = (p: { data: any[]; cateId: any, setPgNum: any, onCheck: any,
                     className="h-[9.4375rem]  md:w-[100%] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   "
                   >
                     <Link
-                      className="md:w-[100%]   text-[20px] font-[600px]  md:text-[16px] "
+                      className="md:w-[100%] font-semibold   md:text-[16px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
                       href={`/news/detail?cateId=${cateId.id}&id=${v.id}&name=${cateId.typeName}&type=${v.author}`}
