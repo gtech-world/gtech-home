@@ -5,7 +5,7 @@ declare namespace NewsTypesController {
     createTime: string;
     typeGroup:string,
     updateTime: string;
-    children:any
+    children:ListRecord[]
   }
   type ListRecords = {
     id:number,
