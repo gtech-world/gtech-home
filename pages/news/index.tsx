@@ -1,5 +1,11 @@
 import { HeaderLayout } from "@components/common/headerLayout";
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, {
+  Fragment,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Link from "next/link";
 import { isMobile } from "@lib/utils";
 import { Pagination } from "@components/common/pagination";
@@ -28,15 +34,16 @@ const ArticleList = (p: {
   windowWidth: number;
 }) => {
   const { cateId, data, windowWidth, onCheck, checked } = p;
-  
   return (
     <div
-      className={`flex flex-wrap mb-10  md:w-[100%] mx-auto md:mx-0   rounded-lg  ${
+      className={`flex flex-wrap mb-20  md:w-[100%] mx-auto md:mx-0   rounded-lg  ${
         windowWidth > 900 && "w-container"
       } md:mt-5`}
     >
       {!!data.length &&
         data.map((v, i) => {
+          const name = v.newsTypes.map((e: { typeName: string }) => e.typeName);
+
           return (
             <Fragment key={`data${i}`}>
               {isMobile() && i === 0 && (
@@ -87,7 +94,7 @@ const ArticleList = (p: {
                   ) : null}
                 </div>
               )}
-              <div className=" flex  md:mt-5  md:mb-5 w-full sm:w-[100%] md:h-[4.875rem]">
+              <div className=" flex  md:mt-5   w-full sm:w-[100%] md:h-[4.875rem]">
                 <div
                   className={
                     " w-[19.375rem] md:w-[7.375rem]  h-[12.5rem] md:h-[4.875rem] rounded-lg "
@@ -108,11 +115,13 @@ const ArticleList = (p: {
                       className="md:w-[100%] font-semibold   md:text-[16px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id}&id=${v.id}&name=${cateId.typeName}&type=${v.author}`}
+                      href={`/news/detail?cateId=${cateId.id || 1}&id=${
+                        v.id
+                      }&name=${name.toString()}&type=${v.author}`}
                     >
                       {v.title}
                     </Link>
-                    <time className=" md:py-0 text-[14px] md:text-[12px] flex text-gray-2">
+                    <time className=" mt-[10px] md:mt-[6px] md:mb-[6px] mb-[5px] md:py-0 text-[14px] md:text-[12px] flex text-gray-2">
                       <div className="mr-5 ">{v.author}</div>
                       {moment(v.newsUpdateTime * 1000).format(
                         "YYYY-MM-DD HH:mm:ss"
@@ -130,12 +139,12 @@ const ArticleList = (p: {
                         {v.digest}
                       </p>
                     )}
-                    <div className="flex flex-row mt-[10px] md:h-[24px]">
+                    <div className="flex flex-row items-center  mt-[10px] md:h-[24px]">
                       {v?.newsTypes.map((e: any, i: number) => {
                         return (
                           <div
                             key={`name_${i}`}
-                            className="mr-5 border   rounded-[0.25rem] px-[10px] text-[#29953A] text-[14px]  bg-[#29953A1A]"
+                            className="mr-5    rounded-[0.25rem] md:text-[12px] px-[10px] text-[#29953A] text-[14px]  bg-[#29953A1A]"
                           >
                             {e.typeName}
                           </div>
@@ -148,7 +157,9 @@ const ArticleList = (p: {
                       className="text-green text-[14px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id}&id=${v.id}&name=${cateId.typeName}&type=${v.author}`}
+                      href={`/news/detail?cateId=${cateId.id || 1}&id=${
+                        v.id
+                      }&name=${name.toString()}&type=${v.author}`}
                     >
                       详情 &gt;&gt;
                     </Link>
@@ -163,9 +174,9 @@ const ArticleList = (p: {
 };
 
 export default function Index() {
-  const {
-    query: { cateId = 1 ,typeName = '数字碳知识库'},
-  } = useRouter();
+  const { query, pathname } = useRouter();
+
+  const { cateId = 1, typeName = "数字碳知识库" } = query;
   const tableDataTotal = useRef(0);
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -179,6 +190,12 @@ export default function Index() {
   >({});
   const [pgNum, setPgNum] = useState(1);
   const [pgSize] = useState(10);
+  const router = useRouter();
+
+  const removeQueryParams = () => {
+    const urlWithoutQueryParams = pathname.split("?")[0];
+    router.replace(urlWithoutQueryParams);
+  };
 
   const getNewsType = async () => {
     setLoading(true);
@@ -207,8 +224,6 @@ export default function Index() {
       });
       const finalData: NewsTypesController.ListRecords[] =
         Object.values(mergedData);
-      // const data = finalData ;
-      // setSelected(data[0].children[0]);
 
       setNewsType(finalData as NewsTypesController.ListRecord[]);
     } catch (e) {
@@ -218,15 +233,14 @@ export default function Index() {
     }
   };
 
-  
-
   const getListTotal = async () => {
     const res = await getNewsListCount(
-      selected.id || cateId,
+      selected.id || (cateId as unknown as number),
       selected?.typeName || typeName
     );
     tableDataTotal.current = res;
   };
+
   useEffect(() => {
     getNewsType();
   }, []);
@@ -246,20 +260,20 @@ export default function Index() {
     getListTotal();
   }, [selected.id, cateId]);
 
-  useEffect(() => {
-    getList();
-  }, [pgNum, selected.id, checked, cateId]);
-  
-
-  const getList = async () => {
+  const getList = useCallback(async () => {
     const res = await getNewsList(
-      selected?.id || cateId as number ,
+      selected?.id || Number(cateId),
       checked,
       pgNum,
       pgSize
     );
     setData(res || []);
-  };
+  }, [pgNum, query.id, selected.id, checked]);
+
+  useEffect(() => {
+    getList();
+  }, [getList]);
+
 
   const headerProps = {
     className: isMobile() ? "" : "border-b border-black",
@@ -324,6 +338,7 @@ export default function Index() {
                             setSelected(item);
                             setChecked(false);
                             setPgNum(1);
+                            removeQueryParams();
                           }}
                           className={` ${
                             (selected.id || Number(cateId)) === item.id
@@ -344,18 +359,18 @@ export default function Index() {
         </div>
 
         <div className="">
-          {loading ? (
-            <Loading className="h-[22rem] " />
-          ) : (
-            <ArticleList
-              onCheck={onCheck}
-              cateId={JSON.stringify(selected) === '{}' ? {typeName ,cateId} : selected }
-              checked={checked}
-              data={data}
-              windowWidth={windowWidth}
-              pgNum={pgNum}
-            />
-          )}
+          <ArticleList
+            onCheck={onCheck}
+            cateId={
+              JSON.stringify(selected) === "{}"
+                ? { typeName, cateId }
+                : selected
+            }
+            checked={checked}
+            data={data}
+            windowWidth={windowWidth}
+            pgNum={pgNum}
+          />
         </div>
         {data.length ? (
           <Pagination

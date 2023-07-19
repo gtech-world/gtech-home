@@ -18,7 +18,7 @@ module.exports = {
         //   {'min': '0', 'max': '900px'},
         // ],
         'sm': [
-            {'min': '0px', 'max': '750px'},
+            {'min': '0px', 'max': '900px'},
           ],  // 小型屏幕
         'md':  [
             {'min': '0', 'max': '900px'},
