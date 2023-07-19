@@ -16,9 +16,13 @@ declare namespace NewsTypesController {
 
   interface TypeList  {
     createTime:string
-    id:number
+    id?:number
     typeGroup:string
     typeName:string
     updateTime:string
+  }
+
+  type SearchQuery = {
+    cateId?:string
   }
 }

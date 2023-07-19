@@ -9,8 +9,8 @@ import { Loading } from "@components/common/loading";
 import { useRouter } from "next/router";
 
 const check: any = {
-  true:  "/images/checked_top.svg",
-  false:  "/images/checked_bottom.svg",
+  true: "/images/checked_top.svg",
+  false: "/images/checked_bottom.svg",
 };
 
 const tempList = [
@@ -21,19 +21,14 @@ const tempList = [
 
 const ArticleList = (p: {
   data: any[];
-  cateId: Record<string,any>;
-  onCheck: ()=>void;
+  cateId: Record<string, any>;
+  onCheck: () => void;
   checked: boolean;
   pgNum: number;
   windowWidth: number;
 }) => {
-  const {
-    cateId,
-    data,
-    windowWidth,
-    onCheck,
-    checked,
-  } = p;
+  const { cateId, data, windowWidth, onCheck, checked } = p;
+  
   return (
     <div
       className={`flex flex-wrap mb-10  md:w-[100%] mx-auto md:mx-0   rounded-lg  ${
@@ -167,10 +162,10 @@ const ArticleList = (p: {
   );
 };
 
-
 export default function Index() {
-  const { query } = useRouter();
-
+  const {
+    query: { cateId = 1 ,typeName = '数字碳知识库'},
+  } = useRouter();
   const tableDataTotal = useRef(0);
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -210,9 +205,11 @@ export default function Index() {
           updateTime,
         });
       });
-      const finalData = Object.values(mergedData);
-      const data = finalData as any;
-      setSelected(data[0].children[0]);
+      const finalData: NewsTypesController.ListRecords[] =
+        Object.values(mergedData);
+      // const data = finalData ;
+      // setSelected(data[0].children[0]);
+
       setNewsType(finalData as NewsTypesController.ListRecord[]);
     } catch (e) {
       console.log("reeee", e);
@@ -221,17 +218,13 @@ export default function Index() {
     }
   };
 
-  useEffect(() => {
-    const id = query?.cateId;
-    if (newsType && newsType.length && query.cateId) {
-      const type: any = newsType.find((e) => e.id === Number(id));
-
-      setSelected(type);
-    }
-  }, [query]);
+  
 
   const getListTotal = async () => {
-    const res = await getNewsListCount(selected?.typeName, selected?.id);
+    const res = await getNewsListCount(
+      selected.id || cateId,
+      selected?.typeName || typeName
+    );
     tableDataTotal.current = res;
   };
   useEffect(() => {
@@ -251,14 +244,20 @@ export default function Index() {
 
   useEffect(() => {
     getListTotal();
-  }, [selected.id]);
+  }, [selected.id, cateId]);
 
   useEffect(() => {
     getList();
-  }, [pgNum, selected.id, checked]);
+  }, [pgNum, selected.id, checked, cateId]);
+  
 
   const getList = async () => {
-    const res = await getNewsList(selected?.id, checked , pgNum, pgSize);
+    const res = await getNewsList(
+      selected?.id || cateId as number ,
+      checked,
+      pgNum,
+      pgSize
+    );
     setData(res || []);
   };
 
@@ -267,11 +266,8 @@ export default function Index() {
   };
 
   const onCheck = () => {
-    setChecked(!checked)
+    setChecked(!checked);
   };
-
-  console.log('checkccc',String(checked),check[String(checked)]);
-  
 
   return (
     <HeaderLayout headerProps={headerProps}>
@@ -327,13 +323,14 @@ export default function Index() {
                           onClick={() => {
                             setSelected(item);
                             setChecked(false);
-                            setPgNum(1)
+                            setPgNum(1);
                           }}
                           className={` ${
-                            selected?.id === item.id
+                            (selected.id || Number(cateId)) === item.id
                               ? "text-[#29953A]  bg-[#29953A1A]"
                               : " bg-[#E9E9E9]"
-                          } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]`}
+                          } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] 
+                          h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]`}
                         >
                           {item.typeName}
                         </div>
@@ -352,7 +349,7 @@ export default function Index() {
           ) : (
             <ArticleList
               onCheck={onCheck}
-              cateId={selected}
+              cateId={JSON.stringify(selected) === '{}' ? {typeName ,cateId} : selected }
               checked={checked}
               data={data}
               windowWidth={windowWidth}

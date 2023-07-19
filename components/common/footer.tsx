@@ -67,7 +67,7 @@ export function Footer() {
       children: cateList.map(v=>{
         return(
           {
-            href: `/news?cateId=${v.id}`,
+            href: `/news?cateId=${v.id}&typeName=${v.typeName}`,
             name: v.name,
           }
         )
@@ -99,6 +99,8 @@ export function Footer() {
       ]
     }
   ]
+
+  
   if(i18n.language === 'en') navList.splice(1,1)
   return (
     <div className="pb-5 bg-bgc md:px-8 md:py-12">
