@@ -3,6 +3,7 @@ import React, {
   Fragment,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -15,8 +16,10 @@ import { Loading } from "@components/common/loading";
 import { useRouter } from "next/router";
 
 const check: any = {
-  true: "/images/checked_top.svg",
-  false: "/images/checked_bottom.svg",
+  0: "/images/date.svg",
+  1: "/images/checked_top.svg",
+  2: "/images/checked_bottom.svg",
+  3: "/images/date.svg",
 };
 
 const tempList = [
@@ -29,14 +32,12 @@ const ArticleList = (p: {
   data: any[];
   cateId: Record<string, any>;
   onCheck: () => void;
-  checked: boolean;
+  checked: number;
   pgNum: number;
   windowWidth: number;
 }) => {
-  const { cateId, data, onCheck, checked } = p;
+  const { cateId, data, onCheck, checked, windowWidth } = p;
 
-  
-  
   return (
     <div
       className={`flex flex-wrap mb-20  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}
@@ -47,7 +48,6 @@ const ArticleList = (p: {
 
           return (
             <Fragment key={`data${i}`}>
-
               {isMobile() && i === 0 && (
                 <div
                   className=" text-[14px]   md:border-b
@@ -68,8 +68,9 @@ const ArticleList = (p: {
 
               {isMobile() ? null : (
                 <div
-                  className={` ${i === 0 ? "mt-5 " : ""
-                    }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
+                  className={` ${
+                    i === 0 ? "mt-5 " : ""
+                  }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
                  mx-auto  md:w-full md:px-5 cursor-pointer
                  `}
                 >
@@ -116,8 +117,12 @@ const ArticleList = (p: {
                       className="md:w-[100%] font-semibold text-[20px]  md:text-[16px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id || cateId.cateId }&id=${v.id
-                        }&name=${name.toString().replace(/\&/g,"%26")}&type=${v.author}&typeName=${cateId.typeName}`}
+                      href={`/news/detail?cateId=${
+                        cateId.id || cateId.cateId
+                      }&id=${v.id}&typeName=${cateId.typeName?.replace(
+                        /\&/g,
+                        "%26"
+                      )}`}
                     >
                       {v.title}
                     </Link>
@@ -129,12 +134,13 @@ const ArticleList = (p: {
                     </time>
                     {!isMobile() && (
                       <p
+                        title={v.digest}
                         style={{
-                          WebkitLineClamp: 2,
+                          WebkitLineClamp: windowWidth > 1200 ? 2 : 1,
                           WebkitBoxOrient: "vertical",
                           display: "-webkit-box",
                         }}
-                        className="  md:hidden  text-[14px]  line-clamp-2 overflow-hidden"
+                        className="  text-ellipsis md:hidden  text-[14px]  line-clamp-1 overflow-hidden"
                       >
                         {v.digest}
                       </p>
@@ -157,8 +163,12 @@ const ArticleList = (p: {
                       className="text-green text-[14px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id || cateId.cateId}&id=${v.id
-                        }&name=${name.toString().replace(/\&/g,"%26")}&type=${v.author}&typeName=${cateId.typeName}`}
+                      href={`/news/detail?cateId=${
+                        cateId.id || cateId.cateId
+                      }&id=${v.id}&typeName=${cateId.typeName?.replace(
+                        /\&/g,
+                        "%26"
+                      )}`}
                     >
                       详情 &gt;&gt;
                     </Link>
@@ -175,9 +185,9 @@ const ArticleList = (p: {
 export default function Index() {
   const { query, pathname } = useRouter();
 
-  const { cateId, typeName = "数字碳知识库" } = query;
+  const { cateId, typeName = "数字碳知识库", } = query;
   const tableDataTotal = useRef(0);
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(0);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [newsType, setNewsType] = useState<NewsTypesController.ListRecord[]>(
@@ -190,7 +200,6 @@ export default function Index() {
   const [pgNum, setPgNum] = useState(1);
   const [pgSize] = useState(10);
   const router = useRouter();
-
   // const removeQueryParams = () => {
   //   const urlWithoutQueryParams = pathname.split("?")[0];
   //   router.replace(urlWithoutQueryParams);
@@ -221,7 +230,8 @@ export default function Index() {
           updateTime,
         });
       });
-      const finalData: NewsTypesController.ListRecords[] = Object.values(mergedData);
+      const finalData: NewsTypesController.ListRecords[] =
+        Object.values(mergedData);
       setNewsType(finalData as NewsTypesController.ListRecord[]);
     } catch (e) {
       console.log("reeee", e);
@@ -230,9 +240,16 @@ export default function Index() {
     }
   };
 
+  useEffect(() => {
+    setSelected({
+      id: Number(query.cateId),
+      typeName: query.typeName as string,
+    });
+  }, [router.query]);
+
   const getListTotal = async () => {
     const res = await getNewsListCount(
-      selected.id || Number(cateId),
+      selected?.id ,
       selected?.typeName || typeName
     );
     tableDataTotal.current = res;
@@ -252,31 +269,26 @@ export default function Index() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  
+
   useEffect(() => {
     getListTotal();
   }, [selected.id, cateId]);
 
   const getList = useCallback(async () => {
-    const res = await getNewsList(selected?.id || Number(cateId),
-     checked,
-      pgNum,
-      pgSize
-    );
+    const res = await getNewsList(selected?.id, checked == 1, pgNum, pgSize);
     setData(res || []);
-  }, [pgNum, query.cateId, selected.id, checked]);
+  }, [pgNum, selected.id, checked]);
 
   useEffect(() => {
     getList();
   }, [getList, query, cateId]);
-
 
   const headerProps = {
     className: isMobile() ? "" : "border-b border-black",
   };
 
   const onCheck = () => {
-    setChecked(!checked);
+    setChecked(checked === 3 ? 1 : checked + 1);
   };
 
   const scrollToTop = () => {
@@ -291,8 +303,9 @@ export default function Index() {
       <div className="mx-auto md:mx-3 ">
         <div
           id="content"
-          className={` flex flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  ${windowWidth > 900 && "w-container"
-            } md:mt-5`}
+          className={` flex flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  ${
+            windowWidth > 900 && "w-container"
+          } md:mt-5`}
         >
           {newsType.map((e, index) => {
             return (
@@ -302,10 +315,11 @@ export default function Index() {
                 className={`w-[22.5rem]  h-[12.75rem]  rounded-lg shadow
                  sm:w-[49%]
                 
-                ${index === 2
+                ${
+                  index === 2
                     ? "md:w-full md:mt-5 md:h-[139px]  "
                     : " md:h-[140px] "
-                  }`}
+                }`}
               >
                 <div
                   className={`  rounded-t-md  bg-green h-[4.25rem]  flex items-center
@@ -337,13 +351,14 @@ export default function Index() {
                           key={`check_${i}`}
                           onClick={() => {
                             setSelected(item);
-                            setChecked(false);
                             setPgNum(1);
+                            setChecked(0);
                           }}
-                          className={` ${(selected.id || Number(cateId)) === item.id
+                          className={` ${
+                            selected.id === item.id
                               ? "text-[#29953A]  bg-[#29953A1A]"
                               : " bg-[#E9E9E9]"
-                            } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] 
+                          } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] 
                           h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]`}
                         >
                           {item.typeName}
@@ -359,15 +374,11 @@ export default function Index() {
 
         <div className="">
           <ArticleList
+            windowWidth={windowWidth}
             onCheck={onCheck}
-            cateId={
-              JSON.stringify(selected) === "{}"
-                ? { typeName, cateId }
-                : selected
-            }
+            cateId={selected}
             checked={checked}
             data={data}
-            windowWidth={windowWidth}
             pgNum={pgNum}
           />
         </div>

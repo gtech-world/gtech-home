@@ -1,5 +1,5 @@
 import { HeaderLayout } from "@components/common/headerLayout";
-import React, { HTMLAttributes, useEffect, useMemo, useState } from "react";
+import React, { HTMLAttributes, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 import { useAsyncM } from "@lib/hooks/useAsyncM";
@@ -7,7 +7,6 @@ import { getNewsDetail, noArgs } from "@lib/http";
 import moment from "moment";
 import { isMobile } from "@lib/utils";
 import { IoIosArrowBack } from "react-icons/io";
-import { useNewsCate } from "@lib/hooks/useNewsCate";
 import { Loading } from "@components/common/loading";
 
 function Breadcrumb(p: { content: object[] } & HTMLAttributes<HTMLDivElement>) {
@@ -30,15 +29,15 @@ function Breadcrumb(p: { content: object[] } & HTMLAttributes<HTMLDivElement>) {
 
 export default function Detail() {
   const { query } = useRouter();
-  const { id = 1, cateId, name = "", type = "",typeName = '' } = query;
+  const { id = 1, cateId,typeName = '' } = query;
   const { push } = useRouter();
-  const cateList = useNewsCate();
-  const result = (name as any).split(",");
   const [isFinish, setIsFinish] = useState(false);
   const { value, loading }: any = useAsyncM(
     noArgs(async () => getNewsDetail(id ? id : 1), [id]),
     [id]
   );
+
+  
 
   const article = useMemo(() => {
     if (!value?.newsItem) return { content: "", title: "", time: "" };
@@ -86,27 +85,31 @@ export default function Detail() {
           <Breadcrumb
             className="py-8 md:hidden"
             content={[
-              { name: typeName, href: `/news?cateId=${query.cateId}` },
+              { name: decodeURIComponent(  typeName as string || '') , href: `/news?cateId=${query.cateId}` },
               { name: "详情" },
             ]}
           />
           <h1 className="text-4xl font-semibold md:text-lg">{article.title}</h1>
-          <div className="flex flex-row items-center pt-2.5 md:w-[220px] flex-wrap">
-            <span className="text-gray-1 text-[16px] md:text-[14px]">
-              {type}
+          <div className="flex flex-row pt-2.5 w-[70%] md:w-[270px] md:flex-wrap ">
+            <div className="">
+            <span className="text-gray-1 text-[16px] md:text-[14px] min-w-min  ">
+              {value?.author}
             </span>
-            <time className="inline-block ml-5 text-[16px] md:text-[14px] text-gray-1 md:text-sm">
+            <time className="inline-block ml-5 text-[16px]  md:text-[14px] text-gray-1 md:text-sm">
               {article.time}
             </time>
-            <div className="flex flex-row w-full">
-            {result.map((e:string,i:number) => {
+            </div>
+
+            <div className="flex flex-row mr-16 ">
+            {value?.newsTypes.map((e:NewsTypesController.TypeList,i:number) => {
               return (
-                <div  key={`list_${i}`} className="flex mr-5  rounded-[0.25rem] px-[10px] flex-row items-center md:max-w-[96px] md:ml-0 md:mt-2 md:h-[28px] text-[#29953A] text-[14px] md:text-[12px]  bg-[#29953A1A]">
-                  <span className="">{e}</span>
+                <div  key={`list_${i}`} className="flex md:mr-5 ml-5   rounded-[0.25rem] px-[10px] flex-row items-center md:max-w-[96px]  md:ml-0 md:mt-2 md:h-[28px] text-[#29953A] text-[14px] md:text-[12px]  bg-[#29953A1A]">
+                  <span className="">{e.typeName}</span>
                 </div>
               );
             })}
             </div>
+            
           </div>
         </header>
         {!isFinish ? (
