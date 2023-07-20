@@ -1,5 +1,6 @@
 import { HeaderLayout } from "@components/common/headerLayout";
 import React, {
+  FC,
   Fragment,
   useCallback,
   useEffect,
@@ -15,29 +16,11 @@ import moment from "moment";
 import { Loading } from "@components/common/loading";
 import { useRouter } from "next/router";
 import classNames from "classnames";
+import { check, tempList } from "utils";
 
-const check: any = {
-  0: "/images/date.svg",
-  1: "/images/checked_top.svg",
-  2: "/images/checked_bottom.svg",
-  3: "/images/date.svg",
-};
 
-const tempList = [
-  { url: "/images/subtract.svg", id: 1 },
-  { url: "/images/frame.svg", id: 2 },
-  { url: "/images/three.svg", id: 3 },
-];
 
-const ArticleList = (p: {
-  data: any[];
-  cateId: Record<string, any>;
-  onCheck: () => void;
-  checked: number;
-  pgNum: number;
-  windowWidth: number;
-}) => {
-  const { cateId, data, onCheck, checked, windowWidth } = p;
+const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onCheck, checked, windowWidth }) => {
 
   return (
     <div
@@ -45,8 +28,6 @@ const ArticleList = (p: {
     >
       {!!data.length &&
         data.map((v, i) => {
-          const name = v.newsTypes.map((e: { typeName: string }) => e.typeName);
-
           return (
             <Fragment key={`data${i}`}>
               {isMobile() && i === 0 && (
@@ -69,8 +50,9 @@ const ArticleList = (p: {
 
               {isMobile() ? null : (
                 <div
-                  className={` ${i === 0 ? "mt-5 " : ""
-                    }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
+                  className={` ${
+                    i === 0 ? "mt-5 " : ""
+                  }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
                  mx-auto  md:w-full md:px-5 cursor-pointer
                  `}
                 >
@@ -117,11 +99,11 @@ const ArticleList = (p: {
                       className="md:w-[100%] font-semibold text-[20px]  md:text-[16px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id || cateId.cateId
-                        }&id=${v.id}&typeName=${cateId.typeName?.replace(
-                          /\&/g,
-                          "%26"
-                        )}`}
+                      href={`/news/detail?cateId=${cateId.id || cateId.cateId }&id=${v.id}&typeName=${
+                        cateId.typeName?.replace(
+                        /\&/g,
+                        "%26"
+                      )}`}
                     >
                       {v.title}
                     </Link>
@@ -157,16 +139,17 @@ const ArticleList = (p: {
                       })}
                     </div>
                   </div>
-                  <div className=" md:hidden h-[3.0625rem]  flex items-end">
+                  <div className=" md:hidden h-[3.0625rem]  flex items-end mb-[-5px]">
                     <Link
                       className="text-green text-[14px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id || cateId.cateId
-                        }&id=${v.id}&typeName=${cateId.typeName?.replace(
-                          /\&/g,
-                          "%26"
-                        )}`}
+                      href={`/news/detail?cateId=${
+                        cateId.id || cateId.cateId
+                      }&id=${v.id}&typeName=${cateId.typeName?.replace(
+                        /\&/g,
+                        "%26"
+                      )}`}
                     >
                       详情 &gt;&gt;
                     </Link>
@@ -180,28 +163,20 @@ const ArticleList = (p: {
   );
 };
 
+type newsListRecord =  Pick<NewsTypesController.ListRecord, 'children' | 'id' | 'typeGroup'>;
 export default function Index() {
-  const { query, pathname } = useRouter();
-
+  const { query } = useRouter();
   const { cateId, typeName = "数字碳知识库" } = query;
-  const tableDataTotal = useRef(0);
-  const [checked, setChecked] = useState(0);
+  const tableDataTotal = useRef<number>(0);
+  const [checked, setChecked] = useState<number>(0);
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const [newsType, setNewsType] = useState<NewsTypesController.ListRecord[]>(
-    []
-  );
+  const [data, setData] = useState<NewsTypesController.NewsList[]>([]);
+  const [newsType, setNewsType] = useState<newsListRecord[]>([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [selected, setSelected] = useState<
-    Partial<NewsTypesController.TypeList>
-  >({});
-  const [pgNum, setPgNum] = useState(1);
-  const [pgSize] = useState(10);
+  const [selected, setSelected] = useState<Partial<NewsTypesController.TypeList>>({});
+  const [pgNum, setPgNum] = useState<number>(1);
+  const [pgSize] = useState<number>(10);
   const router = useRouter();
-  // const removeQueryParams = () => {
-  //   const urlWithoutQueryParams = pathname.split("?")[0];
-  //   router.replace(urlWithoutQueryParams);
-  // };
 
   const getNewsType = async () => {
     setLoading(true);
@@ -211,7 +186,6 @@ export default function Index() {
 
       res.forEach((item: NewsTypesController.ListRecord) => {
         const { typeGroup } = item;
-
         if (!mergedData[typeGroup]) {
           mergedData[typeGroup] = {
             id: item.id,
@@ -228,9 +202,8 @@ export default function Index() {
           updateTime,
         });
       });
-      const finalData: NewsTypesController.ListRecords[] =
-        Object.values(mergedData);
-      setNewsType(finalData as NewsTypesController.ListRecord[]);
+      const finalData: NewsTypesController.ListRecords[] =Object.values(mergedData);
+      setNewsType(finalData);
     } catch (e) {
       console.log("reeee", e);
     } finally {
@@ -238,7 +211,9 @@ export default function Index() {
     }
   };
 
+  console.log('checked,',checked,check[String(checked)]);
   
+
   useEffect(() => {
     setSelected({
       id: Number(router.query.cateId),
@@ -287,23 +262,13 @@ export default function Index() {
   };
 
   const onCheck = () => {
-    setChecked(checked === 3 ? 1 : checked + 1);
+    setChecked(checked === 2 ? 1 : checked + 1);
   };
 
   const scrollToTop = () => {
-      const isSmoothScrollSupported = 'scrollBehavior' in document.documentElement.style;
-    
-      if (isSmoothScrollSupported) {
-        // 在支持平滑滚动的浏览器中使用平滑滚动
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      } else {
-        // 在不支持平滑滚动的浏览器中使用普通滚动
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
-      }
-    
+    window.scrollTo({
+      top: 0,
+    });
   };
 
   return (
@@ -311,7 +276,9 @@ export default function Index() {
       <div className="mx-auto md:mx-3 ">
         <div
           id="content"
-          className={'flex flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  w-container md:mt-5'}
+          className={
+            "flex flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  w-container md:mt-5"
+          }
         >
           {newsType.map((e, index) => {
             return (
@@ -328,8 +295,7 @@ export default function Index() {
               >
                 <div
                   className={`  rounded-t-md  bg-green h-[4.25rem]  flex items-center
-                
-               ${index === 2 ? "md:w-full md:h-[50px] " : "md:h-[50px]  "}
+                  ${index === 2 ? "md:w-full md:h-[50px] " : "md:h-[50px]  "}
               `}
                 >
                   <div
@@ -362,10 +328,11 @@ export default function Index() {
                               `/news?cateId=${item.id}&typeName=${item.typeName}`
                             );
                           }}
-                          className={` ${selected.id === item.id
+                          className={` ${
+                            selected.id === item.id
                               ? "text-[#29953A]  bg-[#29953A1A]"
                               : " bg-[#E9E9E9]"
-                            } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] 
+                          } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] 
                           h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]`}
                         >
                           {item.typeName}

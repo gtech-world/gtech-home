@@ -183,7 +183,7 @@ function MobileSubNav(props:{data:any,onClick?:any}){
             <li key={`MobileSubNav-${i}`}>
               {
                 v.href ?
-                  <Link href={v.href} onClick={()=>onClick && onClick()} className={classNames('inline-block w-full',pathname === v.href?'text-green':'')}>
+                  <Link href={v.href} onClick={()=>onClick && onClick()} className={classNames('inline-block w-full',(pathname === v.href) ?'text-red-200':'')}>
                     {v.name}
                   </Link>:
                   <span className="inline-block w-full" onClick={()=>v.onClick()}>{v.name}</span>
@@ -293,6 +293,7 @@ function MobileNav(){
           {
             navList.map((v:any,i:number)=>{
               const hasChildren = (v.children && v.children.length)
+              const isNews = pathname === '/news' && v.href.indexOf(pathname) === 0
               return(
                 <div key={`MobileNav-${i}`} className={classNames('mt-4',i === 0?'mt-3':'')}>
                   <div className="flex items-center justify-between text-base font-bold">
@@ -300,7 +301,7 @@ function MobileNav(){
                       hasChildren?
                         <span onClick={(e)=>openSubFc(e,v.href)} className="inline-block; w-full">{v.name}</span>
                         :
-                        <Link onClick={()=>onToggle(false)} className={classNames('inline-block w-full',pathname === v.href?'text-green':'')} href={v.href}>{v.name}</Link>
+                        <Link onClick={()=>onToggle(false)} className={classNames('inline-block w-full',pathname === v.href || isNews?'text-green':'')} href={v.href}>{v.name}</Link>
                     }
                     {
                       hasChildren && <IoCaretDownOutline className={openSub?.indexOf(v.href)>-1?'rotate-180':''} />

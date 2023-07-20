@@ -42,4 +42,14 @@ declare namespace NewsTypesController {
     title:string
     updateTime:string
 }
+
+type  ArticleList ={
+  data: NewsList[];
+  cateId: Record<string, any>;
+  onCheck: () => void;
+  checked: number;
+  pgNum: number;
+  windowWidth: number;
+}
+
 }

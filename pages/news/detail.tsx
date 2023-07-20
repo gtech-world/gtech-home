@@ -1,5 +1,5 @@
 import { HeaderLayout } from "@components/common/headerLayout";
-import React, { HTMLAttributes, useMemo, useState } from "react";
+import React, { HTMLAttributes, Suspense, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 import { useAsyncM } from "@lib/hooks/useAsyncM";
@@ -8,6 +8,9 @@ import moment from "moment";
 import { isMobile } from "@lib/utils";
 import { IoIosArrowBack } from "react-icons/io";
 import { Loading } from "@components/common/loading";
+
+
+
 
 function Breadcrumb(p: { content: object[] } & HTMLAttributes<HTMLDivElement>) {
   const { content, className } = p;
@@ -36,14 +39,14 @@ export default function Detail() {
     noArgs(async () => getNewsDetail(id ? id : 1), [id]),
     [id]
   );
-  const getSelectedName = () =>{
-    return value?.newsTypes.find((e:NewsTypesController.NewsList)=>e.id === Number(cateId)).typeName
-  }
+
+  
 
   const article = useMemo(() => {
     if (!value?.newsItem) return { content: "", title: "", time: "" };
     setIsFinish(true);
     return {
+      type: value?.newsTypes.find((e:NewsTypesController.NewsList)=>e.id === Number(cateId)).typeName,
       title: value.title,
       time: moment(value.newsUpdateTime * 1000).format("YYYY-MM-DD HH:mm:ss"),
       content: JSON.parse(value?.newsItem)
@@ -68,6 +71,7 @@ export default function Detail() {
       // .replace(/style="[\s\S]*?"/g,' ')
     };
   }, [value]);
+  
   const headerProps = {
     className: isMobile() ? "" : "border-b border-black",
   };
@@ -86,7 +90,7 @@ export default function Detail() {
           <Breadcrumb
             className="py-8 md:hidden"
             content={[
-              { name:getSelectedName() , href: `/news?cateId=${query.cateId}&typeName=${getSelectedName()?.replace(
+              { name:article.type || '', href: `/news?cateId=${query.cateId}&typeName=${article.type?.replace(
                 /\&/g,
                 "%26"
               )}`},
