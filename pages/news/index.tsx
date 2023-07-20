@@ -14,6 +14,7 @@ import { getNewsCount, getNewsList, getNewsListCount } from "@lib/http";
 import moment from "moment";
 import { Loading } from "@components/common/loading";
 import { useRouter } from "next/router";
+import classNames from "classnames";
 
 const check: any = {
   0: "/images/date.svg",
@@ -37,8 +38,6 @@ const ArticleList = (p: {
   windowWidth: number;
 }) => {
   const { cateId, data, onCheck, checked, windowWidth } = p;
-  console.log('cateId',cateId);
-  
 
   return (
     <div
@@ -70,9 +69,8 @@ const ArticleList = (p: {
 
               {isMobile() ? null : (
                 <div
-                  className={` ${
-                    i === 0 ? "mt-5 " : ""
-                  }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
+                  className={` ${i === 0 ? "mt-5 " : ""
+                    }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
                  mx-auto  md:w-full md:px-5 cursor-pointer
                  `}
                 >
@@ -105,7 +103,7 @@ const ArticleList = (p: {
                   }
                 >
                   <img
-                    className="max-w-[19.375rem] h-[12.5rem] md:w-[7.375rem]  rounded-lg md:h-[4.875rem] "
+                    className="max-w-[19.375rem] h-[12.5rem] md:w-[7.375rem]  rounded-lg md:h-[4.875rem] object-cover"
                     src={v.thumbUrl}
                     alt=""
                   />
@@ -119,12 +117,11 @@ const ArticleList = (p: {
                       className="md:w-[100%] font-semibold text-[20px]  md:text-[16px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${
-                        cateId.id || cateId.cateId
-                      }&id=${v.id}&typeName=${cateId.typeName?.replace(
-                        /\&/g,
-                        "%26"
-                      )}`}
+                      href={`/news/detail?cateId=${cateId.id || cateId.cateId
+                        }&id=${v.id}&typeName=${cateId.typeName?.replace(
+                          /\&/g,
+                          "%26"
+                        )}`}
                     >
                       {v.title}
                     </Link>
@@ -165,12 +162,11 @@ const ArticleList = (p: {
                       className="text-green text-[14px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${
-                        cateId.id || cateId.cateId
-                      }&id=${v.id}&typeName=${cateId.typeName?.replace(
-                        /\&/g,
-                        "%26"
-                      )}`}
+                      href={`/news/detail?cateId=${cateId.id || cateId.cateId
+                        }&id=${v.id}&typeName=${cateId.typeName?.replace(
+                          /\&/g,
+                          "%26"
+                        )}`}
                     >
                       详情 &gt;&gt;
                     </Link>
@@ -187,7 +183,7 @@ const ArticleList = (p: {
 export default function Index() {
   const { query, pathname } = useRouter();
 
-  const { cateId, typeName = "数字碳知识库", } = query;
+  const { cateId, typeName = "数字碳知识库" } = query;
   const tableDataTotal = useRef(0);
   const [checked, setChecked] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -242,18 +238,16 @@ export default function Index() {
     }
   };
 
-  console.log('asd',router);
-  
   useEffect(() => {
     setSelected({
       id: Number(router.query.cateId),
-      typeName: decodeURIComponent (router.query.typeName as string),
+      typeName: decodeURIComponent(router.query.typeName as string),
     });
-  }, [router.query.id,router.query.typeName]);
+  }, [router.query.id, router.query.typeName]);
 
   const getListTotal = async () => {
     const res = await getNewsListCount(
-      selected?.id ,
+      selected?.id,
       selected?.typeName || typeName
     );
     tableDataTotal.current = res;
@@ -307,23 +301,20 @@ export default function Index() {
       <div className="mx-auto md:mx-3 ">
         <div
           id="content"
-          className={` flex flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  ${
-            windowWidth > 900 && "w-container"
-          } md:mt-5`}
+          className={'flex flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  w-container md:mt-5'}
         >
           {newsType.map((e, index) => {
             return (
               <div
                 key={`type_${index}`}
                 id="box-medium"
-                className={`w-[22.5rem]  h-[12.75rem]  rounded-lg shadow
-                 sm:w-[49%]
-                
-                ${
-                  index === 2
-                    ? "md:w-full md:mt-5 md:h-[139px]  "
-                    : " md:h-[140px] "
-                }`}
+                className={classNames(
+                  "w-[22.5rem]  h-[12.75rem] border-[#DDDDDD]  rounded-lg border sm:w-[49%]",
+                  {
+                    "md:w-full md:mt-5 md:h-[139px]  ": index === 2,
+                    " md:h-[140px] ": index !== 2,
+                  }
+                )}
               >
                 <div
                   className={`  rounded-t-md  bg-green h-[4.25rem]  flex items-center
@@ -357,13 +348,14 @@ export default function Index() {
                             setSelected(item);
                             setPgNum(1);
                             setChecked(0);
-                            router.push(`/news?cateId=${item.id}&typeName=${item.typeName}`)
+                            router.push(
+                              `/news?cateId=${item.id}&typeName=${item.typeName}`
+                            );
                           }}
-                          className={` ${
-                            selected.id === item.id
+                          className={` ${selected.id === item.id
                               ? "text-[#29953A]  bg-[#29953A1A]"
                               : " bg-[#E9E9E9]"
-                          } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] 
+                            } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] 
                           h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]`}
                         >
                           {item.typeName}
