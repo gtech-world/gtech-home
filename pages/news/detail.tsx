@@ -30,7 +30,7 @@ function Breadcrumb(p: { content: object[] } & HTMLAttributes<HTMLDivElement>) {
 
 export default function Detail() {
   const { query } = useRouter();
-  const { id = 1, cateId, name = "", type = "" } = query;
+  const { id = 1, cateId, name = "", type = "",typeName = '' } = query;
   const { push } = useRouter();
   const cateList = useNewsCate();
   const result = (name as any).split(",");
@@ -86,7 +86,7 @@ export default function Detail() {
           <Breadcrumb
             className="py-8 md:hidden"
             content={[
-              { name: result[0], href: `/news?cateId=${query.cateId}` },
+              { name: typeName, href: `/news?cateId=${query.cateId}` },
               { name: "详情" },
             ]}
           />

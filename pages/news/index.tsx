@@ -33,7 +33,9 @@ const ArticleList = (p: {
   pgNum: number;
   windowWidth: number;
 }) => {
-  const { cateId, data, windowWidth, onCheck, checked } = p;
+  const { cateId, data, onCheck, checked } = p;
+
+  
   
   return (
     <div
@@ -111,11 +113,11 @@ const ArticleList = (p: {
                 >
                   <div className="h-[9.4375rem]  md:w-[100%] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   ">
                     <Link
-                      className="md:w-[100%] font-semibold   md:text-[16px] "
+                      className="md:w-[100%] font-semibold text-[20px]  md:text-[16px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
                       href={`/news/detail?cateId=${cateId.id || cateId.cateId }&id=${v.id
-                        }&name=${name.toString().replace(/\&/g,"%26")}&type=${v.author}`}
+                        }&name=${name.toString().replace(/\&/g,"%26")}&type=${v.author}&typeName=${cateId.typeName}`}
                     >
                       {v.title}
                     </Link>
@@ -156,7 +158,7 @@ const ArticleList = (p: {
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
                       href={`/news/detail?cateId=${cateId.id || cateId.cateId}&id=${v.id
-                        }&name=${name.toString().replace(/\&/g,"%26")}&type=${v.author}`}
+                        }&name=${name.toString().replace(/\&/g,"%26")}&type=${v.author}&typeName=${cateId.typeName}`}
                     >
                       详情 &gt;&gt;
                     </Link>
