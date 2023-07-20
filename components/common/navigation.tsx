@@ -228,7 +228,7 @@ function MobileNav(){
       ]
     },
     {
-      href: '/news',
+      href: `/news?cateId=1`,
       name: t('navigation.list.item3.name'),
       // children: cateList.map(v=>{
       //   return(
