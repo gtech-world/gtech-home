@@ -37,6 +37,8 @@ const ArticleList = (p: {
   windowWidth: number;
 }) => {
   const { cateId, data, onCheck, checked, windowWidth } = p;
+  console.log('cateId',cateId);
+  
 
   return (
     <div
@@ -240,12 +242,14 @@ export default function Index() {
     }
   };
 
+  console.log('asd',router);
+  
   useEffect(() => {
     setSelected({
-      id: Number(query.cateId),
-      typeName: query.typeName as string,
+      id: Number(router.query.cateId),
+      typeName: decodeURIComponent (router.query.typeName as string),
     });
-  }, [router.query]);
+  }, [router.query.id,router.query.typeName]);
 
   const getListTotal = async () => {
     const res = await getNewsListCount(
@@ -333,7 +337,7 @@ export default function Index() {
                     <div className=" ml-[1.875rem] text-white  text-[1.25rem] md:text-[1.125rem]">
                       {e.typeGroup}
                     </div>
-                    <div className="flex justify-end">
+                    <div className="flex justify-end ">
                       <img
                         className=" w-[3.6875rem] h-[3.0625rem] md:w-[2.1875rem] md:h-[1.8125rem]"
                         src={tempList[index].url}
@@ -353,6 +357,7 @@ export default function Index() {
                             setSelected(item);
                             setPgNum(1);
                             setChecked(0);
+                            router.push(`/news?cateId=${item.id}&typeName=${item.typeName}`)
                           }}
                           className={` ${
                             selected.id === item.id

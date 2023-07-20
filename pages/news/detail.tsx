@@ -29,7 +29,7 @@ function Breadcrumb(p: { content: object[] } & HTMLAttributes<HTMLDivElement>) {
 
 export default function Detail() {
   const { query } = useRouter();
-  const { id = 1, cateId,typeName = '' } = query;
+  const { id = 1, cateId,typeName = '' as any } = query ;
   const { push } = useRouter();
   const [isFinish, setIsFinish] = useState(false);
   const { value, loading }: any = useAsyncM(
@@ -85,7 +85,10 @@ export default function Detail() {
           <Breadcrumb
             className="py-8 md:hidden"
             content={[
-              { name: decodeURIComponent(  typeName as string || '') , href: `/news?cateId=${query.cateId}` },
+              { name: decodeURIComponent(  typeName as string || '') , href: `/news?cateId=${query.cateId}&typeName=${typeName?.replace(
+                /\&/g,
+                "%26"
+              )}` },
               { name: "详情" },
             ]}
           />
