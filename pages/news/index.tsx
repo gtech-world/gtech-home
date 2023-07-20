@@ -139,12 +139,12 @@ const ArticleList = (p: {
                           WebkitBoxOrient: "vertical",
                           display: "-webkit-box",
                         }}
-                        className="  text-ellipsis md:hidden  text-[14px]  line-clamp-1 overflow-hidden"
+                        className="   text-ellipsis md:hidden  text-[14px]  line-clamp-1 overflow-hidden"
                       >
                         {v.digest}
                       </p>
                     )}
-                    <div className="flex flex-row items-center  mt-[10px] md:h-[24px]">
+                    <div className="flex flex-row items-center md:mt-[6px]  mt-[10px] md:h-[24px]">
                       {v?.newsTypes.map((e: any, i: number) => {
                         return (
                           <div
@@ -238,6 +238,7 @@ export default function Index() {
     }
   };
 
+  
   useEffect(() => {
     setSelected({
       id: Number(router.query.cateId),
@@ -290,10 +291,19 @@ export default function Index() {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+      const isSmoothScrollSupported = 'scrollBehavior' in document.documentElement.style;
+    
+      if (isSmoothScrollSupported) {
+        // 在支持平滑滚动的浏览器中使用平滑滚动
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      } else {
+        // 在不支持平滑滚动的浏览器中使用普通滚动
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+      }
+    
   };
 
   return (
@@ -385,7 +395,7 @@ export default function Index() {
               setPgNum(v);
               scrollToTop();
             }}
-            className="my-8"
+            className="mt-20 mb-20 "
             total={tableDataTotal.current}
             pgSize={10}
             pgNum={pgNum}

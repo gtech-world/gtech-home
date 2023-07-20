@@ -20,7 +20,6 @@ function PCNav(){
     localStorage.setItem("lng",language)
     statementPage.indexOf(pathname)>-1 && push(language === 'en'?'/enstatement':'zhstatement')
   };
-  const newsCate = useNewsCate()
 
   
   const navList = [
@@ -131,8 +130,14 @@ function PCNav(){
     if(href === '/'){
       return pathname === href
     }
+    if(pathname === '/news' && href.indexOf(pathname) === 0){
+      return true
+    }
+    
     return pathname.indexOf(href)>-1
   }
+
+  
   return(
     <div className="text-xl flex md:hidden h-[4.6rem] items-center" ref={ref}
          onMouseLeave={(e)=>{setOpen('')}}

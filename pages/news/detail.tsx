@@ -36,8 +36,9 @@ export default function Detail() {
     noArgs(async () => getNewsDetail(id ? id : 1), [id]),
     [id]
   );
-
-  
+  const getSelectedName = () =>{
+    return value?.newsTypes.find((e:NewsTypesController.NewsList)=>e.id === Number(cateId)).typeName
+  }
 
   const article = useMemo(() => {
     if (!value?.newsItem) return { content: "", title: "", time: "" };
@@ -85,15 +86,15 @@ export default function Detail() {
           <Breadcrumb
             className="py-8 md:hidden"
             content={[
-              { name: decodeURIComponent(  typeName as string || '') , href: `/news?cateId=${query.cateId}&typeName=${typeName?.replace(
+              { name:getSelectedName() , href: `/news?cateId=${query.cateId}&typeName=${getSelectedName()?.replace(
                 /\&/g,
                 "%26"
-              )}` },
+              )}`},
               { name: "详情" },
             ]}
           />
           <h1 className="text-4xl font-semibold md:text-lg">{article.title}</h1>
-          <div className="flex flex-row pt-2.5 w-[70%] md:w-[270px] md:flex-wrap ">
+          <div className="flex flex-row pt-2.5 w-[70%] md:w-[290px] md:flex-wrap ">
             <div className="">
             <span className="text-gray-1 text-[16px] md:text-[14px] min-w-min  ">
               {value?.author}

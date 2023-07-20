@@ -150,3 +150,7 @@ h5{
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
+
+*{
+  -webkit-overflow-scrolling: touch;/*解决IOS网页上下滑动卡顿缺失等问题*/
+}
