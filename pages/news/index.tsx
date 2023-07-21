@@ -99,7 +99,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                     >
                       {v.title}
                     </Link>
-                    <time className=" md:h-[18px] leading-[18px] mt-[10px] md:mt-[6px] md:mb-[6px] mb-[5px] md:py-0 text-[14px] md:text-[12px] flex text-gray-2">
+                    <time className=" md:h-[18px] leading-[18px] mt-[10px] md:mt-[6px] md:mb-[6px] mb-[10px] md:py-0 text-[14px] md:text-[12px] flex text-gray-2">
                       <div className="mr-5 ">{v.author}</div>
                       {moment(v.newsUpdateTime * 1000).format(
                         "YYYY-MM-DD HH:mm:ss"
