@@ -35,7 +35,7 @@ const Detail = () => {
   const { push } = useRouter();
   const [isFinish, setIsFinish] = useState(false);
   const { value, loading }: any = useAsyncM(
-    noArgs(async () => getNewsDetail(id ? id : 1), [id]),
+    noArgs(async () => getNewsDetail(id ), [id]),
     [id]
   );
 
@@ -129,7 +129,7 @@ const Detail = () => {
           <Loading className="h-[40rem]" />
         ) : (
           <div
-            className="mt-8  article-content"
+            className="mt-8 article-content"
             dangerouslySetInnerHTML={{ __html: article.content }}
           ></div>
         )}

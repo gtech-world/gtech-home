@@ -40,7 +40,8 @@ export async function getNewsListCount<T> (newsTypeId?:string | number  ,newsTyp
   const res = await axios.get(creatUrl(`/wechat/news/count?newsTypeId=${newsTypeId}&newsType=${newsType}`));
   return getData(res);
 }
-export async function getNewsDetail(id: any =1) {
+export async function getNewsDetail<T>(id:T) {
+  if(!id)return
   const res = await axios.get(creatUrl(`/wechat/news/detail/${id}`));
   return getData(res);
 }
