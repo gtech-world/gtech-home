@@ -165,7 +165,6 @@ export default function Index() {
   const router = useRouter();
 
   const getNewsType = async () => {
-    setLoading(true);
     try {
       const res = await getNewsCount();
       const mergedData: any = {};
@@ -193,7 +192,6 @@ export default function Index() {
     } catch (e) {
       console.log("reeee", e);
     } finally {
-      setLoading(false);
     }
   };
 
@@ -229,8 +227,14 @@ export default function Index() {
   }, [selected.id]);
 
   const getList = useCallback(async () => {
-    const res = await getNewsList(selected?.id, checked === 1, pgNum, pgSize);
-    setData(res || []);
+    try{
+      const res = await getNewsList(selected?.id, checked === 1, pgNum, pgSize);
+      setData(res || []);
+    }catch(e){
+      console.log('eee',e);
+    }finally{
+    }
+   
   }, [pgNum, selected.id, checked]);
 
   useEffect(() => {
@@ -241,9 +245,8 @@ export default function Index() {
     className: isMobile() ? "" : "border-b border-black",
   };
 
-  const onCheck = () => {
-    setChecked(checked === 2 ? 1 : checked + 1);
-  };
+  const onCheck = () => setChecked(checked === 2 ? 1 : checked + 1);
+
 
   const scrollToTop = () => {
     window.scrollTo({
