@@ -1,76 +1,81 @@
-import React, {useState, useRef} from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import classNames from "classnames";
-import {useClickAway,useToggle} from "react-use";
+import { useClickAway, useToggle } from "react-use";
 import { IoCaretDownOutline } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
-import {Trans, useTranslation} from "react-i18next";
-import {useNewsCate} from "@lib/hooks/useNewsCate";
+import { Trans, useTranslation } from "react-i18next";
+import { useNewsCate } from "@lib/hooks/useNewsCate";
 
-const statementPage = ['/enstatement','/zhstatement']
-function PCNav(){
-  const { t, i18n } = useTranslation('common');
-  const {pathname,push} = useRouter()
+const statementPage = ["/enstatement", "/zhstatement"];
+function PCNav() {
+  const { t, i18n } = useTranslation("common");
+  const { pathname, push } = useRouter();
   const ref = useRef<any>();
-  const [open,setOpen] = useState<string>('')
+  const [open, setOpen] = useState<string>("");
   const changeLanguage = () => {
-    const language = (i18n.language === 'en'?'zh':'en')
+    const language = i18n.language === "en" ? "zh" : "en";
     i18n.changeLanguage(language);
-    localStorage.setItem("lng",language)
-    statementPage.indexOf(pathname)>-1 && push(language === 'en'?'/enstatement':'zhstatement')
+    localStorage.setItem("lng", language);
+    statementPage.indexOf(pathname) > -1 &&
+      push(language === "en" ? "/enstatement" : "zhstatement");
   };
 
-  
   const navList = [
     {
-      href: '/',
+      href: "/",
       isLink: true,
-      name: t('navigation.list.item1.name'),
+      name: t("navigation.list.item1.name"),
     },
     {
-      href: '/solutions',
+      href: "/solutions",
       isLink: false,
-      name: t('navigation.list.item2.name'),
+      name: t("navigation.list.item2.name"),
       childrenNode: (
         <div className="w-full">
           <div className="flex justify-between mx-auto w-container">
             <div className="w-[28.125rem]">
-              <h4 className="text-xl font-semibold">{t('navigation.list.item2.name')}</h4>
-              <p className="mt-5">{t('navigation.list.item2.desc')}</p>
+              <h4 className="text-xl font-semibold">
+                {t("navigation.list.item2.name")}
+              </h4>
+              <p className="mt-5">{t("navigation.list.item2.desc")}</p>
             </div>
             <div className="w-[24.125rem] ml-[2.05rem]">
               <h4 className="text-xl font-semibold">
-                <Trans
-                  i18nKey="2"
-                  components={[<sup key="dsd"></sup>]}
-                >
-                  {t('navigation.list.item2.children.child1.name')}
+                <Trans i18nKey="2" components={[<sup key="dsd"></sup>]}>
+                  {t("navigation.list.item2.children.child1.name")}
                 </Trans>
               </h4>
-              <p className="mt-5 text-gray-1" onClick={()=>setOpen('')}>
+              <p className="mt-5 text-gray-1" onClick={() => setOpen("")}>
                 <Link className="link-hover" href="/solutions/automotive">
-                  {t('navigation.list.item2.children.child1.desc')}
+                  {t("navigation.list.item2.children.child1.desc")}
                 </Link>
               </p>
             </div>
             <div className="ml-[2.05rem]">
-              <h4 className="text-xl font-semibold">{t('navigation.list.item2.children.more')}</h4>
-              <p className="mt-5 text-gray-1" onClick={()=>setOpen('')}>
-                <Link className="link-hover" href="/solutions/web3">{t('navigation.list.item2.children.child2.name')}</Link>
+              <h4 className="text-xl font-semibold">
+                {t("navigation.list.item2.children.more")}
+              </h4>
+              <p className="mt-5 text-gray-1" onClick={() => setOpen("")}>
+                <Link className="link-hover" href="/solutions/web3">
+                  {t("navigation.list.item2.children.child2.name")}
+                </Link>
               </p>
-              <p className="text-gray-1 mt-2.5" onClick={()=>setOpen('')}>
-                <Link className="link-hover" href="/solutions/governance">{t('navigation.list.item2.children.child3.name')}</Link>
+              <p className="text-gray-1 mt-2.5" onClick={() => setOpen("")}>
+                <Link className="link-hover" href="/solutions/governance">
+                  {t("navigation.list.item2.children.child3.name")}
+                </Link>
               </p>
             </div>
           </div>
         </div>
-      )
+      ),
     },
     {
       href: `/news?cateId=1&typeName=数字碳知识库`,
       isLink: true,
-      name: t('navigation.list.item3.name'),
+      name: t("navigation.list.item3.name"),
       // childrenNode: (
       //   <div className="w-full">
       //     <div className="flex items-center mx-auto w-container">
@@ -92,9 +97,9 @@ function PCNav(){
       // )
     },
     {
-      href: '/contact',
+      href: "/contact",
       isLink: true,
-      name: t('navigation.list.item4.name'),
+      name: t("navigation.list.item4.name"),
       // childrenNode: (
       //   <div className="w-full">
       //     <div className="flex justify-between mx-auto w-container">
@@ -124,117 +129,156 @@ function PCNav(){
       //   </div>
       // )
     },
-  ]
-  if(i18n.language === 'en') navList.splice(2,1)
-  const isCurrentPage = (href:string)=>{
-    if(href === '/'){
-      return pathname === href
-    }
-    if(pathname === '/news' && href.indexOf(pathname) === 0){
-      return true
-    }
-    
-    return pathname.indexOf(href)>-1
-  }
+  ];
+  if (i18n.language === "en") navList.splice(2, 1);
+  const isCurrentPage = (href: string) => {
+    const result = href?.split("?")[0];
 
-  
-  return(
-    <div className="text-xl flex md:hidden h-[4.6rem] items-center" ref={ref}
-         onMouseLeave={(e)=>{setOpen('')}}
+    if (href === "/") {
+      return pathname === href;
+    }
+
+    if (
+      (pathname === "/news/detail" && pathname.indexOf(result) === 0) ||
+      (pathname === "/news" && href.indexOf(pathname) === 0)
+    ) {
+      return true;
+    }
+
+    return pathname.indexOf(href) > -1;
+  };
+
+  return (
+    <div
+      className="text-xl flex md:hidden h-[4.6rem] items-center"
+      ref={ref}
+      onMouseLeave={(e) => {
+        setOpen("");
+      }}
     >
-      {
-        navList.map((v:any,i:number)=>{
-          return(
-            <div key={`navlist${i}`}
-                 className=""
-            >
-              {
-                v.isLink ?
-                  <Link onMouseEnter={(e)=>{setOpen(v.href)}} key={`nav-${i}`} className={`${i === 0?'':' ml-14'}`} href={v.href}>
-                    <span className={`inline-block cursor-pointer mt-[0.785rem] pb-2.5${isCurrentPage(v.href)?pathname === '/'?' border-b-2 border-green-3':' border-b-2 border-green'+' font-bold':''}`}>{v.name}</span>
-                  </Link>:
-                  <span onMouseEnter={(e)=>{setOpen(v.href)}} className={`inline-block cursor-pointer mt-[0.785rem] pb-2.5${isCurrentPage(v.href)?pathname === '/'?' border-b-2 border-green-3':' nav-active'+' font-bold':''}${i === 0?'':' ml-14'}`}>{v.name}</span>
-              }
-              {
-                !!v.childrenNode && open === v.href &&
-                <div className="absolute shadow left-0 mt-[0.79rem] z-12 w-screen py-10 bg-white text-black text-lg border-t border-black">
-                  {
-                    v.childrenNode
-                  }
-                </div>
-              }
-            </div>
-          )
-        })
-      }
-      <span className="ml-12 cursor-pointer" onClick={changeLanguage}>{t('translation')}</span>
+      {navList.map((v: any, i: number) => {
+        return (
+          <div key={`navlist${i}`} className="">
+            {v.isLink ? (
+              <Link
+                onMouseEnter={(e) => {
+                  setOpen(v.href);
+                }}
+                key={`nav-${i}`}
+                className={`${i === 0 ? "" : " ml-14"}`}
+                href={v.href}
+              >
+                <span
+                  className={`inline-block cursor-pointer mt-[0.785rem]  pb-2.5${
+                    isCurrentPage(v.href)
+                      ? pathname === "/"
+                        ? " border-b-2 border-green-3"
+                        : " border-b-2 border-green" + " font-bold"
+                      : ""
+                  }`}
+                >
+                  {v.name}
+                </span>
+              </Link>
+            ) : (
+              <span
+                onMouseEnter={(e) => {
+                  setOpen(v.href);
+                }}
+                className={` inline-block cursor-pointer mt-[0.785rem] pb-2.5${
+                  isCurrentPage(v.href)
+                    ? pathname === "/"
+                      ? " border-b-2 border-green-3"
+                      : " nav-active" + " font-bold"
+                    : ""
+                }${i === 0 ? "" : " ml-14"}`}
+              >
+                {v.name}
+              </span>
+            )}
+            {!!v.childrenNode && open === v.href && (
+              <div className="absolute shadow left-0 mt-[0.79rem] z-12 w-screen py-10 bg-white text-black text-lg border-t border-black">
+                {v.childrenNode}
+              </div>
+            )}
+          </div>
+        );
+      })}
+      <span className="ml-12 cursor-pointer" onClick={changeLanguage}>
+        {t("translation")}
+      </span>
     </div>
-  )
+  );
 }
 
-function MobileSubNav(props:{data:any,onClick?:any}){
-  const {pathname} = useRouter()
-  const {data = [],onClick} = props
-  return(
+function MobileSubNav(props: { data: any; onClick?: any }) {
+  const { pathname } = useRouter();
+  const { data = [], onClick } = props;
+  return (
     <ul className="mt-3 text-sm leading-8">
-      {
-        data.map((v:any,i:number)=>{
-          return(
-            <li key={`MobileSubNav-${i}`}>
-              {
-                v.href ?
-                  <Link href={v.href} onClick={()=>onClick && onClick()} className={classNames('inline-block w-full',(pathname === v.href) ?'text-red-200':'')}>
-                    {v.name}
-                  </Link>:
-                  <span className="inline-block w-full" onClick={()=>v.onClick()}>{v.name}</span>
-              }
-            </li>
-          )
-        })
-      }
+      {data.map((v: any, i: number) => {
+        return (
+          <li key={`MobileSubNav-${i}`}>
+            {v.href ? (
+              <Link
+                href={v.href}
+                onClick={() => onClick && onClick()}
+                className={classNames(
+                  "inline-block w-full",
+                  pathname === v.href ? "text-red-200" : ""
+                )}
+              >
+                {v.name}
+              </Link>
+            ) : (
+              <span className="inline-block w-full" onClick={() => v.onClick()}>
+                {v.name}
+              </span>
+            )}
+          </li>
+        );
+      })}
     </ul>
-  )
+  );
 }
-function MobileNav(){
-  const { t,i18n } = useTranslation('common');
+function MobileNav() {
+  const { t, i18n } = useTranslation("common");
   // const {data=[]} = props
-  const {pathname,push} = useRouter()
-  const cateList = useNewsCate()
+  const { pathname, push } = useRouter();
+  const cateList = useNewsCate();
   const ref = useRef<any>();
-  const [openSub,setOpenSub] = useState<any>([])
+  const [openSub, setOpenSub] = useState<any>([]);
   const [open, onToggle] = useToggle(false);
   const navList = [
     {
-      href: '/',
-      name: t('navigation.list.item1.name'),
+      href: "/",
+      name: t("navigation.list.item1.name"),
     },
     {
-      href: '/solutions',
-      name: t('navigation.list.item2.name'),
-      children:[
+      href: "/solutions",
+      name: t("navigation.list.item2.name"),
+      children: [
         {
-          href: '/solutions/automotive',
-          name:
-            <Trans
-              i18nKey="2"
-              components={[<sup key="dsd"></sup>]}
-            >
-              {t('navigation.list.item2.children.child1.name')}
-            </Trans>,
+          href: "/solutions/automotive",
+          name: (
+            <Trans i18nKey="2" components={[<sup key="dsd"></sup>]}>
+              {t("navigation.list.item2.children.child1.name")}
+            </Trans>
+          ),
         },
         {
-          href: '/solutions/web3',
-          name: t('navigation.list.item2.children.child2.name'),
+          href: "/solutions/web3",
+          name: t("navigation.list.item2.children.child2.name"),
         },
         {
-          href: '/solutions/governance',
-          name: t('navigation.list.item2.children.child3.name'),
+          href: "/solutions/governance",
+          name: t("navigation.list.item2.children.child3.name"),
         },
-      ]
+      ],
     },
     {
       href: `/news?cateId=1&typeName=数字碳知识库`,
-      name: t('navigation.list.item3.name'),
+      name: t("navigation.list.item3.name"),
       // children: cateList.map(v=>{
       //   return(
       //     {
@@ -245,8 +289,8 @@ function MobileNav(){
       // })
     },
     {
-      href: '/contact',
-      name: t('navigation.list.item4.name'),
+      href: "/contact",
+      name: t("navigation.list.item4.name"),
       // children:[
       //   {
       //     name: 'hi@gtech.world',
@@ -257,68 +301,106 @@ function MobileNav(){
       // ]
     },
     {
-      href: 'language',
-      name: t('translation_m'),
+      href: "language",
+      name: t("translation_m"),
       children: [
-        {name: 'English',href: '',onClick: ()=>{changeLanguage('en');onToggle(false)}},
-        {name: '中文',href: '',onClick: ()=>{changeLanguage('zh'); onToggle(false)}},
-      ]
-    }
-  ]
-  if(i18n.language === 'en') navList.splice(2,1)
+        {
+          name: "English",
+          href: "",
+          onClick: () => {
+            changeLanguage("en");
+            onToggle(false);
+          },
+        },
+        {
+          name: "中文",
+          href: "",
+          onClick: () => {
+            changeLanguage("zh");
+            onToggle(false);
+          },
+        },
+      ],
+    },
+  ];
+  if (i18n.language === "en") navList.splice(2, 1);
   useClickAway(ref, () => open && onToggle(false));
-  const changeLanguage = (val:string) => {
+  const changeLanguage = (val: string) => {
     i18n.changeLanguage(val);
-    statementPage.indexOf(pathname)>-1 && push(val === 'en'?'/enstatement':'zhstatement')
+    statementPage.indexOf(pathname) > -1 &&
+      push(val === "en" ? "/enstatement" : "zhstatement");
   };
-  const openSubFc = (e:any,val:any)=>{
-    e.stopPropagation()
-    const arr = [...openSub]
-    if(val){
-      const index = arr.indexOf(val)
-      if(index === -1){
-        arr.push(val)
-      }else {
-        arr.splice(index,1)
+  const openSubFc = (e: any, val: any) => {
+    e.stopPropagation();
+    const arr = [...openSub];
+    if (val) {
+      const index = arr.indexOf(val);
+      if (index === -1) {
+        arr.push(val);
+      } else {
+        arr.splice(index, 1);
       }
-      setOpenSub(arr)
+      setOpenSub(arr);
     }
-  }
-  return(
+  };
+  return (
     <div className="hidden md:block" ref={ref}>
-      <HiOutlineMenu className={classNames('text-4xl',pathname === '/'?'text-white':'text-green')} onClick={onToggle}/>
-      {
-        open &&
+      <HiOutlineMenu
+        className={classNames(
+          "text-4xl",
+          pathname === "/" ? "text-white" : "text-green"
+        )}
+        onClick={onToggle}
+      />
+      {open && (
         <div className="absolute right-0 w-screen px-5 py-4 text-black bg-white">
-          {
-            navList.map((v:any,i:number)=>{
-              const hasChildren = (v.children && v.children.length)
-              const isNews = pathname === '/news' && v.href.indexOf(pathname) === 0
-              return(
-                <div key={`MobileNav-${i}`} className={classNames('mt-4',i === 0?'mt-3':'')}>
-                  <div className="flex items-center justify-between text-base font-bold">
-                    {
-                      hasChildren?
-                        <span onClick={(e)=>openSubFc(e,v.href)} className="inline-block; w-full">{v.name}</span>
-                        :
-                        <Link onClick={()=>onToggle(false)} className={classNames('inline-block w-full',pathname === v.href || isNews?'text-green':'')} href={v.href}>{v.name}</Link>
-                    }
-                    {
-                      hasChildren && <IoCaretDownOutline className={openSub?.indexOf(v.href)>-1?'rotate-180':''} />
-                    }
-                  </div>
-                  {
-                    openSub?.indexOf(v.href)>-1 &&
-                    <MobileSubNav onClick={onToggle} data={v.children} />
-                  }
+          {navList.map((v: any, i: number) => {
+            const hasChildren = v.children && v.children.length;
+            const isNews =
+              pathname === "/news" && v.href.indexOf(pathname) === 0;
+            return (
+              <div
+                key={`MobileNav-${i}`}
+                className={classNames("mt-4", i === 0 ? "mt-3" : "")}
+              >
+                <div className="flex items-center justify-between text-base font-bold">
+                  {hasChildren ? (
+                    <span
+                      onClick={(e) => openSubFc(e, v.href)}
+                      className="inline-block; w-full"
+                    >
+                      {v.name}
+                    </span>
+                  ) : (
+                    <Link
+                      onClick={() => onToggle(false)}
+                      className={classNames(
+                        "inline-block w-full",
+                        pathname === v.href || isNews ? "text-green" : ""
+                      )}
+                      href={v.href}
+                    >
+                      {v.name}
+                    </Link>
+                  )}
+                  {hasChildren && (
+                    <IoCaretDownOutline
+                      className={
+                        openSub?.indexOf(v.href) > -1 ? "rotate-180" : ""
+                      }
+                    />
+                  )}
                 </div>
-              )
-            })
-          }
+                {openSub?.indexOf(v.href) > -1 && (
+                  <MobileSubNav onClick={onToggle} data={v.children} />
+                )}
+              </div>
+            );
+          })}
         </div>
-      }
+      )}
     </div>
-  )
+  );
 }
 
 export function Navigation() {
@@ -327,6 +409,5 @@ export function Navigation() {
       <PCNav />
       <MobileNav />
     </>
-
   );
 }

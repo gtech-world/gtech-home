@@ -99,7 +99,7 @@ const Detail = () => {
             ]}
           />
           <h1 className="text-4xl font-semibold md:text-lg">{article.title}</h1>
-          <div className="flex flex-row pt-2.5 w-[70%] md:w-[290px] md:flex-wrap ">
+          <div className="flex flex-row pt-[24px] w-[70%] md:w-[290px] md:flex-wrap ">
             <div className="">
               <span className="text-gray-1 text-[16px] md:text-[14px] min-w-min  ">
                 {value?.author}
