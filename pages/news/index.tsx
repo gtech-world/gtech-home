@@ -46,9 +46,8 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
 
               {isMobile() ? null : (
                 <div
-                  className={` ${
-                    i === 0 ? "mt-5 " : ""
-                  }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
+                  className={` ${i === 0 ? "mt-5 " : ""
+                    }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
                  mx-auto  md:w-full md:px-5 cursor-pointer
                  `}
                 >
@@ -95,7 +94,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                       className=" md:w-[100%] w-full  font-semibold text-[20px]  md:text-[16px] overflow-hidden text-ellipsis whitespace-nowrap  "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id || cateId.cateId }&id=${v.id}`}
+                      href={`/news/detail?cateId=${cateId.id || cateId.cateId}&id=${v.id}`}
                     >
                       {v.title}
                     </Link>
@@ -136,9 +135,8 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                       className="text-green text-[14px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${
-                        cateId.id || cateId.cateId
-                      }&id=${v.id}`}
+                      href={`/news/detail?cateId=${cateId.id || cateId.cateId
+                        }&id=${v.id}`}
                     >
                       详情 &gt;&gt;
                     </Link>
@@ -152,10 +150,9 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
   );
 };
 
-type newsListRecord =  Pick<NewsTypesController.ListRecord, 'children' | 'id' | 'typeGroup'>;
+type newsListRecord = Pick<NewsTypesController.ListRecord, 'children' | 'id' | 'typeGroup'>;
 export default function Index() {
   const { query } = useRouter();
-  const { typeName = "数字碳知识库" } = query;
   const tableDataTotal = useRef<number>(0);
   const [checked, setChecked] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
@@ -191,7 +188,7 @@ export default function Index() {
           updateTime,
         });
       });
-      const finalData: NewsTypesController.ListRecords[] =Object.values(mergedData);
+      const finalData: NewsTypesController.ListRecords[] = Object.values(mergedData);
       setNewsType(finalData);
     } catch (e) {
       console.log("reeee", e);
@@ -199,7 +196,7 @@ export default function Index() {
       setLoading(false);
     }
   };
-  
+
 
   useEffect(() => {
     setSelected({
@@ -208,7 +205,7 @@ export default function Index() {
   }, [router.query]);
 
   const getListTotal = async () => {
-    const res = await getNewsListCount(selected?.id );
+    const res = await getNewsListCount(selected?.id);
     tableDataTotal.current = res;
   };
 
@@ -330,17 +327,30 @@ export default function Index() {
           })}
         </div>
 
+
         <div className="">
-          <ArticleList
-            windowWidth={windowWidth}
-            onCheck={onCheck}
-            cateId={selected}
-            checked={checked}
-            data={data}
-            pgNum={pgNum}
-          />
+          {loading ? (
+            <Loading className="pt-8" />
+          ) : (
+            <ArticleList
+              windowWidth={windowWidth}
+              onCheck={onCheck}
+              cateId={selected}
+              checked={checked}
+              data={data}
+              pgNum={pgNum}
+            />)}
+          {!(data && data.length > 0) && (
+            <div className="flex flex-col justify-center w-full py-20 text-center ">
+              <div className="flex justify-center ">
+                <img width={222} height="125" src="/images/noData.svg" alt="" />
+              </div>
+              <div>暂无数据</div>
+            </div>
+          )
+          }
         </div>
-        {data.length ? (
+        {data.length && !loading ? (
           <Pagination
             onChange={(v: any) => {
               setPgNum(v);
@@ -353,18 +363,7 @@ export default function Index() {
           />
         ) : null}
 
-        {loading ? (
-          <Loading className="pt-8" />
-        ) : (
-          !(data && data.length > 0) && (
-            <div className="flex flex-col justify-center w-full py-20 text-center ">
-              <div className="flex justify-center ">
-                <img width={222} height="125" src="/images/noData.svg" alt="" />
-              </div>
-              <div>暂无数据</div>
-            </div>
-          )
-        )}
+
       </div>
     </HeaderLayout>
   );
