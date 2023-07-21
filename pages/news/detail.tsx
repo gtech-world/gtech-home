@@ -92,8 +92,7 @@ const Detail = () => {
             content={[
               {
                 name: article.type || "",
-                href: `/news?cateId=${query.cateId
-                  }&typeName=${article.type?.replace(/\&/g, "%26")}`,
+                href: `/news?cateId=${query.cateId}`,
               },
               { name: "详情" },
             ]}

@@ -67,7 +67,7 @@ export function Footer() {
       children: cateList.map(v=>{
         return(
           {
-            href: `/news?cateId=${v.id}&typeName=${v.typeName}`,
+            href: `/news?cateId=${v.id}`,
             name: v.name,
           }
         )

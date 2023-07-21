@@ -1,27 +1,23 @@
 import { HeaderLayout } from "@components/common/headerLayout";
-import React, {
+import { Loading } from "@components/common/loading";
+import { Pagination } from "@components/common/pagination";
+import { getNewsCount, getNewsList, getNewsListCount } from "@lib/http";
+import { isMobile } from "@lib/utils";
+import classNames from "classnames";
+import moment from "moment";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import {
   FC,
   Fragment,
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from "react";
-import Link from "next/link";
-import { isMobile } from "@lib/utils";
-import { Pagination } from "@components/common/pagination";
-import { getNewsCount, getNewsList, getNewsListCount } from "@lib/http";
-import moment from "moment";
-import { Loading } from "@components/common/loading";
-import { useRouter } from "next/router";
-import classNames from "classnames";
 import { check, tempList } from "utils";
 
-
-
 const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onCheck, checked, windowWidth }) => {
-
   return (
     <div
       className={`flex flex-wrap mb-[50px]  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}
@@ -99,11 +95,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                       className=" md:w-[100%] font-semibold text-[20px]  md:text-[16px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id || cateId.cateId }&id=${v.id}&typeName=${
-                        cateId.typeName?.replace(
-                        /\&/g,
-                        "%26"
-                      )}`}
+                      href={`/news/detail?cateId=${cateId.id || cateId.cateId }&id=${v.id}`}
                     >
                       {v.title}
                     </Link>
@@ -146,10 +138,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                       target={isMobile() ? "" : "_blank"}
                       href={`/news/detail?cateId=${
                         cateId.id || cateId.cateId
-                      }&id=${v.id}&typeName=${cateId.typeName?.replace(
-                        /\&/g,
-                        "%26"
-                      )}`}
+                      }&id=${v.id}`}
                     >
                       详情 &gt;&gt;
                     </Link>
@@ -166,7 +155,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
 type newsListRecord =  Pick<NewsTypesController.ListRecord, 'children' | 'id' | 'typeGroup'>;
 export default function Index() {
   const { query } = useRouter();
-  const { cateId, typeName = "数字碳知识库" } = query;
+  const { typeName = "数字碳知识库" } = query;
   const tableDataTotal = useRef<number>(0);
   const [checked, setChecked] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
@@ -215,15 +204,11 @@ export default function Index() {
   useEffect(() => {
     setSelected({
       id: Number(router.query.cateId),
-      typeName: decodeURIComponent(router.query.typeName as string),
     });
   }, [router.query]);
 
   const getListTotal = async () => {
-    const res = await getNewsListCount(
-      selected?.id,
-      selected?.typeName || typeName
-    );
+    const res = await getNewsListCount(selected?.id );
     tableDataTotal.current = res;
   };
 
@@ -247,7 +232,7 @@ export default function Index() {
   }, [selected.id]);
 
   const getList = useCallback(async () => {
-    const res = await getNewsList(selected?.id, checked == 1, pgNum, pgSize);
+    const res = await getNewsList(selected?.id, checked === 1, pgNum, pgSize);
     setData(res || []);
   }, [pgNum, selected.id, checked]);
 
@@ -322,7 +307,7 @@ export default function Index() {
                             setPgNum(1);
                             setChecked(0);
                             router.push(
-                              `/news?cateId=${item.id}&typeName=${item.typeName}`
+                              `/news?cateId=${item.id}`
                             );
                           }}
 

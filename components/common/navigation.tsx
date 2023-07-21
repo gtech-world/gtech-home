@@ -73,7 +73,7 @@ function PCNav() {
       ),
     },
     {
-      href: `/news?cateId=1&typeName=数字碳知识库`,
+      href: `/news?cateId=1`,
       isLink: true,
       name: t("navigation.list.item3.name"),
       // childrenNode: (
@@ -277,7 +277,7 @@ function MobileNav() {
       ],
     },
     {
-      href: `/news?cateId=1&typeName=数字碳知识库`,
+      href: `/news?cateId=1`,
       name: t("navigation.list.item3.name"),
       // children: cateList.map(v=>{
       //   return(
