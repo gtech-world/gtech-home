@@ -92,7 +92,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                 >
                   <div className=" h-[9.4375rem]  md:w-[100%] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   ">
                     <Link
-                      className=" md:w-[100%] font-semibold text-[20px]  md:text-[16px] "
+                      className=" md:w-[100%] w-full  font-semibold text-[20px]  md:text-[16px] overflow-hidden text-ellipsis whitespace-nowrap  "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
                       href={`/news/detail?cateId=${cateId.id || cateId.cateId }&id=${v.id}`}
