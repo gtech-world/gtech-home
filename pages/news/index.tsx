@@ -217,7 +217,7 @@ export default function Index() {
       id: Number(router.query.cateId),
       typeName: decodeURIComponent(router.query.typeName as string),
     });
-  }, [router.query.id, router.query.typeName]);
+  }, [router.query]);
 
   const getListTotal = async () => {
     const res = await getNewsListCount(
@@ -244,7 +244,7 @@ export default function Index() {
 
   useEffect(() => {
     getListTotal();
-  }, [selected.id, cateId]);
+  }, [selected.id]);
 
   const getList = useCallback(async () => {
     const res = await getNewsList(selected?.id, checked == 1, pgNum, pgSize);
@@ -253,7 +253,7 @@ export default function Index() {
 
   useEffect(() => {
     getList();
-  }, [getList, query, cateId]);
+  }, [getList]);
 
   const headerProps = {
     className: isMobile() ? "" : "border-b border-black",
@@ -319,7 +319,6 @@ export default function Index() {
                         <div
                           key={`check_${i}`}
                           onClick={() => {
-                            setSelected(item);
                             setPgNum(1);
                             setChecked(0);
                             router.push(

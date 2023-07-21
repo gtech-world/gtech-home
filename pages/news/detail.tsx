@@ -1,5 +1,5 @@
 import { HeaderLayout } from "@components/common/headerLayout";
-import React, { HTMLAttributes, Suspense, useMemo, useState } from "react";
+import React, { HTMLAttributes, Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 import { useAsyncM } from "@lib/hooks/useAsyncM";
@@ -31,13 +31,14 @@ const Breadcrumb = (
 
 const Detail = () => {
   const { query } = useRouter();
-  const { id = 1, cateId } = query;
+  const { id, cateId } = query;
   const { push } = useRouter();
   const [isFinish, setIsFinish] = useState(false);
   const { value, loading }: any = useAsyncM(
-    noArgs(async () => getNewsDetail(id ), [id]),
+    noArgs(async () => getNewsDetail(id), [id]),
     [id]
   );
+
 
   const article = useMemo(() => {
     if (!value?.newsItem) return { content: "", title: "", time: "" };
@@ -45,7 +46,7 @@ const Detail = () => {
     return {
       type: value?.newsTypes.find(
         (e: NewsTypesController.NewsList) => e.id === Number(cateId)
-      ).typeName,
+      )?.typeName || '',
       title: value.title,
       time: moment(value.newsUpdateTime * 1000).format("YYYY-MM-DD HH:mm:ss"),
       content: JSON.parse(value?.newsItem)
@@ -91,9 +92,8 @@ const Detail = () => {
             content={[
               {
                 name: article.type || "",
-                href: `/news?cateId=${
-                  query.cateId
-                }&typeName=${article.type?.replace(/\&/g, "%26")}`,
+                href: `/news?cateId=${query.cateId
+                  }&typeName=${article.type?.replace(/\&/g, "%26")}`,
               },
               { name: "详情" },
             ]}
