@@ -73,7 +73,7 @@ export function Pagination(p: Props & HTMLAttributes<HTMLDivElement>) {
                className={classnames({
                  "text-white bg-green-1": page.name === "" + pgNum,
                  omit: page.name === omit,
-               },'mx-[0.185rem] min-w-[32px] h-[32px] px-1.5 rounded-lg',page.name!=omit && 'border cursor-pointer')}
+               },'mx-[0.185rem] flex justify-center items-center min-w-[32px] h-[32px] px-1.5 rounded-lg',page.name!=omit && 'border cursor-pointer')}
                onClick={() => {
                  onChange && page.name !== omit && onChange(_.toNumber(page.name));
                }}

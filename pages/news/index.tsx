@@ -24,7 +24,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
 
   return (
     <div
-      className={`flex flex-wrap mb-20  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}
+      className={`flex flex-wrap mb-10  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}
     >
       {!!data.length &&
         data.map((v, i) => {
@@ -169,7 +169,7 @@ export default function Index() {
   const { cateId, typeName = "数字碳知识库" } = query;
   const tableDataTotal = useRef<number>(0);
   const [checked, setChecked] = useState<number>(0);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<NewsTypesController.NewsList[]>([]);
   const [newsType, setNewsType] = useState<newsListRecord[]>([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -210,8 +210,6 @@ export default function Index() {
       setLoading(false);
     }
   };
-
-  console.log('checked,',checked,check[String(checked)]);
   
 
   useEffect(() => {
@@ -277,7 +275,7 @@ export default function Index() {
         <div
           id="content"
           className={
-            "flex flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  w-container md:mt-5"
+            "flex  flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  w-container md:mt-5"
           }
         >
           {newsType.map((e, index) => {
@@ -360,9 +358,11 @@ export default function Index() {
           <Pagination
             onChange={(v: any) => {
               setPgNum(v);
+              console.log('vvvvv',v);
+              
               scrollToTop();
             }}
-            className="mt-20 mb-20 "
+            className="mt-20 mb-10 md:mt-0 "
             total={tableDataTotal.current}
             pgSize={10}
             pgNum={pgNum}

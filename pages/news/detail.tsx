@@ -9,13 +9,12 @@ import { isMobile } from "@lib/utils";
 import { IoIosArrowBack } from "react-icons/io";
 import { Loading } from "@components/common/loading";
 
-
-
-
-function Breadcrumb(p: { content: object[] } & HTMLAttributes<HTMLDivElement>) {
+const Breadcrumb = (
+  p: { content: object[] } & HTMLAttributes<HTMLDivElement>
+) => {
   const { content, className } = p;
   const html: any = [];
-  content.map((v: any, i: number) => {
+  content.map((v: any) => {
     if (v.href) {
       html.push(`<a href="${v.href}" rel="noreferrer">${v.name}</a>`);
     } else {
@@ -28,11 +27,11 @@ function Breadcrumb(p: { content: object[] } & HTMLAttributes<HTMLDivElement>) {
       dangerouslySetInnerHTML={{ __html: html.join(" / ") }}
     ></div>
   );
-}
+};
 
-export default function Detail() {
+const Detail = () => {
   const { query } = useRouter();
-  const { id = 1, cateId,typeName = '' as any } = query ;
+  const { id = 1, cateId } = query;
   const { push } = useRouter();
   const [isFinish, setIsFinish] = useState(false);
   const { value, loading }: any = useAsyncM(
@@ -40,13 +39,13 @@ export default function Detail() {
     [id]
   );
 
-  
-
   const article = useMemo(() => {
     if (!value?.newsItem) return { content: "", title: "", time: "" };
     setIsFinish(true);
     return {
-      type: value?.newsTypes.find((e:NewsTypesController.NewsList)=>e.id === Number(cateId)).typeName,
+      type: value?.newsTypes.find(
+        (e: NewsTypesController.NewsList) => e.id === Number(cateId)
+      ).typeName,
       title: value.title,
       time: moment(value.newsUpdateTime * 1000).format("YYYY-MM-DD HH:mm:ss"),
       content: JSON.parse(value?.newsItem)
@@ -71,7 +70,7 @@ export default function Detail() {
       // .replace(/style="[\s\S]*?"/g,' ')
     };
   }, [value]);
-  
+
   const headerProps = {
     className: isMobile() ? "" : "border-b border-black",
   };
@@ -90,45 +89,53 @@ export default function Detail() {
           <Breadcrumb
             className="py-8 md:hidden"
             content={[
-              { name:article.type || '', href: `/news?cateId=${query.cateId}&typeName=${article.type?.replace(
-                /\&/g,
-                "%26"
-              )}`},
+              {
+                name: article.type || "",
+                href: `/news?cateId=${
+                  query.cateId
+                }&typeName=${article.type?.replace(/\&/g, "%26")}`,
+              },
               { name: "详情" },
             ]}
           />
           <h1 className="text-4xl font-semibold md:text-lg">{article.title}</h1>
           <div className="flex flex-row pt-2.5 w-[70%] md:w-[290px] md:flex-wrap ">
             <div className="">
-            <span className="text-gray-1 text-[16px] md:text-[14px] min-w-min  ">
-              {value?.author}
-            </span>
-            <time className="inline-block ml-5 text-[16px]  md:text-[14px] text-gray-1 md:text-sm">
-              {article.time}
-            </time>
+              <span className="text-gray-1 text-[16px] md:text-[14px] min-w-min  ">
+                {value?.author}
+              </span>
+              <time className="inline-block ml-5 text-[16px]  md:text-[14px] text-gray-1 md:text-sm">
+                {article.time}
+              </time>
             </div>
 
             <div className="flex flex-row mr-16 ">
-            {value?.newsTypes.map((e:NewsTypesController.TypeList,i:number) => {
-              return (
-                <div  key={`list_${i}`} className="flex md:mr-5 ml-5   rounded-[0.25rem] px-[10px] flex-row items-center md:max-w-[96px]  md:ml-0 md:mt-2 md:h-[28px] text-[#29953A] text-[14px] md:text-[12px]  bg-[#29953A1A]">
-                  <span className="">{e.typeName}</span>
-                </div>
-              );
-            })}
+              {value?.newsTypes.map(
+                (e: NewsTypesController.TypeList, i: number) => {
+                  return (
+                    <div
+                      key={`list_${i}`}
+                      className="flex md:mr-5 ml-5   rounded-[0.25rem] px-[10px] flex-row items-center md:max-w-[96px]  md:ml-0 md:mt-2 md:h-[28px] text-[#29953A] text-[14px] md:text-[12px]  bg-[#29953A1A]"
+                    >
+                      <span className="">{e.typeName}</span>
+                    </div>
+                  );
+                }
+              )}
             </div>
-            
           </div>
         </header>
         {!isFinish ? (
           <Loading className="h-[40rem]" />
         ) : (
           <div
-            className="mt-9 article-content"
+            className="mt-5 article-content "
             dangerouslySetInnerHTML={{ __html: article.content }}
           ></div>
         )}
       </div>
     </HeaderLayout>
   );
-}
+};
+
+export default Detail;
