@@ -85,7 +85,7 @@ const Detail = () => {
         <h4 className="text-lg text-center text-green">资讯动态</h4>
       </div>
       <div className="mx-auto w-container md:w-full md:px-3 md:mt-2">
-        <header className="pb-8 border-b border-gray-10 md:pb-5">
+        <header className="border-b pb-9 border-gray-10 md:pb-5">
           <Breadcrumb
             className="py-8 md:hidden"
             content={[
@@ -129,7 +129,7 @@ const Detail = () => {
           <Loading className="h-[40rem]" />
         ) : (
           <div
-            className="mt-5 article-content "
+            className="mt-8  article-content"
             dangerouslySetInnerHTML={{ __html: article.content }}
           ></div>
         )}

@@ -24,7 +24,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
 
   return (
     <div
-      className={`flex flex-wrap mb-10  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}
+      className={`flex flex-wrap mb-[50px]  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}
     >
       {!!data.length &&
         data.map((v, i) => {
@@ -78,25 +78,25 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                   ) : null}
                 </div>
               )}
-              <div className=" flex  md:mt-5   w-full sm:w-[100%] md:h-[4.875rem]">
+              <div className=" flex  md:mt-5    w-full sm:w-[100%] md:h-[4.75rem]" >
                 <div
                   className={
-                    " w-[19.375rem] md:w-[7.375rem]  h-[12.5rem] md:h-[4.875rem] rounded-lg "
+                    " w-[19.375rem] md:w-[7.375rem]  h-[12.5rem] md:h-[4.75rem] rounded-lg "
                   }
                 >
                   <img
-                    className="max-w-[19.375rem] h-[12.5rem] md:w-[7.375rem]  rounded-lg md:h-[4.875rem] object-cover"
+                    className="max-w-[19.375rem] h-[12.5rem] md:w-[7.375rem]  rounded-lg md:h-[4.75rem] object-cover"
                     src={v.thumbUrl}
                     alt=""
                   />
                 </div>
 
                 <div
-                  className={`flex flex-col md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   h-[12.5rem] ml-[2rem] md:ml-[10px] md:w-[100%]    mx-auto  justify-between  md:h-[4.875rem] `}
+                  className={`flex flex-col md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   h-[12.5rem] ml-[2rem] md:ml-[10px] md:w-[100%]    mx-auto  justify-between  md:h-[4.75rem] `}
                 >
-                  <div className="h-[9.4375rem]  md:w-[100%] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   ">
+                  <div className=" h-[9.4375rem]  md:w-[100%] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   ">
                     <Link
-                      className="md:w-[100%] font-semibold text-[20px]  md:text-[16px] "
+                      className=" md:w-[100%] font-semibold text-[20px]  md:text-[16px] "
                       rel="opener"
                       target={isMobile() ? "" : "_blank"}
                       href={`/news/detail?cateId=${cateId.id || cateId.cateId }&id=${v.id}&typeName=${
@@ -107,7 +107,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                     >
                       {v.title}
                     </Link>
-                    <time className=" mt-[10px] md:mt-[6px] md:mb-[6px] mb-[5px] md:py-0 text-[14px] md:text-[12px] flex text-gray-2">
+                    <time className=" md:h-[18px] leading-[18px] mt-[10px] md:mt-[6px] md:mb-[6px] mb-[5px] md:py-0 text-[14px] md:text-[12px] flex text-gray-2">
                       <div className="mr-5 ">{v.author}</div>
                       {moment(v.newsUpdateTime * 1000).format(
                         "YYYY-MM-DD HH:mm:ss"
@@ -121,17 +121,17 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                           WebkitBoxOrient: "vertical",
                           display: "-webkit-box",
                         }}
-                        className="   text-ellipsis md:hidden  text-[14px]  line-clamp-1 overflow-hidden"
+                        className=" leading-[21px]   text-ellipsis md:hidden  text-[14px] line  line-clamp-1 overflow-hidden"
                       >
                         {v.digest}
                       </p>
                     )}
-                    <div className="flex flex-row items-center md:mt-[6px]  mt-[10px] md:h-[24px]">
+                    <div className={`flex flex-row items-center   mt-[10px] md:h-[24px]`}>
                       {v?.newsTypes.map((e: any, i: number) => {
                         return (
                           <div
                             key={`name_${i}`}
-                            className="mr-5    rounded-[0.25rem] md:text-[12px] px-[10px] text-[#29953A] text-[14px]  bg-[#29953A1A]"
+                            className="mr-5 font-OpenSans   rounded-[0.25rem] md:text-[12px] px-[10px] text-[#29953A] text-[14px]  bg-[#29953A1A]"
                           >
                             {e.typeName}
                           </div>
@@ -314,7 +314,7 @@ export default function Index() {
 
                 <div className="flex flex-row flex-wrap ">
                   {e.children.map(
-                    (item: NewsTypesController.ListRecord, i: number) => {
+                    (item, i: number) => {
                       return (
                         <div
                           key={`check_${i}`}
@@ -326,12 +326,14 @@ export default function Index() {
                               `/news?cateId=${item.id}&typeName=${item.typeName}`
                             );
                           }}
-                          className={` ${
-                            selected.id === item.id
-                              ? "text-[#29953A]  bg-[#29953A1A]"
-                              : " bg-[#E9E9E9]"
-                          } text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] 
-                          h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]`}
+
+                          className={classNames(
+                            "text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]",
+                            {
+                              "text-[#29953A]  bg-[#29953A1A]": selected.id === item.id,
+                              " bg-[#E9E9E9]": selected.id !== item.id,
+                            }
+                          )}
                         >
                           {item.typeName}
                         </div>
@@ -358,11 +360,9 @@ export default function Index() {
           <Pagination
             onChange={(v: any) => {
               setPgNum(v);
-              console.log('vvvvv',v);
-              
               scrollToTop();
             }}
-            className="mt-20 mb-10 md:mt-0 "
+            className="mb-10 mt-50 md:mt-0 "
             total={tableDataTotal.current}
             pgSize={10}
             pgNum={pgNum}
