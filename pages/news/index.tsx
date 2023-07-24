@@ -18,7 +18,6 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({
   checked,
   windowWidth,
 }) => {
-  const router = useRouter();
 
   return (
     <div

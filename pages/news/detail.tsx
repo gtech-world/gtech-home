@@ -83,7 +83,7 @@ const Detail = () => {
           onClick={() => push(`/news?cateId=${cateId}`)}
           className="absolute text-xl left-2 text-green"
         />
-        <h4 className="text-lg text-center text-green">资讯动态</h4>
+        <h4 className="text-lg font-semibold text-center text-green">资讯动态</h4>
       </div>
       <div className="mx-auto w-container md:w-full md:px-3 md:mt-2">
         <header className="border-b pb-9 border-gray-10 md:pb-5">
@@ -98,7 +98,7 @@ const Detail = () => {
             ]}
           />
           <h1 className="text-4xl font-semibold md:text-lg">{article.title}</h1>
-          <div className="flex flex-row pt-[24px] w-[70%] md:w-[290px] md:flex-wrap ">
+          <div className="flex flex-row pt-[20px] w-[70%] md:w-[290px] md:flex-wrap ">
             <div className="">
               <span className="text-gray-1 text-[16px] md:text-[14px] min-w-min  ">
                 {value?.author}
