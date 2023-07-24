@@ -1,7 +1,6 @@
 import _ from "lodash";
 import {HTMLAttributes, useMemo} from "react";
 import classnames from "classnames";
-import Image from "next/image";
 export interface Props {
   total: number;
   pgSize: number;

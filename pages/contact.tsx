@@ -1,7 +1,6 @@
 import { HeaderLayout } from "@components/common/headerLayout";
 import {useTranslation} from "react-i18next";
 import {isMobile} from "@lib/utils";
-import Image from "next/image";
 export default function Index() {
   const { t,i18n } = useTranslation('contact');
   return(

@@ -4,7 +4,6 @@ import {QrGroup} from "@components/qrGroup";
 import classNames from "classnames";
 import {useTranslation,Trans} from "react-i18next";
 import React from "react";
-import Image from "next/image";
 
 
 function Top(){

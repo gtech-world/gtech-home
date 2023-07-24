@@ -1,6 +1,5 @@
 import React, {HTMLAttributes} from "react";
 import classNames from "classnames";
-import Image from "next/image";
 
 export function QrGroup(p: any) {
   const { qrText,className } = p

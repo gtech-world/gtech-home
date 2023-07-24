@@ -4,7 +4,6 @@ import classNames from "classnames";
 import Link from 'next/link'
 import {useRouter} from "next/router";
 import {TopTips} from "@components/common/topTips";
-import Image from "next/image";
 
 export function Header(p:{props: any}) {
   const { sticky=true,isTransparent ,className } = p?.props || {}

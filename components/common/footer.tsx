@@ -3,7 +3,6 @@ import Link from "next/link";
 import {Trans, useTranslation} from "react-i18next";
 import classNames from "classnames";
 import {useNewsCate} from "@lib/hooks/useNewsCate";
-import Image from "next/image";
 
 function SubNav(props:any){
   const {className,data} = props

@@ -1,7 +1,6 @@
 import { HeaderLayout } from "@components/common/headerLayout";
 import {Button} from "@components/button";
 import {useTranslation} from "react-i18next";
-import Image from "next/image";
 
 
 function Top(){

@@ -4,7 +4,6 @@ import classNames from "classnames";
 import {useRouter} from "next/router";
 import {Trans, useTranslation} from "react-i18next";
 import React from "react";
-import Image from "next/image";
 
 function Top(){
   const { t } = useTranslation('home');
