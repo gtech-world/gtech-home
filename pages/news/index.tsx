@@ -1,3 +1,4 @@
+import { Button } from "@components/button";
 import { HeaderLayout } from "@components/common/headerLayout";
 import { Loading } from "@components/common/loading";
 import { Pagination } from "@components/common/pagination";
@@ -7,17 +8,18 @@ import classNames from "classnames";
 import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {
-  FC,
-  Fragment,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { FC, Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { check, tempList } from "utils";
 
-const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onCheck, checked, windowWidth }) => {
+const ArticleList: FC<NewsTypesController.ArticleList> = ({
+  cateId,
+  data,
+  onCheck,
+  checked,
+  windowWidth,
+}) => {
+  const router = useRouter();
+
   return (
     <div
       className={`flex flex-wrap mb-[50px]  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}
@@ -46,8 +48,9 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
 
               {isMobile() ? null : (
                 <div
-                  className={` ${i === 0 ? "mt-5 " : ""
-                    }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
+                  className={` ${
+                    i === 0 ? "mt-5 " : ""
+                  }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
                  mx-auto  md:w-full md:px-5 cursor-pointer
                  `}
                 >
@@ -73,7 +76,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                   ) : null}
                 </div>
               )}
-              <div className=" flex  md:mt-5    w-full sm:w-[100%] md:h-[4.75rem]" >
+              <div className=" flex  md:mt-5    w-full sm:w-[100%] md:h-[4.75rem]">
                 <div
                   className={
                     " w-[19.375rem] md:w-[7.375rem]  h-[12.5rem] md:h-[4.75rem] rounded-lg "
@@ -90,14 +93,17 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                   className={`flex flex-col md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   h-[12.5rem] ml-[2rem] md:ml-[10px] md:w-[100%]    mx-auto  justify-between  md:h-[4.75rem] `}
                 >
                   <div className=" h-[9.4375rem]  md:w-[100%] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   ">
-                    <Link
+                   
+
+<a
+                      href={`/news/detail?cateId=${
+                        cateId.id || cateId.cateId
+                      }&id=${v.id}`}
                       className=" md:w-[100%] w-full  font-semibold text-[20px]  md:text-[16px] overflow-hidden text-ellipsis whitespace-nowrap  "
-                      rel="opener"
-                      target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id || cateId.cateId}&id=${v.id}`}
+
                     >
                       {v.title}
-                    </Link>
+                    </a>
                     <time className=" md:h-[18px] leading-[18px] mt-[10px] md:mt-[6px] md:mb-[6px] mb-[10px] md:py-0 text-[14px] md:text-[12px] flex text-gray-2">
                       <div className="mr-5 ">{v.author}</div>
                       {moment(v.newsUpdateTime * 1000).format(
@@ -117,7 +123,9 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                         {v.digest}
                       </p>
                     )}
-                    <div className={`flex flex-row items-center   mt-[10px] md:h-[24px]`}>
+                    <div
+                      className={`flex flex-row items-center   mt-[10px] md:h-[24px]`}
+                    >
                       {v?.newsTypes.map((e: any, i: number) => {
                         return (
                           <div
@@ -131,15 +139,14 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
                     </div>
                   </div>
                   <div className=" md:hidden h-[3.0625rem]  flex items-end mb-[-5px]">
-                    <Link
-                      className="text-green text-[14px] "
-                      rel="opener"
-                      target={isMobile() ? "" : "_blank"}
-                      href={`/news/detail?cateId=${cateId.id || cateId.cateId
-                        }&id=${v.id}`}
+                    <a
+                      href={`/news/detail?cateId=${
+                        cateId.id || cateId.cateId
+                      }&id=${v.id}`}
+                      className="text-green text-[14px] cursor-pointer"
                     >
-                      详情 &gt;&gt;
-                    </Link>
+                      详情&gt;&gt;
+                    </a>
                   </div>
                 </div>
               </div>
@@ -150,16 +157,20 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onChec
   );
 };
 
-type newsListRecord = Pick<NewsTypesController.ListRecord, 'children' | 'id' | 'typeGroup'>;
+type newsListRecord = Pick<
+  NewsTypesController.ListRecord,
+  "children" | "id" | "typeGroup"
+>;
 export default function Index() {
-  const { query } = useRouter();
   const tableDataTotal = useRef<number>(0);
   const [checked, setChecked] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<NewsTypesController.NewsList[]>([]);
   const [newsType, setNewsType] = useState<newsListRecord[]>([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [selected, setSelected] = useState<Partial<NewsTypesController.TypeList>>({});
+  const [selected, setSelected] = useState<
+    Partial<NewsTypesController.TypeList>
+  >({});
   const [pgNum, setPgNum] = useState<number>(1);
   const [pgSize] = useState<number>(10);
   const router = useRouter();
@@ -187,14 +198,14 @@ export default function Index() {
           updateTime,
         });
       });
-      const finalData: NewsTypesController.ListRecords[] = Object.values(mergedData);
+      const finalData: NewsTypesController.ListRecords[] =
+        Object.values(mergedData);
       setNewsType(finalData);
     } catch (e) {
       console.log("reeee", e);
     } finally {
     }
   };
-
 
   useEffect(() => {
     setSelected({
@@ -227,14 +238,13 @@ export default function Index() {
   }, [selected.id]);
 
   const getList = useCallback(async () => {
-    try{
+    try {
       const res = await getNewsList(selected?.id, checked === 1, pgNum, pgSize);
       setData(res || []);
-    }catch(e){
-      console.log('eee',e);
-    }finally{
+    } catch (e) {
+      console.log("eee", e);
+    } finally {
     }
-   
   }, [pgNum, selected.id, checked]);
 
   useEffect(() => {
@@ -246,7 +256,6 @@ export default function Index() {
   };
 
   const onCheck = () => setChecked(checked === 2 ? 1 : checked + 1);
-
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -298,38 +307,32 @@ export default function Index() {
                 </div>
 
                 <div className="flex flex-row flex-wrap ">
-                  {e.children.map(
-                    (item, i: number) => {
-                      return (
-                        <div
-                          key={`check_${i}`}
-                          onClick={() => {
-                            setPgNum(1);
-                            setChecked(0);
-                            router.push(
-                              `/news?cateId=${item.id}`
-                            );
-                          }}
-
-                          className={classNames(
-                            "text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]",
-                            {
-                              "text-[#29953A]  bg-[#29953A1A]": selected.id === item.id,
-                              " bg-[#E9E9E9]": selected.id !== item.id,
-                            }
-                          )}
-                        >
-                          {item.typeName}
-                        </div>
-                      );
-                    }
-                  )}
+                  {e.children.map((item, i: number) => {
+                    return (
+                      <div
+                        key={`check_${i}`}
+                        onClick={() => {
+                          setPgNum(1);
+                          setChecked(0);
+                          router.push(`/news?cateId=${item.id}`);
+                        }}
+                        className={classNames(
+                          "text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]",
+                          {
+                            "text-[#29953A]  bg-[#29953A1A]": selected.id === item.id,
+                            "bg-[#E9E9E9]": selected.id !== item.id,
+                          }
+                        )}
+                      >
+                       <span>{item.typeName}</span> 
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             );
           })}
         </div>
-
 
         <div className="">
           {loading ? (
@@ -342,7 +345,8 @@ export default function Index() {
               checked={checked}
               data={data}
               pgNum={pgNum}
-            />)}
+            />
+          )}
           {!(data && data.length > 0) && (
             <div className="flex flex-col justify-center w-full py-20 text-center ">
               <div className="flex justify-center ">
@@ -350,8 +354,7 @@ export default function Index() {
               </div>
               <div>暂无数据</div>
             </div>
-          )
-          }
+          )}
         </div>
         {data.length && !loading ? (
           <Pagination
@@ -365,8 +368,6 @@ export default function Index() {
             pgNum={pgNum}
           />
         ) : null}
-
-
       </div>
     </HeaderLayout>
   );
