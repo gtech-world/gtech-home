@@ -4,10 +4,10 @@ import classNames from "classnames";
 import {useRouter} from "next/router";
 import {Trans, useTranslation} from "react-i18next";
 import React from "react";
+import AButton from "@components/common/aButton";
 
 function Top(){
   const { t } = useTranslation('home');
-  console.log('tttttt',t('banner.text2'));
   
   return(
     <div className="w-full relative bg-[url(/images/home_banner.jpg)] bg-no-repeat bg-center bg-cover">
@@ -44,8 +44,6 @@ function Technologies(){
       image: 'images/traceability.svg'
     },
   ]
-
-  console.log('datadata',data);
   
   return(
     <div className="flex flex-col items-center w-full pt-16 bg-bgc md:pt-8 md:pb-4">
@@ -69,13 +67,16 @@ function Technologies(){
 }
 function Assistance(){
   const { t,i18n } = useTranslation('home');
-  const {push} = useRouter()
   const btnList = [
-    {text:t('assistance.btnList.about'),onClick:()=>{push('/solutions/automotive')},className: i18n.language === 'en'?'w-[19.7rem]':'w-[17.7rem]'},
-    {text:t('assistance.btnList.aiag'),onClick:()=>{window.open('https://aiag.org.cn/ACAC/Automotive-Carbon-Advisory-Committee','_blank')},className: i18n.language === 'en'?'w-[15.7rem]':'w-[17.7rem]'},
-    {text:t('assistance.btnList.platform'),onClick:()=>{window.open('https://aicp.gtech-cn.co/','_blank')},className: i18n.language === 'en'?'w-[19.7rem]':'w-[17.7rem]'},
-    {text:t('assistance.btnList.products'),onClick:()=>{window.open('https://aicp.gtech-cn.co/login','_blank')},className: i18n.language === 'en'?'w-[15.7rem]':'w-[17.7rem]'}
+    {text:t('assistance.btnList.about'),url:'/solutions/automotive',className: i18n.language === 'en'?'w-[19.7rem]':'w-[17.7rem]'},
+    {text:t('assistance.btnList.aiag'),url:'https://aiag.org.cn/ACAC/Automotive-Carbon-Advisory-Committee',className: i18n.language === 'en'?'w-[15.7rem]':'w-[17.7rem]'},
+    {text:t('assistance.btnList.platform'),url:'https://aicp.gtech-cn.co/',className: i18n.language === 'en'?'w-[19.7rem]':'w-[17.7rem]'},
+    {text:t('assistance.btnList.products'),url:'https://aicp.gtech-cn.co/login',className: i18n.language === 'en'?'w-[15.7rem]':'w-[17.7rem]'}
+
   ]
+  
+
+  
   return(
     <div className="mx-auto w-container md:w-full md:px-3">
       <h3 className="mt-16 mb-20 text-center text-green md:mt-8 md:mb-5">{t('assistance.title')}</h3>
@@ -94,16 +95,21 @@ function Assistance(){
           <ul className="flex flex-wrap justify-between mt-5 md:flex-col md:items-center">
             {
               btnList.map((v,i)=>{
+                const isOpen = v.url.startsWith('https:')
                 return(
                   <li key={`btnlist${i}`} className="mt-5">
-                    <Button onClick={()=>v.onClick()} className={classNames(v.className,'pl-0 pr-0 md:w-[20rem]')}>
+                    <AButton
+                    href={!isOpen ? v.url : null}
+                    onClick={()=> isOpen ? window.open (v.url) : null}
+                    transComponent={
                       <Trans
-                        i18nKey="boostingAutomotive.list.item1.text"
-                        components={[<sup className="" key='info3'></sup>]}
-                      >
-                        {v.text}
-                      </Trans>
-                    </Button>
+                      i18nKey="boostingAutomotive.list.item1.text"
+                      components={[<sup className="" key='info3'></sup>]}
+                    >
+                      {v.text}
+                    </Trans>
+                    }
+                    />
                   </li>
                 )
               })
@@ -159,7 +165,11 @@ function CrossSolutions(){
                   <p className={classNames('mt-5',v.layout === 'left'?'w-[36.5rem] md:w-full':'')}>
                     {v.text}
                   </p>
-                  <Button onClick={()=>router.push(v.url)} className="mt-8 w-[19.25rem]" text={t('crossSolutions.list.button')} />
+                  <AButton
+                    href={v.url}
+                    text={t(('crossSolutions.list.button'))}
+                    className="mt-8 w-[19.25rem]"
+                    />
                 </div>
               </div>
             )
