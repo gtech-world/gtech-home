@@ -18,7 +18,6 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({
   checked,
   windowWidth,
 }) => {
-
   return (
     <div
       className={`flex flex-wrap mb-[50px]  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}
@@ -92,14 +91,11 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({
                   className={`flex flex-col md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   h-[12.5rem] ml-[2rem] md:ml-[10px] md:w-[100%]    mx-auto  justify-between  md:h-[4.75rem] `}
                 >
                   <div className=" h-[9.4375rem]  md:w-[100%] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   ">
-                   
-
-<a
+                    <a
                       href={`/news/detail?cateId=${
                         cateId.id || cateId.cateId
                       }&id=${v.id}`}
                       className=" md:w-[100%] w-full  font-semibold text-[20px]  md:text-[16px] overflow-hidden text-ellipsis whitespace-nowrap  "
-
                     >
                       {v.title}
                     </a>
@@ -318,12 +314,13 @@ export default function Index() {
                         className={classNames(
                           "text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]",
                           {
-                            "text-[#29953A]  bg-[#29953A1A]": selected.id === item.id,
-                            "bg-[#E9E9E9]": selected.id !== item.id,
+                            "text-[#29953A]  bg-[#29953A1A]":
+                              selected.id === item.id,
+                            "bg-[#E9E9E9] ": selected.id !== item.id,
                           }
                         )}
                       >
-                       <span>{item.typeName}</span> 
+                        <span>{item.typeName}</span>
                       </div>
                     );
                   })}

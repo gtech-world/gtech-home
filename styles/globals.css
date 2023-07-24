@@ -154,3 +154,10 @@ h5{
 *{
   -webkit-overflow-scrolling: touch;/*解决IOS网页上下滑动卡顿缺失等问题*/
 }
+
+/* 解决IOS网页中选中一个tab时带有特效问题*/
+div {
+  -webkit-tap-highlight-color: transparent; /* 去除点击高亮效果 */
+  outline: none; /* 去除点击边框 */
+  user-select: none; /* 禁用文本选中效果 */
+}
