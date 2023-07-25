@@ -16,7 +16,7 @@ function Top(){
 function PowerManagement(){
   const { t } = useTranslation('governance');
   return(
-    <div className="flex flex-col items-center bg-bgc pb-16 md:pb-8">
+    <div className="flex flex-col items-center pb-16 bg-bgc md:pb-8">
       <h3 className="w-[61.5rem] my-16 text-center leading-[65px] md:leading-6 md:w-full md:my-8 md:px-12">{t('powerManagement.title')}</h3>
       <div className="flex flex-col w-container md:w-full">
         <div className="h-[13rem] bg-[url(/images/industrial.svg)] bg-no-repeat bg-center">
@@ -69,7 +69,7 @@ function GreenData(){
     }
   ]
   return(
-    <div className="w-full flex flex-col items-center pt-16 pb-20 md:py-8">
+    <div className="flex flex-col items-center w-full pt-16 pb-20 md:py-8">
       <h3 className="px-12 text-center"><span className="text-green">{t('greenData.title.green')}</span> <span>{t('greenData.title.text')}</span></h3>
       <div className="flex mt-20 md:flex-col-reverse md:mt-8">
         <div className="w-[38.625rem] mr-[5.75rem] md:w-full md:text-center md:px-3">

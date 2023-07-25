@@ -14,9 +14,17 @@ module.exports = {
         '3.5xl': '2rem',
       },
       screens: {
-        'md': [
-          {'min': '0', 'max': '900px'},
-        ]
+        // 'md': [
+        //   {'min': '0', 'max': '900px'},
+        // ],
+        'sm': [
+            {'min': '0px', 'max': '900px'},
+          ],  // 小型屏幕
+        'md':  [
+            {'min': '0', 'max': '900px'},
+          ],//中等屏幕
+        'lg': '1024px', // 大型屏幕
+        'xl': '1280px', // 更大屏幕
       },
       width:{
         container: '75rem'

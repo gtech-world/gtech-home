@@ -1,134 +1,375 @@
-import {HeaderLayout} from "@components/common/headerLayout";
-import React, {useEffect, useMemo, useRef, useState} from "react";
-import Link from "next/link";
+import { Button } from "@components/button";
+import { HeaderLayout } from "@components/common/headerLayout";
+import { Loading } from "@components/common/loading";
+import { Pagination } from "@components/common/pagination";
+import { getNewsCount, getNewsList, getNewsListCount } from "@lib/http";
+import { isMobile } from "@lib/utils";
 import classNames from "classnames";
-import {isMobile} from "@lib/utils";
-import {useRouter} from "next/router";
-import {Pagination} from "@components/common/pagination";
-import {useAsyncM} from "@lib/hooks/useAsyncM";
-import {getNewsCount, getNewsList, noArgs} from "@lib/http";
-import moment from 'moment'
-import {Loading} from "@components/common/loading";
-// import {useNewsCate} from "@lib/hooks/useNewsCate";
+import moment from "moment";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { FC, Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { check, tempList } from "utils";
 
-function Top(){
-  return(
-    <div className="h-[32.375rem] md:h-[24rem] w-full bg-[url(/images/news_banner.png)] bg-no-repeat bg-cover bg-left-bottom">
-      <div className="max-w-[61.75rem] mx-auto flex flex-col items-center text-center mt-24 md:mt-12">
-        <h3 className="text-5xl text-green md:text-[1.75rem]">资讯动态</h3>
-        <p className="text-[2rem] leading-[2.75rem] mt-8 md:text-lg md:px-8">GTech是一家实时革新、日常精进的技术导向型公司。获取来自GTech以及我们所关注领域的最新资讯、业务进展以及技术信息分享。</p>
-      </div>
-    </div>
-  )
-}
-function ArticleList(p:{data:any[],cateId:number}){
-  const {cateId,data} = p
-  return(
-    <div className="w-container mt-16 md:w-full md:mt-8 md:px-3">
-      {
-        !!data.length && data.map((v,i)=>{
-          console.log(v.thumbUrl)
-          return(
-            <div key={`data${i}`} className="flex md:items-center mb-12 md:mb-5">
-              <div className={classNames('max-w-[25rem] w-full md:max-w-[7.375rem] h-[16.125rem] md:h-[4.875rem] rounded-lg overflow-hidden')}>
-                <div className="w-[100rem] h-full">
-                  <img className="w-auto h-full" src={v.thumbUrl} alt=""/>
+const ArticleList: FC<NewsTypesController.ArticleList> = ({
+  cateId,
+  data,
+  onCheck,
+  checked,
+  windowWidth,
+}) => {
+  return (
+    <div
+      className={`flex flex-wrap mb-[50px]  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}
+    >
+      {!!data.length &&
+        data.map((v, i) => {
+          return (
+            <Fragment key={`data${i}`}>
+              {isMobile() && i === 0 && (
+                <div
+                  className=" text-[14px]   md:border-b
+                  w-full  md: border-[#DDDDDD] 
+                  "
+                  onClick={() => onCheck()}
+                >
+                  发布时间
+                  <button className=" ml-[10px] md:mb-[10px] mt-1">
+                    <img
+                      src={check[String(checked)]}
+                      className="h-[10.89px] w-[7.82px]"
+                      alt=""
+                    />
+                  </button>
                 </div>
-              </div>
+              )}
 
-              <div className="flex flex-col justify-between ml-8 md:ml-2.5">
-                <div className="">
-                  <h4 className="text-2xl font-semibold md:text-base">
-                    <Link className="ellipsis-2" rel="opener" target={isMobile()?'':'_blank'} href={`/news/detail?cateId=${cateId}&id=${v.id}`}>
+              {isMobile() ? null : (
+                <div
+                  className={` ${
+                    i === 0 ? "mt-5 " : ""
+                  }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
+                 mx-auto  md:w-full md:px-5 cursor-pointer
+                 `}
+                >
+                  {data.length && i === 0 ? (
+                    <Fragment>
+                      <div
+                        className=" text-[14px]   md:border-b
+                  w-full  md:border-t md: border-[#DDDDDD] 
+                  
+                  "
+                        onClick={() => onCheck()}
+                      >
+                        发布时间
+                        <button className=" ml-[10px] md:mb-[10px] mt-1">
+                          <img
+                            src={check[String(checked)]}
+                            className="h-[10.89px] w-[7.82px]"
+                            alt=""
+                          />
+                        </button>
+                      </div>
+                    </Fragment>
+                  ) : null}
+                </div>
+              )}
+              <div className=" flex  md:mt-5    w-full sm:w-[100%] md:h-[4.75rem]">
+                <div
+                  className={
+                    " w-[19.375rem] md:w-[7.375rem]  h-[12.5rem] md:h-[4.75rem] rounded-lg "
+                  }
+                >
+                  <img
+                    className="max-w-[19.375rem] h-[12.5rem] md:w-[7.375rem]  rounded-lg md:h-[4.75rem] object-cover"
+                    src={v.thumbUrl}
+                    alt=""
+                  />
+                </div>
+                <div
+                  className={`  flex w-full flex-col md:overflow-hidden md:text-ellipsis md:whitespace-nowrap 
+                    h-[12.5rem] ml-[2rem] md:ml-[10px] md:w-[100%]    mx-auto  justify-between  md:h-[4.75rem] `}
+                >
+                  <div className=" h-[9.4375rem]  md:w-[100%] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   ">
+                    <a
+                      href={`/news/detail?cateId=${
+                        cateId.id || cateId.cateId
+                      }&id=${v.id}`}
+                      style={{
+                        WebkitLineClamp: windowWidth > 1200 ? 2 : 1,
+                        WebkitBoxOrient: "vertical",
+                        display: "-webkit-box",
+                      }}
+                      className=" md:w-[100%] font-semibold text-[20px]  md:text-[16px] line-clamp-1 overflow-hidden   text-ellipsis "
+                    >
                       {v.title}
-                    </Link>
-                  </h4>
-                  <time className="inline-block py-2.5 md:py-0 md:pt-2  text-gray-2">{moment(v.newsUpdateTime*1000).format('YYYY-MM-DD HH:mm:ss')}</time>
-                  <p className="md:hidden">{v.digest}</p>
-                </div>
-                <div className="pb-1 md:hidden">
-                  <Link className="text-green" rel="opener" target={isMobile()?'':'_blank'} href={`/news/detail?cateId=${cateId}&id=${v.id}`}>
-                    详情 &gt;&gt;
-                  </Link>
+                    </a>
+                    <time className=" md:h-[18px] leading-[18px] mt-[10px] md:mt-[6px] md:mb-[6px] mb-[10px] md:py-0 text-[14px] md:text-[12px] flex text-gray-2">
+                      <div className="mr-5 ">{v.author}</div>
+                      {moment(v.newsUpdateTime * 1000).format(
+                        "YYYY-MM-DD HH:mm:ss"
+                      )}
+                    </time>
+                    {!isMobile() && (
+                      <p
+                        title={v.digest}
+                        style={{
+                          WebkitLineClamp: windowWidth > 1200 ? 2 : 1,
+                          WebkitBoxOrient: "vertical",
+                          display: "-webkit-box",
+                        }}
+                        className=" leading-[21px]   text-ellipsis md:hidden  text-[14px] line  line-clamp-1 overflow-hidden"
+                      >
+                        {v.digest}
+                      </p>
+                    )}
+                    <div
+                      className={`flex flex-row items-center   mt-[10px] md:h-[24px]`}
+                    >
+                      {v?.newsTypes.map((e: any, i: number) => {
+                        return (
+                          <div
+                            key={`name_${i}`}
+                            className="mr-5 font-OpenSans   rounded-[0.25rem] md:text-[12px] px-[10px] text-[#29953A] text-[14px]  bg-[#29953A1A]"
+                          >
+                            {e.typeName}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div className=" md:hidden h-[3.0625rem]  flex items-end mb-[-5px]">
+                    <a
+                      href={`/news/detail?cateId=${
+                        cateId.id || cateId.cateId
+                      }&id=${v.id}`}
+                      className="text-green text-[14px] cursor-pointer"
+                    >
+                      详情&gt;&gt;
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        })
-      }
+            </Fragment>
+          );
+        })}
     </div>
-  )
-}
-
-const tempList = [
-  {name: '数据技术', id:1},
-  {name: '行业动态',id:2},
-  {name: '行业深度',id:3},
-  {name: 'GTech资讯',id:4}
-]
-export default function Index() {
-  const {query} = useRouter()
-  const tabs = tempList
-  let tabId = tabs[0].id
-  const ref = useRef(null)
-  const [selected,setSelected] = useState(tabId)
-  const [pgNum,setPgNum] = useState(1)
-  const [pgSize] = useState(10)
-  const { value, loading }:any = useAsyncM(
-    noArgs(async () =>Promise.all([getNewsList(tabs[selected-1].name,pgNum,pgSize),getNewsCount(tabs[selected-1].name)])
-      , [pgNum,selected]),
-    [pgNum,selected]
   );
-  const {total,data} = useMemo(()=>{
-    if(!value || value.length !== 2) return {total: 0,data:[]}
-    return {
-      total: value[1] || 0,
-      data: value[0]
-    }
-  },[value])
-  useEffect(()=>{
-    if(query.cateId){
-      const cur = tabs[+query.cateId-1]
-      tabId = cur?.id || 1
-    }
-    setSelected(tabId)
-  },[query])
-  useMemo(()=>{
-    if(isMobile() && ref?.current){
-      //@ts-ignore
-      ref.current.scrollLeft = 30*(selected-1)
-    }
-    setPgNum(1)
-    history.replaceState(null,'', `/news?cateId=${selected}`);
-  },[selected])
-  const headerProps = {
-    className: isMobile()?'':'border-b border-black'
-  }
-  return(
-    <HeaderLayout headerProps={headerProps}>
-      <Top />
-      <div className="pt-10 pb-7 flex justify-center bg-bgc-1 flex-col items-center md:pt-6 md:px-3 md:pb-5">
-        <div className="bg-white shadow-[0_5px_20px_0_rgba(0,0,0,0.08)] rounded-2xl md:rounded-lg flex px-3 h-[5.5rem] md:h-[4.25rem] w-container text-2xl md:w-full md:text-base overflow-hidden">
-          <div ref={ref} className="overflow-x-auto w-full h-full  flex justify-between items-center px-24 md:px-2">
-            {
-              tabs.map((v,i)=>{
-                return(
-                  <div key={`tabs${i}`} onClick={()=>setSelected(i+1)} className={classNames('cursor-pointer whitespace-nowrap px-8 md:px-1 md:mx-4',i===(selected-1) && 'news-active')}>
-                    {
-                      v.name
-                    }
-                  </div>
-                )
-              })
-            }
-          </div>
+};
 
-        </div>
-        {
-          loading?<Loading className="h-[22rem]" />:<ArticleList cateId={selected} data={data} />
+type newsListRecord = Pick<
+  NewsTypesController.ListRecord,
+  "children" | "id" | "typeGroup"
+>;
+export default function Index() {
+  const tableDataTotal = useRef<number>(0);
+  const [checked, setChecked] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState<NewsTypesController.NewsList[]>([]);
+  const [newsType, setNewsType] = useState<newsListRecord[]>([]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [selected, setSelected] = useState<
+    Partial<NewsTypesController.TypeList>
+  >({});
+  const [pgNum, setPgNum] = useState<number>(1);
+  const [pgSize] = useState<number>(10);
+  const router = useRouter();
+
+  const getNewsType = async () => {
+    try {
+      const res = await getNewsCount();
+      const mergedData: any = {};
+
+      res.forEach((item: NewsTypesController.ListRecord) => {
+        const { typeGroup } = item;
+        if (!mergedData[typeGroup]) {
+          mergedData[typeGroup] = {
+            id: item.id,
+            typeGroup: item.typeGroup,
+            children: [],
+          };
         }
-        <Pagination className="py-5" total={total} pgSize={pgSize} pgNum={pgNum} onChange={(v:any)=>{setPgNum(v)}} />
+        const { id, typeName, createTime, updateTime } = item;
+        mergedData[typeGroup].children.push({
+          id,
+          typeName,
+          typeGroup,
+          createTime,
+          updateTime,
+        });
+      });
+      const finalData: NewsTypesController.ListRecords[] =
+        Object.values(mergedData);
+      setNewsType(finalData);
+    } catch (e) {
+      console.log("reeee", e);
+    } finally {
+    }
+  };
+
+  useEffect(() => {
+    setSelected({
+      id: Number(router.query.cateId),
+    });
+  }, [router.query]);
+
+  const getListTotal = async () => {
+    const res = await getNewsListCount(selected?.id);
+    tableDataTotal.current = res;
+  };
+
+  useEffect(() => {
+    getNewsType();
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    getListTotal();
+  }, [selected.id]);
+
+  const getList = useCallback(async () => {
+    try {
+      const res = await getNewsList(selected?.id, checked === 1, pgNum, pgSize);
+      setData(res || []);
+    } catch (e) {
+      console.log("eee", e);
+    } finally {
+    }
+  }, [pgNum, selected.id, checked]);
+
+  useEffect(() => {
+    getList();
+  }, [getList]);
+
+  const headerProps = {
+    className: isMobile() ? "" : "border-b border-black",
+  };
+
+  const onCheck = () => setChecked(checked === 2 ? 1 : checked + 1);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
+  return (
+    <HeaderLayout headerProps={headerProps}>
+      <div className="mx-auto md:mx-3 ">
+        <div
+          id="content"
+          className={
+            "flex  flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  w-container md:mt-5"
+          }
+        >
+          {newsType.map((e, index) => {
+            return (
+              <div
+                key={`type_${index}`}
+                id="box-medium"
+                className={classNames(
+                  "w-[22.5rem]  h-[12.75rem] border-[#DDDDDD]  rounded-lg border sm:w-[49%]",
+                  {
+                    "md:w-full md:mt-5 md:h-[139px]  ": index === 2,
+                    " md:h-[140px] ": index !== 2,
+                  }
+                )}
+              >
+                <div
+                  className={`  rounded-t-md  bg-green h-[4.25rem]  flex items-center
+                  ${index === 2 ? "md:w-full md:h-[50px] " : "md:h-[50px]  "}
+              `}
+                >
+                  <div
+                    className={`flex  flex-row items-center justify-between w-full mr-[0.75rem] `}
+                  >
+                    <div className=" ml-[1.875rem] text-white  text-[1.25rem] md:text-[1.125rem]">
+                      {e.typeGroup}
+                    </div>
+                    <div className="flex justify-end ">
+                      <img
+                        className=" w-[3.6875rem] h-[3.0625rem] md:w-[2.1875rem] md:h-[1.8125rem]"
+                        src={tempList[index].url}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-row flex-wrap ">
+                  {e.children.map((item, i: number) => {
+                    return (
+                      <div
+                        key={`check_${i}`}
+                        onClick={() => {
+                          setPgNum(1);
+                          setChecked(0);
+                          router.push(`/news?cateId=${item.id}`);
+                        }}
+                        className={classNames(
+                          "text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]",
+                          {
+                            "text-[#29953A]  bg-[#29953A1A]":
+                              selected.id === item.id,
+                            "bg-[#E9E9E9] ": selected.id !== item.id,
+                          }
+                        )}
+                      >
+                        <span>{item.typeName}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="">
+          {loading ? (
+            <Loading className="pt-8" />
+          ) : (
+            <ArticleList
+              windowWidth={windowWidth}
+              onCheck={onCheck}
+              cateId={selected}
+              checked={checked}
+              data={data}
+              pgNum={pgNum}
+            />
+          )}
+          {!(data && data.length > 0) && (
+            <div className="flex flex-col justify-center w-full py-20 text-center ">
+              <div className="flex justify-center ">
+                <img width={222} height="125" src="/images/noData.svg" alt="" />
+              </div>
+              <div>暂无数据</div>
+            </div>
+          )}
+        </div>
+        {data.length && !loading ? (
+          <Pagination
+            onChange={(v: any) => {
+              setPgNum(v);
+              scrollToTop();
+            }}
+            className="mb-10 mt-50 md:mt-0 "
+            total={tableDataTotal.current}
+            pgSize={10}
+            pgNum={pgNum}
+          />
+        ) : null}
       </div>
     </HeaderLayout>
-  )
+  );
 }

@@ -57,14 +57,14 @@ export function Pagination(p: Props & HTMLAttributes<HTMLDivElement>) {
         {
           count>1 &&
           <span onClick={doFirst} className="mx-[0.185rem] flex justify-center items-center cursor-pointer border min-w-[32px] h-[32px] rounded-lg">
-            <img src="/images/arrow_page.svg"/>
-            <img src="/images/arrow_page.svg"/>
+            <img src="/images/arrow_page.svg" alt=""/>
+            <img src="/images/arrow_page.svg" alt=""/>
           </span>
         }
         {
           count>1 &&
           <span onClick={doPrev} className="mx-[0.185rem] flex justify-center items-center cursor-pointer border min-w-[32px] h-[32px] rounded-lg">
-            <img src="/images/arrow_page.svg"/>
+            <img src="/images/arrow_page.svg" alt=""/>
           </span>
         }
         {items.map((page, i) => (
@@ -72,7 +72,7 @@ export function Pagination(p: Props & HTMLAttributes<HTMLDivElement>) {
                className={classnames({
                  "text-white bg-green-1": page.name === "" + pgNum,
                  omit: page.name === omit,
-               },'mx-[0.185rem] min-w-[32px] h-[32px] px-1.5 rounded-lg',page.name!=omit && 'border cursor-pointer')}
+               },'mx-[0.185rem] flex justify-center items-center min-w-[32px] h-[32px] px-1.5 rounded-lg',page.name!=omit && 'border cursor-pointer')}
                onClick={() => {
                  onChange && page.name !== omit && onChange(_.toNumber(page.name));
                }}
@@ -83,14 +83,14 @@ export function Pagination(p: Props & HTMLAttributes<HTMLDivElement>) {
         {
           count>1 &&
           <span onClick={doNext} className="mx-[0.185rem] rotate-180 flex justify-center items-center cursor-pointer border min-w-[32px] h-[32px] rounded-lg">
-            <img src="/images/arrow_page.svg"/>
+            <img src="/images/arrow_page.svg" alt=""/>
           </span>
         }
         {
           count>1 &&
           <span onClick={doLast} className=" mx-[0.185rem] rotate-180 flex justify-center items-center cursor-pointer border min-w-[32px] h-[32px] rounded-lg">
-            <img src="/images/arrow_page.svg"/>
-            <img src="/images/arrow_page.svg"/>
+            <img src="/images/arrow_page.svg" alt=""/>
+            <img src="/images/arrow_page.svg" alt=""/>
           </span>
         }
       </div>
