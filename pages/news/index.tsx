@@ -86,16 +86,21 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({
                     alt=""
                   />
                 </div>
-
                 <div
-                  className={`flex flex-col md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   h-[12.5rem] ml-[2rem] md:ml-[10px] md:w-[100%]    mx-auto  justify-between  md:h-[4.75rem] `}
+                  className={`  flex w-full flex-col md:overflow-hidden md:text-ellipsis md:whitespace-nowrap 
+                    h-[12.5rem] ml-[2rem] md:ml-[10px] md:w-[100%]    mx-auto  justify-between  md:h-[4.75rem] `}
                 >
                   <div className=" h-[9.4375rem]  md:w-[100%] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   ">
                     <a
                       href={`/news/detail?cateId=${
                         cateId.id || cateId.cateId
                       }&id=${v.id}`}
-                      className=" md:w-[100%] w-full  font-semibold text-[20px]  md:text-[16px] overflow-hidden text-ellipsis whitespace-nowrap  "
+                      style={{
+                        WebkitLineClamp: windowWidth > 1200 ? 2 : 1,
+                        WebkitBoxOrient: "vertical",
+                        display: "-webkit-box",
+                      }}
+                      className=" md:w-[100%] font-semibold text-[20px]  md:text-[16px] line-clamp-1 overflow-hidden   text-ellipsis "
                     >
                       {v.title}
                     </a>
