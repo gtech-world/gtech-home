@@ -225,7 +225,7 @@ function MobileSubNav(props: { data: any; onClick?: any }) {
                 onClick={() => onClick && onClick()}
                 className={classNames(
                   "inline-block w-full",
-                  pathname === v.href ? "text-red-200" : ""
+                  pathname === v.href ? "text-green" : ""
                 )}
               >
                 {v.name}
