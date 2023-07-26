@@ -302,7 +302,7 @@ function TrustLabel(){
         <div className="flex px-6 md:flex-col-reverse md:px-3">
           <img className="w-[50.625rem] md:w-full" src="/images/car.png" alt=""/>
           <div className="ml-6 md:ml-2">
-            <QrGroup className="mt-20 md:mt-8" />
+            <QrGroup className="mt-10 md:mt-8" />
             <p className="mt-8 md:text-center">{t('mainProduct.qrcode.qrIntro')}</p>
           </div>
         </div>
