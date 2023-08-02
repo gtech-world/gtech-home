@@ -25,23 +25,30 @@ export function noArgs<T>(fn: () => Promise<T>, deeps: any[]) {
     return fn();
   };
 }
-export async function getNewsList(newsTypeId?: number|string,invert:boolean = false, pageNumber: number=1,pageSize:number=10) {
-  if(!newsTypeId) return 
-  const res = await axios.get(creatUrl(`/wechat/news?newsTypeId=${newsTypeId}&invert=${!invert}&pageNumber=${pageNumber}&pageSize=${pageSize}`));
+export async function getNewsList(
+  newsTypeId?: number | string,
+  invert: boolean = false,
+  pageNumber: number = 1,
+  pageSize: number = 10,
+) {
+  if (!newsTypeId) return;
+  const res = await axios.get(
+    creatUrl(`/wechat/news?newsTypeId=${newsTypeId}&invert=${!invert}&pageNumber=${pageNumber}&pageSize=${pageSize}`),
+  );
   return getData(res);
 }
-export async function getNewsCount (){
+export async function getNewsCount() {
   const res = await axios.get(creatUrl(`/wechat/news/types`));
   return getData(res);
 }
 
-export async function getNewsListCount<T> (newsTypeId?:string | number  ,newsType?:T){
-  if(!newsTypeId)return
+export async function getNewsListCount<T>(newsTypeId?: string | number, newsType?: T) {
+  if (!newsTypeId) return;
   const res = await axios.get(creatUrl(`/wechat/news/count?newsTypeId=${newsTypeId}`));
   return getData(res);
 }
-export async function getNewsDetail<T>(id:T) {
-  if(!id)return
+export async function getNewsDetail<T>(id: T) {
+  if (!id) return;
   const res = await axios.get(creatUrl(`/wechat/news/detail/${id}`));
   return getData(res);
 }

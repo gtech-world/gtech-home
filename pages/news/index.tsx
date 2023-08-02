@@ -11,17 +11,9 @@ import { useRouter } from "next/router";
 import { FC, Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { check, tempList } from "utils";
 
-const ArticleList: FC<NewsTypesController.ArticleList> = ({
-  cateId,
-  data,
-  onCheck,
-  checked,
-  windowWidth,
-}) => {
+const ArticleList: FC<NewsTypesController.ArticleList> = ({ cateId, data, onCheck, checked, windowWidth }) => {
   return (
-    <div
-      className={`flex flex-wrap mb-[50px]  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}
-    >
+    <div className={`flex flex-wrap mb-[50px]  md:w-[100%] mx-auto md:mx-0   rounded-lg   w-container md:mt-5`}>
       {!!data.length &&
         data.map((v, i) => {
           return (
@@ -31,27 +23,19 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({
                   className=" text-[14px]   md:border-b
                   w-full  md: border-[#DDDDDD] 
                   "
-                  onClick={() => onCheck()}
-                >
+                  onClick={() => onCheck()}>
                   发布时间
                   <button className=" ml-[10px] md:mb-[10px] mt-1">
-                    <img
-                      src={check[String(checked)]}
-                      className="h-[10.89px] w-[7.82px]"
-                      alt=""
-                    />
+                    <img src={check[String(checked)]} className="h-[10.89px] w-[7.82px]" alt="" />
                   </button>
                 </div>
               )}
 
               {isMobile() ? null : (
                 <div
-                  className={` ${
-                    i === 0 ? "mt-5 " : ""
-                  }w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
+                  className={` ${i === 0 ? "mt-5 " : ""}w-full  h-[34px] mb-[32px] border-b  border-[#DDDDDD] 
                  mx-auto  md:w-full md:px-5 cursor-pointer
-                 `}
-                >
+                 `}>
                   {data.length && i === 0 ? (
                     <Fragment>
                       <div
@@ -59,15 +43,10 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({
                   w-full  md:border-t md: border-[#DDDDDD] 
                   
                   "
-                        onClick={() => onCheck()}
-                      >
+                        onClick={() => onCheck()}>
                         发布时间
                         <button className=" ml-[10px] md:mb-[10px] mt-1">
-                          <img
-                            src={check[String(checked)]}
-                            className="h-[10.89px] w-[7.82px]"
-                            alt=""
-                          />
+                          <img src={check[String(checked)]} className="h-[10.89px] w-[7.82px]" alt="" />
                         </button>
                       </div>
                     </Fragment>
@@ -75,11 +54,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({
                 </div>
               )}
               <div className=" flex  md:mt-5    w-full sm:w-[100%] md:h-[4.75rem]">
-                <div
-                  className={
-                    " w-[19.375rem] md:w-[7.375rem]  h-[12.5rem] md:h-[4.75rem] rounded-lg "
-                  }
-                >
+                <div className={" w-[19.375rem] md:w-[7.375rem]  h-[12.5rem] md:h-[4.75rem] rounded-lg "}>
                   <img
                     className="max-w-[19.375rem] h-[12.5rem] md:w-[7.375rem]  rounded-lg md:h-[4.75rem] object-cover"
                     src={v.thumbUrl}
@@ -88,27 +63,21 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({
                 </div>
                 <div
                   className={`  flex w-full flex-col md:overflow-hidden md:text-ellipsis md:whitespace-nowrap 
-                    h-[12.5rem] ml-[2rem] md:ml-[10px] md:w-[100%]    mx-auto  justify-between  md:h-[4.75rem] `}
-                >
+                    h-[12.5rem] ml-[2rem] md:ml-[10px] md:w-[100%]    mx-auto  justify-between  md:h-[4.75rem] `}>
                   <div className=" h-[9.4375rem]  md:w-[100%] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap   ">
                     <a
-                      href={`/news/detail?cateId=${
-                        cateId.id || cateId.cateId
-                      }&id=${v.id}`}
+                      href={`/news/detail?cateId=${cateId.id || cateId.cateId}&id=${v.id}`}
                       style={{
                         WebkitLineClamp: windowWidth > 1200 ? 2 : 1,
                         WebkitBoxOrient: "vertical",
                         display: "-webkit-box",
                       }}
-                      className=" md:w-[100%] font-semibold text-[20px]  md:text-[16px] line-clamp-1 overflow-hidden   text-ellipsis "
-                    >
+                      className=" md:w-[100%] font-semibold text-[20px]  md:text-[16px] line-clamp-1 overflow-hidden   text-ellipsis ">
                       {v.title}
                     </a>
                     <time className=" md:h-[18px] leading-[18px] mt-[10px] md:mt-[6px] md:mb-[6px] mb-[10px] md:py-0 text-[14px] md:text-[12px] flex text-gray-2">
                       <div className="mr-5 ">{v.author}</div>
-                      {moment(v.newsUpdateTime * 1000).format(
-                        "YYYY-MM-DD HH:mm:ss"
-                      )}
+                      {moment(v.newsUpdateTime * 1000).format("YYYY-MM-DD HH:mm:ss")}
                     </time>
                     {!isMobile() && (
                       <p
@@ -118,20 +87,16 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({
                           WebkitBoxOrient: "vertical",
                           display: "-webkit-box",
                         }}
-                        className=" leading-[21px]   text-ellipsis md:hidden  text-[14px] line  line-clamp-1 overflow-hidden"
-                      >
+                        className=" leading-[21px]   text-ellipsis md:hidden  text-[14px] line  line-clamp-1 overflow-hidden">
                         {v.digest}
                       </p>
                     )}
-                    <div
-                      className={`flex flex-row items-center   mt-[10px] md:h-[24px]`}
-                    >
+                    <div className={`flex flex-row items-center   mt-[10px] md:h-[24px]`}>
                       {v?.newsTypes.map((e: any, i: number) => {
                         return (
                           <div
                             key={`name_${i}`}
-                            className="mr-5 font-OpenSans   rounded-[0.25rem] md:text-[12px] px-[10px] text-[#29953A] text-[14px]  bg-[#29953A1A]"
-                          >
+                            className="mr-5 font-OpenSans   rounded-[0.25rem] md:text-[12px] px-[10px] text-[#29953A] text-[14px]  bg-[#29953A1A]">
                             {e.typeName}
                           </div>
                         );
@@ -140,11 +105,8 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({
                   </div>
                   <div className=" md:hidden h-[3.0625rem]  flex items-end mb-[-5px]">
                     <a
-                      href={`/news/detail?cateId=${
-                        cateId.id || cateId.cateId
-                      }&id=${v.id}`}
-                      className="text-green text-[14px] cursor-pointer"
-                    >
+                      href={`/news/detail?cateId=${cateId.id || cateId.cateId}&id=${v.id}`}
+                      className="text-green text-[14px] cursor-pointer">
                       详情&gt;&gt;
                     </a>
                   </div>
@@ -157,10 +119,7 @@ const ArticleList: FC<NewsTypesController.ArticleList> = ({
   );
 };
 
-type newsListRecord = Pick<
-  NewsTypesController.ListRecord,
-  "children" | "id" | "typeGroup"
->;
+type newsListRecord = Pick<NewsTypesController.ListRecord, "children" | "id" | "typeGroup">;
 export default function Index() {
   const tableDataTotal = useRef<number>(0);
   const [checked, setChecked] = useState<number>(0);
@@ -168,9 +127,7 @@ export default function Index() {
   const [data, setData] = useState<NewsTypesController.NewsList[]>([]);
   const [newsType, setNewsType] = useState<newsListRecord[]>([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [selected, setSelected] = useState<
-    Partial<NewsTypesController.TypeList>
-  >({});
+  const [selected, setSelected] = useState<Partial<NewsTypesController.TypeList>>({});
   const [pgNum, setPgNum] = useState<number>(1);
   const [pgSize] = useState<number>(10);
   const router = useRouter();
@@ -198,8 +155,7 @@ export default function Index() {
           updateTime,
         });
       });
-      const finalData: NewsTypesController.ListRecords[] =
-        Object.values(mergedData);
+      const finalData: NewsTypesController.ListRecords[] = Object.values(mergedData);
       setNewsType(finalData);
     } catch (e) {
       console.log("reeee", e);
@@ -268,34 +224,22 @@ export default function Index() {
       <div className="mx-auto md:mx-3 ">
         <div
           id="content"
-          className={
-            "flex  flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  w-container md:mt-5"
-          }
-        >
+          className={"flex  flex-wrap justify-between mx-auto md:w-full mt-10 rounded-lg  w-container md:mt-5"}>
           {newsType.map((e, index) => {
             return (
               <div
                 key={`type_${index}`}
                 id="box-medium"
-                className={classNames(
-                  "w-[22.5rem]  h-[12.75rem] border-[#DDDDDD]  rounded-lg border sm:w-[49%]",
-                  {
-                    "md:w-full md:mt-5 md:h-[139px]  ": index === 2,
-                    " md:h-[140px] ": index !== 2,
-                  }
-                )}
-              >
+                className={classNames("w-[22.5rem]  h-[12.75rem] border-[#DDDDDD]  rounded-lg border sm:w-[49%]", {
+                  "md:w-full md:mt-5 md:h-[139px]  ": index === 2,
+                  " md:h-[140px] ": index !== 2,
+                })}>
                 <div
                   className={`  rounded-t-md  bg-green h-[4.25rem]  flex items-center
                   ${index === 2 ? "md:w-full md:h-[50px] " : "md:h-[50px]  "}
-              `}
-                >
-                  <div
-                    className={`flex  flex-row items-center justify-between w-full mr-[0.75rem] `}
-                  >
-                    <div className=" ml-[1.875rem] text-white  text-[1.25rem] md:text-[1.125rem]">
-                      {e.typeGroup}
-                    </div>
+              `}>
+                  <div className={`flex  flex-row items-center justify-between w-full mr-[0.75rem] `}>
+                    <div className=" ml-[1.875rem] text-white  text-[1.25rem] md:text-[1.125rem]">{e.typeGroup}</div>
                     <div className="flex justify-end ">
                       <img
                         className=" w-[3.6875rem] h-[3.0625rem] md:w-[2.1875rem] md:h-[1.8125rem]"
@@ -319,12 +263,10 @@ export default function Index() {
                         className={classNames(
                           "text-[1rem] md:text-[0.875rem] cursor-pointer  min-w-[1.25rem] h-[2.375rem] md:h-[27px] flex items-center ml-5 mt-5 md:mt-[12px] rounded-[0.25rem] px-[1rem]",
                           {
-                            "text-[#29953A]  bg-[#29953A1A]":
-                              selected.id === item.id,
+                            "text-[#29953A]  bg-[#29953A1A]": selected.id === item.id,
                             "bg-[#E9E9E9] ": selected.id !== item.id,
-                          }
-                        )}
-                      >
+                          },
+                        )}>
                         <span>{item.typeName}</span>
                       </div>
                     );

@@ -4,10 +4,13 @@ const nextConfig = {
   trailingSlash: true,
   experimental: {
     // ssr and displayName are configured by default
-    fontLoaders: [{
-      loader: '@next/font/google', options: { subsets: ['normal','medium', 'semibod', 'bold'] }
-    }]
+    fontLoaders: [
+      {
+        loader: "@next/font/google",
+        options: { subsets: ["normal", "medium", "semibod", "bold"] },
+      },
+    ],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

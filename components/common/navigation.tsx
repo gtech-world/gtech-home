@@ -18,8 +18,7 @@ function PCNav() {
     const language = i18n.language === "en" ? "zh" : "en";
     i18n.changeLanguage(language);
     localStorage.setItem("lng", language);
-    statementPage.indexOf(pathname) > -1 &&
-      push(language === "en" ? "/enstatement" : "zhstatement");
+    statementPage.indexOf(pathname) > -1 && push(language === "en" ? "/enstatement" : "zhstatement");
   };
 
   const navList = [
@@ -36,9 +35,7 @@ function PCNav() {
         <div className="w-full">
           <div className="flex justify-between mx-auto w-container">
             <div className="w-[28.125rem]">
-              <h4 className="text-xl font-semibold">
-                {t("navigation.list.item2.name")}
-              </h4>
+              <h4 className="text-xl font-semibold">{t("navigation.list.item2.name")}</h4>
               <p className="mt-5">{t("navigation.list.item2.desc")}</p>
             </div>
             <div className="w-[24.125rem] ml-[2.05rem]">
@@ -54,9 +51,7 @@ function PCNav() {
               </p>
             </div>
             <div className="ml-[2.05rem]">
-              <h4 className="text-xl font-semibold">
-                {t("navigation.list.item2.children.more")}
-              </h4>
+              <h4 className="text-xl font-semibold">{t("navigation.list.item2.children.more")}</h4>
               <p className="mt-5 text-gray-1" onClick={() => setOpen("")}>
                 <Link className="link-hover" href="/solutions/web3">
                   {t("navigation.list.item2.children.child2.name")}
@@ -154,8 +149,7 @@ function PCNav() {
       ref={ref}
       onMouseLeave={(e) => {
         setOpen("");
-      }}
-    >
+      }}>
       {navList.map((v: any, i: number) => {
         return (
           <div key={`navlist${i}`} className="">
@@ -166,8 +160,7 @@ function PCNav() {
                 }}
                 key={`nav-${i}`}
                 className={`${i === 0 ? "" : " ml-14"}`}
-                href={v.href}
-              >
+                href={v.href}>
                 <span
                   className={`inline-block cursor-pointer mt-[0.785rem]  pb-2.5${
                     isCurrentPage(v.href)
@@ -175,8 +168,7 @@ function PCNav() {
                         ? " border-b-2 border-green-3"
                         : " border-b-2 border-green" + " font-bold"
                       : ""
-                  }`}
-                >
+                  }`}>
                   {v.name}
                 </span>
               </Link>
@@ -191,8 +183,7 @@ function PCNav() {
                       ? " border-b-2 border-green-3"
                       : " nav-active" + " font-bold"
                     : ""
-                }${i === 0 ? "" : " ml-14"}`}
-              >
+                }${i === 0 ? "" : " ml-14"}`}>
                 {v.name}
               </span>
             )}
@@ -223,11 +214,7 @@ function MobileSubNav(props: { data: any; onClick?: any }) {
               <Link
                 href={v.href}
                 onClick={() => onClick && onClick()}
-                className={classNames(
-                  "inline-block w-full",
-                  pathname === v.href ? "text-green" : ""
-                )}
-              >
+                className={classNames("inline-block w-full", pathname === v.href ? "text-green" : "")}>
                 {v.name}
               </Link>
             ) : (
@@ -327,8 +314,7 @@ function MobileNav() {
   useClickAway(ref, () => open && onToggle(false));
   const changeLanguage = (val: string) => {
     i18n.changeLanguage(val);
-    statementPage.indexOf(pathname) > -1 &&
-      push(val === "en" ? "/enstatement" : "zhstatement");
+    statementPage.indexOf(pathname) > -1 && push(val === "en" ? "/enstatement" : "zhstatement");
   };
   const openSubFc = (e: any, val: any) => {
     e.stopPropagation();
@@ -346,54 +332,32 @@ function MobileNav() {
   return (
     <div className="hidden md:block" ref={ref}>
       <HiOutlineMenu
-        className={classNames(
-          "text-4xl",
-          pathname === "/" ? "text-white" : "text-green"
-        )}
+        className={classNames("text-4xl", pathname === "/" ? "text-white" : "text-green")}
         onClick={onToggle}
       />
       {open && (
         <div className="absolute right-0 w-screen px-5 py-4 text-black bg-white">
           {navList.map((v: any, i: number) => {
             const hasChildren = v.children && v.children.length;
-            const isNews =
-              pathname === "/news" && v.href.indexOf(pathname) === 0;
+            const isNews = pathname === "/news" && v.href.indexOf(pathname) === 0;
             return (
-              <div
-                key={`MobileNav-${i}`}
-                className={classNames("mt-4", i === 0 ? "mt-3" : "")}
-              >
+              <div key={`MobileNav-${i}`} className={classNames("mt-4", i === 0 ? "mt-3" : "")}>
                 <div className="flex items-center justify-between text-base font-bold">
                   {hasChildren ? (
-                    <span
-                      onClick={(e) => openSubFc(e, v.href)}
-                      className="inline-block; w-full"
-                    >
+                    <span onClick={(e) => openSubFc(e, v.href)} className="inline-block; w-full">
                       {v.name}
                     </span>
                   ) : (
                     <Link
                       onClick={() => onToggle(false)}
-                      className={classNames(
-                        "inline-block w-full",
-                        pathname === v.href || isNews ? "text-green" : ""
-                      )}
-                      href={v.href}
-                    >
+                      className={classNames("inline-block w-full", pathname === v.href || isNews ? "text-green" : "")}
+                      href={v.href}>
                       {v.name}
                     </Link>
                   )}
-                  {hasChildren && (
-                    <IoCaretDownOutline
-                      className={
-                        openSub?.indexOf(v.href) > -1 ? "rotate-180" : ""
-                      }
-                    />
-                  )}
+                  {hasChildren && <IoCaretDownOutline className={openSub?.indexOf(v.href) > -1 ? "rotate-180" : ""} />}
                 </div>
-                {openSub?.indexOf(v.href) > -1 && (
-                  <MobileSubNav onClick={onToggle} data={v.children} />
-                )}
+                {openSub?.indexOf(v.href) > -1 && <MobileSubNav onClick={onToggle} data={v.children} />}
               </div>
             );
           })}

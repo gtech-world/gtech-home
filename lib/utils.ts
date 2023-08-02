@@ -1,13 +1,13 @@
-export const getCurNewsCate = (cate:any,cateList:any[])=>{
-  let cur:any = {}
-  for(let j=0; j<cateList.length; j++){
-    if(cate === cateList[j].code){
-      cur = cateList[j]
+export const getCurNewsCate = (cate: any, cateList: any[]) => {
+  let cur: any = {};
+  for (let j = 0; j < cateList.length; j++) {
+    if (cate === cateList[j].code) {
+      cur = cateList[j];
       break;
     }
   }
-  return cur
-}
+  return cur;
+};
 
 export function sleep(t: number = 0) {
   return new Promise<undefined>((resolve) => {
@@ -15,5 +15,5 @@ export function sleep(t: number = 0) {
   });
 }
 export function isMobile() {
-  return window.innerWidth <= 900
+  return window.innerWidth <= 900;
 }

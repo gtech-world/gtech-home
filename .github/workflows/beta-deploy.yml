@@ -2,7 +2,7 @@ name: Beta Release to Github Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 7
-          
+
       - name: Run install
         run: pnpm install --frozen-lockfile
 
