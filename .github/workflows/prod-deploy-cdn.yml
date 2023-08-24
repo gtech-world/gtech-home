@@ -1,5 +1,3 @@
-      
-      
 name: Prod Release to CDN
 
 on:
@@ -34,7 +32,7 @@ jobs:
           sudo pip install tccli
 
       - name: Config coscmd
-        env: 
+        env:
           SECRET_ID: ${{ secrets.CDN_SECRET_ID }}
           SECRET_KEY: ${{ secrets.CDN_SECRET_KEY }}
           BUCKET: ${{ secrets.CDN_BUCKET }}
@@ -48,4 +46,4 @@ jobs:
       - name: Uplaod to CDN
         run: |
           coscmd upload -rs --delete -f ./out/ /
-          tccli cdn PurgePathCache --cli-unfold-argument --Paths https://gtech-cn.co/ --FlushType flush
+          tccli cdn PurgePathCache --cli-unfold-argument --Paths https://gtech.world/ --FlushType flush
