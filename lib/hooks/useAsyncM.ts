@@ -27,6 +27,6 @@ export function useAsyncM<T extends FunctionReturningPromise>(fn: T, deeps: Depe
       loading: ref.current,
       req: mReq,
     }),
-    [state, ref.current]
+    [state, ref.current],
   );
 }

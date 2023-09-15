@@ -150,7 +150,7 @@ function Carbon3Solution() {
           {t("carbon3Solution.title")}
         </Trans>
       </h3>
-      <div className="w-[80rem] md:w-full overflow-y-hidden overflow-x-auto">
+      <div className="overflow-x-auto overflow-y-hidden w-container md:w-full">
         <div className="flex justify-center w-full items-center md:justify-start mt-20 pb-20 md:mt-[2.25rem] md:pb-8 md:ml-5 md:text-sm">
           <div className="">
             <img
