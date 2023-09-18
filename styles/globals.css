@@ -163,3 +163,8 @@ div {
   outline: none; /* 去除点击边框 */
   user-select: none; /* 禁用文本选中效果 */
 }
+
+section {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
