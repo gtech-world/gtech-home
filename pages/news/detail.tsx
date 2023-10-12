@@ -36,6 +36,13 @@ const Detail = () => {
     [id],
   );
 
+  setTimeout(() => {
+    const data: any = document.getElementsByClassName("list-paddingleft-1");
+    for (let i of data) {
+      i.style.marginLeft = "1.5em";
+    }
+  }, 0);
+
   const article = useMemo(() => {
     if (!value?.newsItem) return { content: "", title: "", time: "" };
     setIsFinish(true);
