@@ -1,5 +1,7 @@
 import { HeaderLayout } from "@components/common/headerLayout";
+import { useSetLanguage } from "@lib/hooks/useSetLanguage";
 export default function Zhstatement() {
+  useSetLanguage("zh");
   return (
     <HeaderLayout className="bg-white min-h-screen border-t-2 border-gray-100">
       <div className="w-container mx-auto text-sm pb-12 md:w-full md:px-3">
