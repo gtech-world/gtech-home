@@ -18,7 +18,7 @@ export function QrGroup(p: any) {
             <p className="text-[0.6875rem] text-center mb-2 leading-[1rem] font-semibold">
               {qrText ? qrText : "Product Carbon Footprint Certified by AIAG"}
             </p>
-            <img className="w-[5.75rem]" src="/images/qrcode.svg" alt="" />
+            <img className="w-[5.75rem]" src="/images/newQrcode.jpg" alt="" />
           </div>
         </div>
       </div>
